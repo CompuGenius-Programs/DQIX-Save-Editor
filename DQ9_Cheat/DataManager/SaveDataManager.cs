@@ -80,6 +80,7 @@ internal class SaveDataManager
             var numPtr2 = numPtr1;
             for (var length = 0; length < 1008; ++length)
             {
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
                 if ((int)*(uint*)numPtr2 == (int)num &&
                     Encoding.GetEncoding("shift-jis").GetString(numArray, length, 15) == "DRAGON QUEST IX")
                 {
