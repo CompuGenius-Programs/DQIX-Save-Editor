@@ -554,13 +554,12 @@ public class QuestDataControl : DataControlBase
         label4.TabIndex = 8;
         label4.Text = "Quests Cleared";
         numericUpDown_ClearCount.Location = new Point(439, 6);
-        numericUpDown_ClearCount.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_ClearCount.Maximum = new decimal([
             byte.MaxValue,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_ClearCount.Name = "numericUpDown_ClearCount";
         numericUpDown_ClearCount.Size = new Size(51, 20);
         numericUpDown_ClearCount.TabIndex = 10;

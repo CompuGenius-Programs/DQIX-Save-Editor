@@ -395,8 +395,7 @@ public class StayingListGroupBox : JS_GroupBox
         _comboBoxSex.SelectedIndexChanged += _comboBoxSex_SelectedIndexChanged;
         _groupBox_Profile.AddVisionControl(_comboBoxSex);
         _profileTone = new VisionComboBox(80, 65, 121, 20);
-        _profileTone.Items.AddRange(new object[16]
-        {
+        _profileTone.Items.AddRange([
             "Chirpy Boy",
             "Cute Girl",
             "Timid Boy",
@@ -413,7 +412,7 @@ public class StayingListGroupBox : JS_GroupBox
             (object)"Kind Old Woman",
             (object)"Doddery Old Man",
             (object)"Bored Teenager"
-        });
+        ]);
         _profileTone.SelectedIndexChanged += _profileTone_SelectedIndexChanged;
         _groupBox_Profile.AddVisionControl(_profileTone);
         _textBoxAddress = new VisionTextBox(80, 90, 120, 20);
@@ -457,12 +456,11 @@ public class StayingListGroupBox : JS_GroupBox
         _comboBox_State = new ComboBox();
         _comboBox_State.DropDownStyle = ComboBoxStyle.DropDownList;
         _comboBox_State.FormattingEnabled = true;
-        _comboBox_State.Items.AddRange(new object[3]
-        {
+        _comboBox_State.Items.AddRange([
             "Not Found",
             "Discovered",
             "Clear"
-        });
+        ]);
         _comboBox_State.Location = new Point(248, 38);
         _comboBox_State.Size = new Size(90, 21);
         _comboBox_State.SelectedIndexChanged += _comboBox_State_SelectedIndexChanged;

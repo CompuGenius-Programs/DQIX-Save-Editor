@@ -39,25 +39,23 @@ public class SearchMapTypeConditionControl : SearchConditionControlBase
         SuspendLayout();
         comboBox_SearchCondition.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_SearchCondition.FormattingEnabled = true;
-        comboBox_SearchCondition.Items.AddRange(new object[2]
-        {
+        comboBox_SearchCondition.Items.AddRange([
             "Equals",
             "Not equals"
-        });
+        ]);
         comboBox_SearchCondition.Location = new Point(115, 16);
         comboBox_SearchCondition.Name = "comboBox_SearchCondition";
         comboBox_SearchCondition.Size = new Size(78, 20);
         comboBox_SearchCondition.TabIndex = 9;
         comboBox_MapType.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_MapType.FormattingEnabled = true;
-        comboBox_MapType.Items.AddRange(new object[5]
-        {
+        comboBox_MapType.Items.AddRange([
             "Caves",
             "Ruins",
             "Ice",
             "Water",
             "Volcano"
-        });
+        ]);
         comboBox_MapType.Location = new Point(16, 16);
         comboBox_MapType.Name = "comboBox_MapType";
         comboBox_MapType.Size = new Size(74, 20);

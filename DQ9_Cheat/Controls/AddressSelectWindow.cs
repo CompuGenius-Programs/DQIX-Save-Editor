@@ -145,13 +145,12 @@ public class AddressSelectWindow : Form
         button_Cancel.UseVisualStyleBackColor = true;
         comboBox_SelectType.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_SelectType.FormattingEnabled = true;
-        comboBox_SelectType.Items.AddRange(new object[4]
-        {
+        comboBox_SelectType.Items.AddRange([
             "Countries",
             "Continents",
             "DQ Locations",
             "???"
-        });
+        ]);
         comboBox_SelectType.Location = new Point(47, 6);
         comboBox_SelectType.Name = "comboBox_SelectType";
         comboBox_SelectType.Size = new Size(sbyte.MaxValue, 21);

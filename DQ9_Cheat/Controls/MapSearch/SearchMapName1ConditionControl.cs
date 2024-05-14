@@ -39,19 +39,17 @@ public class SearchMapName1ConditionControl : SearchConditionControlBase
         SuspendLayout();
         comboBox_SearchCondition.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_SearchCondition.FormattingEnabled = true;
-        comboBox_SearchCondition.Items.AddRange(new object[2]
-        {
+        comboBox_SearchCondition.Items.AddRange([
             "Equals",
             "Not equals"
-        });
+        ]);
         comboBox_SearchCondition.Location = new Point(115, 16);
         comboBox_SearchCondition.Name = "comboBox_SearchCondition";
         comboBox_SearchCondition.Size = new Size(78, 20);
         comboBox_SearchCondition.TabIndex = 3;
         comboBox_Name1.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_Name1.FormattingEnabled = true;
-        comboBox_Name1.Items.AddRange(new object[16]
-        {
+        comboBox_Name1.Items.AddRange([
             "Clay",
             "Rock",
             "Granite",
@@ -68,7 +66,7 @@ public class SearchMapName1ConditionControl : SearchConditionControlBase
             "Emerald",
             "Sapphire",
             "Diamond"
-        });
+        ]);
         comboBox_Name1.Location = new Point(16, 16);
         comboBox_Name1.Name = "comboBox_Name1";
         comboBox_Name1.Size = new Size(80, 20);

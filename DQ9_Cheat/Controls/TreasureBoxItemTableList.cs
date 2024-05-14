@@ -59,30 +59,27 @@ internal class TreasureBoxItemTableList : Form
         numericUpDown_Second.BeginInit();
         SuspendLayout();
         numericUpDown_Second.Location = new Point(12, 5);
-        numericUpDown_Second.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_Second.Maximum = new decimal([
             10000,
             0,
             0,
             0
-        });
-        numericUpDown_Second.Minimum = new decimal(new int[4]
-        {
+        ]);
+        numericUpDown_Second.Minimum = new decimal([
             7,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_Second.Name = "numericUpDown_Second";
         numericUpDown_Second.Size = new Size(81, 19);
         numericUpDown_Second.TabIndex = 0;
-        numericUpDown_Second.Value = new decimal(new int[4]
-        {
+        numericUpDown_Second.Value = new decimal([
             260,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_Second.ValueChanged += numericUpDown_Second_ValueChanged;
         label1.AutoSize = true;
         label1.Location = new Point(99, 9);

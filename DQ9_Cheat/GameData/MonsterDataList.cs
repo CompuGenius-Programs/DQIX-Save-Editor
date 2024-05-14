@@ -11,7 +11,7 @@ namespace DQ9_Cheat.GameData;
 
 internal static class MonsterDataList
 {
-    private static readonly List<string> _list = new();
+    private static readonly List<string> _list = [];
 
     static MonsterDataList()
     {

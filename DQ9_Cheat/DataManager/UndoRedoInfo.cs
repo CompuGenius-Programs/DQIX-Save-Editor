@@ -12,7 +12,7 @@ namespace DQ9_Cheat.DataManager;
 internal class UndoRedoInfo
 {
     private bool _disposed;
-    private List<UndoRedoElement> _undoRedoElementList = new();
+    private List<UndoRedoElement> _undoRedoElementList = [];
 
     public int Count => _undoRedoElementList.Count;
 

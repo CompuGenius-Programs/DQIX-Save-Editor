@@ -43,5 +43,5 @@ public static class HistoryCharacterList
             List.Add(new HistoryCharacter(name, num++));
     }
 
-    public static List<HistoryCharacter> List { get; } = new();
+    public static List<HistoryCharacter> List { get; } = [];
 }

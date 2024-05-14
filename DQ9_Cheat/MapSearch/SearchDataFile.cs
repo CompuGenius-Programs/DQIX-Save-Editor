@@ -20,8 +20,8 @@ public static class SearchDataFile
 {
     private static ThreadControl[] _threadControl;
 
-    public static byte[] RankList = new byte[12]
-    {
+    public static byte[] RankList =
+    [
         2,
         56,
         61,
@@ -34,7 +34,7 @@ public static class SearchDataFile
         181,
         201,
         221
-    };
+    ];
 
     private static readonly int _coreCount;
     private static readonly byte[] _byteData;

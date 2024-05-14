@@ -56,8 +56,8 @@ public class ItemDataControl : DataControlBase
     {
         AutoScaleMode = AutoScaleMode.None;
         InitializeComponent();
-        ItemCountEveryType = new int[10]
-        {
+        ItemCountEveryType =
+        [
             152,
             94,
             272,
@@ -68,7 +68,7 @@ public class ItemDataControl : DataControlBase
             96,
             112,
             64
-        };
+        ];
         panel.MouseWheel += panel_MouseWheel;
         panel.MouseMove += panel_MouseMove;
     }
@@ -418,8 +418,7 @@ public class ItemDataControl : DataControlBase
         _vScrollBar.Scroll += vScrollBar_Scroll;
         comboBox_ItemListType.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_ItemListType.FormattingEnabled = true;
-        comboBox_ItemListType.Items.AddRange(new object[10]
-        {
+        comboBox_ItemListType.Items.AddRange([
             "Everyday Items",
             "Important Items",
             "Weapons",
@@ -430,7 +429,7 @@ public class ItemDataControl : DataControlBase
             "Legs",
             "Feet",
             "Accessories"
-        });
+        ]);
         comboBox_ItemListType.Location = new Point(6, 9);
         comboBox_ItemListType.Name = "comboBox_ItemListType";
         comboBox_ItemListType.Size = new Size(121, 20);
@@ -504,30 +503,27 @@ public class ItemDataControl : DataControlBase
         radioButton_PossessAll.CheckedChanged += radioButton_LumpEdit_CheckedChanged;
         numericUpDown_LumpEditItemCount.Enabled = false;
         numericUpDown_LumpEditItemCount.Location = new Point(46, 129);
-        numericUpDown_LumpEditItemCount.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_LumpEditItemCount.Maximum = new decimal([
             99,
             0,
             0,
             0
-        });
-        numericUpDown_LumpEditItemCount.Minimum = new decimal(new int[4]
-        {
+        ]);
+        numericUpDown_LumpEditItemCount.Minimum = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_LumpEditItemCount.Name = "numericUpDown_LumpEditItemCount";
         numericUpDown_LumpEditItemCount.Size = new Size(41, 19);
         numericUpDown_LumpEditItemCount.TabIndex = 6;
-        numericUpDown_LumpEditItemCount.Value = new decimal(new int[4]
-        {
+        numericUpDown_LumpEditItemCount.Value = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         button_Execute.Enabled = false;
         button_Execute.Location = new Point(93, sbyte.MaxValue);
         button_Execute.Name = "button_Execute";

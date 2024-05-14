@@ -12,7 +12,7 @@ namespace DQ9_Cheat.GameData;
 internal static class TitleDataList
 {
     public const int ClearTitleIndex = 425;
-    private static readonly List<TitleElement> _list = new();
+    private static readonly List<TitleElement> _list = [];
 
     static TitleDataList()
     {

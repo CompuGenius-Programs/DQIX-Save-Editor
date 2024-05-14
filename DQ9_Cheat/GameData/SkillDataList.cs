@@ -1230,8 +1230,7 @@ internal static class SkillDataList
             new("Natural Deftness+60", index224 + 9, false)
         };
         SpecialtyEffectMaxIndex = index224 + 10;
-        AddData(new string[26]
-        {
+        AddData([
             "Sword Skill",
             "Spear Skill",
             "Knife Skill",
@@ -1258,8 +1257,7 @@ internal static class SkillDataList
             "Enlightenment",
             "Je Ne Sais Quoi",
             "Ruggedness"
-        }, new List<SkillSpecialtyEffectData[]>
-        {
+        ], [
             specialtyEffectDataArray12,
             specialtyEffectDataArray24,
             specialtyEffectDataArray36,
@@ -1286,10 +1284,10 @@ internal static class SkillDataList
             specialtyEffectDataArray255,
             specialtyEffectDataArray267,
             specialtyEffectDataArray268
-        });
+        ]);
     }
 
-    public static List<SkillData> List { get; } = new();
+    public static List<SkillData> List { get; } = [];
 
     public static int SpecialtyEffectMaxIndex { get; }
 

@@ -39,8 +39,7 @@ public class SearchRankConditionControl : SearchConditionControlBase
         SuspendLayout();
         comboBox_Rank.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_Rank.FormattingEnabled = true;
-        comboBox_Rank.Items.AddRange(new object[12]
-        {
+        comboBox_Rank.Items.AddRange([
             "02",
             "38",
             "3D",
@@ -53,20 +52,19 @@ public class SearchRankConditionControl : SearchConditionControlBase
             "B5",
             "C9",
             "DD"
-        });
+        ]);
         comboBox_Rank.Location = new Point(16, 16);
         comboBox_Rank.Name = "comboBox_Rank";
         comboBox_Rank.Size = new Size(73, 20);
         comboBox_Rank.TabIndex = 0;
         comboBox_SearchCondition.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_SearchCondition.FormattingEnabled = true;
-        comboBox_SearchCondition.Items.AddRange(new object[4]
-        {
+        comboBox_SearchCondition.Items.AddRange([
             "Equals",
             "Not equals",
             "At least",
             "Up to"
-        });
+        ]);
         comboBox_SearchCondition.Location = new Point(115, 16);
         comboBox_SearchCondition.Name = "comboBox_SearchCondition";
         comboBox_SearchCondition.Size = new Size(78, 20);

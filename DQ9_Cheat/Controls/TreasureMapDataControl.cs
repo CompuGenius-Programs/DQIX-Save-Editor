@@ -1023,26 +1023,24 @@ public class TreasureMapDataControl : DataControlBase
         checkBox_Hex.UseVisualStyleBackColor = true;
         checkBox_Hex.CheckedChanged += checkBox_Hex_CheckedChanged;
         numericUpDown_MapNo2.Location = new Point(111, 10);
-        numericUpDown_MapNo2.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_MapNo2.Maximum = new decimal([
             ushort.MaxValue,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_MapNo2.Name = "numericUpDown_MapNo2";
         numericUpDown_MapNo2.Size = new Size(74, 20);
         numericUpDown_MapNo2.TabIndex = 2;
         numericUpDown_MapNo2.Value = new decimal(new int[4]);
         numericUpDown_MapNo2.ValueChanged += numericUpDown_MapNo2_ValueChanged;
         numericUpDown_MapNo1.Location = new Point(54, 10);
-        numericUpDown_MapNo1.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_MapNo1.Maximum = new decimal([
             byte.MaxValue,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_MapNo1.Name = "numericUpDown_MapNo1";
         numericUpDown_MapNo1.Size = new Size(51, 20);
         numericUpDown_MapNo1.TabIndex = 1;
@@ -1101,13 +1099,12 @@ public class TreasureMapDataControl : DataControlBase
         Panel_Devil.Size = new Size(233, 54);
         Panel_Devil.TabIndex = 11;
         numericUpDown_DevilVictoryTurn.Location = new Point(173, 32);
-        numericUpDown_DevilVictoryTurn.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_DevilVictoryTurn.Maximum = new decimal([
             999,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_DevilVictoryTurn.Name = "numericUpDown_DevilVictoryTurn";
         numericUpDown_DevilVictoryTurn.Size = new Size(49, 20);
         numericUpDown_DevilVictoryTurn.TabIndex = 5;
@@ -1120,13 +1117,12 @@ public class TreasureMapDataControl : DataControlBase
         label6.TabIndex = 4;
         label6.Text = "No. of Turns";
         numericUpDown_DevilLevel.Location = new Point(53, 32);
-        numericUpDown_DevilLevel.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_DevilLevel.Maximum = new decimal([
             byte.MaxValue,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_DevilLevel.Name = "numericUpDown_DevilLevel";
         numericUpDown_DevilLevel.Size = new Size(49, 20);
         numericUpDown_DevilLevel.TabIndex = 3;
@@ -1222,13 +1218,12 @@ public class TreasureMapDataControl : DataControlBase
         label_DungeonDetail.TabIndex = 17;
         label_DungeonDetail.Text = "Map Details";
         numericUpDown_Place.Location = new Point(111, 132);
-        numericUpDown_Place.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_Place.Maximum = new decimal([
             byte.MaxValue,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_Place.Name = "numericUpDown_Place";
         numericUpDown_Place.Size = new Size(87, 20);
         numericUpDown_Place.TabIndex = 15;
@@ -1242,12 +1237,11 @@ public class TreasureMapDataControl : DataControlBase
         label8.Text = "Location";
         comboBox_State.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_State.FormattingEnabled = true;
-        comboBox_State.Items.AddRange(new object[3]
-        {
+        comboBox_State.Items.AddRange([
             "Not Found",
             "Discovered",
             "Cleared"
-        });
+        ]);
         comboBox_State.Location = new Point(111, 109);
         comboBox_State.Name = "comboBox_State";
         comboBox_State.Size = new Size(87, 21);
@@ -1305,13 +1299,12 @@ public class TreasureMapDataControl : DataControlBase
         label_MapCount.Size = new Size(51, 22);
         label_MapCount.Text = "(00/99)";
         numericUpDown_ClearCount.Location = new Point(92, 6);
-        numericUpDown_ClearCount.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_ClearCount.Maximum = new decimal([
             16383,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_ClearCount.Name = "numericUpDown_ClearCount";
         numericUpDown_ClearCount.Size = new Size(76, 20);
         numericUpDown_ClearCount.TabIndex = 16;
@@ -1391,38 +1384,34 @@ public class TreasureMapDataControl : DataControlBase
         checkBox_NarrowingLevel.UseVisualStyleBackColor = true;
         checkBox_NarrowingLevel.CheckedChanged += checkBox_NarrowingLevel_CheckedChanged;
         numericUpDown_NarrowingLevel.Location = new Point(61, 15);
-        numericUpDown_NarrowingLevel.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_NarrowingLevel.Maximum = new decimal([
             99,
             0,
             0,
             0
-        });
-        numericUpDown_NarrowingLevel.Minimum = new decimal(new int[4]
-        {
+        ]);
+        numericUpDown_NarrowingLevel.Minimum = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_NarrowingLevel.Name = "numericUpDown_NarrowingLevel";
         numericUpDown_NarrowingLevel.Size = new Size(57, 20);
         numericUpDown_NarrowingLevel.TabIndex = 3;
-        numericUpDown_NarrowingLevel.Value = new decimal(new int[4]
-        {
+        numericUpDown_NarrowingLevel.Value = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_NarrowingLevel.ValueChanged += numericUpDown_NarrowingLevel_ValueChanged;
         comboBox_NarrowingLevel.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_NarrowingLevel.FormattingEnabled = true;
-        comboBox_NarrowingLevel.Items.AddRange(new object[2]
-        {
+        comboBox_NarrowingLevel.Items.AddRange([
             "At least",
             "Up to"
-        });
+        ]);
         comboBox_NarrowingLevel.Location = new Point(123, 14);
         comboBox_NarrowingLevel.Name = "comboBox_NarrowingLevel";
         comboBox_NarrowingLevel.Size = new Size(67, 21);

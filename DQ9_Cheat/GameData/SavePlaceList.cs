@@ -13,7 +13,7 @@ namespace DQ9_Cheat.GameData;
 
 internal static class SavePlaceList
 {
-    private static readonly List<SavePlace> _list = new();
+    private static readonly List<SavePlace> _list = [];
 
     static SavePlaceList()
     {

@@ -39,39 +39,35 @@ public class SearchMapLvConditionControl : SearchConditionControlBase
         numericUpDown_MapLV.BeginInit();
         SuspendLayout();
         numericUpDown_MapLV.Location = new Point(16, 16);
-        numericUpDown_MapLV.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_MapLV.Maximum = new decimal([
             99,
             0,
             0,
             0
-        });
-        numericUpDown_MapLV.Minimum = new decimal(new int[4]
-        {
+        ]);
+        numericUpDown_MapLV.Minimum = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_MapLV.Name = "numericUpDown_MapLV";
         numericUpDown_MapLV.Size = new Size(64, 19);
         numericUpDown_MapLV.TabIndex = 6;
-        numericUpDown_MapLV.Value = new decimal(new int[4]
-        {
+        numericUpDown_MapLV.Value = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         comboBox_SearchCondition.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_SearchCondition.FormattingEnabled = true;
-        comboBox_SearchCondition.Items.AddRange(new object[4]
-        {
+        comboBox_SearchCondition.Items.AddRange([
             "Equals",
             "Not equals",
             "At least",
             "Up to"
-        });
+        ]);
         comboBox_SearchCondition.Location = new Point(115, 16);
         comboBox_SearchCondition.Name = "comboBox_SearchCondition";
         comboBox_SearchCondition.Size = new Size(78, 20);

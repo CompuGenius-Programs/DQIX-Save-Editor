@@ -16,7 +16,7 @@ namespace DQ9_Cheat.Controls;
 public class ItemSelectWindow : Form
 {
     private ItemType _itemType;
-    private readonly List<ItemType> _itemTypes = new();
+    private readonly List<ItemType> _itemTypes = [];
     private Button button_Cancel;
     private Button button_OK;
     private ComboBox comboBox_SelectType;

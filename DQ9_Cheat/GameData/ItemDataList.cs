@@ -15,25 +15,25 @@ internal static class ItemDataList
     public const int ItemCollectionMaxCount = 232;
     public const int AlchemyCount = 471;
     public const int AlchemyRateCount = 448;
-    private static readonly List<ItemDataBase> _toolList = new();
-    private static readonly List<ItemDataBase> _importantList = new();
-    private static readonly List<ItemDataBase> _weaponList = new();
-    private static readonly List<ItemDataBase> _shieldList = new();
-    private static readonly List<ItemDataBase> _headList = new();
-    private static readonly List<ItemDataBase> _upperBodyList = new();
-    private static readonly List<ItemDataBase> _armList = new();
-    private static readonly List<ItemDataBase> _lowerBodyList = new();
-    private static readonly List<ItemDataBase> _shoeList = new();
-    private static readonly List<ItemDataBase> _accessoryList = new();
-    private static readonly List<ItemDataBase> _alchemyToolList = new();
-    private static readonly List<ItemDataBase> _alchemyWeaponList = new();
-    private static readonly List<ItemDataBase> _alchemyShieldList = new();
-    private static readonly List<ItemDataBase> _alchemyHeadList = new();
-    private static readonly List<ItemDataBase> _alchemyUpperBodyList = new();
-    private static readonly List<ItemDataBase> _alchemyArmList = new();
-    private static readonly List<ItemDataBase> _alchemyLowerBodyList = new();
-    private static readonly List<ItemDataBase> _alchemyShoeList = new();
-    private static readonly List<ItemDataBase> _alchemyAccessoryList = new();
+    private static readonly List<ItemDataBase> _toolList = [];
+    private static readonly List<ItemDataBase> _importantList = [];
+    private static readonly List<ItemDataBase> _weaponList = [];
+    private static readonly List<ItemDataBase> _shieldList = [];
+    private static readonly List<ItemDataBase> _headList = [];
+    private static readonly List<ItemDataBase> _upperBodyList = [];
+    private static readonly List<ItemDataBase> _armList = [];
+    private static readonly List<ItemDataBase> _lowerBodyList = [];
+    private static readonly List<ItemDataBase> _shoeList = [];
+    private static readonly List<ItemDataBase> _accessoryList = [];
+    private static readonly List<ItemDataBase> _alchemyToolList = [];
+    private static readonly List<ItemDataBase> _alchemyWeaponList = [];
+    private static readonly List<ItemDataBase> _alchemyShieldList = [];
+    private static readonly List<ItemDataBase> _alchemyHeadList = [];
+    private static readonly List<ItemDataBase> _alchemyUpperBodyList = [];
+    private static readonly List<ItemDataBase> _alchemyArmList = [];
+    private static readonly List<ItemDataBase> _alchemyLowerBodyList = [];
+    private static readonly List<ItemDataBase> _alchemyShoeList = [];
+    private static readonly List<ItemDataBase> _alchemyAccessoryList = [];
 
     static ItemDataList()
     {

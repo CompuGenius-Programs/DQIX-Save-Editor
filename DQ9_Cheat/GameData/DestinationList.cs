@@ -38,5 +38,5 @@ public static class DestinationList
             List.Add(new Destination(name, num++));
     }
 
-    public static List<Destination> List { get; } = new();
+    public static List<Destination> List { get; } = [];
 }

@@ -74,19 +74,17 @@ public class SearchMapName3ConditionControl : SearchConditionControlBase
         SuspendLayout();
         comboBox_SearchCondition.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_SearchCondition.FormattingEnabled = true;
-        comboBox_SearchCondition.Items.AddRange(new object[2]
-        {
+        comboBox_SearchCondition.Items.AddRange([
             "Equals",
             "Not equals"
-        });
+        ]);
         comboBox_SearchCondition.Location = new Point(115, 16);
         comboBox_SearchCondition.Name = "comboBox_SearchCondition";
         comboBox_SearchCondition.Size = new Size(78, 20);
         comboBox_SearchCondition.TabIndex = 7;
         comboBox_Name3.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_Name3.FormattingEnabled = true;
-        comboBox_Name3.Items.AddRange(new object[24]
-        {
+        comboBox_Name3.Items.AddRange([
             "Cave",
             "Mine",
             "Lair",
@@ -111,7 +109,7 @@ public class SearchMapName3ConditionControl : SearchConditionControlBase
             "Crater",
             "Dungeon",
             "Void"
-        });
+        ]);
         comboBox_Name3.Location = new Point(16, 16);
         comboBox_Name3.Name = "comboBox_Name3";
         comboBox_Name3.Size = new Size(80, 20);

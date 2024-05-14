@@ -87,39 +87,35 @@ public class SearchFloorCountConditionControl : SearchConditionControlBase
         numericUpDown_FloorCount.BeginInit();
         SuspendLayout();
         numericUpDown_FloorCount.Location = new Point(16, 16);
-        numericUpDown_FloorCount.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_FloorCount.Maximum = new decimal([
             16,
             0,
             0,
             0
-        });
-        numericUpDown_FloorCount.Minimum = new decimal(new int[4]
-        {
+        ]);
+        numericUpDown_FloorCount.Minimum = new decimal([
             2,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_FloorCount.Name = "numericUpDown_FloorCount";
         numericUpDown_FloorCount.Size = new Size(64, 19);
         numericUpDown_FloorCount.TabIndex = 6;
-        numericUpDown_FloorCount.Value = new decimal(new int[4]
-        {
+        numericUpDown_FloorCount.Value = new decimal([
             2,
             0,
             0,
             0
-        });
+        ]);
         comboBox_SearchCondition.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_SearchCondition.FormattingEnabled = true;
-        comboBox_SearchCondition.Items.AddRange(new object[4]
-        {
+        comboBox_SearchCondition.Items.AddRange([
             "Equals",
             "Not equals",
             "At least",
             "Up to"
-        });
+        ]);
         comboBox_SearchCondition.Location = new Point(115, 16);
         comboBox_SearchCondition.Name = "comboBox_SearchCondition";
         comboBox_SearchCondition.Size = new Size(78, 20);

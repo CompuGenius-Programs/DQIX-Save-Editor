@@ -10,7 +10,7 @@ namespace DQ9_Cheat.DataManager;
 
 internal class UndoRedoDataValue : UndoRedoElement
 {
-    private readonly List<DataValueBase> _dataValueList = new();
+    private readonly List<DataValueBase> _dataValueList = [];
 
     public UndoRedoDataValue()
     {

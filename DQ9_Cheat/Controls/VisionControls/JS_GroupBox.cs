@@ -13,7 +13,7 @@ namespace DQ9_Cheat.Controls.VisionControls;
 
 public class JS_GroupBox : GroupBox
 {
-    private readonly List<VisionControlBase> _visionControls = new();
+    private readonly List<VisionControlBase> _visionControls = [];
     private IContainer components;
 
     public JS_GroupBox()

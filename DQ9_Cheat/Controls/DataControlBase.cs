@@ -16,7 +16,7 @@ namespace DQ9_Cheat.Controls;
 public class DataControlBase : UserControl
 {
     protected int _updateCount;
-    private readonly List<VisionControlBase> _visionControls = new();
+    private readonly List<VisionControlBase> _visionControls = [];
     private IContainer components;
 
     public DataControlBase()

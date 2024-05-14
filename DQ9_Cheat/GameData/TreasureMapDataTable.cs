@@ -13,8 +13,8 @@ internal static class TreasureMapDataTable
 {
     private static readonly Dictionary<ushort, List<ushort>> _reverseSeedTable = new();
 
-    public static string[] TreasureMapName1_Table = new string[16]
-    {
+    public static string[] TreasureMapName1_Table =
+    [
         "Clay",
         "Rock",
         "Granite",
@@ -31,10 +31,10 @@ internal static class TreasureMapDataTable
         "Emerald",
         "Sapphire",
         "Diamond"
-    };
+    ];
 
-    public static string[] TreasureMapName2_Table = new string[16]
-    {
+    public static string[] TreasureMapName2_Table =
+    [
         "Joy",
         "Bliss",
         "Glee",
@@ -51,10 +51,10 @@ internal static class TreasureMapDataTable
         "Evil",
         "Ruin",
         "Death"
-    };
+    ];
 
-    public static string[] TreasureMapName3_Table = new string[24]
-    {
+    public static string[] TreasureMapName3_Table =
+    [
         "Cave",
         "Mine",
         "Lair",
@@ -79,19 +79,19 @@ internal static class TreasureMapDataTable
         "Crater",
         "Dungeon",
         "Void"
-    };
+    ];
 
-    public static string[] TreasureMapMapTypeName_Table = new string[5]
-    {
+    public static string[] TreasureMapMapTypeName_Table =
+    [
         "Caves",
         "Ruins",
         "Ice",
         "Water",
         "Volcano"
-    };
+    ];
 
-    public static string[] TreasureMapPlaceName_Table = new string[34]
-    {
+    public static string[] TreasureMapPlaceName_Table =
+    [
         "Angel Falls",
         "Western Stornway",
         "Eastern Stornway",
@@ -126,10 +126,10 @@ internal static class TreasureMapDataTable
         "Wyrmneck",
         "The Gittish Empire",
         "Unknown"
-    };
+    ];
 
-    public static byte[] TreasureMapPlace_Table = new byte[151]
-    {
+    public static byte[] TreasureMapPlace_Table =
+    [
         33,
         0,
         0,
@@ -281,10 +281,10 @@ internal static class TreasureMapDataTable
         25,
         26,
         28
-    };
+    ];
 
-    public static byte[] TreasureMapName3_IndexTable = new byte[40]
-    {
+    public static byte[] TreasureMapName3_IndexTable =
+    [
         0,
         8,
         0,
@@ -325,10 +325,10 @@ internal static class TreasureMapDataTable
         15,
         20,
         23
-    };
+    ];
 
-    public static byte[] TableA = new byte[20]
-    {
+    public static byte[] TableA =
+    [
         1,
         30,
         0,
@@ -349,10 +349,10 @@ internal static class TreasureMapDataTable
         10,
         0,
         0
-    };
+    ];
 
-    public static byte[] TableB = new byte[36]
-    {
+    public static byte[] TableB =
+    [
         2,
         55,
         2,
@@ -389,10 +389,10 @@ internal static class TreasureMapDataTable
         248,
         14,
         16
-    };
+    ];
 
-    public static byte[] TableC = new byte[32]
-    {
+    public static byte[] TableC =
+    [
         2,
         55,
         1,
@@ -425,10 +425,10 @@ internal static class TreasureMapDataTable
         248,
         9,
         9
-    };
+    ];
 
-    public static byte[] TableD = new byte[36]
-    {
+    public static byte[] TableD =
+    [
         2,
         60,
         1,
@@ -465,10 +465,10 @@ internal static class TreasureMapDataTable
         248,
         1,
         12
-    };
+    ];
 
-    public static byte[] TableE = new byte[24]
-    {
+    public static byte[] TableE =
+    [
         1,
         100,
         2,
@@ -493,10 +493,10 @@ internal static class TreasureMapDataTable
         10,
         12,
         10
-    };
+    ];
 
-    public static byte[] TableF = new byte[48]
-    {
+    public static byte[] TableF =
+    [
         1,
         1,
         2,
@@ -545,10 +545,10 @@ internal static class TreasureMapDataTable
         4,
         10,
         0
-    };
+    ];
 
-    public static byte[] TableG = new byte[32]
-    {
+    public static byte[] TableG =
+    [
         2,
         3,
         1,
@@ -581,10 +581,10 @@ internal static class TreasureMapDataTable
         16,
         6,
         8
-    };
+    ];
 
-    public static byte[] TableH = new byte[20]
-    {
+    public static byte[] TableH =
+    [
         1,
         2,
         1,
@@ -605,10 +605,10 @@ internal static class TreasureMapDataTable
         9,
         12,
         16
-    };
+    ];
 
-    public static byte[] TableI = new byte[16]
-    {
+    public static byte[] TableI =
+    [
         1,
         3,
         1,
@@ -625,19 +625,19 @@ internal static class TreasureMapDataTable
         12,
         10,
         16
-    };
+    ];
 
-    public static byte[] TableJ = new byte[5]
-    {
+    public static byte[] TableJ =
+    [
         0,
         1,
         2,
         4,
         3
-    };
+    ];
 
-    public static byte[] TableK = new byte[1080]
-    {
+    public static byte[] TableK =
+    [
         8,
         0,
         11,
@@ -1718,10 +1718,10 @@ internal static class TreasureMapDataTable
         1,
         72,
         1
-    };
+    ];
 
-    public static byte[] TableL = new byte[438]
-    {
+    public static byte[] TableL =
+    [
         12,
         16,
         16,
@@ -2160,10 +2160,10 @@ internal static class TreasureMapDataTable
         12,
         28,
         20
-    };
+    ];
 
-    public static byte[] TableM = new byte[696]
-    {
+    public static byte[] TableM =
+    [
         0,
         0,
         0,
@@ -2860,10 +2860,10 @@ internal static class TreasureMapDataTable
         1,
         73,
         1
-    };
+    ];
 
-    public static byte[] TableN = new byte[48]
-    {
+    public static byte[] TableN =
+    [
         1,
         1,
         2,
@@ -2912,10 +2912,10 @@ internal static class TreasureMapDataTable
         4,
         10,
         0
-    };
+    ];
 
-    public static byte[] TableO = new byte[11]
-    {
+    public static byte[] TableO =
+    [
         0,
         14,
         28,
@@ -2927,10 +2927,10 @@ internal static class TreasureMapDataTable
         125,
         141,
         162
-    };
+    ];
 
-    public static byte[] TableP = new byte[162]
-    {
+    public static byte[] TableP =
+    [
         10,
         10,
         5,
@@ -3093,10 +3093,10 @@ internal static class TreasureMapDataTable
         1,
         1,
         1
-    };
+    ];
 
-    public static byte[] TableQ = new byte[162]
-    {
+    public static byte[] TableQ =
+    [
         12,
         14,
         16,
@@ -3259,10 +3259,10 @@ internal static class TreasureMapDataTable
         136,
         137,
         138
-    };
+    ];
 
-    public static string[] TableR = new string[141]
-    {
+    public static string[] TableR =
+    [
         "125G",
         "268G",
         "450G",
@@ -3404,7 +3404,7 @@ internal static class TreasureMapDataTable
         "Angel's bow",
         "Mimic",
         "Cannibox"
-    };
+    ];
 
     static TreasureMapDataTable()
     {
@@ -3426,10 +3426,7 @@ internal static class TreasureMapDataTable
             if (_reverseSeedTable.ContainsKey((ushort)key))
                 _reverseSeedTable[(ushort)key].Add((ushort)index);
             else
-                _reverseSeedTable.Add((ushort)key, new List<ushort>
-                {
-                    (ushort)index
-                });
+                _reverseSeedTable.Add((ushort)key, [(ushort)index]);
         }
     }
 }

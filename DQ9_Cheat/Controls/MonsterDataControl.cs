@@ -162,13 +162,12 @@ public class MonsterDataControl : DataControlBase
         radioButton_VictoryCount.UseVisualStyleBackColor = true;
         radioButton_VictoryCount.CheckedChanged += radioButton_LumpEdit_CheckedChanged;
         numericUpDown_LumpEditCount.Location = new Point(52, 136);
-        numericUpDown_LumpEditCount.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_LumpEditCount.Maximum = new decimal([
             999,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_LumpEditCount.Name = "numericUpDown_LumpEditCount";
         numericUpDown_LumpEditCount.Size = new Size(41, 19);
         numericUpDown_LumpEditCount.TabIndex = 6;

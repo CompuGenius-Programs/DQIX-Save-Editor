@@ -448,8 +448,7 @@ public class BasisDataControl : DataControlBase
         label13.Text = "Speech Style";
         comboBox_Tone.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_Tone.FormattingEnabled = true;
-        comboBox_Tone.Items.AddRange(new object[16]
-        {
+        comboBox_Tone.Items.AddRange([
             "Chirpy Boy",
             "Cute Girl",
             "Timid Boy",
@@ -466,7 +465,7 @@ public class BasisDataControl : DataControlBase
             "Kind Old Woman",
             "Doddery Old Man",
             "Bored Teenager"
-        });
+        ]);
         comboBox_Tone.Location = new Point(88, 55);
         comboBox_Tone.Name = "comboBox_Tone";
         comboBox_Tone.Size = new Size(121, 21);
@@ -486,11 +485,10 @@ public class BasisDataControl : DataControlBase
         label_Year.Text = "Y";
         comboBox_Sex.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_Sex.FormattingEnabled = true;
-        comboBox_Sex.Items.AddRange(new object[2]
-        {
+        comboBox_Sex.Items.AddRange([
             "Male",
             "Female"
-        });
+        ]);
         comboBox_Sex.Location = new Point(177, 31);
         comboBox_Sex.Name = "comboBox_Sex";
         comboBox_Sex.Size = new Size(64, 21);
@@ -674,20 +672,18 @@ public class BasisDataControl : DataControlBase
         label15.Text = "X Coord:";
         _numericUpDown_IntermissionX.DecimalPlaces = 2;
         _numericUpDown_IntermissionX.Location = new Point(95, 19);
-        _numericUpDown_IntermissionX.Maximum = new decimal(new int[4]
-        {
+        _numericUpDown_IntermissionX.Maximum = new decimal([
             10000000,
             0,
             0,
             0
-        });
-        _numericUpDown_IntermissionX.Minimum = new decimal(new int[4]
-        {
+        ]);
+        _numericUpDown_IntermissionX.Minimum = new decimal([
             10000000,
             0,
             0,
             int.MinValue
-        });
+        ]);
         _numericUpDown_IntermissionX.Name = "_numericUpDown_IntermissionX";
         _numericUpDown_IntermissionX.Size = new Size(81, 20);
         _numericUpDown_IntermissionX.TabIndex = 61;
@@ -696,20 +692,18 @@ public class BasisDataControl : DataControlBase
         _numericUpDown_IntermissionX.ValueChanged += _numericUpDown_IntermissionX_ValueChanged;
         _numericUpDown_IntermissionZ.DecimalPlaces = 2;
         _numericUpDown_IntermissionZ.Location = new Point(95, 63);
-        _numericUpDown_IntermissionZ.Maximum = new decimal(new int[4]
-        {
+        _numericUpDown_IntermissionZ.Maximum = new decimal([
             10000000,
             0,
             0,
             0
-        });
-        _numericUpDown_IntermissionZ.Minimum = new decimal(new int[4]
-        {
+        ]);
+        _numericUpDown_IntermissionZ.Minimum = new decimal([
             10000000,
             0,
             0,
             int.MinValue
-        });
+        ]);
         _numericUpDown_IntermissionZ.Name = "_numericUpDown_IntermissionZ";
         _numericUpDown_IntermissionZ.Size = new Size(81, 20);
         _numericUpDown_IntermissionZ.TabIndex = 63;
@@ -724,20 +718,18 @@ public class BasisDataControl : DataControlBase
         label16.Text = "Z Coord:";
         _numericUpDown_IntermissionY.DecimalPlaces = 2;
         _numericUpDown_IntermissionY.Location = new Point(95, 41);
-        _numericUpDown_IntermissionY.Maximum = new decimal(new int[4]
-        {
+        _numericUpDown_IntermissionY.Maximum = new decimal([
             10000000,
             0,
             0,
             0
-        });
-        _numericUpDown_IntermissionY.Minimum = new decimal(new int[4]
-        {
+        ]);
+        _numericUpDown_IntermissionY.Minimum = new decimal([
             10000000,
             0,
             0,
             int.MinValue
-        });
+        ]);
         _numericUpDown_IntermissionY.Name = "_numericUpDown_IntermissionY";
         _numericUpDown_IntermissionY.Size = new Size(81, 20);
         _numericUpDown_IntermissionY.TabIndex = 65;

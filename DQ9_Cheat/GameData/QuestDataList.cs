@@ -198,5 +198,5 @@ public static class QuestDataList
         List.Add(new QuestElement(136, 184, true, "Bleats Me"));
     }
 
-    public static List<QuestElement> List { get; } = new();
+    public static List<QuestElement> List { get; } = [];
 }

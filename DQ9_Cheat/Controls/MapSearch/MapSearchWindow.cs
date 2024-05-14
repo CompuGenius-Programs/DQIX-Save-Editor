@@ -46,8 +46,8 @@ public class MapSearchWindow : Form
         }
     };
 
-    private readonly ComparerBase[] _comparer = new ComparerBase[22]
-    {
+    private readonly ComparerBase[] _comparer =
+    [
         new SeedComparer(),
         new RankComparer(),
         new MapNameComparer(),
@@ -70,7 +70,7 @@ public class MapSearchWindow : Form
         new HBoxComparer(),
         new IBoxComparer(),
         new TotalBoxComparer()
-    };
+    ];
 
     private ListViewItem[] _dispItems;
     private bool _dispRenewal = true;
@@ -288,8 +288,7 @@ public class MapSearchWindow : Form
         textBox_DungeonDetail.Text = "";
         textBox_DungeonDetail.MouseMove += textBox_DungeonDetail_MouseMove;
         textBox_DungeonDetail.MouseDown += textBox_DungeonDetail_MouseDown;
-        listView_Result.Columns.AddRange(new ColumnHeader[22]
-        {
+        listView_Result.Columns.AddRange([
             columnHeader_Seed,
             columnHeader_Rank,
             columnHeader_MapName,
@@ -312,7 +311,7 @@ public class MapSearchWindow : Form
             columnHeader_HRank,
             columnHeader_IRank,
             columnHeader_Total
-        });
+        ]);
         listView_Result.FullRowSelect = true;
         listView_Result.GridLines = true;
         listView_Result.Location = new Point(6, 36);

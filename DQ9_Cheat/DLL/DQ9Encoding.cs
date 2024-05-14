@@ -14,8 +14,8 @@ public class DQ9Encoding : Encoding
     private static Dictionary<char, byte> decodeDictionary;
     private static Dictionary<byte, char> encodeDictionary;
 
-    private static readonly byte[] bytes = new byte[95]
-    {
+    private static readonly byte[] bytes =
+    [
         4,
         70,
         71,
@@ -111,7 +111,7 @@ public class DQ9Encoding : Encoding
         238,
         240,
         byte.MaxValue
-    };
+    ];
 
     private static readonly string chars =
         "'{|}€,„Œœ¡£«»¿!\"#$%&’()+-./;=?[]_ÀÁÂÄÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜßàáâäæçèéêëìíîïñòóôõöùúûü~☻*@¢ªº←↑→↓– ";

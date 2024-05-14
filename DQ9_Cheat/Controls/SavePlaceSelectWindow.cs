@@ -89,15 +89,14 @@ public class SavePlaceSelectWindow : Form
         button_Cancel.UseVisualStyleBackColor = true;
         comboBox_SelectType.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_SelectType.FormattingEnabled = true;
-        comboBox_SelectType.Items.AddRange(new object[6]
-        {
+        comboBox_SelectType.Items.AddRange([
             "All",
             "Church",
             "Town, etc.",
             "Field",
             "Dungeon",
             "Other"
-        });
+        ]);
         comboBox_SelectType.Location = new Point(58, 7);
         comboBox_SelectType.Name = "comboBox_SelectType";
         comboBox_SelectType.Size = new Size(sbyte.MaxValue, 21);

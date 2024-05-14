@@ -98,8 +98,7 @@ public class MapSearchConditionEdit : Form
         SuspendLayout();
         comboBox_SearchType.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_SearchType.FormattingEnabled = true;
-        comboBox_SearchType.Items.AddRange(new object[10]
-        {
+        comboBox_SearchType.Items.AddRange([
             "Rank",
             "Map Name 1",
             "Map Name 2",
@@ -110,7 +109,7 @@ public class MapSearchConditionEdit : Form
             "Floors",
             "Boss",
             "# of Chests"
-        });
+        ]);
         comboBox_SearchType.Location = new Point(68, 9);
         comboBox_SearchType.Name = "comboBox_SearchType";
         comboBox_SearchType.Size = new Size(121, 21);

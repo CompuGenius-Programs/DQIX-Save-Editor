@@ -11,7 +11,7 @@ namespace DQ9_Cheat.GameData;
 
 public static class ProfileJobList
 {
-    private static readonly List<ProfileJob> _list = new();
+    private static readonly List<ProfileJob> _list = [];
 
     static ProfileJobList()
     {

@@ -11,8 +11,8 @@ namespace DQ9_Cheat.GameData;
 
 public class SkillData
 {
-    private readonly List<SkillSpecialtyEffectData> _skillEffectList = new();
-    private readonly List<SkillSpecialtyEffectData> _skillSpecialtyList = new();
+    private readonly List<SkillSpecialtyEffectData> _skillEffectList = [];
+    private readonly List<SkillSpecialtyEffectData> _skillSpecialtyList = [];
 
     public SkillData(string name, int index, SkillSpecialtyEffectData[] specialtyEffects)
     {

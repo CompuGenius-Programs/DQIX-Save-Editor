@@ -40,42 +40,38 @@ public class SearchMonsterRankConditionControl : SearchConditionControlBase
         SuspendLayout();
         comboBox_SearchCondition.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_SearchCondition.FormattingEnabled = true;
-        comboBox_SearchCondition.Items.AddRange(new object[4]
-        {
+        comboBox_SearchCondition.Items.AddRange([
             "Equals",
             "Not equals",
             "At least",
             "Up to"
-        });
+        ]);
         comboBox_SearchCondition.Location = new Point(115, 16);
         comboBox_SearchCondition.Name = "comboBox_SearchCondition";
         comboBox_SearchCondition.Size = new Size(78, 20);
         comboBox_SearchCondition.TabIndex = 3;
         numericUpDown_MonsterRank.Location = new Point(16, 16);
-        numericUpDown_MonsterRank.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_MonsterRank.Maximum = new decimal([
             9,
             0,
             0,
             0
-        });
-        numericUpDown_MonsterRank.Minimum = new decimal(new int[4]
-        {
+        ]);
+        numericUpDown_MonsterRank.Minimum = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_MonsterRank.Name = "numericUpDown_MonsterRank";
         numericUpDown_MonsterRank.Size = new Size(64, 19);
         numericUpDown_MonsterRank.TabIndex = 4;
-        numericUpDown_MonsterRank.Value = new decimal(new int[4]
-        {
+        numericUpDown_MonsterRank.Value = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         AutoScaleDimensions = new SizeF(6f, 12f);
         AutoScaleMode = AutoScaleMode.Font;
         Controls.Add(numericUpDown_MonsterRank);

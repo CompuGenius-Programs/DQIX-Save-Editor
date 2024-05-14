@@ -11,10 +11,10 @@ namespace DQ9_Cheat.GameData;
 
 public static class ProfileAddressList
 {
-    private static readonly List<ProfileAddress> _dqAreaList = new();
-    private static readonly List<ProfileAddress> _prefectureList = new();
-    private static readonly List<ProfileAddress> _otherAreaList = new();
-    private static readonly List<ProfileAddress> _unknownAreaList = new();
+    private static readonly List<ProfileAddress> _dqAreaList = [];
+    private static readonly List<ProfileAddress> _prefectureList = [];
+    private static readonly List<ProfileAddress> _otherAreaList = [];
+    private static readonly List<ProfileAddress> _unknownAreaList = [];
 
     static ProfileAddressList()
     {

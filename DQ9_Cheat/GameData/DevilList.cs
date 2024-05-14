@@ -11,7 +11,7 @@ namespace DQ9_Cheat.GameData;
 
 public static class DevilList
 {
-    private static readonly List<Devil> _list = new();
+    private static readonly List<Devil> _list = [];
 
     static DevilList()
     {

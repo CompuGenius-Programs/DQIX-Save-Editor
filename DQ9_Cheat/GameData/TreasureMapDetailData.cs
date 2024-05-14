@@ -21,22 +21,22 @@ internal class TreasureMapDetailData
 
     private readonly byte[] _details = new byte[20];
     private readonly byte[] _details2 = new byte[20];
-    private readonly List<byte> _highRankValidPlaceList = new();
-    private readonly List<byte> _lowRankValidPlaceList = new();
-    private readonly List<byte> _middleRankValidPlaceList = new();
+    private readonly List<byte> _highRankValidPlaceList = [];
+    private readonly List<byte> _lowRankValidPlaceList = [];
+    private readonly List<byte> _middleRankValidPlaceList = [];
     private uint _seed;
-    private readonly List<byte> _validPlaceList = new();
-    private readonly List<byte> _validRankList = new();
+    private readonly List<byte> _validPlaceList = [];
+    private readonly List<byte> _validRankList = [];
 
     public TreasureMapDetailData()
     {
         if (_dungeonInfo == null)
             _dungeonInfo = new byte[16, 1336];
         for (var index = 0; index < 16; ++index)
-            TreasureBoxInfoList[index] = new List<TreasureBoxInfo>();
+            TreasureBoxInfoList[index] = [];
         if (_candidateRank != null)
             return;
-        _candidateRank = new List<byte>();
+        _candidateRank = [];
         for (var index1 = 1; index1 <= 99; ++index1)
         for (var index2 = 0; index2 <= 50; index2 += 5)
         for (var index3 = 1; index3 <= 99; ++index3)

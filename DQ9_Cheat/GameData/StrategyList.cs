@@ -20,7 +20,7 @@ internal static class StrategyList
         List.Add(new Strategy("Follow Orders", 40));
     }
 
-    public static List<Strategy> List { get; } = new();
+    public static List<Strategy> List { get; } = [];
 
     public static Strategy GetStrategy(byte value)
     {

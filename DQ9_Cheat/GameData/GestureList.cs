@@ -52,5 +52,5 @@ public static class GestureList
             List.Add(new Gesture(name, num++));
     }
 
-    public static List<Gesture> List { get; } = new();
+    public static List<Gesture> List { get; } = [];
 }

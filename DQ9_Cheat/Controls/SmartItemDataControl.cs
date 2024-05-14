@@ -522,8 +522,7 @@ public class SmartItemDataControl : DataControlBase
         button_AllUncheck.Click += button_AllUncheck_Click;
         comboBox_SelectType.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_SelectType.FormattingEnabled = true;
-        comboBox_SelectType.Items.AddRange(new object[20]
-        {
+        comboBox_SelectType.Items.AddRange([
             "All",
             "Swords",
             "Spears",
@@ -544,7 +543,7 @@ public class SmartItemDataControl : DataControlBase
             "Legs",
             "Feet",
             "Accessories"
-        });
+        ]);
         comboBox_SelectType.Location = new Point(14, 30);
         comboBox_SelectType.Name = "comboBox_SelectType";
         comboBox_SelectType.Size = new Size(121, 20);

@@ -12,8 +12,8 @@ namespace FriedGinger.DQCheat;
 
 public class TemplateEncoding : Encoding
 {
-    private static readonly string[] temptags = new string[57]
-    {
+    private static readonly string[] temptags =
+    [
         ",",
         "1",
         "6",
@@ -71,7 +71,7 @@ public class TemplateEncoding : Encoding
         "'u",
         "^u",
         ":u"
-    };
+    ];
 
     private static readonly string tempchars = ",'‘’“”ÀÁÂÄÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖŒÙÚÛÜßàáâäæçèéêëìíîïñòóôõöœùúûü";
     private static Dictionary<string, char> templateDictionary;

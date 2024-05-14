@@ -469,11 +469,10 @@ public class CharacterDataControl : DataControlBase
         comboBox_Sex.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_Sex.FormattingEnabled = true;
         comboBox_Sex.IntegralHeight = false;
-        comboBox_Sex.Items.AddRange(new object[2]
-        {
+        comboBox_Sex.Items.AddRange([
             "Male",
             "Female"
-        });
+        ]);
         comboBox_Sex.Location = new Point(339, 16);
         comboBox_Sex.Name = "comboBox_Sex";
         comboBox_Sex.Size = new Size(58, 20);
@@ -722,11 +721,10 @@ public class CharacterDataControl : DataControlBase
         comboBox_Rank.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_Rank.FormattingEnabled = true;
         comboBox_Rank.IntegralHeight = false;
-        comboBox_Rank.Items.AddRange(new object[2]
-        {
+        comboBox_Rank.Items.AddRange([
             "Front",
             "Back"
-        });
+        ]);
         comboBox_Rank.Location = new Point(339, 41);
         comboBox_Rank.Name = "comboBox_Rank";
         comboBox_Rank.Size = new Size(58, 20);
@@ -751,8 +749,7 @@ public class CharacterDataControl : DataControlBase
         comboBox_Color.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_Color.FormattingEnabled = true;
         comboBox_Color.IntegralHeight = false;
-        comboBox_Color.Items.AddRange(new object[16]
-        {
+        comboBox_Color.Items.AddRange([
             "Orange",
             "Yellow",
             "Light Green",
@@ -769,7 +766,7 @@ public class CharacterDataControl : DataControlBase
             "Brown",
             "Gray",
             "White"
-        });
+        ]);
         comboBox_Color.Location = new Point(455, 42);
         comboBox_Color.Name = "comboBox_Color";
         comboBox_Color.Size = new Size(93, 20);
@@ -906,13 +903,12 @@ public class CharacterDataControl : DataControlBase
         checkedListBox_Specialty.TabIndex = 3;
         checkedListBox_Specialty.ItemCheck += checkedListBox_Specialty_ItemCheck;
         _numericUpDown_Transmigration.Location = new Point(507, 44);
-        _numericUpDown_Transmigration.Maximum = new decimal(new int[4]
-        {
+        _numericUpDown_Transmigration.Maximum = new decimal([
             10,
             0,
             0,
             0
-        });
+        ]);
         _numericUpDown_Transmigration.Name = "_numericUpDown_Transmigration";
         _numericUpDown_Transmigration.Size = new Size(38, 19);
         _numericUpDown_Transmigration.TabIndex = 5;

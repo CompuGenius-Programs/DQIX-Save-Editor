@@ -109,8 +109,7 @@ public class WifiShoppingDataControl : DataControlBase
     {
         if (!(sender is Button button))
             return;
-        var itemSelectWindow = new ItemSelectWindow(new ItemType[9]
-        {
+        var itemSelectWindow = new ItemSelectWindow([
             ItemType.Tool,
             ItemType.Weapon,
             ItemType.Shield,
@@ -120,7 +119,7 @@ public class WifiShoppingDataControl : DataControlBase
             ItemType.LowerBody,
             ItemType.Shoe,
             ItemType.Accessory
-        });
+        ]);
         itemSelectWindow.Location = PointToScreen(new Point(Left + button.Right, Top + button.Bottom));
         if (itemSelectWindow.ShowDialog() != DialogResult.OK)
             return;
@@ -347,13 +346,12 @@ public class WifiShoppingDataControl : DataControlBase
         label1.TabIndex = 92;
         label1.Text = "H";
         numericUpDown_AllowNextConnectHour.Location = new Point(325, 52);
-        numericUpDown_AllowNextConnectHour.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_AllowNextConnectHour.Maximum = new decimal([
             23,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_AllowNextConnectHour.Name = "numericUpDown_AllowNextConnectHour";
         numericUpDown_AllowNextConnectHour.Size = new Size(39, 20);
         numericUpDown_AllowNextConnectHour.TabIndex = 91;
@@ -366,30 +364,27 @@ public class WifiShoppingDataControl : DataControlBase
         label2.TabIndex = 90;
         label2.Text = "D";
         numericUpDown_AllowNextConnectDay.Location = new Point(264, 52);
-        numericUpDown_AllowNextConnectDay.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_AllowNextConnectDay.Maximum = new decimal([
             31,
             0,
             0,
             0
-        });
-        numericUpDown_AllowNextConnectDay.Minimum = new decimal(new int[4]
-        {
+        ]);
+        numericUpDown_AllowNextConnectDay.Minimum = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_AllowNextConnectDay.Name = "numericUpDown_AllowNextConnectDay";
         numericUpDown_AllowNextConnectDay.Size = new Size(39, 20);
         numericUpDown_AllowNextConnectDay.TabIndex = 89;
-        numericUpDown_AllowNextConnectDay.Value = new decimal(new int[4]
-        {
+        numericUpDown_AllowNextConnectDay.Value = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_AllowNextConnectDay.ValueChanged += numericUpDown_AllowNextConnectDay_ValueChanged;
         label3.AutoSize = true;
         label3.Location = new Point(242, 54);
@@ -398,30 +393,27 @@ public class WifiShoppingDataControl : DataControlBase
         label3.TabIndex = 88;
         label3.Text = "M";
         numericUpDown_AllowNextConnectMonth.Location = new Point(202, 52);
-        numericUpDown_AllowNextConnectMonth.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_AllowNextConnectMonth.Maximum = new decimal([
             12,
             0,
             0,
             0
-        });
-        numericUpDown_AllowNextConnectMonth.Minimum = new decimal(new int[4]
-        {
+        ]);
+        numericUpDown_AllowNextConnectMonth.Minimum = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_AllowNextConnectMonth.Name = "numericUpDown_AllowNextConnectMonth";
         numericUpDown_AllowNextConnectMonth.Size = new Size(39, 20);
         numericUpDown_AllowNextConnectMonth.TabIndex = 87;
-        numericUpDown_AllowNextConnectMonth.Value = new decimal(new int[4]
-        {
+        numericUpDown_AllowNextConnectMonth.Value = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_AllowNextConnectMonth.ValueChanged += numericUpDown_AllowNextConnectMonth_ValueChanged;
         label4.AutoSize = true;
         label4.Location = new Point(181, 54);
@@ -430,13 +422,12 @@ public class WifiShoppingDataControl : DataControlBase
         label4.TabIndex = 86;
         label4.Text = "Y";
         numericUpDown_AllowNextConnectYear.Location = new Point(128, 52);
-        numericUpDown_AllowNextConnectYear.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_AllowNextConnectYear.Maximum = new decimal([
             4095,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_AllowNextConnectYear.Name = "numericUpDown_AllowNextConnectYear";
         numericUpDown_AllowNextConnectYear.Size = new Size(52, 20);
         numericUpDown_AllowNextConnectYear.TabIndex = 85;
@@ -455,13 +446,12 @@ public class WifiShoppingDataControl : DataControlBase
         label6.TabIndex = 83;
         label6.Text = "H";
         numericUpDown_ExpiresHour.Location = new Point(325, 26);
-        numericUpDown_ExpiresHour.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_ExpiresHour.Maximum = new decimal([
             23,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_ExpiresHour.Name = "numericUpDown_ExpiresHour";
         numericUpDown_ExpiresHour.Size = new Size(39, 20);
         numericUpDown_ExpiresHour.TabIndex = 82;
@@ -474,30 +464,27 @@ public class WifiShoppingDataControl : DataControlBase
         label7.TabIndex = 81;
         label7.Text = "D";
         numericUpDown_ExpiresDay.Location = new Point(264, 26);
-        numericUpDown_ExpiresDay.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_ExpiresDay.Maximum = new decimal([
             31,
             0,
             0,
             0
-        });
-        numericUpDown_ExpiresDay.Minimum = new decimal(new int[4]
-        {
+        ]);
+        numericUpDown_ExpiresDay.Minimum = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_ExpiresDay.Name = "numericUpDown_ExpiresDay";
         numericUpDown_ExpiresDay.Size = new Size(39, 20);
         numericUpDown_ExpiresDay.TabIndex = 80;
-        numericUpDown_ExpiresDay.Value = new decimal(new int[4]
-        {
+        numericUpDown_ExpiresDay.Value = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_ExpiresDay.ValueChanged += numericUpDown_ExpiresDay_ValueChanged;
         label8.AutoSize = true;
         label8.Location = new Point(242, 28);
@@ -506,30 +493,27 @@ public class WifiShoppingDataControl : DataControlBase
         label8.TabIndex = 79;
         label8.Text = "M";
         numericUpDown_ExpiresMonth.Location = new Point(202, 26);
-        numericUpDown_ExpiresMonth.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_ExpiresMonth.Maximum = new decimal([
             12,
             0,
             0,
             0
-        });
-        numericUpDown_ExpiresMonth.Minimum = new decimal(new int[4]
-        {
+        ]);
+        numericUpDown_ExpiresMonth.Minimum = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_ExpiresMonth.Name = "numericUpDown_ExpiresMonth";
         numericUpDown_ExpiresMonth.Size = new Size(39, 20);
         numericUpDown_ExpiresMonth.TabIndex = 78;
-        numericUpDown_ExpiresMonth.Value = new decimal(new int[4]
-        {
+        numericUpDown_ExpiresMonth.Value = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_ExpiresMonth.ValueChanged += numericUpDown_ExpiresMonth_ValueChanged;
         label9.AutoSize = true;
         label9.Location = new Point(181, 28);
@@ -538,13 +522,12 @@ public class WifiShoppingDataControl : DataControlBase
         label9.TabIndex = 77;
         label9.Text = "Y";
         numericUpDown_ExpiresYear.Location = new Point(128, 26);
-        numericUpDown_ExpiresYear.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_ExpiresYear.Maximum = new decimal([
             4095,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_ExpiresYear.Name = "numericUpDown_ExpiresYear";
         numericUpDown_ExpiresYear.Size = new Size(52, 20);
         numericUpDown_ExpiresYear.TabIndex = 76;
@@ -563,13 +546,12 @@ public class WifiShoppingDataControl : DataControlBase
         label16.TabIndex = 101;
         label16.Text = "H";
         numericUpDown_MessageExpiresHour.Location = new Point(714, 52);
-        numericUpDown_MessageExpiresHour.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_MessageExpiresHour.Maximum = new decimal([
             23,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_MessageExpiresHour.Name = "numericUpDown_MessageExpiresHour";
         numericUpDown_MessageExpiresHour.Size = new Size(39, 20);
         numericUpDown_MessageExpiresHour.TabIndex = 100;
@@ -582,30 +564,27 @@ public class WifiShoppingDataControl : DataControlBase
         label17.TabIndex = 99;
         label17.Text = "D";
         numericUpDown_MessageExpiresDay.Location = new Point(651, 52);
-        numericUpDown_MessageExpiresDay.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_MessageExpiresDay.Maximum = new decimal([
             31,
             0,
             0,
             0
-        });
-        numericUpDown_MessageExpiresDay.Minimum = new decimal(new int[4]
-        {
+        ]);
+        numericUpDown_MessageExpiresDay.Minimum = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_MessageExpiresDay.Name = "numericUpDown_MessageExpiresDay";
         numericUpDown_MessageExpiresDay.Size = new Size(39, 20);
         numericUpDown_MessageExpiresDay.TabIndex = 98;
-        numericUpDown_MessageExpiresDay.Value = new decimal(new int[4]
-        {
+        numericUpDown_MessageExpiresDay.Value = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_MessageExpiresDay.ValueChanged += numericUpDown_MessageExpiresDay_ValueChanged;
         label18.AutoSize = true;
         label18.Location = new Point(629, 54);
@@ -614,30 +593,27 @@ public class WifiShoppingDataControl : DataControlBase
         label18.TabIndex = 97;
         label18.Text = "M";
         numericUpDown_MessageExpiresMonth.Location = new Point(589, 52);
-        numericUpDown_MessageExpiresMonth.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_MessageExpiresMonth.Maximum = new decimal([
             12,
             0,
             0,
             0
-        });
-        numericUpDown_MessageExpiresMonth.Minimum = new decimal(new int[4]
-        {
+        ]);
+        numericUpDown_MessageExpiresMonth.Minimum = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_MessageExpiresMonth.Name = "numericUpDown_MessageExpiresMonth";
         numericUpDown_MessageExpiresMonth.Size = new Size(39, 20);
         numericUpDown_MessageExpiresMonth.TabIndex = 96;
-        numericUpDown_MessageExpiresMonth.Value = new decimal(new int[4]
-        {
+        numericUpDown_MessageExpiresMonth.Value = new decimal([
             1,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_MessageExpiresMonth.ValueChanged += numericUpDown_MessageExpiresMonth_ValueChanged;
         label19.AutoSize = true;
         label19.Location = new Point(567, 54);
@@ -646,13 +622,12 @@ public class WifiShoppingDataControl : DataControlBase
         label19.TabIndex = 95;
         label19.Text = "Y";
         numericUpDown_MessageExpiresYear.Location = new Point(514, 52);
-        numericUpDown_MessageExpiresYear.Maximum = new decimal(new int[4]
-        {
+        numericUpDown_MessageExpiresYear.Maximum = new decimal([
             4095,
             0,
             0,
             0
-        });
+        ]);
         numericUpDown_MessageExpiresYear.Name = "numericUpDown_MessageExpiresYear";
         numericUpDown_MessageExpiresYear.Size = new Size(52, 20);
         numericUpDown_MessageExpiresYear.TabIndex = 94;

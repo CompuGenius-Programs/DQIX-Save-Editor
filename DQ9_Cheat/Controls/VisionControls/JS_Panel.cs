@@ -13,7 +13,7 @@ namespace DQ9_Cheat.Controls.VisionControls;
 
 public class JS_Panel : Panel
 {
-    private readonly List<VisionControlBase> _visionControls = new();
+    private readonly List<VisionControlBase> _visionControls = [];
     private IContainer components;
 
     public JS_Panel()

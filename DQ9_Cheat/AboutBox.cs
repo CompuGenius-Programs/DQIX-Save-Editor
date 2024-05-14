@@ -110,8 +110,7 @@ internal class AboutBox : Form
         };
         cryptoServiceProvider.Key = numArray;
         cryptoServiceProvider.IV = numArray;
-        using (var memoryStream = new MemoryStream(new byte[24]
-               {
+        using (var memoryStream = new MemoryStream([
                    116,
                    48,
                    224,
@@ -136,7 +135,7 @@ internal class AboutBox : Form
                    249,
                    53,
                    164
-               }))
+               ]))
         {
             using (var decryptor = cryptoServiceProvider.CreateDecryptor())
             {

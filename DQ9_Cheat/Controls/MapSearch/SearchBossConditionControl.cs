@@ -39,18 +39,16 @@ public class SearchBossConditionControl : SearchConditionControlBase
         SuspendLayout();
         comboBox_SearchCondition.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_SearchCondition.FormattingEnabled = true;
-        comboBox_SearchCondition.Items.AddRange(new object[2]
-        {
+        comboBox_SearchCondition.Items.AddRange([
             "Equals",
             "Not equals"
-        });
+        ]);
         comboBox_SearchCondition.SetBounds(168, 16, 78, 20);
         comboBox_SearchCondition.Name = "comboBox_SearchCondition";
         comboBox_SearchCondition.TabIndex = 5;
         comboBox_Boss.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_Boss.FormattingEnabled = true;
-        comboBox_Boss.Items.AddRange(new object[12]
-        {
+        comboBox_Boss.Items.AddRange([
             "Equinox",
             "Nemean",
             "Shogum",
@@ -63,7 +61,7 @@ public class SearchBossConditionControl : SearchConditionControlBase
             "Excalipurr",
             "Tyrannosaurus Wrecks",
             "Greygnarl"
-        });
+        ]);
         comboBox_Boss.Location = new Point(16, 16);
         comboBox_Boss.Name = "comboBox_Boss";
         comboBox_Boss.Size = new Size(132, 20);

@@ -95,11 +95,10 @@ public class HandleSelectWindow : Form
         label_TypeName.Text = "Type";
         comboBox_SelectType.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBox_SelectType.FormattingEnabled = true;
-        comboBox_SelectType.Items.AddRange(new object[2]
-        {
+        comboBox_SelectType.Items.AddRange([
             "Occupations",
             "Accolades"
-        });
+        ]);
         comboBox_SelectType.Location = new Point(45, 6);
         comboBox_SelectType.Name = "comboBox_SelectType";
         comboBox_SelectType.Size = new Size(sbyte.MaxValue, 21);
