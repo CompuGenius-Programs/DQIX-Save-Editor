@@ -2,11 +2,10 @@
 // Type: DQ9_Cheat.MapSearch.SearchDungeonData
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
 using DQ9_Cheat.GameData;
 
-#nullable disable
 namespace DQ9_Cheat.MapSearch
 {
   public class SearchDungeonData
@@ -18,126 +17,126 @@ namespace DQ9_Cheat.MapSearch
 
     public SearchDungeonData(int index, byte[] byteData, ushort seed, byte rank)
     {
-      this._index = index;
-      this._seed = seed;
-      this._rank = rank;
-      this._byteData = byteData;
+      _index = index;
+      _seed = seed;
+      _rank = rank;
+      _byteData = byteData;
     }
 
     public static int Size => 12;
 
-    public int Index => this._index;
+    public int Index => _index;
 
-    public ushort Seed => this._seed;
+    public ushort Seed => _seed;
 
-    public byte Rank => this._rank;
+    public byte Rank => _rank;
 
     internal void Calculate(TreasureMapDetailData treasureMapDetailData)
     {
-      treasureMapDetailData.MapSeed = this._seed;
-      treasureMapDetailData.MapRank = this._rank;
+      treasureMapDetailData.MapSeed = _seed;
+      treasureMapDetailData.MapRank = _rank;
       treasureMapDetailData.CalculateDetail(true, true);
-      this.MapName1Index = treasureMapDetailData.MapName1Index;
-      this.MapName2Index = treasureMapDetailData.MapName2Index;
-      this.MapName3Index = treasureMapDetailData.MapName3Index;
-      this.MapType = treasureMapDetailData.MapTypeIndex;
-      this.MapLevel = (byte) treasureMapDetailData.MapLevel;
-      this.MonsterRank = (byte) treasureMapDetailData.MonsterRank;
-      this.Boss = treasureMapDetailData.BossIndex;
-      this.Depth = (byte) treasureMapDetailData.FloorCount;
-      this.SBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(10);
-      this.ABoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(9);
-      this.BBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(8);
-      this.CBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(7);
-      this.DBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(6);
-      this.EBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(5);
-      this.FBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(4);
-      this.GBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(3);
-      this.HBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(2);
-      this.IBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(1);
-      this.OnlyMonster = (byte) 0;
+      MapName1Index = treasureMapDetailData.MapName1Index;
+      MapName2Index = treasureMapDetailData.MapName2Index;
+      MapName3Index = treasureMapDetailData.MapName3Index;
+      MapType = treasureMapDetailData.MapTypeIndex;
+      MapLevel = (byte) treasureMapDetailData.MapLevel;
+      MonsterRank = (byte) treasureMapDetailData.MonsterRank;
+      Boss = treasureMapDetailData.BossIndex;
+      Depth = (byte) treasureMapDetailData.FloorCount;
+      SBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(10);
+      ABoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(9);
+      BBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(8);
+      CBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(7);
+      DBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(6);
+      EBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(5);
+      FBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(4);
+      GBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(3);
+      HBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(2);
+      IBoxCount = (byte) treasureMapDetailData.GetTreasureBoxCount(1);
+      OnlyMonster = 0;
     }
 
     public string MapName
     {
       get
       {
-        return string.Format("{0} {2} of {1} Lv. {3:D}", (object) TreasureMapDataTable.TreasureMapName1_Table[(int) this.MapName1Index], (object) TreasureMapDataTable.TreasureMapName2_Table[(int) this.MapName2Index], (object) TreasureMapDataTable.TreasureMapName3_Table[(int) this.MapName3Index], (object) this.MapLevel);
+        return string.Format("{0} {2} of {1} Lv. {3:D}", TreasureMapDataTable.TreasureMapName1_Table[MapName1Index], TreasureMapDataTable.TreasureMapName2_Table[MapName2Index], TreasureMapDataTable.TreasureMapName3_Table[MapName3Index], MapLevel);
       }
     }
 
     public byte MapName1Index
     {
-      get => (byte) ((uint) this._byteData[this._index] & 15U);
+      get => (byte) (_byteData[_index] & 15U);
       set
       {
-        this._byteData[this._index] = (byte) ((int) this._byteData[this._index] & 240 | (int) value & 15);
+        _byteData[_index] = (byte) (_byteData[_index] & 240 | value & 15);
       }
     }
 
-    public string MapName1 => TreasureMapDataTable.TreasureMapName1_Table[(int) this.MapName1Index];
+    public string MapName1 => TreasureMapDataTable.TreasureMapName1_Table[MapName1Index];
 
     public byte MapName2Index
     {
-      get => (byte) (((int) this._byteData[this._index] & 240) >> 4);
+      get => (byte) ((_byteData[_index] & 240) >> 4);
       set
       {
-        this._byteData[this._index] = (byte) ((int) this._byteData[this._index] & 15 | (int) value << 4 & 240);
+        _byteData[_index] = (byte) (_byteData[_index] & 15 | value << 4 & 240);
       }
     }
 
-    public string MapName2 => TreasureMapDataTable.TreasureMapName2_Table[(int) this.MapName2Index];
+    public string MapName2 => TreasureMapDataTable.TreasureMapName2_Table[MapName2Index];
 
     public byte MapName3Index
     {
-      get => (byte) ((uint) this._byteData[this._index + 1] & 31U);
+      get => (byte) (_byteData[_index + 1] & 31U);
       set
       {
-        this._byteData[this._index + 1] = (byte) ((int) this._byteData[this._index + 1] & 224 | (int) value & 31);
+        _byteData[_index + 1] = (byte) (_byteData[_index + 1] & 224 | value & 31);
       }
     }
 
-    public string MapName3 => TreasureMapDataTable.TreasureMapName3_Table[(int) this.MapName3Index];
+    public string MapName3 => TreasureMapDataTable.TreasureMapName3_Table[MapName3Index];
 
     public byte MapType
     {
-      get => (byte) (((int) this._byteData[this._index + 1] & 224) >> 5);
+      get => (byte) ((_byteData[_index + 1] & 224) >> 5);
       set
       {
-        this._byteData[this._index + 1] = (byte) ((int) this._byteData[this._index + 1] & 31 | (int) value << 5 & 224);
+        _byteData[_index + 1] = (byte) (_byteData[_index + 1] & 31 | value << 5 & 224);
       }
     }
 
     public byte MapLevel
     {
-      get => this._byteData[this._index + 2];
-      set => this._byteData[this._index + 2] = value;
+      get => _byteData[_index + 2];
+      set => _byteData[_index + 2] = value;
     }
 
     public byte MonsterRank
     {
-      get => (byte) ((uint) this._byteData[this._index + 3] & 15U);
+      get => (byte) (_byteData[_index + 3] & 15U);
       set
       {
-        this._byteData[this._index + 3] = (byte) ((int) this._byteData[this._index + 3] & 240 | (int) value & 15);
+        _byteData[_index + 3] = (byte) (_byteData[_index + 3] & 240 | value & 15);
       }
     }
 
     public byte Boss
     {
-      get => (byte) ((int) this._byteData[this._index + 3] >> 4 & 15);
+      get => (byte) (_byteData[_index + 3] >> 4 & 15);
       set
       {
-        this._byteData[this._index + 3] = (byte) ((int) this._byteData[this._index + 3] & 15 | (int) value << 4 & 240);
+        _byteData[_index + 3] = (byte) (_byteData[_index + 3] & 15 | value << 4 & 240);
       }
     }
 
     public byte Depth
     {
-      get => (byte) (((int) this._byteData[this._index + 4] & 15) + 1);
+      get => (byte) ((_byteData[_index + 4] & 15) + 1);
       set
       {
-        this._byteData[this._index + 4] = (byte) ((int) this._byteData[this._index + 4] & 240 | (int) value - 1 & 15);
+        _byteData[_index + 4] = (byte) (_byteData[_index + 4] & 240 | value - 1 & 15);
       }
     }
 
@@ -145,22 +144,22 @@ namespace DQ9_Cheat.MapSearch
     {
       get
       {
-        fixed (byte* numPtr = &this._byteData[this._index + 4])
-          return (byte) (((int) *(ushort*) numPtr & 496) >> 4);
+        fixed (byte* numPtr = &_byteData[_index + 4])
+          return (byte) ((*(ushort*) numPtr & 496) >> 4);
       }
       set
       {
-        fixed (byte* numPtr = &this._byteData[this._index + 4])
-          *(short*) numPtr = (short) (ushort) ((int) *(ushort*) numPtr & 65039 | (int) value << 4);
+        fixed (byte* numPtr = &_byteData[_index + 4])
+          *(short*) numPtr = (short) (ushort) (*(ushort*) numPtr & 65039 | value << 4);
       }
     }
 
     public byte ABoxCount
     {
-      get => (byte) (((int) this._byteData[this._index + 5] & 62) >> 1);
+      get => (byte) ((_byteData[_index + 5] & 62) >> 1);
       set
       {
-        this._byteData[this._index + 5] = (byte) ((int) this._byteData[this._index + 5] & 193 | (int) value << 1);
+        _byteData[_index + 5] = (byte) (_byteData[_index + 5] & 193 | value << 1);
       }
     }
 
@@ -168,31 +167,31 @@ namespace DQ9_Cheat.MapSearch
     {
       get
       {
-        fixed (byte* numPtr = &this._byteData[this._index + 5])
-          return (byte) (((int) *(ushort*) numPtr & 1984) >> 6);
+        fixed (byte* numPtr = &_byteData[_index + 5])
+          return (byte) ((*(ushort*) numPtr & 1984) >> 6);
       }
       set
       {
-        fixed (byte* numPtr = &this._byteData[this._index + 5])
-          *(short*) numPtr = (short) (ushort) ((int) *(ushort*) numPtr & 63551 | (int) value << 6);
+        fixed (byte* numPtr = &_byteData[_index + 5])
+          *(short*) numPtr = (short) (ushort) (*(ushort*) numPtr & 63551 | value << 6);
       }
     }
 
     public byte CBoxCount
     {
-      get => (byte) (((int) this._byteData[this._index + 6] & 248) >> 3);
+      get => (byte) ((_byteData[_index + 6] & 248) >> 3);
       set
       {
-        this._byteData[this._index + 6] = (byte) ((int) this._byteData[this._index + 6] & 7 | (int) value << 3);
+        _byteData[_index + 6] = (byte) (_byteData[_index + 6] & 7 | value << 3);
       }
     }
 
     public byte DBoxCount
     {
-      get => (byte) ((uint) this._byteData[this._index + 7] & 31U);
+      get => (byte) (_byteData[_index + 7] & 31U);
       set
       {
-        this._byteData[this._index + 7] = (byte) ((uint) this._byteData[this._index + 7] & 224U | (uint) value);
+        _byteData[_index + 7] = (byte) (_byteData[_index + 7] & 224U | value);
       }
     }
 
@@ -200,22 +199,22 @@ namespace DQ9_Cheat.MapSearch
     {
       get
       {
-        fixed (byte* numPtr = &this._byteData[this._index + 7])
-          return (byte) (((int) *(ushort*) numPtr & 992) >> 5);
+        fixed (byte* numPtr = &_byteData[_index + 7])
+          return (byte) ((*(ushort*) numPtr & 992) >> 5);
       }
       set
       {
-        fixed (byte* numPtr = &this._byteData[this._index + 7])
-          *(short*) numPtr = (short) (ushort) ((int) *(ushort*) numPtr & 64543 | (int) value << 5);
+        fixed (byte* numPtr = &_byteData[_index + 7])
+          *(short*) numPtr = (short) (ushort) (*(ushort*) numPtr & 64543 | value << 5);
       }
     }
 
     public byte FBoxCount
     {
-      get => (byte) (((int) this._byteData[this._index + 8] & 124) >> 2);
+      get => (byte) ((_byteData[_index + 8] & 124) >> 2);
       set
       {
-        this._byteData[this._index + 8] = (byte) ((int) this._byteData[this._index + 8] & 131 | (int) value << 2);
+        _byteData[_index + 8] = (byte) (_byteData[_index + 8] & 131 | value << 2);
       }
     }
 
@@ -223,13 +222,13 @@ namespace DQ9_Cheat.MapSearch
     {
       get
       {
-        fixed (byte* numPtr = &this._byteData[this._index + 8])
-          return (byte) (((int) *(ushort*) numPtr & 3968) >> 7);
+        fixed (byte* numPtr = &_byteData[_index + 8])
+          return (byte) ((*(ushort*) numPtr & 3968) >> 7);
       }
       set
       {
-        fixed (byte* numPtr = &this._byteData[this._index + 8])
-          *(short*) numPtr = (short) (ushort) ((int) *(ushort*) numPtr & 61567 | (int) value << 7);
+        fixed (byte* numPtr = &_byteData[_index + 8])
+          *(short*) numPtr = (short) (ushort) (*(ushort*) numPtr & 61567 | value << 7);
       }
     }
 
@@ -237,22 +236,22 @@ namespace DQ9_Cheat.MapSearch
     {
       get
       {
-        fixed (byte* numPtr = &this._byteData[this._index + 9])
-          return (byte) (((int) *(ushort*) numPtr & 496) >> 4);
+        fixed (byte* numPtr = &_byteData[_index + 9])
+          return (byte) ((*(ushort*) numPtr & 496) >> 4);
       }
       set
       {
-        fixed (byte* numPtr = &this._byteData[this._index + 9])
-          *(short*) numPtr = (short) (ushort) ((int) *(ushort*) numPtr & 65039 | (int) value << 4);
+        fixed (byte* numPtr = &_byteData[_index + 9])
+          *(short*) numPtr = (short) (ushort) (*(ushort*) numPtr & 65039 | value << 4);
       }
     }
 
     public byte IBoxCount
     {
-      get => (byte) (((int) this._byteData[this._index + 10] & 62) >> 1);
+      get => (byte) ((_byteData[_index + 10] & 62) >> 1);
       set
       {
-        this._byteData[this._index + 10] = (byte) ((int) this._byteData[this._index + 10] & 193 | (int) value << 1);
+        _byteData[_index + 10] = (byte) (_byteData[_index + 10] & 193 | value << 1);
       }
     }
 
@@ -260,14 +259,14 @@ namespace DQ9_Cheat.MapSearch
     {
       get
       {
-        return (byte) ((uint) this.SBoxCount + (uint) this.ABoxCount + (uint) this.BBoxCount + (uint) this.CBoxCount + (uint) this.DBoxCount + (uint) this.EBoxCount + (uint) this.FBoxCount + (uint) this.GBoxCount + (uint) this.HBoxCount + (uint) this.IBoxCount);
+        return (byte) (SBoxCount + (uint) ABoxCount + BBoxCount + CBoxCount + DBoxCount + EBoxCount + FBoxCount + GBoxCount + HBoxCount + IBoxCount);
       }
     }
 
     public byte OnlyMonster
     {
-      get => this._byteData[this._index + 11];
-      set => this._byteData[this._index + 11] = value;
+      get => _byteData[_index + 11];
+      set => _byteData[_index + 11] = value;
     }
   }
 }

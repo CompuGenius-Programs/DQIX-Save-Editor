@@ -2,14 +2,15 @@
 // Type: DQ9_Cheat.GameData.SkillDataList
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-#nullable disable
+using System.Collections.Generic;
+
 namespace DQ9_Cheat.GameData
 {
   internal static class SkillDataList
   {
-    private static System.Collections.Generic.List<SkillData> _skilDataList = new System.Collections.Generic.List<SkillData>();
+    private static List<SkillData> _skilDataList = new List<SkillData>();
     private static int _specialtyEffectMaxIndex;
 
     static SkillDataList()
@@ -1231,8 +1232,8 @@ namespace DQ9_Cheat.GameData
         new SkillSpecialtyEffectData("Wolf Whistle", index224 + 8, true),
         new SkillSpecialtyEffectData("Natural Deftness+60", index224 + 9, false)
       };
-      SkillDataList._specialtyEffectMaxIndex = index224 + 10;
-      SkillDataList.AddData(new string[26]
+      _specialtyEffectMaxIndex = index224 + 10;
+      AddData(new string[26]
       {
         "Sword Skill",
         "Spear Skill",
@@ -1260,7 +1261,7 @@ namespace DQ9_Cheat.GameData
         "Enlightenment",
         "Je Ne Sais Quoi",
         "Ruggedness"
-      }, new System.Collections.Generic.List<SkillSpecialtyEffectData[]>()
+      }, new List<SkillSpecialtyEffectData[]>
       {
         specialtyEffectDataArray12,
         specialtyEffectDataArray24,
@@ -1291,16 +1292,16 @@ namespace DQ9_Cheat.GameData
       });
     }
 
-    public static System.Collections.Generic.List<SkillData> List => SkillDataList._skilDataList;
+    public static List<SkillData> List => _skilDataList;
 
-    public static int SpecialtyEffectMaxIndex => SkillDataList._specialtyEffectMaxIndex;
+    public static int SpecialtyEffectMaxIndex => _specialtyEffectMaxIndex;
 
-    private static void AddData(string[] names, System.Collections.Generic.List<SkillSpecialtyEffectData[]> specialtyEffect)
+    private static void AddData(string[] names, List<SkillSpecialtyEffectData[]> specialtyEffect)
     {
       int index = 0;
       foreach (string name in names)
       {
-        SkillDataList._skilDataList.Add(new SkillData(name, index, specialtyEffect[index]));
+        _skilDataList.Add(new SkillData(name, index, specialtyEffect[index]));
         ++index;
       }
     }

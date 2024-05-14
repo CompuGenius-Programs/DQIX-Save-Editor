@@ -2,7 +2,7 @@
 // Type: DQ9_Cheat.AboutBox
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
 using System;
 using System.ComponentModel;
@@ -14,7 +14,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
-#nullable disable
 namespace DQ9_Cheat
 {
   internal class AboutBox : Form
@@ -32,18 +31,18 @@ namespace DQ9_Cheat
 
     public AboutBox()
     {
-      this.InitializeComponent();
-      this.Text = string.Format("{0}  About", (object) this.AssemblyProduct);
-      this.labelProductName.Text = this.AssemblyTitle;
-      this.labelVersion.Text = string.Format("Version {0}", (object) this.AssemblyVersion);
-      this.labelCopyright.Text = string.Format("Copyright {0}", (object) this.AssemblyCopyright);
-      this.linkURL.Text = this.GetURL();
-      this.linkURL.LinkClicked += new LinkLabelLinkClickedEventHandler(this.linkURL_LinkClicked);
+      InitializeComponent();
+      Text = string.Format("{0}  About", AssemblyProduct);
+      labelProductName.Text = AssemblyTitle;
+      labelVersion.Text = string.Format("Version {0}", AssemblyVersion);
+      labelCopyright.Text = string.Format("Copyright {0}", AssemblyCopyright);
+      linkURL.Text = GetURL();
+      linkURL.LinkClicked += linkURL_LinkClicked;
     }
 
     private void linkURL_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
     {
-      Process.Start(this.linkURL.Text);
+      Process.Start(linkURL.Text);
     }
 
     public string AssemblyTitle
@@ -95,151 +94,151 @@ namespace DQ9_Cheat
       DESCryptoServiceProvider cryptoServiceProvider = new DESCryptoServiceProvider();
       byte[] numArray = new byte[8]
       {
-        (byte) 59,
-        (byte) 5,
-        (byte) 79,
-        (byte) 32,
-        (byte) 66,
-        (byte) 121,
-        (byte) 32,
-        (byte) 65
+        59,
+        5,
+        79,
+        32,
+        66,
+        121,
+        32,
+        65
       };
       cryptoServiceProvider.Key = numArray;
       cryptoServiceProvider.IV = numArray;
       using (MemoryStream memoryStream = new MemoryStream(new byte[24]
       {
-        (byte) 116,
-        (byte) 48,
-        (byte) 224,
-        (byte) 159,
-        (byte) 119,
-        (byte) 45,
-        (byte) 252,
-        (byte) 55,
-        (byte) 75,
-        (byte) 108,
-        (byte) 102,
-        (byte) 200,
-        (byte) 31,
-        (byte) 58,
-        (byte) 169,
-        (byte) 53,
-        (byte) 230,
-        (byte) 171,
-        (byte) 206,
-        (byte) 138,
-        (byte) 76,
-        (byte) 249,
-        (byte) 53,
-        (byte) 164
+        116,
+        48,
+        224,
+        159,
+        119,
+        45,
+        252,
+        55,
+        75,
+        108,
+        102,
+        200,
+        31,
+        58,
+        169,
+        53,
+        230,
+        171,
+        206,
+        138,
+        76,
+        249,
+        53,
+        164
       }))
       {
         using (ICryptoTransform decryptor = cryptoServiceProvider.CreateDecryptor())
         {
-          using (CryptoStream cryptoStream = new CryptoStream((Stream) memoryStream, decryptor, CryptoStreamMode.Read))
+          using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
           {
-            using (StreamReader streamReader = new StreamReader((Stream) cryptoStream, Encoding.UTF8))
+            using (StreamReader streamReader = new StreamReader(cryptoStream, Encoding.UTF8))
               return streamReader.ReadToEnd();
           }
         }
       }
     }
 
-    private void button_OK_Click(object sender, EventArgs e) => this.Close();
+    private void button_OK_Click(object sender, EventArgs e) => Close();
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && this.components != null)
-        this.components.Dispose();
+      if (disposing && components != null)
+        components.Dispose();
       base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      this.labelProductName = new Label();
-      this.labelVersion = new Label();
-      this.labelCopyright = new Label();
-      this.linkURL = new LinkLabel();
-      this.button_OK = new Button();
-      this.translatedBy = new Label();
-      this.translateURL = new LinkLabel();
-      this.labelSlash = new Label();
-      this.translateURL2 = new LinkLabel();
-      this.SuspendLayout();
-      this.labelProductName.AutoSize = true;
-      this.labelProductName.Font = new Font("Segoe UI", 12f, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
-      this.labelProductName.SetBounds(57, 24, 242, 21);
-      this.labelProductName.Name = "labelProductName";
-      this.labelProductName.TabIndex = 0;
-      this.labelProductName.Text = "Dragon Quest IX Save Data Editor";
-      this.labelVersion.Location = new Point(123, 52);
-      this.labelVersion.Name = "labelVersion";
-      this.labelVersion.Size = new Size(109, 22);
-      this.labelVersion.TabIndex = 1;
-      this.labelVersion.Text = "Version 0.0.0.0";
-      this.labelVersion.TextAlign = ContentAlignment.MiddleCenter;
-      this.labelCopyright.AutoSize = true;
-      this.labelCopyright.Location = new Point(133, 74);
-      this.labelCopyright.Name = "labelCopyright";
-      this.labelCopyright.Size = new Size(88, 12);
-      this.labelCopyright.TabIndex = 2;
-      this.labelCopyright.Text = "Copyright asa-o";
-      this.linkURL.Location = new Point(85, 95);
-      this.linkURL.Name = "linkURL";
-      this.linkURL.Size = new Size(185, 23);
-      this.linkURL.TabIndex = 3;
-      this.linkURL.TextAlign = ContentAlignment.MiddleCenter;
-      this.button_OK.Location = new Point(140, 153);
-      this.button_OK.Name = "button_OK";
-      this.button_OK.Size = new Size(75, 23);
-      this.button_OK.TabIndex = 8;
-      this.button_OK.Text = "OK";
-      this.button_OK.UseVisualStyleBackColor = true;
-      this.button_OK.Click += new EventHandler(this.button_OK_Click);
-      this.translatedBy.AutoSize = true;
-      this.translatedBy.SetBounds(112, 125, 73, 13);
-      this.translatedBy.Name = "labelTranslate";
-      this.translatedBy.Text = "Translation by";
-      this.translatedBy.TabIndex = 4;
-      this.translatedBy.TextAlign = ContentAlignment.MiddleCenter;
-      this.translateURL.SetBounds(182, 125, 32, 13);
-      this.translateURL.Tag = (object) "http://friedginger.com/";
-      this.translateURL.Text = "Yumil";
-      this.translateURL.TabIndex = 5;
-      this.translateURL.LinkClicked += new LinkLabelLinkClickedEventHandler(this.translateURL_LinkClicked);
-      this.labelSlash.SetBounds(211, 125, 12, 13);
-      this.labelSlash.Text = "/";
-      this.labelSlash.TabIndex = 6;
-      this.translateURL2.SetBounds(220, 125, 24, 13);
-      this.translateURL2.Tag = (object) "http://www.yabd.org/";
-      this.translateURL2.Text = "yab";
-      this.translateURL2.TabIndex = 7;
-      this.translateURL2.LinkClicked += new LinkLabelLinkClickedEventHandler(this.translateURL_LinkClicked);
-      this.AcceptButton = (IButtonControl) this.button_OK;
-      this.AutoScaleDimensions = new SizeF(6f, 12f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.CancelButton = (IButtonControl) this.button_OK;
-      this.ClientSize = new Size(355, 189);
-      this.Controls.Add((Control) this.button_OK);
-      this.Controls.Add((Control) this.linkURL);
-      this.Controls.Add((Control) this.labelCopyright);
-      this.Controls.Add((Control) this.labelVersion);
-      this.Controls.Add((Control) this.labelProductName);
-      this.Controls.Add((Control) this.translatedBy);
-      this.Controls.Add((Control) this.translateURL);
-      this.Controls.Add((Control) this.labelSlash);
-      this.Controls.Add((Control) this.translateURL2);
-      this.FormBorderStyle = FormBorderStyle.FixedDialog;
-      this.MaximizeBox = false;
-      this.MinimizeBox = false;
-      this.Name = nameof (AboutBox);
-      this.Padding = new Padding(9, 8, 9, 8);
-      this.ShowIcon = false;
-      this.ShowInTaskbar = false;
-      this.StartPosition = FormStartPosition.CenterParent;
-      this.Text = "About";
-      this.ResumeLayout(false);
-      this.PerformLayout();
+      labelProductName = new Label();
+      labelVersion = new Label();
+      labelCopyright = new Label();
+      linkURL = new LinkLabel();
+      button_OK = new Button();
+      translatedBy = new Label();
+      translateURL = new LinkLabel();
+      labelSlash = new Label();
+      translateURL2 = new LinkLabel();
+      SuspendLayout();
+      labelProductName.AutoSize = true;
+      labelProductName.Font = new Font("Segoe UI", 12f, FontStyle.Regular, GraphicsUnit.Point, 0);
+      labelProductName.SetBounds(57, 24, 242, 21);
+      labelProductName.Name = "labelProductName";
+      labelProductName.TabIndex = 0;
+      labelProductName.Text = "Dragon Quest IX Save Data Editor";
+      labelVersion.Location = new Point(123, 52);
+      labelVersion.Name = "labelVersion";
+      labelVersion.Size = new Size(109, 22);
+      labelVersion.TabIndex = 1;
+      labelVersion.Text = "Version 0.0.0.0";
+      labelVersion.TextAlign = ContentAlignment.MiddleCenter;
+      labelCopyright.AutoSize = true;
+      labelCopyright.Location = new Point(133, 74);
+      labelCopyright.Name = "labelCopyright";
+      labelCopyright.Size = new Size(88, 12);
+      labelCopyright.TabIndex = 2;
+      labelCopyright.Text = "Copyright asa-o";
+      linkURL.Location = new Point(85, 95);
+      linkURL.Name = "linkURL";
+      linkURL.Size = new Size(185, 23);
+      linkURL.TabIndex = 3;
+      linkURL.TextAlign = ContentAlignment.MiddleCenter;
+      button_OK.Location = new Point(140, 153);
+      button_OK.Name = "button_OK";
+      button_OK.Size = new Size(75, 23);
+      button_OK.TabIndex = 8;
+      button_OK.Text = "OK";
+      button_OK.UseVisualStyleBackColor = true;
+      button_OK.Click += button_OK_Click;
+      translatedBy.AutoSize = true;
+      translatedBy.SetBounds(112, 125, 73, 13);
+      translatedBy.Name = "labelTranslate";
+      translatedBy.Text = "Translation by";
+      translatedBy.TabIndex = 4;
+      translatedBy.TextAlign = ContentAlignment.MiddleCenter;
+      translateURL.SetBounds(182, 125, 32, 13);
+      translateURL.Tag = "http://friedginger.com/";
+      translateURL.Text = "Yumil";
+      translateURL.TabIndex = 5;
+      translateURL.LinkClicked += translateURL_LinkClicked;
+      labelSlash.SetBounds(211, 125, 12, 13);
+      labelSlash.Text = "/";
+      labelSlash.TabIndex = 6;
+      translateURL2.SetBounds(220, 125, 24, 13);
+      translateURL2.Tag = "http://www.yabd.org/";
+      translateURL2.Text = "yab";
+      translateURL2.TabIndex = 7;
+      translateURL2.LinkClicked += translateURL_LinkClicked;
+      AcceptButton = button_OK;
+      AutoScaleDimensions = new SizeF(6f, 12f);
+      AutoScaleMode = AutoScaleMode.Font;
+      CancelButton = button_OK;
+      ClientSize = new Size(355, 189);
+      Controls.Add(button_OK);
+      Controls.Add(linkURL);
+      Controls.Add(labelCopyright);
+      Controls.Add(labelVersion);
+      Controls.Add(labelProductName);
+      Controls.Add(translatedBy);
+      Controls.Add(translateURL);
+      Controls.Add(labelSlash);
+      Controls.Add(translateURL2);
+      FormBorderStyle = FormBorderStyle.FixedDialog;
+      MaximizeBox = false;
+      MinimizeBox = false;
+      Name = nameof (AboutBox);
+      Padding = new Padding(9, 8, 9, 8);
+      ShowIcon = false;
+      ShowInTaskbar = false;
+      StartPosition = FormStartPosition.CenterParent;
+      Text = "About";
+      ResumeLayout(false);
+      PerformLayout();
     }
 
     public void translateURL_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

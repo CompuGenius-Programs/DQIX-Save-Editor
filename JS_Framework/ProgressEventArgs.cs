@@ -2,11 +2,10 @@
 // Type: JS_Framework.ProgressEventArgs
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
 using System;
 
-#nullable disable
 namespace JS_Framework
 {
   public class ProgressEventArgs : EventArgs
@@ -21,9 +20,9 @@ namespace JS_Framework
 
     public ProgressEventArgs(ProgressState state, int totalCount, int processedCount)
     {
-      this._state = state;
-      this._totalCount = totalCount;
-      this._processedCount = processedCount;
+      _state = state;
+      _totalCount = totalCount;
+      _processedCount = processedCount;
     }
 
     public ProgressEventArgs(
@@ -33,7 +32,7 @@ namespace JS_Framework
       string title)
       : this(state, totalCount, processedCount)
     {
-      this._title = title;
+      _title = title;
     }
 
     public ProgressEventArgs(
@@ -44,32 +43,32 @@ namespace JS_Framework
       string comment)
       : this(state, totalCount, processedCount)
     {
-      this._title = title;
-      this._comment = comment;
+      _title = title;
+      _comment = comment;
     }
 
-    public ProgressState State => this._state;
+    public ProgressState State => _state;
 
-    public int TotalCount => this._totalCount;
+    public int TotalCount => _totalCount;
 
-    public int ProcessedCount => this._processedCount;
+    public int ProcessedCount => _processedCount;
 
-    public string Title => this._title;
+    public string Title => _title;
 
-    public string Comment => this._comment;
+    public string Comment => _comment;
 
     public bool Skip
     {
-      get => this._skip;
-      set => this._skip = value;
+      get => _skip;
+      set => _skip = value;
     }
 
     public bool Cancel
     {
-      get => this._cancel;
-      set => this._cancel = value;
+      get => _cancel;
+      set => _cancel = value;
     }
 
-    public double Percent => (double) this._processedCount / (double) this._totalCount * 100.0;
+    public double Percent => _processedCount / (double) _totalCount * 100.0;
   }
 }

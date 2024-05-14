@@ -2,17 +2,16 @@
 // Type: DQ9_Cheat.Controls.FirstClearDataControl
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-using DQ9_Cheat.Controls.VisionControls;
-using DQ9_Cheat.DataManager;
-using DQ9_Cheat.GameData;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DQ9_Cheat.Controls.VisionControls;
+using DQ9_Cheat.DataManager;
+using DQ9_Cheat.GameData;
 
-#nullable disable
 namespace DQ9_Cheat.Controls
 {
   public class FirstClearDataControl : DataControlBase
@@ -50,90 +49,90 @@ namespace DQ9_Cheat.Controls
 
     public FirstClearDataControl()
     {
-      this.AutoScaleMode = AutoScaleMode.None;
-      this.InitializeComponent();
-      this._numericUpDown_Hour = new VisionNumericUpDown(146, 12, 60, 20);
-      this._numericUpDown_Hour.ValueChanged += new EventHandler(this._numericUpDown_Hour_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_Hour);
-      this._numericUpDown_Minute = new VisionNumericUpDown(253, 12, 41, 20);
-      this._numericUpDown_Minute.ValueChanged += new EventHandler(this._numericUpDown_Minute_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_Minute);
-      this._numericUpDown_Second = new VisionNumericUpDown(335, 12, 41, 20);
-      this._numericUpDown_Second.ValueChanged += new EventHandler(this._numericUpDown_Second_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_Second);
-      this._numericUpDown_MultiPlayTimeHour = new VisionNumericUpDown(146, 40, 60, 20);
-      this._numericUpDown_MultiPlayTimeHour.ValueChanged += new EventHandler(this._numericUpDown_MultiPlayTimeHour_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_MultiPlayTimeHour);
-      this._numericUpDown_MultiPlayTimeMinute = new VisionNumericUpDown(253, 40, 41, 20);
-      this._numericUpDown_MultiPlayTimeMinute.ValueChanged += new EventHandler(this._numericUpDown_MultiPlayTimeMinute_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_MultiPlayTimeMinute);
-      this._numericUpDown_MultiPlayTimeSecond = new VisionNumericUpDown(335, 41, 41, 20);
-      this._numericUpDown_MultiPlayTimeSecond.ValueChanged += new EventHandler(this._numericUpDown_MultiPlayTimeSecond_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_MultiPlayTimeSecond);
-      this._numericUpDown_VictoryCount = new VisionNumericUpDown(146, 80, 60, 20);
-      this._numericUpDown_VictoryCount.ValueChanged += new EventHandler(this._numericUpDown_VictoryCount_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_VictoryCount);
-      this._numericUpDown_AlchemyCount = new VisionNumericUpDown(146, 103, 60, 20);
-      this._numericUpDown_AlchemyCount.ValueChanged += new EventHandler(this._numericUpDown_AlchemyCount_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_AlchemyCount);
-      this._numericUpDown_TitleCount = new VisionNumericUpDown(146, 128, 60, 20);
-      this._numericUpDown_TitleCount.ValueChanged += new EventHandler(this._numericUpDown_TitleCount_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_TitleCount);
-      this._numericUpDown_QuestCount = new VisionNumericUpDown(321, 80, 60, 20);
-      this._numericUpDown_QuestCount.ValueChanged += new EventHandler(this._numericUpDown_QuestCount_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_QuestCount);
-      this._numericUpDown_TreasureMap = new VisionNumericUpDown(321, 103, 60, 20);
-      this._numericUpDown_TreasureMap.ValueChanged += new EventHandler(this._numericUpDown_TreasureMap_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_TreasureMap);
-      this._numericUpDown_VisitorCount = new VisionNumericUpDown(321, 128, 60, 20);
-      this._numericUpDown_VisitorCount.ValueChanged += new EventHandler(this._numericUpDown_VisitorCount_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_VisitorCount);
-      this._textBox_Title = new VisionTextBox(198, 164, 114, 20);
-      this._textBox_Title.ReadOnly = true;
-      this.AddVisionControl((VisionControlBase) this._textBox_Title);
-      this._button_SelectTitle = new VisionButton(321, 165, 39, 19);
-      this._button_SelectTitle.Text = "Set";
-      this._button_SelectTitle.Click += new EventHandler(this._button_SelectTitle_Click);
-      this.AddVisionControl((VisionControlBase) this._button_SelectTitle);
+      AutoScaleMode = AutoScaleMode.None;
+      InitializeComponent();
+      _numericUpDown_Hour = new VisionNumericUpDown(146, 12, 60, 20);
+      _numericUpDown_Hour.ValueChanged += _numericUpDown_Hour_ValueChanged;
+      AddVisionControl(_numericUpDown_Hour);
+      _numericUpDown_Minute = new VisionNumericUpDown(253, 12, 41, 20);
+      _numericUpDown_Minute.ValueChanged += _numericUpDown_Minute_ValueChanged;
+      AddVisionControl(_numericUpDown_Minute);
+      _numericUpDown_Second = new VisionNumericUpDown(335, 12, 41, 20);
+      _numericUpDown_Second.ValueChanged += _numericUpDown_Second_ValueChanged;
+      AddVisionControl(_numericUpDown_Second);
+      _numericUpDown_MultiPlayTimeHour = new VisionNumericUpDown(146, 40, 60, 20);
+      _numericUpDown_MultiPlayTimeHour.ValueChanged += _numericUpDown_MultiPlayTimeHour_ValueChanged;
+      AddVisionControl(_numericUpDown_MultiPlayTimeHour);
+      _numericUpDown_MultiPlayTimeMinute = new VisionNumericUpDown(253, 40, 41, 20);
+      _numericUpDown_MultiPlayTimeMinute.ValueChanged += _numericUpDown_MultiPlayTimeMinute_ValueChanged;
+      AddVisionControl(_numericUpDown_MultiPlayTimeMinute);
+      _numericUpDown_MultiPlayTimeSecond = new VisionNumericUpDown(335, 41, 41, 20);
+      _numericUpDown_MultiPlayTimeSecond.ValueChanged += _numericUpDown_MultiPlayTimeSecond_ValueChanged;
+      AddVisionControl(_numericUpDown_MultiPlayTimeSecond);
+      _numericUpDown_VictoryCount = new VisionNumericUpDown(146, 80, 60, 20);
+      _numericUpDown_VictoryCount.ValueChanged += _numericUpDown_VictoryCount_ValueChanged;
+      AddVisionControl(_numericUpDown_VictoryCount);
+      _numericUpDown_AlchemyCount = new VisionNumericUpDown(146, 103, 60, 20);
+      _numericUpDown_AlchemyCount.ValueChanged += _numericUpDown_AlchemyCount_ValueChanged;
+      AddVisionControl(_numericUpDown_AlchemyCount);
+      _numericUpDown_TitleCount = new VisionNumericUpDown(146, 128, 60, 20);
+      _numericUpDown_TitleCount.ValueChanged += _numericUpDown_TitleCount_ValueChanged;
+      AddVisionControl(_numericUpDown_TitleCount);
+      _numericUpDown_QuestCount = new VisionNumericUpDown(321, 80, 60, 20);
+      _numericUpDown_QuestCount.ValueChanged += _numericUpDown_QuestCount_ValueChanged;
+      AddVisionControl(_numericUpDown_QuestCount);
+      _numericUpDown_TreasureMap = new VisionNumericUpDown(321, 103, 60, 20);
+      _numericUpDown_TreasureMap.ValueChanged += _numericUpDown_TreasureMap_ValueChanged;
+      AddVisionControl(_numericUpDown_TreasureMap);
+      _numericUpDown_VisitorCount = new VisionNumericUpDown(321, 128, 60, 20);
+      _numericUpDown_VisitorCount.ValueChanged += _numericUpDown_VisitorCount_ValueChanged;
+      AddVisionControl(_numericUpDown_VisitorCount);
+      _textBox_Title = new VisionTextBox(198, 164, 114, 20);
+      _textBox_Title.ReadOnly = true;
+      AddVisionControl(_textBox_Title);
+      _button_SelectTitle = new VisionButton(321, 165, 39, 19);
+      _button_SelectTitle.Text = "Set";
+      _button_SelectTitle.Click += _button_SelectTitle_Click;
+      AddVisionControl(_button_SelectTitle);
     }
 
     private void _button_SelectTitle_Click(object sender, EventArgs e)
     {
       TitleElement title = SaveDataManager.Instance.SaveData.FirstClearData.Title;
       CharacterManager characterManager = SaveDataManager.Instance.SaveData.CharacterManager;
-      int sex = (int) characterManager.CharacterData[(int) characterManager.CharacterStandbyCount].Sex;
+      int sex = characterManager.CharacterData[characterManager.CharacterStandbyCount].Sex;
       TitleSelectWindow titleSelectWindow = new TitleSelectWindow(sex, true);
-      titleSelectWindow.Location = this.PointToScreen(new Point(this._button_SelectTitle.Right, this._button_SelectTitle.Bottom));
+      titleSelectWindow.Location = PointToScreen(new Point(_button_SelectTitle.Right, _button_SelectTitle.Bottom));
       if (titleSelectWindow.ShowDialog() != DialogResult.OK)
         return;
       TitleElement selectedTitle = titleSelectWindow.SelectedTitle;
       SaveDataManager.Instance.SaveData.FirstClearData.Title = selectedTitle;
       if (selectedTitle != null)
-        this._textBox_Title.Text = sex == 0 ? selectedTitle.MaleTitleName : selectedTitle.LadyTitleName;
+        _textBox_Title.Text = sex == 0 ? selectedTitle.MaleTitleName : selectedTitle.LadyTitleName;
       else
-        this._textBox_Title.Text = string.Empty;
+        _textBox_Title.Text = string.Empty;
     }
 
     protected override void OnValueUpdate()
     {
-      this._numericUpDown_Hour.Value = (Decimal) SaveDataManager.Instance.SaveData.FirstClearData.PlayTimeHour.Value;
-      this._numericUpDown_Minute.Value = (Decimal) SaveDataManager.Instance.SaveData.FirstClearData.PlayTimeMinute.Value;
-      this._numericUpDown_Second.Value = (Decimal) SaveDataManager.Instance.SaveData.FirstClearData.PlayTimeSecond.Value;
-      this._numericUpDown_MultiPlayTimeHour.Value = (Decimal) SaveDataManager.Instance.SaveData.FirstClearData.MultiPlayTimeHour.Value;
-      this._numericUpDown_MultiPlayTimeMinute.Value = (Decimal) SaveDataManager.Instance.SaveData.FirstClearData.MultiPlayTimeMinute.Value;
-      this._numericUpDown_MultiPlayTimeSecond.Value = (Decimal) SaveDataManager.Instance.SaveData.FirstClearData.MultiPlayTimeSecond.Value;
-      this._numericUpDown_VictoryCount.Value = (Decimal) SaveDataManager.Instance.SaveData.FirstClearData.VictoryCount.Value;
-      this._numericUpDown_AlchemyCount.Value = (Decimal) SaveDataManager.Instance.SaveData.FirstClearData.AlchemyCount.Value;
-      this._numericUpDown_TitleCount.Value = (Decimal) SaveDataManager.Instance.SaveData.FirstClearData.TitleCount;
-      this._numericUpDown_QuestCount.Value = (Decimal) SaveDataManager.Instance.SaveData.FirstClearData.QuestCount.Value;
-      this._numericUpDown_TreasureMap.Value = (Decimal) SaveDataManager.Instance.SaveData.FirstClearData.TreasureMap;
-      this._numericUpDown_VisitorCount.Value = (Decimal) SaveDataManager.Instance.SaveData.FirstClearData.VisitorCount;
+      _numericUpDown_Hour.Value = SaveDataManager.Instance.SaveData.FirstClearData.PlayTimeHour.Value;
+      _numericUpDown_Minute.Value = SaveDataManager.Instance.SaveData.FirstClearData.PlayTimeMinute.Value;
+      _numericUpDown_Second.Value = SaveDataManager.Instance.SaveData.FirstClearData.PlayTimeSecond.Value;
+      _numericUpDown_MultiPlayTimeHour.Value = SaveDataManager.Instance.SaveData.FirstClearData.MultiPlayTimeHour.Value;
+      _numericUpDown_MultiPlayTimeMinute.Value = SaveDataManager.Instance.SaveData.FirstClearData.MultiPlayTimeMinute.Value;
+      _numericUpDown_MultiPlayTimeSecond.Value = SaveDataManager.Instance.SaveData.FirstClearData.MultiPlayTimeSecond.Value;
+      _numericUpDown_VictoryCount.Value = SaveDataManager.Instance.SaveData.FirstClearData.VictoryCount.Value;
+      _numericUpDown_AlchemyCount.Value = SaveDataManager.Instance.SaveData.FirstClearData.AlchemyCount.Value;
+      _numericUpDown_TitleCount.Value = SaveDataManager.Instance.SaveData.FirstClearData.TitleCount;
+      _numericUpDown_QuestCount.Value = SaveDataManager.Instance.SaveData.FirstClearData.QuestCount.Value;
+      _numericUpDown_TreasureMap.Value = SaveDataManager.Instance.SaveData.FirstClearData.TreasureMap;
+      _numericUpDown_VisitorCount.Value = SaveDataManager.Instance.SaveData.FirstClearData.VisitorCount;
       TitleElement title = SaveDataManager.Instance.SaveData.FirstClearData.Title;
       CharacterManager characterManager = SaveDataManager.Instance.SaveData.CharacterManager;
       if (title != null)
-        this._textBox_Title.Text = characterManager.CharacterData[(int) characterManager.CharacterStandbyCount].Sex == (byte) 0 ? title.MaleTitleName : title.LadyTitleName;
+        _textBox_Title.Text = characterManager.CharacterData[characterManager.CharacterStandbyCount].Sex == 0 ? title.MaleTitleName : title.LadyTitleName;
       else
-        this._textBox_Title.Text = string.Empty;
+        _textBox_Title.Text = string.Empty;
     }
 
     protected override void OnActivate()
@@ -141,264 +140,264 @@ namespace DQ9_Cheat.Controls
       TitleElement title = SaveDataManager.Instance.SaveData.FirstClearData.Title;
       CharacterManager characterManager = SaveDataManager.Instance.SaveData.CharacterManager;
       if (title != null)
-        this._textBox_Title.Text = characterManager.CharacterData[(int) characterManager.CharacterStandbyCount].Sex == (byte) 0 ? title.MaleTitleName : title.LadyTitleName;
+        _textBox_Title.Text = characterManager.CharacterData[characterManager.CharacterStandbyCount].Sex == 0 ? title.MaleTitleName : title.LadyTitleName;
       else
-        this._textBox_Title.Text = string.Empty;
+        _textBox_Title.Text = string.Empty;
     }
 
     private void _numericUpDown_Hour_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.FirstClearData.PlayTimeHour.Value = (ushort) this._numericUpDown_Hour.Value;
+      SaveDataManager.Instance.SaveData.FirstClearData.PlayTimeHour.Value = (ushort) _numericUpDown_Hour.Value;
     }
 
     private void _numericUpDown_Minute_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.FirstClearData.PlayTimeMinute.Value = (byte) this._numericUpDown_Minute.Value;
+      SaveDataManager.Instance.SaveData.FirstClearData.PlayTimeMinute.Value = (byte) _numericUpDown_Minute.Value;
     }
 
     private void _numericUpDown_Second_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.FirstClearData.PlayTimeSecond.Value = (byte) this._numericUpDown_Second.Value;
+      SaveDataManager.Instance.SaveData.FirstClearData.PlayTimeSecond.Value = (byte) _numericUpDown_Second.Value;
     }
 
     private void _numericUpDown_MultiPlayTimeHour_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.FirstClearData.MultiPlayTimeHour.Value = (ushort) this._numericUpDown_MultiPlayTimeHour.Value;
+      SaveDataManager.Instance.SaveData.FirstClearData.MultiPlayTimeHour.Value = (ushort) _numericUpDown_MultiPlayTimeHour.Value;
     }
 
     private void _numericUpDown_MultiPlayTimeMinute_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.FirstClearData.MultiPlayTimeMinute.Value = (byte) this._numericUpDown_MultiPlayTimeMinute.Value;
+      SaveDataManager.Instance.SaveData.FirstClearData.MultiPlayTimeMinute.Value = (byte) _numericUpDown_MultiPlayTimeMinute.Value;
     }
 
     private void _numericUpDown_MultiPlayTimeSecond_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.FirstClearData.MultiPlayTimeSecond.Value = (byte) this._numericUpDown_MultiPlayTimeSecond.Value;
+      SaveDataManager.Instance.SaveData.FirstClearData.MultiPlayTimeSecond.Value = (byte) _numericUpDown_MultiPlayTimeSecond.Value;
     }
 
     private void _numericUpDown_VictoryCount_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.FirstClearData.VictoryCount.Value = (ushort) this._numericUpDown_VictoryCount.Value;
+      SaveDataManager.Instance.SaveData.FirstClearData.VictoryCount.Value = (ushort) _numericUpDown_VictoryCount.Value;
     }
 
     private void _numericUpDown_AlchemyCount_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.FirstClearData.AlchemyCount.Value = (ushort) this._numericUpDown_AlchemyCount.Value;
+      SaveDataManager.Instance.SaveData.FirstClearData.AlchemyCount.Value = (ushort) _numericUpDown_AlchemyCount.Value;
     }
 
     private void _numericUpDown_TitleCount_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.FirstClearData.TitleCount = (ushort) this._numericUpDown_TitleCount.Value;
+      SaveDataManager.Instance.SaveData.FirstClearData.TitleCount = (ushort) _numericUpDown_TitleCount.Value;
     }
 
     private void _numericUpDown_QuestCount_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.FirstClearData.QuestCount.Value = (byte) this._numericUpDown_QuestCount.Value;
+      SaveDataManager.Instance.SaveData.FirstClearData.QuestCount.Value = (byte) _numericUpDown_QuestCount.Value;
     }
 
     private void _numericUpDown_TreasureMap_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.FirstClearData.TreasureMap = (ushort) this._numericUpDown_TreasureMap.Value;
+      SaveDataManager.Instance.SaveData.FirstClearData.TreasureMap = (ushort) _numericUpDown_TreasureMap.Value;
     }
 
     private void _numericUpDown_VisitorCount_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.FirstClearData.VisitorCount = (ushort) this._numericUpDown_VisitorCount.Value;
+      SaveDataManager.Instance.SaveData.FirstClearData.VisitorCount = (ushort) _numericUpDown_VisitorCount.Value;
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && this.components != null)
-        this.components.Dispose();
+      if (disposing && components != null)
+        components.Dispose();
       base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      this.label1 = new Label();
-      this.label2 = new Label();
-      this.label3 = new Label();
-      this.label4 = new Label();
-      this.label_Second = new Label();
-      this.label_Minute = new Label();
-      this.label_Hour = new Label();
-      this.label_PlayTime = new Label();
-      this.label5 = new Label();
-      this.label6 = new Label();
-      this.label7 = new Label();
-      this.label8 = new Label();
-      this.label9 = new Label();
-      this.label10 = new Label();
-      this.label11 = new Label();
-      this.SuspendLayout();
-      this.label1.AutoSize = true;
-      this.label1.Location = new Point(382, 43);
-      this.label1.Name = "label1";
-      this.label1.Size = new Size(31, 13);
-      this.label1.TabIndex = 41;
-      this.label1.Text = "Secs";
-      this.label2.AutoSize = true;
-      this.label2.Location = new Point(300, 42);
-      this.label2.Name = "label2";
-      this.label2.Size = new Size(29, 13);
-      this.label2.TabIndex = 39;
-      this.label2.Text = "Mins";
-      this.label3.AutoSize = true;
-      this.label3.Location = new Point(212, 43);
-      this.label3.Name = "label3";
-      this.label3.Size = new Size(35, 13);
-      this.label3.TabIndex = 37;
-      this.label3.Text = "Hours";
-      this.label4.AutoSize = true;
-      this.label4.Location = new Point(57, 43);
-      this.label4.Name = "label4";
-      this.label4.Size = new Size(83, 13);
-      this.label4.TabIndex = 35;
-      this.label4.Text = "Multiplayer Time";
-      this.label_Second.AutoSize = true;
-      this.label_Second.Location = new Point(382, 15);
-      this.label_Second.Name = "label_Second";
-      this.label_Second.Size = new Size(31, 13);
-      this.label_Second.TabIndex = 34;
-      this.label_Second.Text = "Secs";
-      this.label_Minute.AutoSize = true;
-      this.label_Minute.Location = new Point(300, 15);
-      this.label_Minute.Name = "label_Minute";
-      this.label_Minute.Size = new Size(29, 13);
-      this.label_Minute.TabIndex = 32;
-      this.label_Minute.Text = "Mins";
-      this.label_Hour.AutoSize = true;
-      this.label_Hour.Location = new Point(212, 15);
-      this.label_Hour.Name = "label_Hour";
-      this.label_Hour.Size = new Size(35, 13);
-      this.label_Hour.TabIndex = 30;
-      this.label_Hour.Text = "Hours";
-      this.label_PlayTime.AutoSize = true;
-      this.label_PlayTime.Location = new Point(87, 15);
-      this.label_PlayTime.Name = "label_PlayTime";
-      this.label_PlayTime.Size = new Size(53, 13);
-      this.label_PlayTime.TabIndex = 28;
-      this.label_PlayTime.Text = "Play Time";
-      this.label5.AutoSize = true;
-      this.label5.Location = new Point(63, 82);
-      this.label5.Name = "label5";
-      this.label5.Size = new Size(77, 13);
-      this.label5.TabIndex = 42;
-      this.label5.Text = "Battle Victories";
-      this.label6.AutoSize = true;
-      this.label6.Location = new Point(11, 105);
-      this.label6.Name = "label6";
-      this.label6.Size = new Size(129, 13);
-      this.label6.TabIndex = 44;
-      this.label6.Text = "Times Alchemy Performed";
-      this.label7.AutoSize = true;
-      this.label7.Location = new Point(55, 130);
-      this.label7.Name = "label7";
-      this.label7.Size = new Size(85, 13);
-      this.label7.TabIndex = 46;
-      this.label7.Text = "Accolades Earnt";
-      this.label8.AutoSize = true;
-      this.label8.Location = new Point(222, 82);
-      this.label8.Name = "label8";
-      this.label8.Size = new Size(93, 13);
-      this.label8.TabIndex = 48;
-      this.label8.Text = "Quests Completed";
-      this.label9.AutoSize = true;
-      this.label9.Location = new Point(215, 105);
-      this.label9.Name = "label9";
-      this.label9.Size = new Size(100, 13);
-      this.label9.TabIndex = 50;
-      this.label9.Text = "Grottoes Completed";
-      this.label10.AutoSize = true;
-      this.label10.Location = new Point(219, 130);
-      this.label10.Name = "label10";
-      this.label10.Size = new Size(96, 13);
-      this.label10.TabIndex = 52;
-      this.label10.Text = "Guests Canvassed";
-      this.label11.AutoSize = true;
-      this.label11.Location = new Point(140, 167);
-      this.label11.Name = "label11";
-      this.label11.Size = new Size(52, 13);
-      this.label11.TabIndex = 53;
-      this.label11.Text = "Accolade";
-      this.AutoScaleDimensions = new SizeF(6f, 12f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.Controls.Add((Control) this.label11);
-      this.Controls.Add((Control) this.label10);
-      this.Controls.Add((Control) this.label9);
-      this.Controls.Add((Control) this.label8);
-      this.Controls.Add((Control) this.label7);
-      this.Controls.Add((Control) this.label6);
-      this.Controls.Add((Control) this.label5);
-      this.Controls.Add((Control) this.label1);
-      this.Controls.Add((Control) this.label2);
-      this.Controls.Add((Control) this.label3);
-      this.Controls.Add((Control) this.label4);
-      this.Controls.Add((Control) this.label_Second);
-      this.Controls.Add((Control) this.label_Minute);
-      this.Controls.Add((Control) this.label_Hour);
-      this.Controls.Add((Control) this.label_PlayTime);
-      this.Name = nameof (FirstClearDataControl);
-      this.Size = new Size(431, 208);
-      this.ResumeLayout(false);
-      this.PerformLayout();
+      label1 = new Label();
+      label2 = new Label();
+      label3 = new Label();
+      label4 = new Label();
+      label_Second = new Label();
+      label_Minute = new Label();
+      label_Hour = new Label();
+      label_PlayTime = new Label();
+      label5 = new Label();
+      label6 = new Label();
+      label7 = new Label();
+      label8 = new Label();
+      label9 = new Label();
+      label10 = new Label();
+      label11 = new Label();
+      SuspendLayout();
+      label1.AutoSize = true;
+      label1.Location = new Point(382, 43);
+      label1.Name = "label1";
+      label1.Size = new Size(31, 13);
+      label1.TabIndex = 41;
+      label1.Text = "Secs";
+      label2.AutoSize = true;
+      label2.Location = new Point(300, 42);
+      label2.Name = "label2";
+      label2.Size = new Size(29, 13);
+      label2.TabIndex = 39;
+      label2.Text = "Mins";
+      label3.AutoSize = true;
+      label3.Location = new Point(212, 43);
+      label3.Name = "label3";
+      label3.Size = new Size(35, 13);
+      label3.TabIndex = 37;
+      label3.Text = "Hours";
+      label4.AutoSize = true;
+      label4.Location = new Point(57, 43);
+      label4.Name = "label4";
+      label4.Size = new Size(83, 13);
+      label4.TabIndex = 35;
+      label4.Text = "Multiplayer Time";
+      label_Second.AutoSize = true;
+      label_Second.Location = new Point(382, 15);
+      label_Second.Name = "label_Second";
+      label_Second.Size = new Size(31, 13);
+      label_Second.TabIndex = 34;
+      label_Second.Text = "Secs";
+      label_Minute.AutoSize = true;
+      label_Minute.Location = new Point(300, 15);
+      label_Minute.Name = "label_Minute";
+      label_Minute.Size = new Size(29, 13);
+      label_Minute.TabIndex = 32;
+      label_Minute.Text = "Mins";
+      label_Hour.AutoSize = true;
+      label_Hour.Location = new Point(212, 15);
+      label_Hour.Name = "label_Hour";
+      label_Hour.Size = new Size(35, 13);
+      label_Hour.TabIndex = 30;
+      label_Hour.Text = "Hours";
+      label_PlayTime.AutoSize = true;
+      label_PlayTime.Location = new Point(87, 15);
+      label_PlayTime.Name = "label_PlayTime";
+      label_PlayTime.Size = new Size(53, 13);
+      label_PlayTime.TabIndex = 28;
+      label_PlayTime.Text = "Play Time";
+      label5.AutoSize = true;
+      label5.Location = new Point(63, 82);
+      label5.Name = "label5";
+      label5.Size = new Size(77, 13);
+      label5.TabIndex = 42;
+      label5.Text = "Battle Victories";
+      label6.AutoSize = true;
+      label6.Location = new Point(11, 105);
+      label6.Name = "label6";
+      label6.Size = new Size(129, 13);
+      label6.TabIndex = 44;
+      label6.Text = "Times Alchemy Performed";
+      label7.AutoSize = true;
+      label7.Location = new Point(55, 130);
+      label7.Name = "label7";
+      label7.Size = new Size(85, 13);
+      label7.TabIndex = 46;
+      label7.Text = "Accolades Earnt";
+      label8.AutoSize = true;
+      label8.Location = new Point(222, 82);
+      label8.Name = "label8";
+      label8.Size = new Size(93, 13);
+      label8.TabIndex = 48;
+      label8.Text = "Quests Completed";
+      label9.AutoSize = true;
+      label9.Location = new Point(215, 105);
+      label9.Name = "label9";
+      label9.Size = new Size(100, 13);
+      label9.TabIndex = 50;
+      label9.Text = "Grottoes Completed";
+      label10.AutoSize = true;
+      label10.Location = new Point(219, 130);
+      label10.Name = "label10";
+      label10.Size = new Size(96, 13);
+      label10.TabIndex = 52;
+      label10.Text = "Guests Canvassed";
+      label11.AutoSize = true;
+      label11.Location = new Point(140, 167);
+      label11.Name = "label11";
+      label11.Size = new Size(52, 13);
+      label11.TabIndex = 53;
+      label11.Text = "Accolade";
+      AutoScaleDimensions = new SizeF(6f, 12f);
+      AutoScaleMode = AutoScaleMode.Font;
+      Controls.Add(label11);
+      Controls.Add(label10);
+      Controls.Add(label9);
+      Controls.Add(label8);
+      Controls.Add(label7);
+      Controls.Add(label6);
+      Controls.Add(label5);
+      Controls.Add(label1);
+      Controls.Add(label2);
+      Controls.Add(label3);
+      Controls.Add(label4);
+      Controls.Add(label_Second);
+      Controls.Add(label_Minute);
+      Controls.Add(label_Hour);
+      Controls.Add(label_PlayTime);
+      Name = nameof (FirstClearDataControl);
+      Size = new Size(431, 208);
+      ResumeLayout(false);
+      PerformLayout();
     }
 
-    public VisionNumericUpDown NumericUpDown_Hour => this._numericUpDown_Hour;
+    public VisionNumericUpDown NumericUpDown_Hour => _numericUpDown_Hour;
 
-    public VisionNumericUpDown NumericUpDown_Minute => this._numericUpDown_Minute;
+    public VisionNumericUpDown NumericUpDown_Minute => _numericUpDown_Minute;
 
-    public VisionNumericUpDown NumericUpDown_Second => this._numericUpDown_Second;
+    public VisionNumericUpDown NumericUpDown_Second => _numericUpDown_Second;
 
     public VisionNumericUpDown NumericUpDown_MultiPlayTimeHour
     {
-      get => this._numericUpDown_MultiPlayTimeHour;
+      get => _numericUpDown_MultiPlayTimeHour;
     }
 
     public VisionNumericUpDown NumericUpDown_MultiPlayTimeMinute
     {
-      get => this._numericUpDown_MultiPlayTimeMinute;
+      get => _numericUpDown_MultiPlayTimeMinute;
     }
 
     public VisionNumericUpDown NumericUpDown_MultiPlayTimeSecond
     {
-      get => this._numericUpDown_MultiPlayTimeSecond;
+      get => _numericUpDown_MultiPlayTimeSecond;
     }
 
-    public VisionNumericUpDown NumericUpDown_VictoryCount => this._numericUpDown_VictoryCount;
+    public VisionNumericUpDown NumericUpDown_VictoryCount => _numericUpDown_VictoryCount;
 
-    public VisionNumericUpDown NumericUpDown_AlchemyCount => this._numericUpDown_AlchemyCount;
+    public VisionNumericUpDown NumericUpDown_AlchemyCount => _numericUpDown_AlchemyCount;
 
-    public VisionNumericUpDown NumericUpDown_TitleCount => this._numericUpDown_TitleCount;
+    public VisionNumericUpDown NumericUpDown_TitleCount => _numericUpDown_TitleCount;
 
-    public VisionNumericUpDown NumericUpDown_QuestCount => this._numericUpDown_QuestCount;
+    public VisionNumericUpDown NumericUpDown_QuestCount => _numericUpDown_QuestCount;
 
-    public VisionNumericUpDown NumericUpDown_TreasureMap => this._numericUpDown_TreasureMap;
+    public VisionNumericUpDown NumericUpDown_TreasureMap => _numericUpDown_TreasureMap;
 
-    public VisionNumericUpDown NumericUpDown_VisitorCount => this._numericUpDown_VisitorCount;
+    public VisionNumericUpDown NumericUpDown_VisitorCount => _numericUpDown_VisitorCount;
   }
 }

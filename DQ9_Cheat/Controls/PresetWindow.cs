@@ -2,14 +2,13 @@
 // Type: DQ9_Cheat.Controls.PresetWindow
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-#nullable disable
 namespace DQ9_Cheat.Controls
 {
   public class PresetWindow : Form
@@ -22,184 +21,184 @@ namespace DQ9_Cheat.Controls
 
     public PresetWindow(ListType listType)
     {
-      this.InitializeComponent();
+      InitializeComponent();
       switch (listType)
       {
         case ListType.Figure:
-          this.InitializeListFigure();
+          InitializeListFigure();
           break;
         case ListType.HairType:
-          this.InitializeListHairType();
+          InitializeListHairType();
           break;
         case ListType.HairColor:
-          this.InitializeListHairColor();
+          InitializeListHairColor();
           break;
         case ListType.FaceType:
-          this.InitializeListFaceType();
+          InitializeListFaceType();
           break;
       }
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && this.components != null)
-        this.components.Dispose();
+      if (disposing && components != null)
+        components.Dispose();
       base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      this.listBox = new ListBox();
-      this.button_OK = new Button();
-      this.button_Cancel = new Button();
-      this.SuspendLayout();
-      this.listBox.ColumnWidth = 100;
-      this.listBox.FormattingEnabled = true;
-      this.listBox.ItemHeight = 12;
-      this.listBox.Location = new Point(5, 5);
-      this.listBox.MultiColumn = true;
-      this.listBox.Name = "listBox";
-      this.listBox.Size = new Size(205, 124);
-      this.listBox.TabIndex = 0;
-      this.listBox.MouseDoubleClick += new MouseEventHandler(this.listBox_MouseDoubleClick);
-      this.button_OK.DialogResult = DialogResult.OK;
-      this.button_OK.Location = new Point(54, 136);
-      this.button_OK.Name = "button_OK";
-      this.button_OK.Size = new Size(75, 23);
-      this.button_OK.TabIndex = 1;
-      this.button_OK.Text = "OK";
-      this.button_OK.UseVisualStyleBackColor = true;
-      this.button_OK.Click += new EventHandler(this.button_OK_Click);
-      this.button_Cancel.DialogResult = DialogResult.Cancel;
-      this.button_Cancel.Location = new Point(135, 136);
-      this.button_Cancel.Name = "button_Cancel";
-      this.button_Cancel.Size = new Size(75, 23);
-      this.button_Cancel.TabIndex = 2;
-      this.button_Cancel.Text = "Cancel";
-      this.button_Cancel.UseVisualStyleBackColor = true;
-      this.button_Cancel.Click += new EventHandler(this.button_Cancel_Click);
-      this.AcceptButton = (IButtonControl) this.button_OK;
-      this.AutoScaleDimensions = new SizeF(6f, 12f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.CancelButton = (IButtonControl) this.button_Cancel;
-      this.ClientSize = new Size(216, 163);
-      this.Controls.Add((Control) this.button_Cancel);
-      this.Controls.Add((Control) this.button_OK);
-      this.Controls.Add((Control) this.listBox);
-      this.FormBorderStyle = FormBorderStyle.Fixed3D;
-      this.MaximizeBox = false;
-      this.MinimizeBox = false;
-      this.Name = nameof (PresetWindow);
-      this.ShowIcon = false;
-      this.ShowInTaskbar = false;
-      this.StartPosition = FormStartPosition.Manual;
-      this.Text = "Preset";
-      this.ResumeLayout(false);
+      listBox = new ListBox();
+      button_OK = new Button();
+      button_Cancel = new Button();
+      SuspendLayout();
+      listBox.ColumnWidth = 100;
+      listBox.FormattingEnabled = true;
+      listBox.ItemHeight = 12;
+      listBox.Location = new Point(5, 5);
+      listBox.MultiColumn = true;
+      listBox.Name = "listBox";
+      listBox.Size = new Size(205, 124);
+      listBox.TabIndex = 0;
+      listBox.MouseDoubleClick += listBox_MouseDoubleClick;
+      button_OK.DialogResult = DialogResult.OK;
+      button_OK.Location = new Point(54, 136);
+      button_OK.Name = "button_OK";
+      button_OK.Size = new Size(75, 23);
+      button_OK.TabIndex = 1;
+      button_OK.Text = "OK";
+      button_OK.UseVisualStyleBackColor = true;
+      button_OK.Click += button_OK_Click;
+      button_Cancel.DialogResult = DialogResult.Cancel;
+      button_Cancel.Location = new Point(135, 136);
+      button_Cancel.Name = "button_Cancel";
+      button_Cancel.Size = new Size(75, 23);
+      button_Cancel.TabIndex = 2;
+      button_Cancel.Text = "Cancel";
+      button_Cancel.UseVisualStyleBackColor = true;
+      button_Cancel.Click += button_Cancel_Click;
+      AcceptButton = button_OK;
+      AutoScaleDimensions = new SizeF(6f, 12f);
+      AutoScaleMode = AutoScaleMode.Font;
+      CancelButton = button_Cancel;
+      ClientSize = new Size(216, 163);
+      Controls.Add(button_Cancel);
+      Controls.Add(button_OK);
+      Controls.Add(listBox);
+      FormBorderStyle = FormBorderStyle.Fixed3D;
+      MaximizeBox = false;
+      MinimizeBox = false;
+      Name = nameof (PresetWindow);
+      ShowIcon = false;
+      ShowInTaskbar = false;
+      StartPosition = FormStartPosition.Manual;
+      Text = "Preset";
+      ResumeLayout(false);
     }
 
-    public object SelectedPreset => this._selectedPreset;
+    public object SelectedPreset => _selectedPreset;
 
     private void InitializeListFigure()
     {
-      this.Text = "Body - Preset";
-      this.listBox.Items.Clear();
-      this.listBox.Items.Add((object) new PresetFigure("Male Type １", (ushort) 3768, (ushort) 4255));
-      this.listBox.Items.Add((object) new PresetFigure("Male Type ２", (ushort) 3637, (ushort) 4136));
-      this.listBox.Items.Add((object) new PresetFigure("Male Type ３", (ushort) 3850, (ushort) 4014));
-      this.listBox.Items.Add((object) new PresetFigure("Male Type ４", (ushort) 4132, (ushort) 3891));
-      this.listBox.Items.Add((object) new PresetFigure("Male Type ５", (ushort) 3870, (ushort) 3764));
-      this.listBox.Items.Add((object) new PresetFigure("Female Type １", (ushort) 3768, (ushort) 4177));
-      this.listBox.Items.Add((object) new PresetFigure("Female Type ２", (ushort) 3641, (ushort) 4091));
-      this.listBox.Items.Add((object) new PresetFigure("Female Type ３", (ushort) 3809, (ushort) 3973));
-      this.listBox.Items.Add((object) new PresetFigure("Female Type ４", (ushort) 4132, (ushort) 3891));
-      this.listBox.Items.Add((object) new PresetFigure("Female Type ５", (ushort) 3768, (ushort) 3764));
-      this.listBox.SelectedIndex = 0;
+      Text = "Body - Preset";
+      listBox.Items.Clear();
+      listBox.Items.Add(new PresetFigure("Male Type １", 3768, 4255));
+      listBox.Items.Add(new PresetFigure("Male Type ２", 3637, 4136));
+      listBox.Items.Add(new PresetFigure("Male Type ３", 3850, 4014));
+      listBox.Items.Add(new PresetFigure("Male Type ４", 4132, 3891));
+      listBox.Items.Add(new PresetFigure("Male Type ５", 3870, 3764));
+      listBox.Items.Add(new PresetFigure("Female Type １", 3768, 4177));
+      listBox.Items.Add(new PresetFigure("Female Type ２", 3641, 4091));
+      listBox.Items.Add(new PresetFigure("Female Type ３", 3809, 3973));
+      listBox.Items.Add(new PresetFigure("Female Type ４", 4132, 3891));
+      listBox.Items.Add(new PresetFigure("Female Type ５", 3768, 3764));
+      listBox.SelectedIndex = 0;
     }
 
     private void InitializeListHairType()
     {
-      this.Text = "Hair Style - Preset";
-      this.listBox.Items.Clear();
-      this.listBox.Items.Add((object) new Preset("Male Type １", (byte) 40));
-      this.listBox.Items.Add((object) new Preset("Male Type ２", (byte) 41));
-      this.listBox.Items.Add((object) new Preset("Male Type ３", (byte) 42));
-      this.listBox.Items.Add((object) new Preset("Male Type ４", (byte) 43));
-      this.listBox.Items.Add((object) new Preset("Male Type ５", (byte) 44));
-      this.listBox.Items.Add((object) new Preset("Male Type ６", (byte) 45));
-      this.listBox.Items.Add((object) new Preset("Male Type ７", (byte) 46));
-      this.listBox.Items.Add((object) new Preset("Male Type ８", (byte) 47));
-      this.listBox.Items.Add((object) new Preset("Male Type ９", (byte) 48));
-      this.listBox.Items.Add((object) new Preset("Male Type 10", (byte) 49));
-      this.listBox.Items.Add((object) new Preset("Female Type １", (byte) 46));
-      this.listBox.Items.Add((object) new Preset("Female Type ２", (byte) 40));
-      this.listBox.Items.Add((object) new Preset("Female Type ３", (byte) 41));
-      this.listBox.Items.Add((object) new Preset("Female Type ４", (byte) 42));
-      this.listBox.Items.Add((object) new Preset("Female Type ５", (byte) 43));
-      this.listBox.Items.Add((object) new Preset("Female Type ６", (byte) 44));
-      this.listBox.Items.Add((object) new Preset("Female Type ７", (byte) 45));
-      this.listBox.Items.Add((object) new Preset("Female Type ８", (byte) 47));
-      this.listBox.Items.Add((object) new Preset("Female Type ９", (byte) 48));
-      this.listBox.Items.Add((object) new Preset("Female Type 10", (byte) 49));
-      this.listBox.SelectedIndex = 0;
+      Text = "Hair Style - Preset";
+      listBox.Items.Clear();
+      listBox.Items.Add(new Preset("Male Type １", 40));
+      listBox.Items.Add(new Preset("Male Type ２", 41));
+      listBox.Items.Add(new Preset("Male Type ３", 42));
+      listBox.Items.Add(new Preset("Male Type ４", 43));
+      listBox.Items.Add(new Preset("Male Type ５", 44));
+      listBox.Items.Add(new Preset("Male Type ６", 45));
+      listBox.Items.Add(new Preset("Male Type ７", 46));
+      listBox.Items.Add(new Preset("Male Type ８", 47));
+      listBox.Items.Add(new Preset("Male Type ９", 48));
+      listBox.Items.Add(new Preset("Male Type 10", 49));
+      listBox.Items.Add(new Preset("Female Type １", 46));
+      listBox.Items.Add(new Preset("Female Type ２", 40));
+      listBox.Items.Add(new Preset("Female Type ３", 41));
+      listBox.Items.Add(new Preset("Female Type ４", 42));
+      listBox.Items.Add(new Preset("Female Type ５", 43));
+      listBox.Items.Add(new Preset("Female Type ６", 44));
+      listBox.Items.Add(new Preset("Female Type ７", 45));
+      listBox.Items.Add(new Preset("Female Type ８", 47));
+      listBox.Items.Add(new Preset("Female Type ９", 48));
+      listBox.Items.Add(new Preset("Female Type 10", 49));
+      listBox.SelectedIndex = 0;
     }
 
     private void InitializeListHairColor()
     {
-      this.Text = "Hair Color - Preset";
-      this.listBox.Items.Clear();
-      this.listBox.Items.Add((object) new Preset("Male Type １", (byte) 160));
-      this.listBox.Items.Add((object) new Preset("Male Type ２", (byte) 161));
-      this.listBox.Items.Add((object) new Preset("Male Type ３", (byte) 162));
-      this.listBox.Items.Add((object) new Preset("Male Type ４", (byte) 163));
-      this.listBox.Items.Add((object) new Preset("Male Type ５", (byte) 164));
-      this.listBox.Items.Add((object) new Preset("Male Type ６", (byte) 165));
-      this.listBox.Items.Add((object) new Preset("Male Type ７", (byte) 166));
-      this.listBox.Items.Add((object) new Preset("Male Type ８", (byte) 167));
-      this.listBox.Items.Add((object) new Preset("Male Type ９", (byte) 168));
-      this.listBox.Items.Add((object) new Preset("Male Type 10", (byte) 169));
-      this.listBox.Items.Add((object) new Preset("Female Type １", (byte) 160));
-      this.listBox.Items.Add((object) new Preset("Female Type ２", (byte) 161));
-      this.listBox.Items.Add((object) new Preset("Female Type ３", (byte) 162));
-      this.listBox.Items.Add((object) new Preset("Female Type ４", (byte) 163));
-      this.listBox.Items.Add((object) new Preset("Female Type ５", (byte) 164));
-      this.listBox.Items.Add((object) new Preset("Female Type ６", (byte) 165));
-      this.listBox.Items.Add((object) new Preset("Female Type ７", (byte) 166));
-      this.listBox.Items.Add((object) new Preset("Female Type ８", (byte) 167));
-      this.listBox.Items.Add((object) new Preset("Female Type ９", (byte) 168));
-      this.listBox.Items.Add((object) new Preset("Female Type 10", (byte) 169));
-      this.listBox.SelectedIndex = 0;
+      Text = "Hair Color - Preset";
+      listBox.Items.Clear();
+      listBox.Items.Add(new Preset("Male Type １", 160));
+      listBox.Items.Add(new Preset("Male Type ２", 161));
+      listBox.Items.Add(new Preset("Male Type ３", 162));
+      listBox.Items.Add(new Preset("Male Type ４", 163));
+      listBox.Items.Add(new Preset("Male Type ５", 164));
+      listBox.Items.Add(new Preset("Male Type ６", 165));
+      listBox.Items.Add(new Preset("Male Type ７", 166));
+      listBox.Items.Add(new Preset("Male Type ８", 167));
+      listBox.Items.Add(new Preset("Male Type ９", 168));
+      listBox.Items.Add(new Preset("Male Type 10", 169));
+      listBox.Items.Add(new Preset("Female Type １", 160));
+      listBox.Items.Add(new Preset("Female Type ２", 161));
+      listBox.Items.Add(new Preset("Female Type ３", 162));
+      listBox.Items.Add(new Preset("Female Type ４", 163));
+      listBox.Items.Add(new Preset("Female Type ５", 164));
+      listBox.Items.Add(new Preset("Female Type ６", 165));
+      listBox.Items.Add(new Preset("Female Type ７", 166));
+      listBox.Items.Add(new Preset("Female Type ８", 167));
+      listBox.Items.Add(new Preset("Female Type ９", 168));
+      listBox.Items.Add(new Preset("Female Type 10", 169));
+      listBox.SelectedIndex = 0;
     }
 
     private void InitializeListFaceType()
     {
-      this.Text = "Face - Preset";
-      this.listBox.Items.Clear();
-      this.listBox.Items.Add((object) new Preset("Male Type１", (byte) 64));
-      this.listBox.Items.Add((object) new Preset("Male Type ２", (byte) 60));
-      this.listBox.Items.Add((object) new Preset("Male Type ３", (byte) 61));
-      this.listBox.Items.Add((object) new Preset("Male Type ４", (byte) 62));
-      this.listBox.Items.Add((object) new Preset("Male Type ５", (byte) 63));
-      this.listBox.Items.Add((object) new Preset("Male Type ６", (byte) 65));
-      this.listBox.Items.Add((object) new Preset("Male Type ７", (byte) 66));
-      this.listBox.Items.Add((object) new Preset("Male Type ８", (byte) 67));
-      this.listBox.Items.Add((object) new Preset("Male Type ９", (byte) 68));
-      this.listBox.Items.Add((object) new Preset("Male Type 10", (byte) 69));
-      this.listBox.Items.Add((object) new Preset("Female Type １", (byte) 61));
-      this.listBox.Items.Add((object) new Preset("Female Type ２", (byte) 60));
-      this.listBox.Items.Add((object) new Preset("Female Type ３", (byte) 62));
-      this.listBox.Items.Add((object) new Preset("Female Type ４", (byte) 63));
-      this.listBox.Items.Add((object) new Preset("Female Type ５", (byte) 64));
-      this.listBox.Items.Add((object) new Preset("Female Type ６", (byte) 65));
-      this.listBox.Items.Add((object) new Preset("Female Type ７", (byte) 66));
-      this.listBox.Items.Add((object) new Preset("Female Type ８", (byte) 67));
-      this.listBox.Items.Add((object) new Preset("Female Type ９", (byte) 68));
-      this.listBox.Items.Add((object) new Preset("Female Type 10", (byte) 69));
-      this.listBox.SelectedIndex = 0;
+      Text = "Face - Preset";
+      listBox.Items.Clear();
+      listBox.Items.Add(new Preset("Male Type１", 64));
+      listBox.Items.Add(new Preset("Male Type ２", 60));
+      listBox.Items.Add(new Preset("Male Type ３", 61));
+      listBox.Items.Add(new Preset("Male Type ４", 62));
+      listBox.Items.Add(new Preset("Male Type ５", 63));
+      listBox.Items.Add(new Preset("Male Type ６", 65));
+      listBox.Items.Add(new Preset("Male Type ７", 66));
+      listBox.Items.Add(new Preset("Male Type ８", 67));
+      listBox.Items.Add(new Preset("Male Type ９", 68));
+      listBox.Items.Add(new Preset("Male Type 10", 69));
+      listBox.Items.Add(new Preset("Female Type １", 61));
+      listBox.Items.Add(new Preset("Female Type ２", 60));
+      listBox.Items.Add(new Preset("Female Type ３", 62));
+      listBox.Items.Add(new Preset("Female Type ４", 63));
+      listBox.Items.Add(new Preset("Female Type ５", 64));
+      listBox.Items.Add(new Preset("Female Type ６", 65));
+      listBox.Items.Add(new Preset("Female Type ７", 66));
+      listBox.Items.Add(new Preset("Female Type ８", 67));
+      listBox.Items.Add(new Preset("Female Type ９", 68));
+      listBox.Items.Add(new Preset("Female Type 10", 69));
+      listBox.SelectedIndex = 0;
     }
 
     private void button_OK_Click(object sender, EventArgs e)
     {
-      this._selectedPreset = this.listBox.SelectedItem;
+      _selectedPreset = listBox.SelectedItem;
     }
 
     private void button_Cancel_Click(object sender, EventArgs e)
@@ -208,11 +207,11 @@ namespace DQ9_Cheat.Controls
 
     private void listBox_MouseDoubleClick(object sender, MouseEventArgs e)
     {
-      int index = this.listBox.IndexFromPoint(e.Location);
+      int index = listBox.IndexFromPoint(e.Location);
       if (index == -1)
         return;
-      this._selectedPreset = this.listBox.Items[index];
-      this.DialogResult = DialogResult.OK;
+      _selectedPreset = listBox.Items[index];
+      DialogResult = DialogResult.OK;
     }
   }
 }

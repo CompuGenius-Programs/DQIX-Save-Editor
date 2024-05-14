@@ -2,9 +2,8 @@
 // Type: DQ9_Cheat.GameData.Handle
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-#nullable disable
 namespace DQ9_Cheat.GameData
 {
   public class Handle
@@ -15,20 +14,20 @@ namespace DQ9_Cheat.GameData
 
     public Handle(ProfileJob job)
     {
-      this._handleType = HandleType.HandleJob;
-      this._job = job;
+      _handleType = HandleType.HandleJob;
+      _job = job;
     }
 
     public Handle(TitleElement title)
     {
-      this._handleType = HandleType.HandleTitle;
-      this._title = title;
+      _handleType = HandleType.HandleTitle;
+      _title = title;
     }
 
-    public HandleType HandleType => this._handleType;
+    public HandleType HandleType => _handleType;
 
-    public ProfileJob Job => this._job;
+    public ProfileJob Job => _job;
 
-    public TitleElement Title => this._title;
+    public TitleElement Title => _title;
   }
 }

@@ -2,9 +2,8 @@
 // Type: DQ9_Cheat.DataManager.UndoRedoSaveDataCopy
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-#nullable disable
 namespace DQ9_Cheat.DataManager
 {
   internal class UndoRedoSaveDataCopy : UndoRedoElement
@@ -14,21 +13,21 @@ namespace DQ9_Cheat.DataManager
 
     public UndoRedoSaveDataCopy(int srcIndex)
     {
-      this._srcIndex = srcIndex;
-      this._data = SaveDataManager.Instance.GetSaveData(this._srcIndex).GetData();
+      _srcIndex = srcIndex;
+      _data = SaveDataManager.Instance.GetSaveData(_srcIndex).GetData();
     }
 
-    protected override void OnDispose() => this._data = (byte[]) null;
+    protected override void OnDispose() => _data = null;
 
     public override void Undo()
     {
-      SaveDataManager.Instance.GetSaveData(this._srcIndex).CopyData(this._data);
+      SaveDataManager.Instance.GetSaveData(_srcIndex).CopyData(_data);
     }
 
     public override void Redo()
     {
-      byte[] data = SaveDataManager.Instance.GetSaveData(this._srcIndex ^ 1).GetData();
-      SaveDataManager.Instance.GetSaveData(this._srcIndex).CopyData(data);
+      byte[] data = SaveDataManager.Instance.GetSaveData(_srcIndex ^ 1).GetData();
+      SaveDataManager.Instance.GetSaveData(_srcIndex).CopyData(data);
     }
   }
 }

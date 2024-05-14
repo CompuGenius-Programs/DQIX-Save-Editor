@@ -2,11 +2,10 @@
 // Type: JS_Framework.Threading.ThreadRunnableNotFoundException
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
 using System;
 
-#nullable disable
 namespace JS_Framework.Threading
 {
   public class ThreadRunnableNotFoundException : Exception
@@ -16,9 +15,9 @@ namespace JS_Framework.Threading
     internal ThreadRunnableNotFoundException(string threadName)
       : base("Runnable が定義されていません。")
     {
-      this._threadName = threadName;
+      _threadName = threadName;
     }
 
-    public string ThreadName => this._threadName;
+    public string ThreadName => _threadName;
   }
 }

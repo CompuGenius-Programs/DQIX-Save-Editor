@@ -2,15 +2,14 @@
 // Type: DQ9_Cheat.Controls.MapSearch.MapSearchConditionEdit
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-using DQ9_Cheat.MapSearch;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DQ9_Cheat.MapSearch;
 
-#nullable disable
 namespace DQ9_Cheat.Controls.MapSearch
 {
   public class MapSearchConditionEdit : Form
@@ -28,172 +27,172 @@ namespace DQ9_Cheat.Controls.MapSearch
 
     public MapSearchConditionEdit()
     {
-      this.InitializeComponent();
-      this.BeginUpdate();
-      this._searchConditions[0] = (SearchConditionControlBase) new SearchRankConditionControl();
-      this._searchConditions[1] = (SearchConditionControlBase) new SearchMapName1ConditionControl();
-      this._searchConditions[2] = (SearchConditionControlBase) new SearchMapName3ConditionControl();
-      this._searchConditions[3] = (SearchConditionControlBase) new SearchMapName2ConditionControl();
-      this._searchConditions[4] = (SearchConditionControlBase) new SearchMapLvConditionControl();
-      this._searchConditions[5] = (SearchConditionControlBase) new SearchMapTypeConditionControl();
-      this._searchConditions[6] = (SearchConditionControlBase) new SearchMonsterRankConditionControl();
-      this._searchConditions[7] = (SearchConditionControlBase) new SearchFloorCountConditionControl();
-      this._searchConditions[8] = (SearchConditionControlBase) new SearchBossConditionControl();
-      this._searchConditions[9] = (SearchConditionControlBase) new SearchBoxConditionControl();
-      this.comboBox_SearchType.SelectedIndex = 0;
-      this._activeControl = this._searchConditions[0];
+      InitializeComponent();
+      BeginUpdate();
+      _searchConditions[0] = new SearchRankConditionControl();
+      _searchConditions[1] = new SearchMapName1ConditionControl();
+      _searchConditions[2] = new SearchMapName3ConditionControl();
+      _searchConditions[3] = new SearchMapName2ConditionControl();
+      _searchConditions[4] = new SearchMapLvConditionControl();
+      _searchConditions[5] = new SearchMapTypeConditionControl();
+      _searchConditions[6] = new SearchMonsterRankConditionControl();
+      _searchConditions[7] = new SearchFloorCountConditionControl();
+      _searchConditions[8] = new SearchBossConditionControl();
+      _searchConditions[9] = new SearchBoxConditionControl();
+      comboBox_SearchType.SelectedIndex = 0;
+      _activeControl = _searchConditions[0];
       for (int index = 0; index < 10; ++index)
       {
-        this._searchConditions[index].Location = new Point(8, 12);
-        this.groupBox_Condition.Controls.Add((Control) this._searchConditions[index]);
-        this._searchConditions[index].Visible = false;
+        _searchConditions[index].Location = new Point(8, 12);
+        groupBox_Condition.Controls.Add(_searchConditions[index]);
+        _searchConditions[index].Visible = false;
       }
-      this._activeControl.Visible = true;
-      this.EndUpdate();
+      _activeControl.Visible = true;
+      EndUpdate();
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && this.components != null)
-        this.components.Dispose();
+      if (disposing && components != null)
+        components.Dispose();
       base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      this.comboBox_SearchType = new ComboBox();
-      this.label1 = new Label();
-      this.button_OK = new Button();
-      this.button_Cancel = new Button();
-      this.groupBox_Condition = new GroupBox();
-      this.SuspendLayout();
-      this.comboBox_SearchType.DropDownStyle = ComboBoxStyle.DropDownList;
-      this.comboBox_SearchType.FormattingEnabled = true;
-      this.comboBox_SearchType.Items.AddRange(new object[10]
+      comboBox_SearchType = new ComboBox();
+      label1 = new Label();
+      button_OK = new Button();
+      button_Cancel = new Button();
+      groupBox_Condition = new GroupBox();
+      SuspendLayout();
+      comboBox_SearchType.DropDownStyle = ComboBoxStyle.DropDownList;
+      comboBox_SearchType.FormattingEnabled = true;
+      comboBox_SearchType.Items.AddRange(new object[10]
       {
-        (object) "Rank",
-        (object) "Map Name 1",
-        (object) "Map Name 2",
-        (object) "Map Name 3",
-        (object) "Level",
-        (object) "Type",
-        (object) "Monster Rank",
-        (object) "Floors",
-        (object) "Boss",
-        (object) "# of Chests"
+        "Rank",
+        "Map Name 1",
+        "Map Name 2",
+        "Map Name 3",
+        "Level",
+        "Type",
+        "Monster Rank",
+        "Floors",
+        "Boss",
+        "# of Chests"
       });
-      this.comboBox_SearchType.Location = new Point(68, 9);
-      this.comboBox_SearchType.Name = "comboBox_SearchType";
-      this.comboBox_SearchType.Size = new Size(121, 21);
-      this.comboBox_SearchType.TabIndex = 0;
-      this.comboBox_SearchType.SelectedIndexChanged += new EventHandler(this.comboBox_SearchType_SelectedIndexChanged);
-      this.label1.AutoSize = true;
-      this.label1.Location = new Point(28, 12);
-      this.label1.Name = "label1";
-      this.label1.Size = new Size(38, 13);
-      this.label1.TabIndex = 1;
-      this.label1.Text = "Target";
-      this.button_OK.DialogResult = DialogResult.OK;
-      this.button_OK.Location = new Point(136, 124);
-      this.button_OK.Name = "button_OK";
-      this.button_OK.Size = new Size(75, 23);
-      this.button_OK.TabIndex = 2;
-      this.button_OK.Text = "OK";
-      this.button_OK.UseVisualStyleBackColor = true;
-      this.button_OK.Click += new EventHandler(this.button_OK_Click);
-      this.button_Cancel.DialogResult = DialogResult.Cancel;
-      this.button_Cancel.Location = new Point(217, 124);
-      this.button_Cancel.Name = "button_Cancel";
-      this.button_Cancel.Size = new Size(75, 23);
-      this.button_Cancel.TabIndex = 3;
-      this.button_Cancel.Text = "Cancel";
-      this.button_Cancel.UseVisualStyleBackColor = true;
-      this.groupBox_Condition.Location = new Point(12, 34);
-      this.groupBox_Condition.Name = "groupBox_Condition";
-      this.groupBox_Condition.Size = new Size(280, 84);
-      this.groupBox_Condition.TabIndex = 4;
-      this.groupBox_Condition.TabStop = false;
-      this.groupBox_Condition.Text = "Condition";
-      this.AcceptButton = (IButtonControl) this.button_OK;
-      this.AutoScaleDimensions = new SizeF(6f, 12f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.CancelButton = (IButtonControl) this.button_Cancel;
-      this.ClientSize = new Size(304, 154);
-      this.Controls.Add((Control) this.groupBox_Condition);
-      this.Controls.Add((Control) this.button_Cancel);
-      this.Controls.Add((Control) this.button_OK);
-      this.Controls.Add((Control) this.label1);
-      this.Controls.Add((Control) this.comboBox_SearchType);
-      this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-      this.MaximizeBox = false;
-      this.MinimizeBox = false;
-      this.Name = nameof (MapSearchConditionEdit);
-      this.ShowIcon = false;
-      this.ShowInTaskbar = false;
-      this.StartPosition = FormStartPosition.CenterParent;
-      this.Text = "Search criteria";
-      this.ResumeLayout(false);
-      this.PerformLayout();
+      comboBox_SearchType.Location = new Point(68, 9);
+      comboBox_SearchType.Name = "comboBox_SearchType";
+      comboBox_SearchType.Size = new Size(121, 21);
+      comboBox_SearchType.TabIndex = 0;
+      comboBox_SearchType.SelectedIndexChanged += comboBox_SearchType_SelectedIndexChanged;
+      label1.AutoSize = true;
+      label1.Location = new Point(28, 12);
+      label1.Name = "label1";
+      label1.Size = new Size(38, 13);
+      label1.TabIndex = 1;
+      label1.Text = "Target";
+      button_OK.DialogResult = DialogResult.OK;
+      button_OK.Location = new Point(136, 124);
+      button_OK.Name = "button_OK";
+      button_OK.Size = new Size(75, 23);
+      button_OK.TabIndex = 2;
+      button_OK.Text = "OK";
+      button_OK.UseVisualStyleBackColor = true;
+      button_OK.Click += button_OK_Click;
+      button_Cancel.DialogResult = DialogResult.Cancel;
+      button_Cancel.Location = new Point(217, 124);
+      button_Cancel.Name = "button_Cancel";
+      button_Cancel.Size = new Size(75, 23);
+      button_Cancel.TabIndex = 3;
+      button_Cancel.Text = "Cancel";
+      button_Cancel.UseVisualStyleBackColor = true;
+      groupBox_Condition.Location = new Point(12, 34);
+      groupBox_Condition.Name = "groupBox_Condition";
+      groupBox_Condition.Size = new Size(280, 84);
+      groupBox_Condition.TabIndex = 4;
+      groupBox_Condition.TabStop = false;
+      groupBox_Condition.Text = "Condition";
+      AcceptButton = button_OK;
+      AutoScaleDimensions = new SizeF(6f, 12f);
+      AutoScaleMode = AutoScaleMode.Font;
+      CancelButton = button_Cancel;
+      ClientSize = new Size(304, 154);
+      Controls.Add(groupBox_Condition);
+      Controls.Add(button_Cancel);
+      Controls.Add(button_OK);
+      Controls.Add(label1);
+      Controls.Add(comboBox_SearchType);
+      FormBorderStyle = FormBorderStyle.FixedToolWindow;
+      MaximizeBox = false;
+      MinimizeBox = false;
+      Name = nameof (MapSearchConditionEdit);
+      ShowIcon = false;
+      ShowInTaskbar = false;
+      StartPosition = FormStartPosition.CenterParent;
+      Text = "Search criteria";
+      ResumeLayout(false);
+      PerformLayout();
     }
 
     public SearchConditionBase Condition
     {
-      get => this._condition;
+      get => _condition;
       set
       {
-        this._condition = value;
-        if (this._activeControl != null)
+        _condition = value;
+        if (_activeControl != null)
         {
-          this._activeControl.Visible = false;
-          this._activeControl = (SearchConditionControlBase) null;
+          _activeControl.Visible = false;
+          _activeControl = null;
         }
-        if (this._condition != null)
+        if (_condition != null)
         {
-          this._activeControl = this._searchConditions[this._condition.TypeIndex];
-          this._activeControl.Visible = true;
-          this._activeControl.SetCondition(this._condition);
-          this.comboBox_SearchType.SelectedIndex = this._condition.TypeIndex;
+          _activeControl = _searchConditions[_condition.TypeIndex];
+          _activeControl.Visible = true;
+          _activeControl.SetCondition(_condition);
+          comboBox_SearchType.SelectedIndex = _condition.TypeIndex;
         }
         else
         {
-          this._activeControl = this._searchConditions[0];
-          this._activeControl.Visible = true;
-          this._activeControl.SetCondition(this._condition);
-          this.comboBox_SearchType.SelectedIndex = 0;
+          _activeControl = _searchConditions[0];
+          _activeControl.Visible = true;
+          _activeControl.SetCondition(_condition);
+          comboBox_SearchType.SelectedIndex = 0;
         }
       }
     }
 
-    private void BeginUpdate() => ++this._updateCount;
+    private void BeginUpdate() => ++_updateCount;
 
     private void EndUpdate()
     {
-      --this._updateCount;
-      if (this._updateCount >= 0)
+      --_updateCount;
+      if (_updateCount >= 0)
         return;
-      this._updateCount = 0;
+      _updateCount = 0;
     }
 
     private void comboBox_SearchType_SelectedIndexChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      if (this._activeControl != null)
+      if (_activeControl != null)
       {
-        this._activeControl.Visible = false;
-        this._activeControl = (SearchConditionControlBase) null;
+        _activeControl.Visible = false;
+        _activeControl = null;
       }
-      if (this.comboBox_SearchType.SelectedIndex == -1)
+      if (comboBox_SearchType.SelectedIndex == -1)
         return;
-      this._activeControl = this._searchConditions[this.comboBox_SearchType.SelectedIndex];
-      this._activeControl.Visible = true;
+      _activeControl = _searchConditions[comboBox_SearchType.SelectedIndex];
+      _activeControl.Visible = true;
     }
 
     private void button_OK_Click(object sender, EventArgs e)
     {
-      if (this._activeControl == null)
+      if (_activeControl == null)
         return;
-      this._condition = this._activeControl.GetCondition();
+      _condition = _activeControl.GetCondition();
     }
   }
 }

@@ -2,13 +2,11 @@
 // Type: DQ9_Cheat.DataManager.SaveData
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
 using System;
 using System.IO;
-using System.Windows.Forms;
 
-#nullable disable
 namespace DQ9_Cheat.DataManager
 {
   internal class SaveData
@@ -34,88 +32,88 @@ namespace DQ9_Cheat.DataManager
 
     public SaveData()
     {
-      this._isIntermission = new DataValue<byte>(this, 20U, (Control) null, (byte) 0, (byte) 1);
-      this._basisData = new BasisData(this);
-      this._firstClearData = new FirstClearData(this);
-      this._characterManager = new CharacterManager(this);
-      this._rikkaData = new RikkaData(this);
-      this._itemData = new ItemData(this);
-      this._processFlag = new ProcessFlag(this);
-      this._questDataManager = new QuestDataManager(this);
-      this._titleData = new TitleData(this);
-      this._treasureMapManager = new TreasureMapManager(this);
-      this._monsterDataManager = new MonsterDataManager(this);
-      this._smartItemData = new SmartItemData(this);
-      this._itemCollectionData = new ItemCollectionData(this);
-      this._alchemyData = new AlchemyData(this);
-      this._wifiShopData = new WifiShopping(this);
+      _isIntermission = new DataValue<byte>(this, 20U, null, 0, 1);
+      _basisData = new BasisData(this);
+      _firstClearData = new FirstClearData(this);
+      _characterManager = new CharacterManager(this);
+      _rikkaData = new RikkaData(this);
+      _itemData = new ItemData(this);
+      _processFlag = new ProcessFlag(this);
+      _questDataManager = new QuestDataManager(this);
+      _titleData = new TitleData(this);
+      _treasureMapManager = new TreasureMapManager(this);
+      _monsterDataManager = new MonsterDataManager(this);
+      _smartItemData = new SmartItemData(this);
+      _itemCollectionData = new ItemCollectionData(this);
+      _alchemyData = new AlchemyData(this);
+      _wifiShopData = new WifiShopping(this);
     }
 
-    public byte[] Data => this._data;
+    public byte[] Data => _data;
 
     internal void ReadData(BinaryReader br)
     {
-      this._data = br.ReadBytes(32768);
-      this._characterManager.OnLoaded();
-      this._alchemyData.OnLoaded();
-      this._rikkaData.VisitorManager.OnLoaded();
-      this._treasureMapManager.OnLoaded();
+      _data = br.ReadBytes(32768);
+      _characterManager.OnLoaded();
+      _alchemyData.OnLoaded();
+      _rikkaData.VisitorManager.OnLoaded();
+      _treasureMapManager.OnLoaded();
     }
 
-    internal void Create() => this._data = new byte[32768];
+    internal void Create() => _data = new byte[32768];
 
     internal void OnSaving()
     {
-      this._characterManager.OnSaving();
-      this._alchemyData.OnSaving();
+      _characterManager.OnSaving();
+      _alchemyData.OnSaving();
     }
 
     internal void OnUndo()
     {
-      this._rikkaData.VisitorManager.OnUndo();
-      this._treasureMapManager.OnUndo();
+      _rikkaData.VisitorManager.OnUndo();
+      _treasureMapManager.OnUndo();
     }
 
     internal void OnRedo()
     {
-      this._rikkaData.VisitorManager.OnRedo();
-      this._treasureMapManager.OnRedo();
+      _rikkaData.VisitorManager.OnRedo();
+      _treasureMapManager.OnRedo();
     }
 
-    public DataValue<byte> IsIntermission => this._isIntermission;
+    public DataValue<byte> IsIntermission => _isIntermission;
 
-    public BasisData BasisData => this._basisData;
+    public BasisData BasisData => _basisData;
 
-    public FirstClearData FirstClearData => this._firstClearData;
+    public FirstClearData FirstClearData => _firstClearData;
 
-    public CharacterManager CharacterManager => this._characterManager;
+    public CharacterManager CharacterManager => _characterManager;
 
-    public RikkaData RikkaData => this._rikkaData;
+    public RikkaData RikkaData => _rikkaData;
 
-    public ItemData ItemData => this._itemData;
+    public ItemData ItemData => _itemData;
 
-    public ProcessFlag ProcessFlag => this._processFlag;
+    public ProcessFlag ProcessFlag => _processFlag;
 
-    public QuestDataManager QuestDataManager => this._questDataManager;
+    public QuestDataManager QuestDataManager => _questDataManager;
 
-    public TitleData TitleData => this._titleData;
+    public TitleData TitleData => _titleData;
 
-    public TreasureMapManager TreasureMapManager => this._treasureMapManager;
+    public TreasureMapManager TreasureMapManager => _treasureMapManager;
 
-    public MonsterDataManager MonsterDataManager => this._monsterDataManager;
+    public MonsterDataManager MonsterDataManager => _monsterDataManager;
 
-    public SmartItemData SmartItemData => this._smartItemData;
+    public SmartItemData SmartItemData => _smartItemData;
 
-    public ItemCollectionData ItemCollectionData => this._itemCollectionData;
+    public ItemCollectionData ItemCollectionData => _itemCollectionData;
 
-    public AlchemyData AlchemyData => this._alchemyData;
+    public AlchemyData AlchemyData => _alchemyData;
 
-    public WifiShopping WifiShopData => this._wifiShopData;
+    public WifiShopping WifiShopData => _wifiShopData;
 
     public byte[] GetData()
     {
       byte[] destinationArray = new byte[32752];
-      Array.Copy((Array) this._data, 16, (Array) destinationArray, 0, destinationArray.Length);
+      Array.Copy(_data, 16, destinationArray, 0, destinationArray.Length);
       return destinationArray;
     }
 
@@ -123,7 +121,7 @@ namespace DQ9_Cheat.DataManager
     {
       if (src.Length != 32752)
         return;
-      Array.Copy((Array) src, 0, (Array) this._data, 16, 32752);
+      Array.Copy(src, 0, _data, 16, 32752);
     }
   }
 }

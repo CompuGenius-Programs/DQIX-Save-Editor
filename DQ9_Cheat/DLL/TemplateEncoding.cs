@@ -2,13 +2,12 @@
 // Type: FriedGinger.DQCheat.TemplateEncoding
 // Assembly: DQCheat, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 8257ADC3-8608-472B-A2D6-0B748207D880
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.dll
+// Assembly location: dq9_save_editor_0.7\DQCheat.dll
 
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-#nullable disable
 namespace FriedGinger.DQCheat
 {
   public class TemplateEncoding : Encoding
@@ -78,11 +77,11 @@ namespace FriedGinger.DQCheat
 
     public TemplateEncoding()
     {
-      if (TemplateEncoding.templateDictionary != null)
+      if (templateDictionary != null)
         return;
-      TemplateEncoding.templateDictionary = new Dictionary<string, char>();
-      for (int index = 0; index < TemplateEncoding.temptags.Length; ++index)
-        TemplateEncoding.templateDictionary.Add(TemplateEncoding.temptags[index], TemplateEncoding.tempchars[index]);
+      templateDictionary = new Dictionary<string, char>();
+      for (int index = 0; index < temptags.Length; ++index)
+        templateDictionary.Add(temptags[index], tempchars[index]);
     }
 
     public override string EncodingName => "DQ9 Template";
@@ -112,10 +111,10 @@ namespace FriedGinger.DQCheat
         }
         if (!flag)
         {
-          int index2 = TemplateEncoding.tempchars.IndexOf(ch);
+          int index2 = tempchars.IndexOf(ch);
           if (index2 >= 0)
           {
-            byteCount += 2 + TemplateEncoding.temptags[index2].Length;
+            byteCount += 2 + temptags[index2].Length;
             continue;
           }
         }
@@ -133,7 +132,7 @@ namespace FriedGinger.DQCheat
       for (int index1 = 0; index1 < count; ++index1)
       {
         byte num = bytes[index + index1];
-        if (num >= (byte) 32 && num <= (byte) 126)
+        if (num >= 32 && num <= 126)
         {
           switch (num)
           {
@@ -144,13 +143,12 @@ namespace FriedGinger.DQCheat
               if (flag)
               {
                 string key = stringBuilder.ToString();
-                if (TemplateEncoding.templateDictionary.ContainsKey(key))
+                if (templateDictionary.ContainsKey(key))
                   ++charCount;
                 else
                   charCount += 2 + key.Length;
                 stringBuilder.Length = 0;
                 flag = false;
-                continue;
               }
               continue;
             default:
@@ -179,7 +177,7 @@ namespace FriedGinger.DQCheat
       for (int index1 = 0; index1 < count; ++index1)
       {
         byte num = bytes[index + index1];
-        if (num >= (byte) 32 && num <= (byte) 126)
+        if (num >= 32 && num <= 126)
         {
           switch (num)
           {
@@ -190,13 +188,12 @@ namespace FriedGinger.DQCheat
               if (flag)
               {
                 string key = stringBuilder2.ToString();
-                if (TemplateEncoding.templateDictionary.ContainsKey(key))
-                  stringBuilder1.Append(TemplateEncoding.templateDictionary[key]);
+                if (templateDictionary.ContainsKey(key))
+                  stringBuilder1.Append(templateDictionary[key]);
                 else
                   stringBuilder1.Append('<').Append(key).Append('>');
                 stringBuilder2.Length = 0;
                 flag = false;
-                continue;
               }
               continue;
             default:
@@ -226,7 +223,7 @@ namespace FriedGinger.DQCheat
       for (int index1 = 0; index1 < byteCount; ++index1)
       {
         byte num2 = bytes[byteIndex + index1];
-        if (num2 >= (byte) 32 && num2 <= (byte) 126)
+        if (num2 >= 32 && num2 <= 126)
         {
           switch (num2)
           {
@@ -237,9 +234,9 @@ namespace FriedGinger.DQCheat
               if (flag)
               {
                 string key = stringBuilder.ToString();
-                if (TemplateEncoding.templateDictionary.ContainsKey(key))
+                if (templateDictionary.ContainsKey(key))
                 {
-                  chars[num1++] = TemplateEncoding.templateDictionary[key];
+                  chars[num1++] = templateDictionary[key];
                 }
                 else
                 {
@@ -247,7 +244,7 @@ namespace FriedGinger.DQCheat
                   int index2 = num1;
                   int destinationIndex = index2 + 1;
                   chArray1[index2] = '<';
-                  Array.Copy((Array) key.ToCharArray(), 0, (Array) chars, destinationIndex, key.Length);
+                  Array.Copy(key.ToCharArray(), 0, chars, destinationIndex, key.Length);
                   int num3 = destinationIndex + key.Length;
                   char[] chArray2 = chars;
                   int index3 = num3;
@@ -256,7 +253,6 @@ namespace FriedGinger.DQCheat
                 }
                 stringBuilder.Length = 0;
                 flag = false;
-                continue;
               }
               continue;
             default:
@@ -301,19 +297,19 @@ namespace FriedGinger.DQCheat
         }
         if (!flag)
         {
-          int index2 = TemplateEncoding.tempchars.IndexOf(ch);
+          int index2 = tempchars.IndexOf(ch);
           if (index2 >= 0)
           {
             byte[] numArray1 = bytes;
             int index3 = num1;
             int num2 = index3 + 1;
-            numArray1[index3] = (byte) 60;
-            foreach (byte num3 in TemplateEncoding.temptags[index2])
+            numArray1[index3] = 60;
+            foreach (byte num3 in temptags[index2])
               bytes[num2++] = num3;
             byte[] numArray2 = bytes;
             int index4 = num2;
             num1 = index4 + 1;
-            numArray2[index4] = (byte) 62;
+            numArray2[index4] = 62;
             continue;
           }
         }

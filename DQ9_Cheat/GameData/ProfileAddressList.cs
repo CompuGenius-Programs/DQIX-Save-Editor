@@ -2,12 +2,11 @@
 // Type: DQ9_Cheat.GameData.ProfileAddressList
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-#nullable disable
 namespace DQ9_Cheat.GameData
 {
   public static class ProfileAddressList
@@ -41,7 +40,7 @@ namespace DQ9_Cheat.GameData
         "Gittingham Palace"
       };
       for (int index = 0; index < strArray1.Length; ++index)
-        ProfileAddressList._dqAreaList.Add(new ProfileAddress(strArray1[index], index));
+        _dqAreaList.Add(new ProfileAddress(strArray1[index], index));
       string[] strArray2 = new string[47]
       {
         "AFG",
@@ -94,7 +93,7 @@ namespace DQ9_Cheat.GameData
       };
       string str = "AFGAGOALBANDAREARGARMATGAUSAUTAZEBDIBELBENBFABGDBGRBHRBHSBIHBLRBLZBOLBRABRBBRNBTNBWACAFCAMCANCHECHLCHNCIVCMRCODCOGCOLCOMCPVCUBCYPCZEDEUDJIDMADNKDOMDZAECUEGYERIESPESTETHFINFJIFRAFSMGABGBRGEOGHAGHBGINGMBGNQGRCGRDGTMGUYHITHNDHRYHUNINAINDIRLIRNIRQISLISRITAJAMJORJPNKAZKENKGZKIRKNAKORKWTLAOLBNLBRLBYLCALIELKALSOLTULUXLVAMARMCOMDAMDGMDVMEXMHLMKDMLIMLTMMRMNEMNGMOZMTNMUSMWIMYSNAMNERNGANICNLDNORNPLNRUNZLOMNORIPAKPANPERPHLPLWPNGPOLPRKPRTPRYQATROURUSRWASAUSDNSENSGPSLBSLESLVSMRSOMSRBSTPSURSVKSVNSWESWZSYCSYRTCDTHATJKTKMTLSTOGTONTTOTUNTURTUVTZAUGAUKRURYUSAUZBVCTVENVNMVUTWSMYEMZAFZMBZWE";
       for (int index = 0; index < 144; ++index)
-        ProfileAddressList._prefectureList.Add(new ProfileAddress(str.Substring(index * 3, 3), index + 310));
+        _prefectureList.Add(new ProfileAddress(str.Substring(index * 3, 3), index + 310));
       string[] strArray3 = new string[8]
       {
         "Asia",
@@ -107,48 +106,48 @@ namespace DQ9_Cheat.GameData
         "Antartica"
       };
       for (int index = 0; index < strArray3.Length; ++index)
-        ProfileAddressList._otherAreaList.Add(new ProfileAddress(strArray3[index], index + 200));
-      ProfileAddressList._unknownAreaList.Add(new ProfileAddress("Unknown", 300));
+        _otherAreaList.Add(new ProfileAddress(strArray3[index], index + 200));
+      _unknownAreaList.Add(new ProfileAddress("Unknown", 300));
     }
 
     public static ReadOnlyCollection<ProfileAddress> DQAreaList
     {
-      get => ProfileAddressList._dqAreaList.AsReadOnly();
+      get => _dqAreaList.AsReadOnly();
     }
 
     public static ReadOnlyCollection<ProfileAddress> PrefectureList
     {
-      get => ProfileAddressList._prefectureList.AsReadOnly();
+      get => _prefectureList.AsReadOnly();
     }
 
     public static ReadOnlyCollection<ProfileAddress> OtherAreaList
     {
-      get => ProfileAddressList._otherAreaList.AsReadOnly();
+      get => _otherAreaList.AsReadOnly();
     }
 
     public static ReadOnlyCollection<ProfileAddress> UnknownAreaList
     {
-      get => ProfileAddressList._unknownAreaList.AsReadOnly();
+      get => _unknownAreaList.AsReadOnly();
     }
 
     public static ProfileAddress GetAddressFromIndex(ushort index)
     {
-      foreach (ProfileAddress dqArea in ProfileAddressList._dqAreaList)
+      foreach (ProfileAddress dqArea in _dqAreaList)
       {
-        if (dqArea.Index == (int) index)
+        if (dqArea.Index == index)
           return dqArea;
       }
-      foreach (ProfileAddress prefecture in ProfileAddressList._prefectureList)
+      foreach (ProfileAddress prefecture in _prefectureList)
       {
-        if (prefecture.Index == (int) index)
+        if (prefecture.Index == index)
           return prefecture;
       }
-      foreach (ProfileAddress otherArea in ProfileAddressList._otherAreaList)
+      foreach (ProfileAddress otherArea in _otherAreaList)
       {
-        if (otherArea.Index == (int) index)
+        if (otherArea.Index == index)
           return otherArea;
       }
-      return ProfileAddressList._unknownAreaList[0];
+      return _unknownAreaList[0];
     }
   }
 }

@@ -2,9 +2,8 @@
 // Type: DQ9_Cheat.DataManager.UndoRedoCharacterIndexChanged
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-#nullable disable
 namespace DQ9_Cheat.DataManager
 {
   internal class UndoRedoCharacterIndexChanged : UndoRedoElement
@@ -14,18 +13,18 @@ namespace DQ9_Cheat.DataManager
 
     public UndoRedoCharacterIndexChanged(int srcIndex, int toIndex)
     {
-      this._srcIndex = srcIndex;
-      this._toIndex = toIndex;
+      _srcIndex = srcIndex;
+      _toIndex = toIndex;
     }
 
     public override void Undo()
     {
-      this.GetSaveData().CharacterManager.MoveTo(this._toIndex, this._srcIndex);
+      GetSaveData().CharacterManager.MoveTo(_toIndex, _srcIndex);
     }
 
     public override void Redo()
     {
-      this.GetSaveData().CharacterManager.MoveTo(this._srcIndex, this._toIndex);
+      GetSaveData().CharacterManager.MoveTo(_srcIndex, _toIndex);
     }
   }
 }

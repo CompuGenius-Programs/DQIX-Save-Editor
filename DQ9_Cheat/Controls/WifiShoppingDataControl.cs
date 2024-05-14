@@ -2,17 +2,16 @@
 // Type: DQ9_Cheat.Controls.WifiShoppingDataControl
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-using DQ9_Cheat.DataManager;
-using DQ9_Cheat.GameData;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using DQ9_Cheat.DataManager;
+using DQ9_Cheat.GameData;
 
-#nullable disable
 namespace DQ9_Cheat.Controls
 {
   public class WifiShoppingDataControl : DataControlBase
@@ -53,53 +52,53 @@ namespace DQ9_Cheat.Controls
 
     public WifiShoppingDataControl()
     {
-      this.AutoScaleMode = AutoScaleMode.None;
-      this.InitializeComponent();
+      AutoScaleMode = AutoScaleMode.None;
+      InitializeComponent();
       for (int index = 0; index < 6; ++index)
       {
-        this._textBoxItemNames[index] = new TextBox();
-        this._textBoxItemNames[index].ReadOnly = true;
-        this._textBoxItemNames[index].Location = new Point(31, 99 + 25 * index);
-        this._textBoxItemNames[index].Size = new Size(113, 20);
-        this._textBoxItemNames[index].Tag = (object) index;
-        this.Controls.Add((Control) this._textBoxItemNames[index]);
-        this._buttonItemSelects[index] = new Button();
-        this._buttonItemSelects[index].Text = "Set";
-        this._buttonItemSelects[index].Location = new Point(150, 99 + 25 * index);
-        this._buttonItemSelects[index].Size = new Size(37, 20);
-        this._buttonItemSelects[index].UseVisualStyleBackColor = true;
-        this._buttonItemSelects[index].Tag = (object) index;
-        this._buttonItemSelects[index].Click += new EventHandler(this.ButtonItemSelects_Click);
-        this.Controls.Add((Control) this._buttonItemSelects[index]);
-        this._numericUpDownItemCounts[index] = new SafeNumericUpDown();
-        this._numericUpDownItemCounts[index].Location = new Point(223, 99 + 25 * index);
-        this._numericUpDownItemCounts[index].Size = new Size(40, 20);
-        this._numericUpDownItemCounts[index].Tag = (object) index;
-        this._numericUpDownItemCounts[index].Maximum = 127M;
-        this._numericUpDownItemCounts[index].Minimum = 0M;
-        this._numericUpDownItemCounts[index].ValueChanged += new EventHandler(this.NumericUpDownItemCounts_ValueChanged);
-        this.Controls.Add((Control) this._numericUpDownItemCounts[index]);
-        this._numericUpDownItemPrices[index] = new SafeNumericUpDown();
-        this._numericUpDownItemPrices[index].Location = new Point(303, 99 + 25 * index);
-        this._numericUpDownItemPrices[index].Size = new Size(71, 20);
-        this._numericUpDownItemPrices[index].Maximum = 33554431M;
-        this._numericUpDownItemPrices[index].Minimum = 0M;
-        this._numericUpDownItemPrices[index].Tag = (object) index;
-        this._numericUpDownItemPrices[index].ValueChanged += new EventHandler(this.NumericUpDownItemPrices_ValueChanged);
-        this.Controls.Add((Control) this._numericUpDownItemPrices[index]);
+        _textBoxItemNames[index] = new TextBox();
+        _textBoxItemNames[index].ReadOnly = true;
+        _textBoxItemNames[index].Location = new Point(31, 99 + 25 * index);
+        _textBoxItemNames[index].Size = new Size(113, 20);
+        _textBoxItemNames[index].Tag = index;
+        Controls.Add(_textBoxItemNames[index]);
+        _buttonItemSelects[index] = new Button();
+        _buttonItemSelects[index].Text = "Set";
+        _buttonItemSelects[index].Location = new Point(150, 99 + 25 * index);
+        _buttonItemSelects[index].Size = new Size(37, 20);
+        _buttonItemSelects[index].UseVisualStyleBackColor = true;
+        _buttonItemSelects[index].Tag = index;
+        _buttonItemSelects[index].Click += ButtonItemSelects_Click;
+        Controls.Add(_buttonItemSelects[index]);
+        _numericUpDownItemCounts[index] = new SafeNumericUpDown();
+        _numericUpDownItemCounts[index].Location = new Point(223, 99 + 25 * index);
+        _numericUpDownItemCounts[index].Size = new Size(40, 20);
+        _numericUpDownItemCounts[index].Tag = index;
+        _numericUpDownItemCounts[index].Maximum = 127M;
+        _numericUpDownItemCounts[index].Minimum = 0M;
+        _numericUpDownItemCounts[index].ValueChanged += NumericUpDownItemCounts_ValueChanged;
+        Controls.Add(_numericUpDownItemCounts[index]);
+        _numericUpDownItemPrices[index] = new SafeNumericUpDown();
+        _numericUpDownItemPrices[index].Location = new Point(303, 99 + 25 * index);
+        _numericUpDownItemPrices[index].Size = new Size(71, 20);
+        _numericUpDownItemPrices[index].Maximum = 33554431M;
+        _numericUpDownItemPrices[index].Minimum = 0M;
+        _numericUpDownItemPrices[index].Tag = index;
+        _numericUpDownItemPrices[index].ValueChanged += NumericUpDownItemPrices_ValueChanged;
+        Controls.Add(_numericUpDownItemPrices[index]);
       }
     }
 
     private void NumericUpDownItemPrices_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0 || !(sender is SafeNumericUpDown safeNumericUpDown))
+      if (_updateCount != 0 || !(sender is SafeNumericUpDown safeNumericUpDown))
         return;
       SaveDataManager.Instance.SaveData.WifiShopData.WifiShopGoods[(int) safeNumericUpDown.Tag].ItemPrice = (uint) safeNumericUpDown.Value;
     }
 
     private void NumericUpDownItemCounts_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0 || !(sender is SafeNumericUpDown safeNumericUpDown))
+      if (_updateCount != 0 || !(sender is SafeNumericUpDown safeNumericUpDown))
         return;
       SaveDataManager.Instance.SaveData.WifiShopData.WifiShopGoods[(int) safeNumericUpDown.Tag].ItemCount = (byte) safeNumericUpDown.Value;
     }
@@ -120,590 +119,590 @@ namespace DQ9_Cheat.Controls
         ItemType.Shoe,
         ItemType.Accessory
       });
-      itemSelectWindow.Location = this.PointToScreen(new Point(this.Left + button.Right, this.Top + button.Bottom));
+      itemSelectWindow.Location = PointToScreen(new Point(Left + button.Right, Top + button.Bottom));
       if (itemSelectWindow.ShowDialog() != DialogResult.OK)
         return;
       ItemDataBase selectedItem = itemSelectWindow.SelectedItem;
       SaveDataManager.Instance.SaveData.WifiShopData.WifiShopGoods[(int) button.Tag].Item = selectedItem;
-      this.OnValueUpdate();
+      OnValueUpdate();
     }
 
     protected override void OnValueUpdate()
     {
-      this.BeginUpdate();
+      BeginUpdate();
       WifiShopping wifiShopData = SaveDataManager.Instance.SaveData.WifiShopData;
-      this.numericUpDown_ExpiresYear.Value = (Decimal) wifiShopData.ExpiresYear;
-      this.numericUpDown_ExpiresMonth.Value = (Decimal) wifiShopData.ExpiresMonth;
-      this.numericUpDown_ExpiresDay.Value = (Decimal) wifiShopData.ExpiresDay;
-      this.numericUpDown_ExpiresHour.Value = (Decimal) wifiShopData.ExpiresHour;
-      this.numericUpDown_AllowNextConnectYear.Value = (Decimal) wifiShopData.AllowNextConnectYear;
-      this.numericUpDown_AllowNextConnectMonth.Value = (Decimal) wifiShopData.AllowNextConnectMonth;
-      this.numericUpDown_AllowNextConnectDay.Value = (Decimal) wifiShopData.AllowNextConnectDay;
-      this.numericUpDown_AllowNextConnectHour.Value = (Decimal) wifiShopData.AllowNextConnectHour;
-      this.numericUpDown_MessageExpiresYear.Value = (Decimal) wifiShopData.MessageExpiresYear;
-      this.numericUpDown_MessageExpiresMonth.Value = (Decimal) wifiShopData.MessageExpiresMonth;
-      this.numericUpDown_MessageExpiresDay.Value = (Decimal) wifiShopData.MessageExpiresDay;
-      this.numericUpDown_MessageExpiresHour.Value = (Decimal) wifiShopData.MessageExpiresHour;
-      this.textBox_Message.Text = wifiShopData.Message;
+      numericUpDown_ExpiresYear.Value = wifiShopData.ExpiresYear;
+      numericUpDown_ExpiresMonth.Value = wifiShopData.ExpiresMonth;
+      numericUpDown_ExpiresDay.Value = wifiShopData.ExpiresDay;
+      numericUpDown_ExpiresHour.Value = wifiShopData.ExpiresHour;
+      numericUpDown_AllowNextConnectYear.Value = wifiShopData.AllowNextConnectYear;
+      numericUpDown_AllowNextConnectMonth.Value = wifiShopData.AllowNextConnectMonth;
+      numericUpDown_AllowNextConnectDay.Value = wifiShopData.AllowNextConnectDay;
+      numericUpDown_AllowNextConnectHour.Value = wifiShopData.AllowNextConnectHour;
+      numericUpDown_MessageExpiresYear.Value = wifiShopData.MessageExpiresYear;
+      numericUpDown_MessageExpiresMonth.Value = wifiShopData.MessageExpiresMonth;
+      numericUpDown_MessageExpiresDay.Value = wifiShopData.MessageExpiresDay;
+      numericUpDown_MessageExpiresHour.Value = wifiShopData.MessageExpiresHour;
+      textBox_Message.Text = wifiShopData.Message;
       for (int index = 0; index < 6; ++index)
       {
         ItemDataBase itemDataBase = wifiShopData.WifiShopGoods[index].Item;
         if (itemDataBase != null)
-          this._textBoxItemNames[index].Text = itemDataBase.Name;
+          _textBoxItemNames[index].Text = itemDataBase.Name;
         else
-          this._textBoxItemNames[index].Text = "Empty";
-        this._numericUpDownItemCounts[index].Value = (Decimal) wifiShopData.WifiShopGoods[index].ItemCount;
-        this._numericUpDownItemPrices[index].Value = (Decimal) wifiShopData.WifiShopGoods[index].ItemPrice;
+          _textBoxItemNames[index].Text = "Empty";
+        _numericUpDownItemCounts[index].Value = wifiShopData.WifiShopGoods[index].ItemCount;
+        _numericUpDownItemPrices[index].Value = wifiShopData.WifiShopGoods[index].ItemPrice;
       }
-      this.EndUpdate();
+      EndUpdate();
     }
 
     protected override void OnPaint(PaintEventArgs e)
     {
       base.OnPaint(e);
-      using (Brush brush = (Brush) new SolidBrush(SystemColors.ControlText))
+      using (Brush brush = new SolidBrush(SystemColors.ControlText))
       {
         for (int index = 0; index < 6; ++index)
         {
-          e.Graphics.DrawString("Qty", this.Font, brush, 198f, (float) (101 + 25 * index));
-          e.Graphics.DrawString("Price", this.Font, brush, 271f, (float) (101 + 25 * index));
+          e.Graphics.DrawString("Qty", Font, brush, 198f, 101 + 25 * index);
+          e.Graphics.DrawString("Price", Font, brush, 271f, 101 + 25 * index);
         }
-        e.Graphics.DrawString("Message", this.Font, brush, 413f, 79f);
-        e.Graphics.DrawString("<PAGE>: New page", this.Font, brush, 413f, 254f);
-        e.Graphics.DrawString("<PAD_WAIT>: Wait for button press", this.Font, brush, 413f, 270f);
-        e.Graphics.DrawString("<END>: End message", this.Font, brush, 413f, 286f);
+        e.Graphics.DrawString("Message", Font, brush, 413f, 79f);
+        e.Graphics.DrawString("<PAGE>: New page", Font, brush, 413f, 254f);
+        e.Graphics.DrawString("<PAD_WAIT>: Wait for button press", Font, brush, 413f, 270f);
+        e.Graphics.DrawString("<END>: End message", Font, brush, 413f, 286f);
       }
     }
 
     private void numericUpDown_ExpiresYear_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.WifiShopData.ExpiresYear = (ushort) this.numericUpDown_ExpiresYear.Value;
+      SaveDataManager.Instance.SaveData.WifiShopData.ExpiresYear = (ushort) numericUpDown_ExpiresYear.Value;
     }
 
     private void numericUpDown_ExpiresMonth_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.WifiShopData.ExpiresMonth = (byte) this.numericUpDown_ExpiresMonth.Value;
+      SaveDataManager.Instance.SaveData.WifiShopData.ExpiresMonth = (byte) numericUpDown_ExpiresMonth.Value;
     }
 
     private void numericUpDown_ExpiresDay_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.WifiShopData.ExpiresDay = (byte) this.numericUpDown_ExpiresDay.Value;
+      SaveDataManager.Instance.SaveData.WifiShopData.ExpiresDay = (byte) numericUpDown_ExpiresDay.Value;
     }
 
     private void numericUpDown_ExpiresHour_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.WifiShopData.ExpiresHour = (byte) this.numericUpDown_ExpiresHour.Value;
+      SaveDataManager.Instance.SaveData.WifiShopData.ExpiresHour = (byte) numericUpDown_ExpiresHour.Value;
     }
 
     private void numericUpDown_AllowNextConnectYear_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.WifiShopData.AllowNextConnectYear = (ushort) this.numericUpDown_AllowNextConnectYear.Value;
+      SaveDataManager.Instance.SaveData.WifiShopData.AllowNextConnectYear = (ushort) numericUpDown_AllowNextConnectYear.Value;
     }
 
     private void numericUpDown_AllowNextConnectMonth_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.WifiShopData.AllowNextConnectMonth = (byte) this.numericUpDown_AllowNextConnectMonth.Value;
+      SaveDataManager.Instance.SaveData.WifiShopData.AllowNextConnectMonth = (byte) numericUpDown_AllowNextConnectMonth.Value;
     }
 
     private void numericUpDown_AllowNextConnectDay_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.WifiShopData.AllowNextConnectDay = (byte) this.numericUpDown_AllowNextConnectDay.Value;
+      SaveDataManager.Instance.SaveData.WifiShopData.AllowNextConnectDay = (byte) numericUpDown_AllowNextConnectDay.Value;
     }
 
     private void numericUpDown_AllowNextConnectHour_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.WifiShopData.AllowNextConnectHour = (byte) this.numericUpDown_AllowNextConnectHour.Value;
+      SaveDataManager.Instance.SaveData.WifiShopData.AllowNextConnectHour = (byte) numericUpDown_AllowNextConnectHour.Value;
     }
 
     private void textBox_Message_TextChanged(object sender, EventArgs e)
     {
       Encoding encoding = Encoding.GetEncoding("utf-8");
-      byte[] bytes = encoding.GetBytes(this.textBox_Message.Text);
+      byte[] bytes = encoding.GetBytes(textBox_Message.Text);
       if (bytes.Length > SaveDataManager.Instance.SaveData.WifiShopData.MessageMaxLength)
       {
-        this.textBox_Message.Text = encoding.GetString(bytes, 0, SaveDataManager.Instance.SaveData.WifiShopData.MessageMaxLength);
-        this.textBox_Message.SelectionStart = this.textBox_Message.TextLength;
-        this.textBox_Message.ScrollToCaret();
+        textBox_Message.Text = encoding.GetString(bytes, 0, SaveDataManager.Instance.SaveData.WifiShopData.MessageMaxLength);
+        textBox_Message.SelectionStart = textBox_Message.TextLength;
+        textBox_Message.ScrollToCaret();
       }
       else
-        this.textBox_Message.Text = encoding.GetString(bytes, 0, bytes.Length);
-      if (this._updateCount != 0)
+        textBox_Message.Text = encoding.GetString(bytes, 0, bytes.Length);
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.WifiShopData.Message = this.textBox_Message.Text;
+      SaveDataManager.Instance.SaveData.WifiShopData.Message = textBox_Message.Text;
     }
 
     private void numericUpDown_MessageExpiresYear_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.WifiShopData.MessageExpiresYear = (ushort) this.numericUpDown_MessageExpiresYear.Value;
+      SaveDataManager.Instance.SaveData.WifiShopData.MessageExpiresYear = (ushort) numericUpDown_MessageExpiresYear.Value;
     }
 
     private void numericUpDown_MessageExpiresMonth_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.WifiShopData.MessageExpiresMonth = (byte) this.numericUpDown_MessageExpiresMonth.Value;
+      SaveDataManager.Instance.SaveData.WifiShopData.MessageExpiresMonth = (byte) numericUpDown_MessageExpiresMonth.Value;
     }
 
     private void numericUpDown_MessageExpiresDay_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.WifiShopData.MessageExpiresDay = (byte) this.numericUpDown_MessageExpiresDay.Value;
+      SaveDataManager.Instance.SaveData.WifiShopData.MessageExpiresDay = (byte) numericUpDown_MessageExpiresDay.Value;
     }
 
     private void numericUpDown_MessageExpiresHour_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.WifiShopData.MessageExpiresHour = (byte) this.numericUpDown_MessageExpiresHour.Value;
+      SaveDataManager.Instance.SaveData.WifiShopData.MessageExpiresHour = (byte) numericUpDown_MessageExpiresHour.Value;
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && this.components != null)
-        this.components.Dispose();
+      if (disposing && components != null)
+        components.Dispose();
       base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      this.label1 = new Label();
-      this.numericUpDown_AllowNextConnectHour = new SafeNumericUpDown();
-      this.label2 = new Label();
-      this.numericUpDown_AllowNextConnectDay = new SafeNumericUpDown();
-      this.label3 = new Label();
-      this.numericUpDown_AllowNextConnectMonth = new SafeNumericUpDown();
-      this.label4 = new Label();
-      this.numericUpDown_AllowNextConnectYear = new SafeNumericUpDown();
-      this.label5 = new Label();
-      this.label6 = new Label();
-      this.numericUpDown_ExpiresHour = new SafeNumericUpDown();
-      this.label7 = new Label();
-      this.numericUpDown_ExpiresDay = new SafeNumericUpDown();
-      this.label8 = new Label();
-      this.numericUpDown_ExpiresMonth = new SafeNumericUpDown();
-      this.label9 = new Label();
-      this.numericUpDown_ExpiresYear = new SafeNumericUpDown();
-      this.label10 = new Label();
-      this.label16 = new Label();
-      this.numericUpDown_MessageExpiresHour = new SafeNumericUpDown();
-      this.label17 = new Label();
-      this.numericUpDown_MessageExpiresDay = new SafeNumericUpDown();
-      this.label18 = new Label();
-      this.numericUpDown_MessageExpiresMonth = new SafeNumericUpDown();
-      this.label19 = new Label();
-      this.numericUpDown_MessageExpiresYear = new SafeNumericUpDown();
-      this.label20 = new Label();
-      this.textBox_Message = new TextBox();
-      this.numericUpDown_AllowNextConnectHour.BeginInit();
-      this.numericUpDown_AllowNextConnectDay.BeginInit();
-      this.numericUpDown_AllowNextConnectMonth.BeginInit();
-      this.numericUpDown_AllowNextConnectYear.BeginInit();
-      this.numericUpDown_ExpiresHour.BeginInit();
-      this.numericUpDown_ExpiresDay.BeginInit();
-      this.numericUpDown_ExpiresMonth.BeginInit();
-      this.numericUpDown_ExpiresYear.BeginInit();
-      this.numericUpDown_MessageExpiresHour.BeginInit();
-      this.numericUpDown_MessageExpiresDay.BeginInit();
-      this.numericUpDown_MessageExpiresMonth.BeginInit();
-      this.numericUpDown_MessageExpiresYear.BeginInit();
-      this.SuspendLayout();
-      this.label1.AutoSize = true;
-      this.label1.Location = new Point(365, 54);
-      this.label1.Name = "label1";
-      this.label1.Size = new Size(15, 13);
-      this.label1.TabIndex = 92;
-      this.label1.Text = "H";
-      this.numericUpDown_AllowNextConnectHour.Location = new Point(325, 52);
-      this.numericUpDown_AllowNextConnectHour.Maximum = new Decimal(new int[4]
+      label1 = new Label();
+      numericUpDown_AllowNextConnectHour = new SafeNumericUpDown();
+      label2 = new Label();
+      numericUpDown_AllowNextConnectDay = new SafeNumericUpDown();
+      label3 = new Label();
+      numericUpDown_AllowNextConnectMonth = new SafeNumericUpDown();
+      label4 = new Label();
+      numericUpDown_AllowNextConnectYear = new SafeNumericUpDown();
+      label5 = new Label();
+      label6 = new Label();
+      numericUpDown_ExpiresHour = new SafeNumericUpDown();
+      label7 = new Label();
+      numericUpDown_ExpiresDay = new SafeNumericUpDown();
+      label8 = new Label();
+      numericUpDown_ExpiresMonth = new SafeNumericUpDown();
+      label9 = new Label();
+      numericUpDown_ExpiresYear = new SafeNumericUpDown();
+      label10 = new Label();
+      label16 = new Label();
+      numericUpDown_MessageExpiresHour = new SafeNumericUpDown();
+      label17 = new Label();
+      numericUpDown_MessageExpiresDay = new SafeNumericUpDown();
+      label18 = new Label();
+      numericUpDown_MessageExpiresMonth = new SafeNumericUpDown();
+      label19 = new Label();
+      numericUpDown_MessageExpiresYear = new SafeNumericUpDown();
+      label20 = new Label();
+      textBox_Message = new TextBox();
+      numericUpDown_AllowNextConnectHour.BeginInit();
+      numericUpDown_AllowNextConnectDay.BeginInit();
+      numericUpDown_AllowNextConnectMonth.BeginInit();
+      numericUpDown_AllowNextConnectYear.BeginInit();
+      numericUpDown_ExpiresHour.BeginInit();
+      numericUpDown_ExpiresDay.BeginInit();
+      numericUpDown_ExpiresMonth.BeginInit();
+      numericUpDown_ExpiresYear.BeginInit();
+      numericUpDown_MessageExpiresHour.BeginInit();
+      numericUpDown_MessageExpiresDay.BeginInit();
+      numericUpDown_MessageExpiresMonth.BeginInit();
+      numericUpDown_MessageExpiresYear.BeginInit();
+      SuspendLayout();
+      label1.AutoSize = true;
+      label1.Location = new Point(365, 54);
+      label1.Name = "label1";
+      label1.Size = new Size(15, 13);
+      label1.TabIndex = 92;
+      label1.Text = "H";
+      numericUpDown_AllowNextConnectHour.Location = new Point(325, 52);
+      numericUpDown_AllowNextConnectHour.Maximum = new Decimal(new int[4]
       {
         23,
         0,
         0,
         0
       });
-      this.numericUpDown_AllowNextConnectHour.Name = "numericUpDown_AllowNextConnectHour";
-      this.numericUpDown_AllowNextConnectHour.Size = new Size(39, 20);
-      this.numericUpDown_AllowNextConnectHour.TabIndex = 91;
-      this.numericUpDown_AllowNextConnectHour.Value = new Decimal(new int[4]);
-      this.numericUpDown_AllowNextConnectHour.ValueChanged += new EventHandler(this.numericUpDown_AllowNextConnectHour_ValueChanged);
-      this.label2.AutoSize = true;
-      this.label2.Location = new Point(304, 54);
-      this.label2.Name = "label2";
-      this.label2.Size = new Size(15, 13);
-      this.label2.TabIndex = 90;
-      this.label2.Text = "D";
-      this.numericUpDown_AllowNextConnectDay.Location = new Point(264, 52);
-      this.numericUpDown_AllowNextConnectDay.Maximum = new Decimal(new int[4]
+      numericUpDown_AllowNextConnectHour.Name = "numericUpDown_AllowNextConnectHour";
+      numericUpDown_AllowNextConnectHour.Size = new Size(39, 20);
+      numericUpDown_AllowNextConnectHour.TabIndex = 91;
+      numericUpDown_AllowNextConnectHour.Value = new Decimal(new int[4]);
+      numericUpDown_AllowNextConnectHour.ValueChanged += numericUpDown_AllowNextConnectHour_ValueChanged;
+      label2.AutoSize = true;
+      label2.Location = new Point(304, 54);
+      label2.Name = "label2";
+      label2.Size = new Size(15, 13);
+      label2.TabIndex = 90;
+      label2.Text = "D";
+      numericUpDown_AllowNextConnectDay.Location = new Point(264, 52);
+      numericUpDown_AllowNextConnectDay.Maximum = new Decimal(new int[4]
       {
         31,
         0,
         0,
         0
       });
-      this.numericUpDown_AllowNextConnectDay.Minimum = new Decimal(new int[4]
+      numericUpDown_AllowNextConnectDay.Minimum = new Decimal(new int[4]
       {
         1,
         0,
         0,
         0
       });
-      this.numericUpDown_AllowNextConnectDay.Name = "numericUpDown_AllowNextConnectDay";
-      this.numericUpDown_AllowNextConnectDay.Size = new Size(39, 20);
-      this.numericUpDown_AllowNextConnectDay.TabIndex = 89;
-      this.numericUpDown_AllowNextConnectDay.Value = new Decimal(new int[4]
+      numericUpDown_AllowNextConnectDay.Name = "numericUpDown_AllowNextConnectDay";
+      numericUpDown_AllowNextConnectDay.Size = new Size(39, 20);
+      numericUpDown_AllowNextConnectDay.TabIndex = 89;
+      numericUpDown_AllowNextConnectDay.Value = new Decimal(new int[4]
       {
         1,
         0,
         0,
         0
       });
-      this.numericUpDown_AllowNextConnectDay.ValueChanged += new EventHandler(this.numericUpDown_AllowNextConnectDay_ValueChanged);
-      this.label3.AutoSize = true;
-      this.label3.Location = new Point(242, 54);
-      this.label3.Name = "label3";
-      this.label3.Size = new Size(16, 13);
-      this.label3.TabIndex = 88;
-      this.label3.Text = "M";
-      this.numericUpDown_AllowNextConnectMonth.Location = new Point(202, 52);
-      this.numericUpDown_AllowNextConnectMonth.Maximum = new Decimal(new int[4]
+      numericUpDown_AllowNextConnectDay.ValueChanged += numericUpDown_AllowNextConnectDay_ValueChanged;
+      label3.AutoSize = true;
+      label3.Location = new Point(242, 54);
+      label3.Name = "label3";
+      label3.Size = new Size(16, 13);
+      label3.TabIndex = 88;
+      label3.Text = "M";
+      numericUpDown_AllowNextConnectMonth.Location = new Point(202, 52);
+      numericUpDown_AllowNextConnectMonth.Maximum = new Decimal(new int[4]
       {
         12,
         0,
         0,
         0
       });
-      this.numericUpDown_AllowNextConnectMonth.Minimum = new Decimal(new int[4]
+      numericUpDown_AllowNextConnectMonth.Minimum = new Decimal(new int[4]
       {
         1,
         0,
         0,
         0
       });
-      this.numericUpDown_AllowNextConnectMonth.Name = "numericUpDown_AllowNextConnectMonth";
-      this.numericUpDown_AllowNextConnectMonth.Size = new Size(39, 20);
-      this.numericUpDown_AllowNextConnectMonth.TabIndex = 87;
-      this.numericUpDown_AllowNextConnectMonth.Value = new Decimal(new int[4]
+      numericUpDown_AllowNextConnectMonth.Name = "numericUpDown_AllowNextConnectMonth";
+      numericUpDown_AllowNextConnectMonth.Size = new Size(39, 20);
+      numericUpDown_AllowNextConnectMonth.TabIndex = 87;
+      numericUpDown_AllowNextConnectMonth.Value = new Decimal(new int[4]
       {
         1,
         0,
         0,
         0
       });
-      this.numericUpDown_AllowNextConnectMonth.ValueChanged += new EventHandler(this.numericUpDown_AllowNextConnectMonth_ValueChanged);
-      this.label4.AutoSize = true;
-      this.label4.Location = new Point(181, 54);
-      this.label4.Name = "label4";
-      this.label4.Size = new Size(14, 13);
-      this.label4.TabIndex = 86;
-      this.label4.Text = "Y";
-      this.numericUpDown_AllowNextConnectYear.Location = new Point(128, 52);
-      this.numericUpDown_AllowNextConnectYear.Maximum = new Decimal(new int[4]
+      numericUpDown_AllowNextConnectMonth.ValueChanged += numericUpDown_AllowNextConnectMonth_ValueChanged;
+      label4.AutoSize = true;
+      label4.Location = new Point(181, 54);
+      label4.Name = "label4";
+      label4.Size = new Size(14, 13);
+      label4.TabIndex = 86;
+      label4.Text = "Y";
+      numericUpDown_AllowNextConnectYear.Location = new Point(128, 52);
+      numericUpDown_AllowNextConnectYear.Maximum = new Decimal(new int[4]
       {
         4095,
         0,
         0,
         0
       });
-      this.numericUpDown_AllowNextConnectYear.Name = "numericUpDown_AllowNextConnectYear";
-      this.numericUpDown_AllowNextConnectYear.Size = new Size(52, 20);
-      this.numericUpDown_AllowNextConnectYear.TabIndex = 85;
-      this.numericUpDown_AllowNextConnectYear.Value = new Decimal(new int[4]);
-      this.numericUpDown_AllowNextConnectYear.ValueChanged += new EventHandler(this.numericUpDown_AllowNextConnectYear_ValueChanged);
-      this.label5.AutoSize = true;
-      this.label5.Location = new Point(30, 54);
-      this.label5.Name = "label5";
-      this.label5.Size = new Size(98, 13);
-      this.label5.TabIndex = 84;
-      this.label5.Text = "Next available date";
-      this.label6.AutoSize = true;
-      this.label6.Location = new Point(365, 28);
-      this.label6.Name = "label6";
-      this.label6.Size = new Size(15, 13);
-      this.label6.TabIndex = 83;
-      this.label6.Text = "H";
-      this.numericUpDown_ExpiresHour.Location = new Point(325, 26);
-      this.numericUpDown_ExpiresHour.Maximum = new Decimal(new int[4]
+      numericUpDown_AllowNextConnectYear.Name = "numericUpDown_AllowNextConnectYear";
+      numericUpDown_AllowNextConnectYear.Size = new Size(52, 20);
+      numericUpDown_AllowNextConnectYear.TabIndex = 85;
+      numericUpDown_AllowNextConnectYear.Value = new Decimal(new int[4]);
+      numericUpDown_AllowNextConnectYear.ValueChanged += numericUpDown_AllowNextConnectYear_ValueChanged;
+      label5.AutoSize = true;
+      label5.Location = new Point(30, 54);
+      label5.Name = "label5";
+      label5.Size = new Size(98, 13);
+      label5.TabIndex = 84;
+      label5.Text = "Next available date";
+      label6.AutoSize = true;
+      label6.Location = new Point(365, 28);
+      label6.Name = "label6";
+      label6.Size = new Size(15, 13);
+      label6.TabIndex = 83;
+      label6.Text = "H";
+      numericUpDown_ExpiresHour.Location = new Point(325, 26);
+      numericUpDown_ExpiresHour.Maximum = new Decimal(new int[4]
       {
         23,
         0,
         0,
         0
       });
-      this.numericUpDown_ExpiresHour.Name = "numericUpDown_ExpiresHour";
-      this.numericUpDown_ExpiresHour.Size = new Size(39, 20);
-      this.numericUpDown_ExpiresHour.TabIndex = 82;
-      this.numericUpDown_ExpiresHour.Value = new Decimal(new int[4]);
-      this.numericUpDown_ExpiresHour.ValueChanged += new EventHandler(this.numericUpDown_ExpiresHour_ValueChanged);
-      this.label7.AutoSize = true;
-      this.label7.Location = new Point(304, 28);
-      this.label7.Name = "label7";
-      this.label7.Size = new Size(15, 13);
-      this.label7.TabIndex = 81;
-      this.label7.Text = "D";
-      this.numericUpDown_ExpiresDay.Location = new Point(264, 26);
-      this.numericUpDown_ExpiresDay.Maximum = new Decimal(new int[4]
+      numericUpDown_ExpiresHour.Name = "numericUpDown_ExpiresHour";
+      numericUpDown_ExpiresHour.Size = new Size(39, 20);
+      numericUpDown_ExpiresHour.TabIndex = 82;
+      numericUpDown_ExpiresHour.Value = new Decimal(new int[4]);
+      numericUpDown_ExpiresHour.ValueChanged += numericUpDown_ExpiresHour_ValueChanged;
+      label7.AutoSize = true;
+      label7.Location = new Point(304, 28);
+      label7.Name = "label7";
+      label7.Size = new Size(15, 13);
+      label7.TabIndex = 81;
+      label7.Text = "D";
+      numericUpDown_ExpiresDay.Location = new Point(264, 26);
+      numericUpDown_ExpiresDay.Maximum = new Decimal(new int[4]
       {
         31,
         0,
         0,
         0
       });
-      this.numericUpDown_ExpiresDay.Minimum = new Decimal(new int[4]
+      numericUpDown_ExpiresDay.Minimum = new Decimal(new int[4]
       {
         1,
         0,
         0,
         0
       });
-      this.numericUpDown_ExpiresDay.Name = "numericUpDown_ExpiresDay";
-      this.numericUpDown_ExpiresDay.Size = new Size(39, 20);
-      this.numericUpDown_ExpiresDay.TabIndex = 80;
-      this.numericUpDown_ExpiresDay.Value = new Decimal(new int[4]
+      numericUpDown_ExpiresDay.Name = "numericUpDown_ExpiresDay";
+      numericUpDown_ExpiresDay.Size = new Size(39, 20);
+      numericUpDown_ExpiresDay.TabIndex = 80;
+      numericUpDown_ExpiresDay.Value = new Decimal(new int[4]
       {
         1,
         0,
         0,
         0
       });
-      this.numericUpDown_ExpiresDay.ValueChanged += new EventHandler(this.numericUpDown_ExpiresDay_ValueChanged);
-      this.label8.AutoSize = true;
-      this.label8.Location = new Point(242, 28);
-      this.label8.Name = "label8";
-      this.label8.Size = new Size(16, 13);
-      this.label8.TabIndex = 79;
-      this.label8.Text = "M";
-      this.numericUpDown_ExpiresMonth.Location = new Point(202, 26);
-      this.numericUpDown_ExpiresMonth.Maximum = new Decimal(new int[4]
+      numericUpDown_ExpiresDay.ValueChanged += numericUpDown_ExpiresDay_ValueChanged;
+      label8.AutoSize = true;
+      label8.Location = new Point(242, 28);
+      label8.Name = "label8";
+      label8.Size = new Size(16, 13);
+      label8.TabIndex = 79;
+      label8.Text = "M";
+      numericUpDown_ExpiresMonth.Location = new Point(202, 26);
+      numericUpDown_ExpiresMonth.Maximum = new Decimal(new int[4]
       {
         12,
         0,
         0,
         0
       });
-      this.numericUpDown_ExpiresMonth.Minimum = new Decimal(new int[4]
+      numericUpDown_ExpiresMonth.Minimum = new Decimal(new int[4]
       {
         1,
         0,
         0,
         0
       });
-      this.numericUpDown_ExpiresMonth.Name = "numericUpDown_ExpiresMonth";
-      this.numericUpDown_ExpiresMonth.Size = new Size(39, 20);
-      this.numericUpDown_ExpiresMonth.TabIndex = 78;
-      this.numericUpDown_ExpiresMonth.Value = new Decimal(new int[4]
+      numericUpDown_ExpiresMonth.Name = "numericUpDown_ExpiresMonth";
+      numericUpDown_ExpiresMonth.Size = new Size(39, 20);
+      numericUpDown_ExpiresMonth.TabIndex = 78;
+      numericUpDown_ExpiresMonth.Value = new Decimal(new int[4]
       {
         1,
         0,
         0,
         0
       });
-      this.numericUpDown_ExpiresMonth.ValueChanged += new EventHandler(this.numericUpDown_ExpiresMonth_ValueChanged);
-      this.label9.AutoSize = true;
-      this.label9.Location = new Point(181, 28);
-      this.label9.Name = "label9";
-      this.label9.Size = new Size(14, 13);
-      this.label9.TabIndex = 77;
-      this.label9.Text = "Y";
-      this.numericUpDown_ExpiresYear.Location = new Point(128, 26);
-      this.numericUpDown_ExpiresYear.Maximum = new Decimal(new int[4]
+      numericUpDown_ExpiresMonth.ValueChanged += numericUpDown_ExpiresMonth_ValueChanged;
+      label9.AutoSize = true;
+      label9.Location = new Point(181, 28);
+      label9.Name = "label9";
+      label9.Size = new Size(14, 13);
+      label9.TabIndex = 77;
+      label9.Text = "Y";
+      numericUpDown_ExpiresYear.Location = new Point(128, 26);
+      numericUpDown_ExpiresYear.Maximum = new Decimal(new int[4]
       {
         4095,
         0,
         0,
         0
       });
-      this.numericUpDown_ExpiresYear.Name = "numericUpDown_ExpiresYear";
-      this.numericUpDown_ExpiresYear.Size = new Size(52, 20);
-      this.numericUpDown_ExpiresYear.TabIndex = 76;
-      this.numericUpDown_ExpiresYear.Value = new Decimal(new int[4]);
-      this.numericUpDown_ExpiresYear.ValueChanged += new EventHandler(this.numericUpDown_ExpiresYear_ValueChanged);
-      this.label10.AutoSize = true;
-      this.label10.Location = new Point(87, 28);
-      this.label10.Name = "label10";
-      this.label10.Size = new Size(41, 13);
-      this.label10.TabIndex = 75;
-      this.label10.Text = "Expires";
-      this.label16.AutoSize = true;
-      this.label16.Location = new Point(754, 54);
-      this.label16.Name = "label16";
-      this.label16.Size = new Size(15, 13);
-      this.label16.TabIndex = 101;
-      this.label16.Text = "H";
-      this.numericUpDown_MessageExpiresHour.Location = new Point(714, 52);
-      this.numericUpDown_MessageExpiresHour.Maximum = new Decimal(new int[4]
+      numericUpDown_ExpiresYear.Name = "numericUpDown_ExpiresYear";
+      numericUpDown_ExpiresYear.Size = new Size(52, 20);
+      numericUpDown_ExpiresYear.TabIndex = 76;
+      numericUpDown_ExpiresYear.Value = new Decimal(new int[4]);
+      numericUpDown_ExpiresYear.ValueChanged += numericUpDown_ExpiresYear_ValueChanged;
+      label10.AutoSize = true;
+      label10.Location = new Point(87, 28);
+      label10.Name = "label10";
+      label10.Size = new Size(41, 13);
+      label10.TabIndex = 75;
+      label10.Text = "Expires";
+      label16.AutoSize = true;
+      label16.Location = new Point(754, 54);
+      label16.Name = "label16";
+      label16.Size = new Size(15, 13);
+      label16.TabIndex = 101;
+      label16.Text = "H";
+      numericUpDown_MessageExpiresHour.Location = new Point(714, 52);
+      numericUpDown_MessageExpiresHour.Maximum = new Decimal(new int[4]
       {
         23,
         0,
         0,
         0
       });
-      this.numericUpDown_MessageExpiresHour.Name = "numericUpDown_MessageExpiresHour";
-      this.numericUpDown_MessageExpiresHour.Size = new Size(39, 20);
-      this.numericUpDown_MessageExpiresHour.TabIndex = 100;
-      this.numericUpDown_MessageExpiresHour.Value = new Decimal(new int[4]);
-      this.numericUpDown_MessageExpiresHour.ValueChanged += new EventHandler(this.numericUpDown_MessageExpiresHour_ValueChanged);
-      this.label17.AutoSize = true;
-      this.label17.Location = new Point(691, 54);
-      this.label17.Name = "label17";
-      this.label17.Size = new Size(15, 13);
-      this.label17.TabIndex = 99;
-      this.label17.Text = "D";
-      this.numericUpDown_MessageExpiresDay.Location = new Point(651, 52);
-      this.numericUpDown_MessageExpiresDay.Maximum = new Decimal(new int[4]
+      numericUpDown_MessageExpiresHour.Name = "numericUpDown_MessageExpiresHour";
+      numericUpDown_MessageExpiresHour.Size = new Size(39, 20);
+      numericUpDown_MessageExpiresHour.TabIndex = 100;
+      numericUpDown_MessageExpiresHour.Value = new Decimal(new int[4]);
+      numericUpDown_MessageExpiresHour.ValueChanged += numericUpDown_MessageExpiresHour_ValueChanged;
+      label17.AutoSize = true;
+      label17.Location = new Point(691, 54);
+      label17.Name = "label17";
+      label17.Size = new Size(15, 13);
+      label17.TabIndex = 99;
+      label17.Text = "D";
+      numericUpDown_MessageExpiresDay.Location = new Point(651, 52);
+      numericUpDown_MessageExpiresDay.Maximum = new Decimal(new int[4]
       {
         31,
         0,
         0,
         0
       });
-      this.numericUpDown_MessageExpiresDay.Minimum = new Decimal(new int[4]
+      numericUpDown_MessageExpiresDay.Minimum = new Decimal(new int[4]
       {
         1,
         0,
         0,
         0
       });
-      this.numericUpDown_MessageExpiresDay.Name = "numericUpDown_MessageExpiresDay";
-      this.numericUpDown_MessageExpiresDay.Size = new Size(39, 20);
-      this.numericUpDown_MessageExpiresDay.TabIndex = 98;
-      this.numericUpDown_MessageExpiresDay.Value = new Decimal(new int[4]
+      numericUpDown_MessageExpiresDay.Name = "numericUpDown_MessageExpiresDay";
+      numericUpDown_MessageExpiresDay.Size = new Size(39, 20);
+      numericUpDown_MessageExpiresDay.TabIndex = 98;
+      numericUpDown_MessageExpiresDay.Value = new Decimal(new int[4]
       {
         1,
         0,
         0,
         0
       });
-      this.numericUpDown_MessageExpiresDay.ValueChanged += new EventHandler(this.numericUpDown_MessageExpiresDay_ValueChanged);
-      this.label18.AutoSize = true;
-      this.label18.Location = new Point(629, 54);
-      this.label18.Name = "label18";
-      this.label18.Size = new Size(16, 13);
-      this.label18.TabIndex = 97;
-      this.label18.Text = "M";
-      this.numericUpDown_MessageExpiresMonth.Location = new Point(589, 52);
-      this.numericUpDown_MessageExpiresMonth.Maximum = new Decimal(new int[4]
+      numericUpDown_MessageExpiresDay.ValueChanged += numericUpDown_MessageExpiresDay_ValueChanged;
+      label18.AutoSize = true;
+      label18.Location = new Point(629, 54);
+      label18.Name = "label18";
+      label18.Size = new Size(16, 13);
+      label18.TabIndex = 97;
+      label18.Text = "M";
+      numericUpDown_MessageExpiresMonth.Location = new Point(589, 52);
+      numericUpDown_MessageExpiresMonth.Maximum = new Decimal(new int[4]
       {
         12,
         0,
         0,
         0
       });
-      this.numericUpDown_MessageExpiresMonth.Minimum = new Decimal(new int[4]
+      numericUpDown_MessageExpiresMonth.Minimum = new Decimal(new int[4]
       {
         1,
         0,
         0,
         0
       });
-      this.numericUpDown_MessageExpiresMonth.Name = "numericUpDown_MessageExpiresMonth";
-      this.numericUpDown_MessageExpiresMonth.Size = new Size(39, 20);
-      this.numericUpDown_MessageExpiresMonth.TabIndex = 96;
-      this.numericUpDown_MessageExpiresMonth.Value = new Decimal(new int[4]
+      numericUpDown_MessageExpiresMonth.Name = "numericUpDown_MessageExpiresMonth";
+      numericUpDown_MessageExpiresMonth.Size = new Size(39, 20);
+      numericUpDown_MessageExpiresMonth.TabIndex = 96;
+      numericUpDown_MessageExpiresMonth.Value = new Decimal(new int[4]
       {
         1,
         0,
         0,
         0
       });
-      this.numericUpDown_MessageExpiresMonth.ValueChanged += new EventHandler(this.numericUpDown_MessageExpiresMonth_ValueChanged);
-      this.label19.AutoSize = true;
-      this.label19.Location = new Point(567, 54);
-      this.label19.Name = "label19";
-      this.label19.Size = new Size(14, 13);
-      this.label19.TabIndex = 95;
-      this.label19.Text = "Y";
-      this.numericUpDown_MessageExpiresYear.Location = new Point(514, 52);
-      this.numericUpDown_MessageExpiresYear.Maximum = new Decimal(new int[4]
+      numericUpDown_MessageExpiresMonth.ValueChanged += numericUpDown_MessageExpiresMonth_ValueChanged;
+      label19.AutoSize = true;
+      label19.Location = new Point(567, 54);
+      label19.Name = "label19";
+      label19.Size = new Size(14, 13);
+      label19.TabIndex = 95;
+      label19.Text = "Y";
+      numericUpDown_MessageExpiresYear.Location = new Point(514, 52);
+      numericUpDown_MessageExpiresYear.Maximum = new Decimal(new int[4]
       {
         4095,
         0,
         0,
         0
       });
-      this.numericUpDown_MessageExpiresYear.Name = "numericUpDown_MessageExpiresYear";
-      this.numericUpDown_MessageExpiresYear.Size = new Size(52, 20);
-      this.numericUpDown_MessageExpiresYear.TabIndex = 94;
-      this.numericUpDown_MessageExpiresYear.Value = new Decimal(new int[4]);
-      this.numericUpDown_MessageExpiresYear.ValueChanged += new EventHandler(this.numericUpDown_MessageExpiresYear_ValueChanged);
-      this.label20.AutoSize = true;
-      this.label20.Location = new Point(427, 54);
-      this.label20.Name = "label20";
-      this.label20.Size = new Size(87, 13);
-      this.label20.TabIndex = 93;
-      this.label20.Text = "Message Expires";
-      this.textBox_Message.Location = new Point(415, 94);
-      this.textBox_Message.MaxLength = 500;
-      this.textBox_Message.Multiline = true;
-      this.textBox_Message.Name = "textBox_Message";
-      this.textBox_Message.ScrollBars = ScrollBars.Vertical;
-      this.textBox_Message.Size = new Size(361, 157);
-      this.textBox_Message.TabIndex = 102;
-      this.textBox_Message.TextChanged += new EventHandler(this.textBox_Message_TextChanged);
-      this.AutoScaleDimensions = new SizeF(6f, 12f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.Controls.Add((Control) this.textBox_Message);
-      this.Controls.Add((Control) this.label16);
-      this.Controls.Add((Control) this.numericUpDown_MessageExpiresHour);
-      this.Controls.Add((Control) this.label17);
-      this.Controls.Add((Control) this.numericUpDown_MessageExpiresDay);
-      this.Controls.Add((Control) this.label18);
-      this.Controls.Add((Control) this.numericUpDown_MessageExpiresMonth);
-      this.Controls.Add((Control) this.label19);
-      this.Controls.Add((Control) this.numericUpDown_MessageExpiresYear);
-      this.Controls.Add((Control) this.label1);
-      this.Controls.Add((Control) this.numericUpDown_AllowNextConnectHour);
-      this.Controls.Add((Control) this.label2);
-      this.Controls.Add((Control) this.numericUpDown_AllowNextConnectDay);
-      this.Controls.Add((Control) this.label3);
-      this.Controls.Add((Control) this.numericUpDown_AllowNextConnectMonth);
-      this.Controls.Add((Control) this.label4);
-      this.Controls.Add((Control) this.numericUpDown_AllowNextConnectYear);
-      this.Controls.Add((Control) this.label5);
-      this.Controls.Add((Control) this.label6);
-      this.Controls.Add((Control) this.numericUpDown_ExpiresHour);
-      this.Controls.Add((Control) this.label7);
-      this.Controls.Add((Control) this.numericUpDown_ExpiresDay);
-      this.Controls.Add((Control) this.label8);
-      this.Controls.Add((Control) this.numericUpDown_ExpiresMonth);
-      this.Controls.Add((Control) this.label9);
-      this.Controls.Add((Control) this.numericUpDown_ExpiresYear);
-      this.Controls.Add((Control) this.label10);
-      this.Controls.Add((Control) this.label20);
-      this.Name = nameof (WifiShoppingDataControl);
-      this.Size = new Size(807, 507);
-      this.numericUpDown_AllowNextConnectHour.EndInit();
-      this.numericUpDown_AllowNextConnectDay.EndInit();
-      this.numericUpDown_AllowNextConnectMonth.EndInit();
-      this.numericUpDown_AllowNextConnectYear.EndInit();
-      this.numericUpDown_ExpiresHour.EndInit();
-      this.numericUpDown_ExpiresDay.EndInit();
-      this.numericUpDown_ExpiresMonth.EndInit();
-      this.numericUpDown_ExpiresYear.EndInit();
-      this.numericUpDown_MessageExpiresHour.EndInit();
-      this.numericUpDown_MessageExpiresDay.EndInit();
-      this.numericUpDown_MessageExpiresMonth.EndInit();
-      this.numericUpDown_MessageExpiresYear.EndInit();
-      this.ResumeLayout(false);
-      this.PerformLayout();
+      numericUpDown_MessageExpiresYear.Name = "numericUpDown_MessageExpiresYear";
+      numericUpDown_MessageExpiresYear.Size = new Size(52, 20);
+      numericUpDown_MessageExpiresYear.TabIndex = 94;
+      numericUpDown_MessageExpiresYear.Value = new Decimal(new int[4]);
+      numericUpDown_MessageExpiresYear.ValueChanged += numericUpDown_MessageExpiresYear_ValueChanged;
+      label20.AutoSize = true;
+      label20.Location = new Point(427, 54);
+      label20.Name = "label20";
+      label20.Size = new Size(87, 13);
+      label20.TabIndex = 93;
+      label20.Text = "Message Expires";
+      textBox_Message.Location = new Point(415, 94);
+      textBox_Message.MaxLength = 500;
+      textBox_Message.Multiline = true;
+      textBox_Message.Name = "textBox_Message";
+      textBox_Message.ScrollBars = ScrollBars.Vertical;
+      textBox_Message.Size = new Size(361, 157);
+      textBox_Message.TabIndex = 102;
+      textBox_Message.TextChanged += textBox_Message_TextChanged;
+      AutoScaleDimensions = new SizeF(6f, 12f);
+      AutoScaleMode = AutoScaleMode.Font;
+      Controls.Add(textBox_Message);
+      Controls.Add(label16);
+      Controls.Add(numericUpDown_MessageExpiresHour);
+      Controls.Add(label17);
+      Controls.Add(numericUpDown_MessageExpiresDay);
+      Controls.Add(label18);
+      Controls.Add(numericUpDown_MessageExpiresMonth);
+      Controls.Add(label19);
+      Controls.Add(numericUpDown_MessageExpiresYear);
+      Controls.Add(label1);
+      Controls.Add(numericUpDown_AllowNextConnectHour);
+      Controls.Add(label2);
+      Controls.Add(numericUpDown_AllowNextConnectDay);
+      Controls.Add(label3);
+      Controls.Add(numericUpDown_AllowNextConnectMonth);
+      Controls.Add(label4);
+      Controls.Add(numericUpDown_AllowNextConnectYear);
+      Controls.Add(label5);
+      Controls.Add(label6);
+      Controls.Add(numericUpDown_ExpiresHour);
+      Controls.Add(label7);
+      Controls.Add(numericUpDown_ExpiresDay);
+      Controls.Add(label8);
+      Controls.Add(numericUpDown_ExpiresMonth);
+      Controls.Add(label9);
+      Controls.Add(numericUpDown_ExpiresYear);
+      Controls.Add(label10);
+      Controls.Add(label20);
+      Name = nameof (WifiShoppingDataControl);
+      Size = new Size(807, 507);
+      numericUpDown_AllowNextConnectHour.EndInit();
+      numericUpDown_AllowNextConnectDay.EndInit();
+      numericUpDown_AllowNextConnectMonth.EndInit();
+      numericUpDown_AllowNextConnectYear.EndInit();
+      numericUpDown_ExpiresHour.EndInit();
+      numericUpDown_ExpiresDay.EndInit();
+      numericUpDown_ExpiresMonth.EndInit();
+      numericUpDown_ExpiresYear.EndInit();
+      numericUpDown_MessageExpiresHour.EndInit();
+      numericUpDown_MessageExpiresDay.EndInit();
+      numericUpDown_MessageExpiresMonth.EndInit();
+      numericUpDown_MessageExpiresYear.EndInit();
+      ResumeLayout(false);
+      PerformLayout();
     }
   }
 }

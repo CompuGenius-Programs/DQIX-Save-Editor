@@ -2,17 +2,16 @@
 // Type: DQ9_Cheat.Controls.TreasureBoxItemTableList
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-using DQ9_Cheat.DataManager;
-using DQ9_Cheat.GameData;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using DQ9_Cheat.DataManager;
+using DQ9_Cheat.GameData;
 
-#nullable disable
 namespace DQ9_Cheat.Controls
 {
   internal class TreasureBoxItemTableList : Form
@@ -28,147 +27,147 @@ namespace DQ9_Cheat.Controls
 
     public TreasureBoxItemTableList(TreasureMapData mapData, int floor, int boxIndex)
     {
-      this.InitializeComponent();
-      this._mapDetailData = mapData.TreasureMapDetailData;
-      this._floor = floor;
-      this._boxIndex = boxIndex;
-      this.RenewalList();
+      InitializeComponent();
+      _mapDetailData = mapData.TreasureMapDetailData;
+      _floor = floor;
+      _boxIndex = boxIndex;
+      RenewalList();
     }
 
     public TreasureBoxItemTableList(TreasureMapDetailData detailData, int floor, int boxIndex)
     {
-      this.InitializeComponent();
-      this._mapDetailData = detailData;
-      this._floor = floor;
-      this._boxIndex = boxIndex;
-      this.RenewalList();
+      InitializeComponent();
+      _mapDetailData = detailData;
+      _floor = floor;
+      _boxIndex = boxIndex;
+      RenewalList();
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && this.components != null)
-        this.components.Dispose();
+      if (disposing && components != null)
+        components.Dispose();
       base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      this.numericUpDown_Second = new NumericUpDown();
-      this.label1 = new Label();
-      this.button_Close = new Button();
-      this.textBox_ItemList = new TextBox();
-      this.numericUpDown_Second.BeginInit();
-      this.SuspendLayout();
-      this.numericUpDown_Second.Location = new Point(12, 5);
-      this.numericUpDown_Second.Maximum = new Decimal(new int[4]
+      numericUpDown_Second = new NumericUpDown();
+      label1 = new Label();
+      button_Close = new Button();
+      textBox_ItemList = new TextBox();
+      numericUpDown_Second.BeginInit();
+      SuspendLayout();
+      numericUpDown_Second.Location = new Point(12, 5);
+      numericUpDown_Second.Maximum = new Decimal(new int[4]
       {
         10000,
         0,
         0,
         0
       });
-      this.numericUpDown_Second.Minimum = new Decimal(new int[4]
+      numericUpDown_Second.Minimum = new Decimal(new int[4]
       {
         7,
         0,
         0,
         0
       });
-      this.numericUpDown_Second.Name = "numericUpDown_Second";
-      this.numericUpDown_Second.Size = new Size(81, 19);
-      this.numericUpDown_Second.TabIndex = 0;
-      this.numericUpDown_Second.Value = new Decimal(new int[4]
+      numericUpDown_Second.Name = "numericUpDown_Second";
+      numericUpDown_Second.Size = new Size(81, 19);
+      numericUpDown_Second.TabIndex = 0;
+      numericUpDown_Second.Value = new Decimal(new int[4]
       {
         260,
         0,
         0,
         0
       });
-      this.numericUpDown_Second.ValueChanged += new EventHandler(this.numericUpDown_Second_ValueChanged);
-      this.label1.AutoSize = true;
-      this.label1.Location = new Point(99, 9);
-      this.label1.Name = "label1";
-      this.label1.Size = new Size(36, 12);
-      this.label1.TabIndex = 1;
-      this.label1.Text = "Probable Items";
-      this.button_Close.DialogResult = DialogResult.Cancel;
-      this.button_Close.Location = new Point(167, 351);
-      this.button_Close.Name = "button_Close";
-      this.button_Close.Size = new Size(75, 23);
-      this.button_Close.TabIndex = 3;
-      this.button_Close.Text = "Close";
-      this.button_Close.UseVisualStyleBackColor = true;
-      this.textBox_ItemList.BackColor = SystemColors.Window;
-      this.textBox_ItemList.Font = new Font("Consolas", 9f, GraphicsUnit.Point);
-      this.textBox_ItemList.Location = new Point(12, 30);
-      this.textBox_ItemList.Multiline = true;
-      this.textBox_ItemList.Name = "textBox_ItemList";
-      this.textBox_ItemList.ReadOnly = true;
-      this.textBox_ItemList.ScrollBars = ScrollBars.Vertical;
-      this.textBox_ItemList.Size = new Size(230, 315);
-      this.textBox_ItemList.TabIndex = 4;
-      this.AutoScaleDimensions = new SizeF(6f, 12f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.CancelButton = (IButtonControl) this.button_Close;
-      this.ClientSize = new Size(246, 380);
-      this.Controls.Add((Control) this.textBox_ItemList);
-      this.Controls.Add((Control) this.button_Close);
-      this.Controls.Add((Control) this.label1);
-      this.Controls.Add((Control) this.numericUpDown_Second);
-      this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-      this.MaximizeBox = false;
-      this.MaximumSize = new Size(262, 1000);
-      this.MinimizeBox = false;
-      this.MinimumSize = new Size(262, 406);
-      this.Name = nameof (TreasureBoxItemTableList);
-      this.ShowIcon = false;
-      this.ShowInTaskbar = false;
-      this.StartPosition = FormStartPosition.CenterParent;
-      this.Text = "Items";
-      this.Resize += new EventHandler(this.TreasureBoxItemTableList_Resize);
-      this.numericUpDown_Second.EndInit();
-      this.ResumeLayout(false);
-      this.PerformLayout();
+      numericUpDown_Second.ValueChanged += numericUpDown_Second_ValueChanged;
+      label1.AutoSize = true;
+      label1.Location = new Point(99, 9);
+      label1.Name = "label1";
+      label1.Size = new Size(36, 12);
+      label1.TabIndex = 1;
+      label1.Text = "Probable Items";
+      button_Close.DialogResult = DialogResult.Cancel;
+      button_Close.Location = new Point(167, 351);
+      button_Close.Name = "button_Close";
+      button_Close.Size = new Size(75, 23);
+      button_Close.TabIndex = 3;
+      button_Close.Text = "Close";
+      button_Close.UseVisualStyleBackColor = true;
+      textBox_ItemList.BackColor = SystemColors.Window;
+      textBox_ItemList.Font = new Font("Consolas", 9f, GraphicsUnit.Point);
+      textBox_ItemList.Location = new Point(12, 30);
+      textBox_ItemList.Multiline = true;
+      textBox_ItemList.Name = "textBox_ItemList";
+      textBox_ItemList.ReadOnly = true;
+      textBox_ItemList.ScrollBars = ScrollBars.Vertical;
+      textBox_ItemList.Size = new Size(230, 315);
+      textBox_ItemList.TabIndex = 4;
+      AutoScaleDimensions = new SizeF(6f, 12f);
+      AutoScaleMode = AutoScaleMode.Font;
+      CancelButton = button_Close;
+      ClientSize = new Size(246, 380);
+      Controls.Add(textBox_ItemList);
+      Controls.Add(button_Close);
+      Controls.Add(label1);
+      Controls.Add(numericUpDown_Second);
+      FormBorderStyle = FormBorderStyle.SizableToolWindow;
+      MaximizeBox = false;
+      MaximumSize = new Size(262, 1000);
+      MinimizeBox = false;
+      MinimumSize = new Size(262, 406);
+      Name = nameof (TreasureBoxItemTableList);
+      ShowIcon = false;
+      ShowInTaskbar = false;
+      StartPosition = FormStartPosition.CenterParent;
+      Text = "Items";
+      Resize += TreasureBoxItemTableList_Resize;
+      numericUpDown_Second.EndInit();
+      ResumeLayout(false);
+      PerformLayout();
     }
 
     private void RenewalList()
     {
-      if (this._mapDetailData == null)
+      if (_mapDetailData == null)
         return;
       StringBuilder stringBuilder = new StringBuilder();
-      this.textBox_ItemList.Text = string.Empty;
-      int num1 = (int) this.numericUpDown_Second.Value;
+      textBox_ItemList.Text = string.Empty;
+      int num1 = (int) numericUpDown_Second.Value;
       int length1 = num1.ToString().Length;
       int num2 = num1 - 5;
-      string strB = (string) null;
+      string strB = null;
       for (int second = 2; second <= num2; ++second)
       {
-        string treasureBoxItem = this._mapDetailData.GetTreasureBoxItem(this._floor, this._boxIndex, second);
+        string treasureBoxItem = _mapDetailData.GetTreasureBoxItem(_floor, _boxIndex, second);
         if (strB == null || treasureBoxItem.CompareTo(strB) != 0)
         {
           int length2 = (second + 5).ToString().Length;
           for (int index = 0; index < length1 - length2; ++index)
             stringBuilder.Append(" ");
           if (second == 2)
-            stringBuilder.AppendFormat("    {0}", (object) treasureBoxItem);
+            stringBuilder.AppendFormat("    {0}", treasureBoxItem);
           else
-            stringBuilder.AppendFormat("{0}s: {1}", (object) (second + 5), (object) treasureBoxItem);
+            stringBuilder.AppendFormat("{0}s: {1}", second + 5, treasureBoxItem);
           stringBuilder.AppendLine();
         }
         strB = treasureBoxItem;
       }
-      this.textBox_ItemList.Text = stringBuilder.ToString();
+      textBox_ItemList.Text = stringBuilder.ToString();
     }
 
     private void TreasureBoxItemTableList_Resize(object sender, EventArgs e)
     {
-      this.button_Close.Top = this.ClientRectangle.Height - this.button_Close.Height - 4;
-      this.textBox_ItemList.Height = this.ClientRectangle.Height - this.textBox_ItemList.Top - (this.ClientRectangle.Height - this.button_Close.Top) - 8;
+      button_Close.Top = ClientRectangle.Height - button_Close.Height - 4;
+      textBox_ItemList.Height = ClientRectangle.Height - textBox_ItemList.Top - (ClientRectangle.Height - button_Close.Top) - 8;
     }
 
     private void numericUpDown_Second_ValueChanged(object sender, EventArgs e)
     {
-      this.RenewalList();
+      RenewalList();
     }
   }
 }

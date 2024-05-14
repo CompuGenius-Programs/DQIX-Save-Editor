@@ -2,13 +2,12 @@
 // Type: DQ9_Cheat.Controls.VisionControls.VisionComboBox
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-#nullable disable
 namespace DQ9_Cheat.Controls.VisionControls
 {
   public class VisionComboBox : VisionControlBase
@@ -30,44 +29,44 @@ namespace DQ9_Cheat.Controls.VisionControls
       float dpiRateY)
       : base(left, top, width, height, dpiRateX, dpiRateY)
     {
-      this._innerComboBox = new ComboBox();
-      this._innerControl = (Control) this._innerComboBox;
-      this._innerComboBox.Size = new Size(this._width, this._height);
-      this._innerComboBox.Location = new Point(this._left, this._top);
-      this._innerComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-      this._innerComboBox.SelectedIndexChanged += new EventHandler(this._innerComboBox_SelectedIndexChanged);
+      _innerComboBox = new ComboBox();
+      _innerControl = _innerComboBox;
+      _innerComboBox.Size = new Size(_width, _height);
+      _innerComboBox.Location = new Point(_left, _top);
+      _innerComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+      _innerComboBox.SelectedIndexChanged += _innerComboBox_SelectedIndexChanged;
     }
 
     public VisionComboBox(int left, int top, int width, int height)
       : base(left, top, width, height)
     {
-      this._innerComboBox = new ComboBox();
-      this._innerControl = (Control) this._innerComboBox;
-      this._innerComboBox.Size = new Size(width, height);
-      this._innerComboBox.Location = new Point(left, top);
-      this._innerComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-      this._innerComboBox.SelectedIndexChanged += new EventHandler(this._innerComboBox_SelectedIndexChanged);
+      _innerComboBox = new ComboBox();
+      _innerControl = _innerComboBox;
+      _innerComboBox.Size = new Size(width, height);
+      _innerComboBox.Location = new Point(left, top);
+      _innerComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+      _innerComboBox.SelectedIndexChanged += _innerComboBox_SelectedIndexChanged;
     }
 
     public event EventHandler SelectedIndexChanged;
 
     public int SelectedIndex
     {
-      get => this._selectedIndex;
+      get => _selectedIndex;
       set
       {
-        this._selectedIndex = value;
-        this._innerComboBox.SelectedIndex = value;
+        _selectedIndex = value;
+        _innerComboBox.SelectedIndex = value;
       }
     }
 
-    public ComboBox.ObjectCollection Items => this._innerComboBox.Items;
+    public ComboBox.ObjectCollection Items => _innerComboBox.Items;
 
-    public string Text => this._text;
+    public string Text => _text;
 
     protected override void Regist(Control parent)
     {
-      parent?.Controls.Add((Control) this._innerComboBox);
+      parent?.Controls.Add(_innerComboBox);
     }
 
     public override void DrawControl(Graphics graphic)
@@ -82,20 +81,20 @@ namespace DQ9_Cheat.Controls.VisionControls
     {
       if (!(sender is ComboBox comboBox))
         return;
-      this._selectedIndex = comboBox.SelectedIndex;
-      if (this.SelectedIndexChanged == null)
+      _selectedIndex = comboBox.SelectedIndex;
+      if (SelectedIndexChanged == null)
         return;
-      this.SelectedIndexChanged((object) this, e);
+      SelectedIndexChanged(this, e);
     }
 
     private void EntityComboBox_SelectedIndexChanged(object sender, EventArgs e)
     {
       if (!(sender is ComboBox comboBox))
         return;
-      this._selectedIndex = comboBox.SelectedIndex;
-      if (this.SelectedIndexChanged == null)
+      _selectedIndex = comboBox.SelectedIndex;
+      if (SelectedIndexChanged == null)
         return;
-      this.SelectedIndexChanged((object) this, e);
+      SelectedIndexChanged(this, e);
     }
 
     public override void MouseLeave()

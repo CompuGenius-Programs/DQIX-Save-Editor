@@ -2,20 +2,19 @@
 // Type: DQ9_Cheat.Controls.TreasureMapDataControl
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-using DQ9_Cheat.Controls.VisionControls;
-using DQ9_Cheat.DataManager;
-using DQ9_Cheat.GameData;
-using JS_Framework.Controls;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using DQ9_Cheat.Controls.VisionControls;
+using DQ9_Cheat.DataManager;
+using DQ9_Cheat.GameData;
+using JS_Framework.Controls;
 
-#nullable disable
 namespace DQ9_Cheat.Controls
 {
   public class TreasureMapDataControl : DataControlBase
@@ -109,107 +108,107 @@ namespace DQ9_Cheat.Controls
 
     public TreasureMapDataControl()
     {
-      this.InitializeComponent();
-      this.BeginUpdate();
+      InitializeComponent();
+      BeginUpdate();
       foreach (object obj in DevilList.List)
-        this.comboBox_Devil.Items.Add(obj);
-      this.Panel_Devil.Visible = false;
-      this._panelLocation = this.Panel_NormalMap.Location;
-      this.textBox_DungeonDetail.LanguageOption = RichTextBoxLanguageOptions.UIFonts;
-      this.comboBox_NarrowingName1.Items.Add((object) string.Empty);
+        comboBox_Devil.Items.Add(obj);
+      Panel_Devil.Visible = false;
+      _panelLocation = Panel_NormalMap.Location;
+      textBox_DungeonDetail.LanguageOption = RichTextBoxLanguageOptions.UIFonts;
+      comboBox_NarrowingName1.Items.Add(string.Empty);
       foreach (object obj in TreasureMapDataTable.TreasureMapName1_Table)
-        this.comboBox_NarrowingName1.Items.Add(obj);
-      this.comboBox_NarrowingName1.SelectedIndex = 0;
-      this.comboBox_NarrowingName2.Items.Add((object) string.Empty);
+        comboBox_NarrowingName1.Items.Add(obj);
+      comboBox_NarrowingName1.SelectedIndex = 0;
+      comboBox_NarrowingName2.Items.Add(string.Empty);
       foreach (object obj in TreasureMapDataTable.TreasureMapName2_Table)
-        this.comboBox_NarrowingName2.Items.Add(obj);
-      this.comboBox_NarrowingName2.SelectedIndex = 0;
-      this.comboBox_NarrowingName3.Items.Add((object) string.Empty);
+        comboBox_NarrowingName2.Items.Add(obj);
+      comboBox_NarrowingName2.SelectedIndex = 0;
+      comboBox_NarrowingName3.Items.Add(string.Empty);
       foreach (object obj in TreasureMapDataTable.TreasureMapName3_Table)
-        this.comboBox_NarrowingName3.Items.Add(obj);
-      this.comboBox_NarrowingName3.SelectedIndex = 0;
-      this.comboBox_NarrowingLevel.SelectedIndex = 0;
-      this.EndUpdate();
+        comboBox_NarrowingName3.Items.Add(obj);
+      comboBox_NarrowingName3.SelectedIndex = 0;
+      comboBox_NarrowingLevel.SelectedIndex = 0;
+      EndUpdate();
     }
 
     protected override void OnValueUpdate()
     {
-      this.BeginUpdate();
-      this.numericUpDown_ClearCount.Value = (Decimal) SaveDataManager.Instance.SaveData.TreasureMapManager.ClearCount;
-      this.RenewalListBox();
-      this.RenewalToolButton();
-      this.RenewalMapCountLabel();
-      this.RenewalEditArea(true);
-      this.EndUpdate();
+      BeginUpdate();
+      numericUpDown_ClearCount.Value = SaveDataManager.Instance.SaveData.TreasureMapManager.ClearCount;
+      RenewalListBox();
+      RenewalToolButton();
+      RenewalMapCountLabel();
+      RenewalEditArea(true);
+      EndUpdate();
     }
 
     private void RenewalListBox()
     {
-      int selectedIndex = this.listBox_TreasureMap.SelectedIndex;
-      this.listBox_TreasureMap.BeginUpdate();
-      this.listBox_TreasureMap.Items.Clear();
+      int selectedIndex = listBox_TreasureMap.SelectedIndex;
+      listBox_TreasureMap.BeginUpdate();
+      listBox_TreasureMap.Items.Clear();
       TreasureMapManager treasureMapManager = SaveDataManager.Instance.SaveData.TreasureMapManager;
-      for (int index = 0; index < (int) treasureMapManager.MapCount; ++index)
+      for (int index = 0; index < treasureMapManager.MapCount; ++index)
       {
         TreasureMapData mapData = treasureMapManager.GetMapData(index);
-        this.AddListBox(index, mapData);
+        AddListBox(index, mapData);
       }
-      this.RenewalMapCountLabel();
-      if (this.listBox_TreasureMap.Items.Count > selectedIndex)
-        this.listBox_TreasureMap.SelectedIndex = selectedIndex;
+      RenewalMapCountLabel();
+      if (listBox_TreasureMap.Items.Count > selectedIndex)
+        listBox_TreasureMap.SelectedIndex = selectedIndex;
       else
-        this.listBox_TreasureMap.SelectedIndex = this.listBox_TreasureMap.Items.Count - 1;
-      this.listBox_TreasureMap.EndUpdate();
+        listBox_TreasureMap.SelectedIndex = listBox_TreasureMap.Items.Count - 1;
+      listBox_TreasureMap.EndUpdate();
     }
 
     private bool AddListBox(int index, TreasureMapData mapData)
     {
-      if (this.groupBoxWithCheckBox_Narrowing.Checked && this.checkBox_NarrowingLevel.Checked)
+      if (groupBoxWithCheckBox_Narrowing.Checked && checkBox_NarrowingLevel.Checked)
       {
-        int num = (int) this.numericUpDown_NarrowingLevel.Value;
-        if (this.comboBox_NarrowingLevel.SelectedIndex == 0)
+        int num = (int) numericUpDown_NarrowingLevel.Value;
+        if (comboBox_NarrowingLevel.SelectedIndex == 0)
         {
           if (mapData.MapLevel < num)
             return false;
         }
-        else if (this.comboBox_NarrowingLevel.SelectedIndex == 1 && mapData.MapLevel > num)
+        else if (comboBox_NarrowingLevel.SelectedIndex == 1 && mapData.MapLevel > num)
           return false;
       }
       string name;
       if (mapData.MapType == MapType.Normal)
       {
-        if (this.groupBoxWithCheckBox_Narrowing.Checked && (!this.CheckBox_NarrowingNormal.Checked || !string.IsNullOrEmpty(this.comboBox_NarrowingName1.SelectedItem.ToString()) && this.comboBox_NarrowingName1.SelectedItem.ToString() != mapData.MapName1 || !string.IsNullOrEmpty(this.comboBox_NarrowingName2.SelectedItem.ToString()) && this.comboBox_NarrowingName2.SelectedItem.ToString() != mapData.MapName2 || !string.IsNullOrEmpty(this.comboBox_NarrowingName3.SelectedItem.ToString()) && this.comboBox_NarrowingName3.SelectedItem.ToString() != mapData.MapName3))
+        if (groupBoxWithCheckBox_Narrowing.Checked && (!CheckBox_NarrowingNormal.Checked || !string.IsNullOrEmpty(comboBox_NarrowingName1.SelectedItem.ToString()) && comboBox_NarrowingName1.SelectedItem.ToString() != mapData.MapName1 || !string.IsNullOrEmpty(comboBox_NarrowingName2.SelectedItem.ToString()) && comboBox_NarrowingName2.SelectedItem.ToString() != mapData.MapName2 || !string.IsNullOrEmpty(comboBox_NarrowingName3.SelectedItem.ToString()) && comboBox_NarrowingName3.SelectedItem.ToString() != mapData.MapName3))
           return false;
-        name = !mapData.IsValid ? string.Format("!{0}", (object) mapData.MapName) : mapData.MapName;
+        name = !mapData.IsValid ? string.Format("!{0}", mapData.MapName) : mapData.MapName;
       }
       else if (mapData.MapType == MapType.devil)
       {
-        if (this.groupBoxWithCheckBox_Narrowing.Checked && !this.CheckBox_NarrowingDevil.Checked)
+        if (groupBoxWithCheckBox_Narrowing.Checked && !CheckBox_NarrowingDevil.Checked)
           return false;
-        name = mapData.DevilType == null ? "Devil" : string.Format("{0}'s Map Lv. {1}", (object) mapData.DevilType.Name, (object) mapData.DevilLevel.Value);
+        name = mapData.DevilType == null ? "Devil" : string.Format("{0}'s Map Lv. {1}", mapData.DevilType.Name, mapData.DevilLevel.Value);
       }
       else
         name = "Unknown";
-      TreasureMapDataControl.TreasureMapListBoxItem treasureMapListBoxItem1 = new TreasureMapDataControl.TreasureMapListBoxItem(index, name);
-      if (this.toolButton_SortLVUp.Checked || this.toolButton_SortLVDown.Checked)
+      TreasureMapListBoxItem treasureMapListBoxItem1 = new TreasureMapListBoxItem(index, name);
+      if (toolButton_SortLVUp.Checked || toolButton_SortLVDown.Checked)
       {
         TreasureMapManager treasureMapManager = SaveDataManager.Instance.SaveData.TreasureMapManager;
-        for (int index1 = 0; index1 < this.listBox_TreasureMap.Items.Count; ++index1)
+        for (int index1 = 0; index1 < listBox_TreasureMap.Items.Count; ++index1)
         {
-          if (this.listBox_TreasureMap.Items[index1] is TreasureMapDataControl.TreasureMapListBoxItem treasureMapListBoxItem2)
+          if (listBox_TreasureMap.Items[index1] is TreasureMapListBoxItem treasureMapListBoxItem2)
           {
             TreasureMapData mapData1 = treasureMapManager.GetMapData(treasureMapListBoxItem2.Index);
             TreasureMapData mapData2 = treasureMapManager.GetMapData(index);
-            if (this.toolButton_SortLVUp.Checked)
+            if (toolButton_SortLVUp.Checked)
             {
               if (mapData1.MapType == MapType.devil && mapData2.MapType == MapType.Normal && mapData1.MapLevel >= mapData2.MapLevel)
               {
-                this.listBox_TreasureMap.Items.Insert(index1, (object) treasureMapListBoxItem1);
+                listBox_TreasureMap.Items.Insert(index1, treasureMapListBoxItem1);
                 return true;
               }
               if (mapData1.MapLevel > mapData2.MapLevel)
               {
-                this.listBox_TreasureMap.Items.Insert(index1, (object) treasureMapListBoxItem1);
+                listBox_TreasureMap.Items.Insert(index1, treasureMapListBoxItem1);
                 return true;
               }
             }
@@ -217,59 +216,59 @@ namespace DQ9_Cheat.Controls
             {
               if (mapData1.MapType == MapType.devil && mapData2.MapType == MapType.Normal && mapData1.MapLevel <= mapData2.MapLevel)
               {
-                this.listBox_TreasureMap.Items.Insert(index1, (object) treasureMapListBoxItem1);
+                listBox_TreasureMap.Items.Insert(index1, treasureMapListBoxItem1);
                 return true;
               }
               if (mapData1.MapLevel < mapData2.MapLevel)
               {
-                this.listBox_TreasureMap.Items.Insert(index1, (object) treasureMapListBoxItem1);
+                listBox_TreasureMap.Items.Insert(index1, treasureMapListBoxItem1);
                 return true;
               }
             }
           }
         }
       }
-      this.listBox_TreasureMap.Items.Add((object) treasureMapListBoxItem1);
+      listBox_TreasureMap.Items.Add(treasureMapListBoxItem1);
       return true;
     }
 
     private void RenewalMapCountLabel()
     {
-      int mapCount = (int) SaveDataManager.Instance.SaveData.TreasureMapManager.MapCount;
-      if (this.groupBoxWithCheckBox_Narrowing.Checked)
-        this.label_MapCount.Text = string.Format("({0:D2}/{1:D2})", (object) this.listBox_TreasureMap.Items.Count, (object) mapCount);
+      int mapCount = SaveDataManager.Instance.SaveData.TreasureMapManager.MapCount;
+      if (groupBoxWithCheckBox_Narrowing.Checked)
+        label_MapCount.Text = string.Format("({0:D2}/{1:D2})", listBox_TreasureMap.Items.Count, mapCount);
       else
-        this.label_MapCount.Text = string.Format("({0:D2}/{1:D2})", (object) mapCount, (object) 99);
+        label_MapCount.Text = string.Format("({0:D2}/{1:D2})", mapCount, 99);
     }
 
     private void RenewalToolButton()
     {
-      this.toolButton_DeleteMap.Enabled = this.listBox_TreasureMap.SelectedIndex != -1;
-      this.toolButton_CreateMap.Enabled = SaveDataManager.Instance.SaveData.TreasureMapManager.MapCount < (byte) 99;
+      toolButton_DeleteMap.Enabled = listBox_TreasureMap.SelectedIndex != -1;
+      toolButton_CreateMap.Enabled = SaveDataManager.Instance.SaveData.TreasureMapManager.MapCount < 99;
     }
 
     private void RenewalPlaceName()
     {
-      if (this._selectedMapData == null)
+      if (_selectedMapData == null)
         return;
-      if (this._selectedMapData.Place.Value >= (byte) 1 && this._selectedMapData.Place.Value <= (byte) 150)
+      if (_selectedMapData.Place.Value >= 1 && _selectedMapData.Place.Value <= 150)
       {
-        int index = (int) TreasureMapDataTable.TreasureMapPlace_Table[(int) this._selectedMapData.Place.Value];
-        this.label_PlaceName.Text = TreasureMapDataTable.TreasureMapPlaceName_Table[index];
+        int index = TreasureMapDataTable.TreasureMapPlace_Table[_selectedMapData.Place.Value];
+        label_PlaceName.Text = TreasureMapDataTable.TreasureMapPlaceName_Table[index];
       }
       else
-        this.label_PlaceName.Text = string.Empty;
+        label_PlaceName.Text = string.Empty;
     }
 
     private void RenewalCandidatePlace()
     {
-      if (this._selectedMapData != null)
+      if (_selectedMapData != null)
       {
-        if (this._selectedMapData.MapType == MapType.Normal)
+        if (_selectedMapData.MapType == MapType.Normal)
         {
           StringBuilder stringBuilder = new StringBuilder();
           stringBuilder.Append("Valid: ");
-          ReadOnlyCollection<byte> validPlaceList = this._selectedMapData.ValidPlaceList;
+          ReadOnlyCollection<byte> validPlaceList = _selectedMapData.ValidPlaceList;
           if (validPlaceList.Count > 0)
           {
             bool flag = true;
@@ -277,158 +276,158 @@ namespace DQ9_Cheat.Controls
             {
               if (!flag)
                 stringBuilder.Append(", ");
-              if (this.checkBox_PlaceHex.Checked)
-                stringBuilder.AppendFormat("{0:X02}", (object) num);
+              if (checkBox_PlaceHex.Checked)
+                stringBuilder.AppendFormat("{0:X02}", num);
               else
-                stringBuilder.AppendFormat("{0:D}", (object) num);
+                stringBuilder.AppendFormat("{0:D}", num);
               flag = false;
             }
           }
           else
             stringBuilder.Append("None");
-          this.labelCandidatePlace.Text = stringBuilder.ToString();
+          labelCandidatePlace.Text = stringBuilder.ToString();
         }
         else
-          this.labelCandidatePlace.Text = string.Empty;
+          labelCandidatePlace.Text = string.Empty;
       }
       else
-        this.labelCandidatePlace.Text = string.Empty;
+        labelCandidatePlace.Text = string.Empty;
     }
 
     private void RenewalEditArea(bool floorDetail)
     {
-      this.BeginUpdate();
-      if (this.listBox_TreasureMap.SelectedIndex == -1)
+      BeginUpdate();
+      if (listBox_TreasureMap.SelectedIndex == -1)
       {
-        this.Panel_TreasureMapEditArea.Enabled = false;
-        this.textBox_Detector.Text = string.Empty;
-        this.textBox_Renewer.Text = string.Empty;
-        this.label_PlaceName.Text = string.Empty;
-        this.labelCandidatePlace.Text = string.Empty;
-        this.RenewalDungeonDetail((TreasureMapData) null);
+        Panel_TreasureMapEditArea.Enabled = false;
+        textBox_Detector.Text = string.Empty;
+        textBox_Renewer.Text = string.Empty;
+        label_PlaceName.Text = string.Empty;
+        labelCandidatePlace.Text = string.Empty;
+        RenewalDungeonDetail(null);
       }
-      else if (this._selectedMapData != null)
+      else if (_selectedMapData != null)
       {
-        this.Panel_TreasureMapEditArea.Enabled = true;
-        this.RenewalPlaceName();
-        this.RenewalCandidatePlace();
-        this.SetVisibleControl(this._selectedMapData.MapType);
-        this.textBox_Detector.Text = this._selectedMapData.Detector.Value;
-        this.textBox_Renewer.Text = this._selectedMapData.Renewer.Value;
-        this.numericUpDown_Place.Value = (Decimal) this._selectedMapData.Place.Value;
-        this.checkBox_OpenProbability1.Checked = this._selectedMapData.IsOpenProbability(0);
-        this.checkBox_OpenProbability2.Checked = this._selectedMapData.IsOpenProbability(1);
-        this.checkBox_OpenProbability3.Checked = this._selectedMapData.IsOpenProbability(2);
-        switch (this._selectedMapData.MapType)
+        Panel_TreasureMapEditArea.Enabled = true;
+        RenewalPlaceName();
+        RenewalCandidatePlace();
+        SetVisibleControl(_selectedMapData.MapType);
+        textBox_Detector.Text = _selectedMapData.Detector.Value;
+        textBox_Renewer.Text = _selectedMapData.Renewer.Value;
+        numericUpDown_Place.Value = _selectedMapData.Place.Value;
+        checkBox_OpenProbability1.Checked = _selectedMapData.IsOpenProbability(0);
+        checkBox_OpenProbability2.Checked = _selectedMapData.IsOpenProbability(1);
+        checkBox_OpenProbability3.Checked = _selectedMapData.IsOpenProbability(2);
+        switch (_selectedMapData.MapType)
         {
           case MapType.Normal:
             if (floorDetail)
-              this._selectedMapData.CalculateDetail(true);
-            this.radioButton_NormalMap.Checked = true;
-            this.numericUpDown_MapNo1.Value = (Decimal) this._selectedMapData.Rank;
-            this.numericUpDown_MapNo2.Value = (Decimal) this._selectedMapData.Seed;
-            if (this._selectedMapData.IsValidSeed)
-              this.numericUpDown_MapNo2.ForeColor = Color.Black;
+              _selectedMapData.CalculateDetail(true);
+            radioButton_NormalMap.Checked = true;
+            numericUpDown_MapNo1.Value = _selectedMapData.Rank;
+            numericUpDown_MapNo2.Value = _selectedMapData.Seed;
+            if (_selectedMapData.IsValidSeed)
+              numericUpDown_MapNo2.ForeColor = Color.Black;
             else
-              this.numericUpDown_MapNo2.ForeColor = Color.Red;
-            if (this._selectedMapData.IsValidRank)
-              this.numericUpDown_MapNo1.ForeColor = Color.Black;
+              numericUpDown_MapNo2.ForeColor = Color.Red;
+            if (_selectedMapData.IsValidRank)
+              numericUpDown_MapNo1.ForeColor = Color.Black;
             else
-              this.numericUpDown_MapNo1.ForeColor = Color.Red;
-            if (this._selectedMapData.IsValidPlace)
+              numericUpDown_MapNo1.ForeColor = Color.Red;
+            if (_selectedMapData.IsValidPlace)
             {
-              this.numericUpDown_Place.ForeColor = Color.Black;
+              numericUpDown_Place.ForeColor = Color.Black;
               break;
             }
-            this.numericUpDown_Place.ForeColor = Color.Red;
+            numericUpDown_Place.ForeColor = Color.Red;
             break;
           case MapType.devil:
-            this.radioButton_DevilMap.Checked = true;
-            this.comboBox_Devil.SelectedItem = (object) this._selectedMapData.DevilType;
-            this.numericUpDown_DevilLevel.Value = (Decimal) this._selectedMapData.DevilLevel.Value;
-            this.numericUpDown_DevilVictoryTurn.Value = (Decimal) this._selectedMapData.DevilVictoryTurn;
-            this.numericUpDown_MapNo2.ForeColor = Color.Black;
+            radioButton_DevilMap.Checked = true;
+            comboBox_Devil.SelectedItem = _selectedMapData.DevilType;
+            numericUpDown_DevilLevel.Value = _selectedMapData.DevilLevel.Value;
+            numericUpDown_DevilVictoryTurn.Value = _selectedMapData.DevilVictoryTurn;
+            numericUpDown_MapNo2.ForeColor = Color.Black;
             break;
         }
-        if (this._selectedMapData.MapState == MapState.NotDiscover)
-          this.comboBox_State.SelectedIndex = 0;
-        else if (this._selectedMapData.MapState == MapState.Discover)
-          this.comboBox_State.SelectedIndex = 1;
-        else if (this._selectedMapData.MapState == MapState.Clear)
-          this.comboBox_State.SelectedIndex = 2;
+        if (_selectedMapData.MapState == MapState.NotDiscover)
+          comboBox_State.SelectedIndex = 0;
+        else if (_selectedMapData.MapState == MapState.Discover)
+          comboBox_State.SelectedIndex = 1;
+        else if (_selectedMapData.MapState == MapState.Clear)
+          comboBox_State.SelectedIndex = 2;
         else
-          this.comboBox_State.SelectedIndex = -1;
-        this.RenewalDungeonDetail(this._selectedMapData);
+          comboBox_State.SelectedIndex = -1;
+        RenewalDungeonDetail(_selectedMapData);
       }
-      this.Panel_NormalMap.Invalidate();
-      this.EndUpdate();
+      Panel_NormalMap.Invalidate();
+      EndUpdate();
     }
 
     private void RenewalDungeonDetail(TreasureMapData mapData)
     {
-      if (mapData != null && mapData.MapType == MapType.Normal && mapData.Rank >= (byte) 2 && mapData.Rank <= (byte) 248)
+      if (mapData != null && mapData.MapType == MapType.Normal && mapData.Rank >= 2 && mapData.Rank <= 248)
       {
-        this.richTextBox_dummy.Visible = true;
-        this.textBox_DungeonDetail.Text = string.Empty;
+        richTextBox_dummy.Visible = true;
+        textBox_DungeonDetail.Text = string.Empty;
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.AppendFormat("Rank: {0:X2}, Seed: {1:X4}\n", (object) mapData.Rank, (object) mapData.Seed);
-        stringBuilder.AppendFormat("{0}\n", (object) mapData.MapName);
-        stringBuilder.AppendFormat("Type: {0}\n", (object) mapData.MapTypeName);
-        stringBuilder.AppendFormat("Floors: {0}\n", (object) mapData.FloorCount);
-        stringBuilder.AppendFormat("Monster rank: {0}\n", (object) mapData.MonsterRank);
-        stringBuilder.AppendFormat("Boss: {0}\n", (object) mapData.BossName);
+        stringBuilder.AppendFormat("Rank: {0:X2}, Seed: {1:X4}\n", mapData.Rank, mapData.Seed);
+        stringBuilder.AppendFormat("{0}\n", mapData.MapName);
+        stringBuilder.AppendFormat("Type: {0}\n", mapData.MapTypeName);
+        stringBuilder.AppendFormat("Floors: {0}\n", mapData.FloorCount);
+        stringBuilder.AppendFormat("Monster rank: {0}\n", mapData.MonsterRank);
+        stringBuilder.AppendFormat("Boss: {0}\n", mapData.BossName);
         int treasureBoxCount = mapData.GetTreasureBoxCount(0);
-        stringBuilder.AppendFormat("Number of chests: {0}\n", (object) treasureBoxCount);
+        stringBuilder.AppendFormat("Number of chests: {0}\n", treasureBoxCount);
         if (treasureBoxCount > 0)
         {
           stringBuilder.Append(" By rank:\n  ");
           for (int rank = 10; rank > 0; --rank)
-            stringBuilder.AppendFormat(" {0}:{1}", (object) TreasureMapDataControl._treasureBoxRankSymbol[0, rank - 1], (object) mapData.GetTreasureBoxCount(rank));
+            stringBuilder.AppendFormat(" {0}:{1}", _treasureBoxRankSymbol[0, rank - 1], mapData.GetTreasureBoxCount(rank));
           stringBuilder.Append("\n");
           stringBuilder.Append(" By floor:\n");
           for (int floor = 0; floor < mapData.FloorCount; ++floor)
           {
             if (mapData.GetTreasureBoxCountPerFloor(floor) > 0)
             {
-              stringBuilder.AppendFormat("   B{0:D2}:", (object) (floor + 1));
+              stringBuilder.AppendFormat("   B{0:D2}:", floor + 1);
               foreach (TreasureBoxInfo treasureBoxInfo in mapData.TreasureBoxInfoList[floor])
-                stringBuilder.AppendFormat(" {0}", (object) TreasureMapDataControl._treasureBoxRankSymbol[0, treasureBoxInfo.Rank - 1]);
+                stringBuilder.AppendFormat(" {0}", _treasureBoxRankSymbol[0, treasureBoxInfo.Rank - 1]);
               stringBuilder.Append("\n");
             }
           }
         }
         for (int floor = 0; floor < mapData.FloorCount; ++floor)
         {
-          this._treasureBoxCount[floor] = 0;
+          _treasureBoxCount[floor] = 0;
           byte[,] floorMap = mapData.GetFloorMap(floor);
           if (floorMap != null)
           {
             stringBuilder.Append("\n");
-            stringBuilder.AppendFormat("B{0:D2}\n", (object) (floor + 1));
+            stringBuilder.AppendFormat("B{0:D2}\n", floor + 1);
             for (int y = 0; y < mapData.GetFloorHeight(floor); ++y)
             {
               for (int x = 0; x < mapData.GetFloorWidth(floor); ++x)
               {
-                if (floorMap[y, x] == (byte) 1 || floorMap[y, x] == (byte) 3)
+                if (floorMap[y, x] == 1 || floorMap[y, x] == 3)
                   stringBuilder.Append("■");
-                else if (floorMap[y, x] == (byte) 4)
+                else if (floorMap[y, x] == 4)
                 {
                   if (mapData.IsUpStep(floor, x, y))
                     stringBuilder.Append("△");
                   else
                     stringBuilder.Append("　");
                 }
-                else if (floorMap[y, x] == (byte) 5)
+                else if (floorMap[y, x] == 5)
                   stringBuilder.Append("▽");
-                else if (floorMap[y, x] == (byte) 6)
+                else if (floorMap[y, x] == 6)
                 {
                   int num = mapData.IsTreasureBoxRank(floor, x, y);
                   if (num > 0)
                   {
                     int treasureBoxIndex = mapData.GetTreasureBoxIndex(floor, x, y);
-                    this._treasureBoxIndexes[floor, treasureBoxIndex] = stringBuilder.Length;
-                    stringBuilder.AppendFormat("{0}", (object) TreasureMapDataControl._treasureBoxRankSymbol[1, num - 1]);
-                    ++this._treasureBoxCount[floor];
+                    _treasureBoxIndexes[floor, treasureBoxIndex] = stringBuilder.Length;
+                    stringBuilder.AppendFormat("{0}", _treasureBoxRankSymbol[1, num - 1]);
+                    ++_treasureBoxCount[floor];
                   }
                   else
                     stringBuilder.Append("　");
@@ -438,73 +437,73 @@ namespace DQ9_Cheat.Controls
               }
               stringBuilder.Append("\n");
             }
-            for (int index1 = 0; index1 < this._treasureBoxCount[floor]; ++index1)
+            for (int index1 = 0; index1 < _treasureBoxCount[floor]; ++index1)
             {
               int rank = mapData.TreasureBoxInfoList[floor][index1].Rank;
               int index2 = mapData.TreasureBoxInfoList[floor][index1].Index;
               string treasureBoxItem = mapData.GetTreasureBoxItem(floor, index2, 2);
-              stringBuilder.AppendFormat("({0:D2}, {1:D2}) {2} {3}\n", (object) mapData.TreasureBoxInfoList[floor][index1].X, (object) mapData.TreasureBoxInfoList[floor][index1].Y, (object) TreasureMapDataControl._treasureBoxRankSymbol[1, rank - 1], (object) treasureBoxItem);
+              stringBuilder.AppendFormat("({0:D2}, {1:D2}) {2} {3}\n", mapData.TreasureBoxInfoList[floor][index1].X, mapData.TreasureBoxInfoList[floor][index1].Y, _treasureBoxRankSymbol[1, rank - 1], treasureBoxItem);
             }
           }
         }
-        this.textBox_DungeonDetail.Text = stringBuilder.ToString();
-        using (Font font = new Font("MS Gothic", 9f, FontStyle.Underline, GraphicsUnit.Point, (byte) 128))
+        textBox_DungeonDetail.Text = stringBuilder.ToString();
+        using (Font font = new Font("MS Gothic", 9f, FontStyle.Underline, GraphicsUnit.Point, 128))
         {
           for (int index3 = 0; index3 < mapData.FloorCount; ++index3)
           {
-            for (int index4 = 0; index4 < this._treasureBoxCount[index3]; ++index4)
+            for (int index4 = 0; index4 < _treasureBoxCount[index3]; ++index4)
             {
-              this.textBox_DungeonDetail.SelectionStart = this._treasureBoxIndexes[index3, index4];
-              this.textBox_DungeonDetail.SelectionLength = 1;
-              this.textBox_DungeonDetail.SelectionFont = font;
-              this.textBox_DungeonDetail.SelectionColor = Color.Blue;
+              textBox_DungeonDetail.SelectionStart = _treasureBoxIndexes[index3, index4];
+              textBox_DungeonDetail.SelectionLength = 1;
+              textBox_DungeonDetail.SelectionFont = font;
+              textBox_DungeonDetail.SelectionColor = Color.Blue;
             }
           }
         }
-        this.textBox_DungeonDetail.SelectionStart = 0;
-        this.textBox_DungeonDetail.SelectionLength = 0;
-        this.textBox_DungeonDetail.ScrollToCaret();
-        this.label_DungeonDetail.Enabled = true;
-        this.textBox_DungeonDetail.Enabled = true;
-        this.richTextBox_dummy.Visible = false;
+        textBox_DungeonDetail.SelectionStart = 0;
+        textBox_DungeonDetail.SelectionLength = 0;
+        textBox_DungeonDetail.ScrollToCaret();
+        label_DungeonDetail.Enabled = true;
+        textBox_DungeonDetail.Enabled = true;
+        richTextBox_dummy.Visible = false;
       }
       else
       {
-        this.label_DungeonDetail.Enabled = false;
-        this.textBox_DungeonDetail.Enabled = false;
-        this.textBox_DungeonDetail.Text = string.Empty;
+        label_DungeonDetail.Enabled = false;
+        textBox_DungeonDetail.Enabled = false;
+        textBox_DungeonDetail.Text = string.Empty;
       }
     }
 
     private void listBox_TreasureMap_SelectedIndexChanged(object sender, EventArgs e)
     {
-      if (this._updateCount == 0 && this.listBox_TreasureMap.SelectedIndex != -1)
+      if (_updateCount == 0 && listBox_TreasureMap.SelectedIndex != -1)
       {
         TreasureMapManager treasureMapManager = SaveDataManager.Instance.SaveData.TreasureMapManager;
-        if (this.listBox_TreasureMap.SelectedItem is TreasureMapDataControl.TreasureMapListBoxItem selectedItem)
+        if (listBox_TreasureMap.SelectedItem is TreasureMapListBoxItem selectedItem)
         {
-          this._selectedMapData = treasureMapManager.GetMapData(selectedItem.Index);
-          this.RenewalEditArea(true);
+          _selectedMapData = treasureMapManager.GetMapData(selectedItem.Index);
+          RenewalEditArea(true);
         }
       }
-      this.RenewalToolButton();
+      RenewalToolButton();
     }
 
     private void SetVisibleControl(MapType mapType)
     {
       if (mapType == MapType.Normal)
       {
-        this.Panel_Devil.Visible = false;
-        this.Panel_NormalMap.Visible = true;
-        this.Panel_NormalMap.Location = this._panelLocation;
+        Panel_Devil.Visible = false;
+        Panel_NormalMap.Visible = true;
+        Panel_NormalMap.Location = _panelLocation;
       }
       else
       {
         if (mapType != MapType.devil)
           return;
-        this.Panel_Devil.Visible = true;
-        this.Panel_NormalMap.Visible = false;
-        this.Panel_Devil.Location = this._panelLocation;
+        Panel_Devil.Visible = true;
+        Panel_NormalMap.Visible = false;
+        Panel_Devil.Location = _panelLocation;
       }
     }
 
@@ -513,217 +512,217 @@ namespace DQ9_Cheat.Controls
       TreasureMapManager treasureMapManager = SaveDataManager.Instance.SaveData.TreasureMapManager;
       if (!treasureMapManager.CreateMapData())
         return;
-      this.BeginUpdate();
-      this.groupBoxWithCheckBox_Narrowing.Checked = false;
-      this.EndUpdate();
-      this.listBox_TreasureMap.BeginUpdate();
-      TreasureMapData mapData = treasureMapManager.GetMapData((int) treasureMapManager.MapCount - 1);
-      this.RenewalListBox();
-      this.listBox_TreasureMap.SelectedIndex = (int) treasureMapManager.MapCount - 1;
-      this._selectedMapData = mapData;
-      this.RenewalEditArea(true);
-      this.listBox_TreasureMap.EndUpdate();
+      BeginUpdate();
+      groupBoxWithCheckBox_Narrowing.Checked = false;
+      EndUpdate();
+      listBox_TreasureMap.BeginUpdate();
+      TreasureMapData mapData = treasureMapManager.GetMapData(treasureMapManager.MapCount - 1);
+      RenewalListBox();
+      listBox_TreasureMap.SelectedIndex = treasureMapManager.MapCount - 1;
+      _selectedMapData = mapData;
+      RenewalEditArea(true);
+      listBox_TreasureMap.EndUpdate();
     }
 
     private void toolButton_DeleteMap_Click(object sender, EventArgs e)
     {
-      if (this.listBox_TreasureMap.SelectedIndex == -1 || !(this.listBox_TreasureMap.SelectedItem is TreasureMapDataControl.TreasureMapListBoxItem selectedItem1))
+      if (listBox_TreasureMap.SelectedIndex == -1 || !(listBox_TreasureMap.SelectedItem is TreasureMapListBoxItem selectedItem1))
         return;
       SaveDataManager.Instance.SaveData.TreasureMapManager.DeleteMapData(selectedItem1.Index);
-      int selectedIndex = this.listBox_TreasureMap.SelectedIndex;
-      this.listBox_TreasureMap.Items.RemoveAt(selectedIndex);
-      this.RenewalListBox();
-      if (this.listBox_TreasureMap.Items.Count > selectedIndex)
+      int selectedIndex = listBox_TreasureMap.SelectedIndex;
+      listBox_TreasureMap.Items.RemoveAt(selectedIndex);
+      RenewalListBox();
+      if (listBox_TreasureMap.Items.Count > selectedIndex)
       {
-        this.listBox_TreasureMap.SelectedIndex = selectedIndex;
+        listBox_TreasureMap.SelectedIndex = selectedIndex;
         TreasureMapManager treasureMapManager = SaveDataManager.Instance.SaveData.TreasureMapManager;
-        this._selectedMapData = !(this.listBox_TreasureMap.SelectedItem is TreasureMapDataControl.TreasureMapListBoxItem selectedItem2) ? (TreasureMapData) null : treasureMapManager.GetMapData(selectedItem2.Index);
+        _selectedMapData = !(listBox_TreasureMap.SelectedItem is TreasureMapListBoxItem selectedItem2) ? null : treasureMapManager.GetMapData(selectedItem2.Index);
       }
       else
       {
-        this.listBox_TreasureMap.SelectedIndex = selectedIndex - 1;
-        this._selectedMapData = (TreasureMapData) null;
+        listBox_TreasureMap.SelectedIndex = selectedIndex - 1;
+        _selectedMapData = null;
       }
-      this.RenewalMapCountLabel();
-      this.RenewalEditArea(true);
+      RenewalMapCountLabel();
+      RenewalEditArea(true);
     }
 
     private void radioButton_MapType_CheckedChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0 || !(sender is RadioButton radioButton))
+      if (_updateCount != 0 || !(sender is RadioButton radioButton))
         return;
       MapType tag = (MapType) radioButton.Tag;
-      if (this._selectedMapData == null)
+      if (_selectedMapData == null)
         return;
       SaveDataManager.Instance.UndoRedoMgr.BeginPluralEdit();
-      this._selectedMapData.MapType = tag;
-      this._selectedMapData.Rank = tag != MapType.Normal ? (byte) 1 : (byte) 2;
+      _selectedMapData.MapType = tag;
+      _selectedMapData.Rank = tag != MapType.Normal ? (byte) 1 : (byte) 2;
       SaveDataManager.Instance.UndoRedoMgr.EndPluralEdit();
-      this.RenewalListBox();
-      this.RenewalEditArea(true);
+      RenewalListBox();
+      RenewalEditArea(true);
     }
 
     private void textBox_Detector_TextChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0 || this._selectedMapData == null)
+      if (_updateCount != 0 || _selectedMapData == null)
         return;
-      this._selectedMapData.Detector.Value = this.textBox_Detector.Text;
-      this.textBox_Detector.Text = this._selectedMapData.Detector.Value;
+      _selectedMapData.Detector.Value = textBox_Detector.Text;
+      textBox_Detector.Text = _selectedMapData.Detector.Value;
     }
 
     private void textBox_Renewer_TextChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0 || this._selectedMapData == null)
+      if (_updateCount != 0 || _selectedMapData == null)
         return;
-      this._selectedMapData.Renewer.Value = this.textBox_Renewer.Text;
-      this.textBox_Renewer.Text = this._selectedMapData.Renewer.Value;
+      _selectedMapData.Renewer.Value = textBox_Renewer.Text;
+      textBox_Renewer.Text = _selectedMapData.Renewer.Value;
     }
 
     private void numericUpDown_Place_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0 || this._selectedMapData == null)
+      if (_updateCount != 0 || _selectedMapData == null)
         return;
-      this._selectedMapData.Place.Value = (byte) this.numericUpDown_Place.Value;
-      this.RenewalListBox();
-      this.RenewalPlaceName();
-      if (this._selectedMapData.MapType == MapType.devil || this._selectedMapData.IsValidPlace)
-        this.numericUpDown_Place.ForeColor = Color.Black;
+      _selectedMapData.Place.Value = (byte) numericUpDown_Place.Value;
+      RenewalListBox();
+      RenewalPlaceName();
+      if (_selectedMapData.MapType == MapType.devil || _selectedMapData.IsValidPlace)
+        numericUpDown_Place.ForeColor = Color.Black;
       else
-        this.numericUpDown_Place.ForeColor = Color.Red;
+        numericUpDown_Place.ForeColor = Color.Red;
     }
 
     private void comboBox_State_SelectedIndexChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0 || this.comboBox_State.SelectedIndex == -1 || this._selectedMapData == null)
+      if (_updateCount != 0 || comboBox_State.SelectedIndex == -1 || _selectedMapData == null)
         return;
-      this._selectedMapData.MapState = (MapState) (1 << this.comboBox_State.SelectedIndex);
+      _selectedMapData.MapState = (MapState) (1 << comboBox_State.SelectedIndex);
     }
 
     private void checkBox_OpenProbability_CheckedChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0 || !(sender is CheckBox checkBox) || this._selectedMapData == null)
+      if (_updateCount != 0 || !(sender is CheckBox checkBox) || _selectedMapData == null)
         return;
-      this._selectedMapData.SetOpenProbability((int) checkBox.Tag, checkBox.Checked);
+      _selectedMapData.SetOpenProbability((int) checkBox.Tag, checkBox.Checked);
     }
 
     private void comboBox_Devil_SelectedIndexChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0 || this.comboBox_Devil.SelectedIndex == -1 || !(this.comboBox_Devil.SelectedItem is Devil selectedItem) || this._selectedMapData == null)
+      if (_updateCount != 0 || comboBox_Devil.SelectedIndex == -1 || !(comboBox_Devil.SelectedItem is Devil selectedItem) || _selectedMapData == null)
         return;
-      this._selectedMapData.DevilType = selectedItem;
-      this.RenewalListBox();
+      _selectedMapData.DevilType = selectedItem;
+      RenewalListBox();
     }
 
     private void numericUpDown_DevilLevel_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0 || this._selectedMapData == null)
+      if (_updateCount != 0 || _selectedMapData == null)
         return;
-      this._selectedMapData.DevilLevel.Value = (byte) this.numericUpDown_DevilLevel.Value;
-      this.RenewalListBox();
+      _selectedMapData.DevilLevel.Value = (byte) numericUpDown_DevilLevel.Value;
+      RenewalListBox();
     }
 
     private void numericUpDown_DevilVictoryTurn_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0 || this._selectedMapData == null)
+      if (_updateCount != 0 || _selectedMapData == null)
         return;
-      this._selectedMapData.DevilVictoryTurn = (ushort) this.numericUpDown_DevilVictoryTurn.Value;
+      _selectedMapData.DevilVictoryTurn = (ushort) numericUpDown_DevilVictoryTurn.Value;
     }
 
     private void numericUpDown_MapNo1_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0 || this._selectedMapData == null)
+      if (_updateCount != 0 || _selectedMapData == null)
         return;
-      this._selectedMapData.Rank = (byte) this.numericUpDown_MapNo1.Value;
-      this._selectedMapData.CalculateDetail(true);
-      this.RenewalListBox();
-      this.RenewalEditArea(true);
-      if (this._selectedMapData.IsValidRank)
-        this.numericUpDown_MapNo1.ForeColor = Color.Black;
+      _selectedMapData.Rank = (byte) numericUpDown_MapNo1.Value;
+      _selectedMapData.CalculateDetail(true);
+      RenewalListBox();
+      RenewalEditArea(true);
+      if (_selectedMapData.IsValidRank)
+        numericUpDown_MapNo1.ForeColor = Color.Black;
       else
-        this.numericUpDown_MapNo1.ForeColor = Color.Red;
+        numericUpDown_MapNo1.ForeColor = Color.Red;
     }
 
     private void numericUpDown_MapNo2_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0 || this._selectedMapData == null)
+      if (_updateCount != 0 || _selectedMapData == null)
         return;
-      this._selectedMapData.Seed = (ushort) this.numericUpDown_MapNo2.Value;
-      this._selectedMapData.CalculateDetail(true);
-      this.RenewalListBox();
-      this.RenewalEditArea(true);
-      if (this._selectedMapData.IsValidSeed)
-        this.numericUpDown_MapNo2.ForeColor = Color.Black;
+      _selectedMapData.Seed = (ushort) numericUpDown_MapNo2.Value;
+      _selectedMapData.CalculateDetail(true);
+      RenewalListBox();
+      RenewalEditArea(true);
+      if (_selectedMapData.IsValidSeed)
+        numericUpDown_MapNo2.ForeColor = Color.Black;
       else
-        this.numericUpDown_MapNo2.ForeColor = Color.Red;
+        numericUpDown_MapNo2.ForeColor = Color.Red;
     }
 
     private void numericUpDown_ClearCount_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.TreasureMapManager.ClearCount = (ushort) this.numericUpDown_ClearCount.Value;
+      SaveDataManager.Instance.SaveData.TreasureMapManager.ClearCount = (ushort) numericUpDown_ClearCount.Value;
     }
 
     private void Panel_NormalMap_Paint(object sender, PaintEventArgs e)
     {
-      if (this.listBox_TreasureMap.SelectedIndex == -1)
+      if (listBox_TreasureMap.SelectedIndex == -1)
         return;
-      e.Graphics.ScaleTransform(this.AutoScaleFactor.Width, this.AutoScaleFactor.Height);
-      if (this._selectedMapData == null || this._selectedMapData.MapType != MapType.Normal)
+      e.Graphics.ScaleTransform(AutoScaleFactor.Width, AutoScaleFactor.Height);
+      if (_selectedMapData == null || _selectedMapData.MapType != MapType.Normal)
         return;
-      using (Brush brush = (Brush) new SolidBrush(SystemColors.ControlText))
-        e.Graphics.DrawString(this._selectedMapData.MapName, this.Font, brush, new PointF(6f, 35f));
+      using (Brush brush = new SolidBrush(SystemColors.ControlText))
+        e.Graphics.DrawString(_selectedMapData.MapName, Font, brush, new PointF(6f, 35f));
     }
 
     private void checkBox_Hex_CheckedChanged(object sender, EventArgs e)
     {
-      this.numericUpDown_MapNo1.Hexadecimal = this.checkBox_Hex.Checked;
-      this.numericUpDown_MapNo2.Hexadecimal = this.checkBox_Hex.Checked;
+      numericUpDown_MapNo1.Hexadecimal = checkBox_Hex.Checked;
+      numericUpDown_MapNo2.Hexadecimal = checkBox_Hex.Checked;
     }
 
     private void checkBox_PlaceHex_CheckedChanged(object sender, EventArgs e)
     {
-      this.numericUpDown_Place.Hexadecimal = this.checkBox_PlaceHex.Checked;
-      this.RenewalCandidatePlace();
+      numericUpDown_Place.Hexadecimal = checkBox_PlaceHex.Checked;
+      RenewalCandidatePlace();
     }
 
     private void textBox_DungeonDetail_MouseMove(object sender, MouseEventArgs e)
     {
-      if (this._selectedMapData == null || this._selectedMapData.MapType != MapType.Normal)
+      if (_selectedMapData == null || _selectedMapData.MapType != MapType.Normal)
         return;
-      int indexFromPosition = this.textBox_DungeonDetail.GetCharIndexFromPosition(new Point(e.X - 5, e.Y));
-      for (int index1 = 0; index1 < this._selectedMapData.FloorCount; ++index1)
+      int indexFromPosition = textBox_DungeonDetail.GetCharIndexFromPosition(new Point(e.X - 5, e.Y));
+      for (int index1 = 0; index1 < _selectedMapData.FloorCount; ++index1)
       {
-        for (int index2 = 0; index2 < this._treasureBoxCount[index1]; ++index2)
+        for (int index2 = 0; index2 < _treasureBoxCount[index1]; ++index2)
         {
-          if (this._treasureBoxIndexes[index1, index2] == indexFromPosition)
+          if (_treasureBoxIndexes[index1, index2] == indexFromPosition)
           {
-            this.textBox_DungeonDetail.Cursor = Cursors.Arrow;
+            textBox_DungeonDetail.Cursor = Cursors.Arrow;
             return;
           }
         }
       }
-      this.textBox_DungeonDetail.Cursor = Cursors.IBeam;
+      textBox_DungeonDetail.Cursor = Cursors.IBeam;
     }
 
     private void textBox_DungeonDetail_MouseDown(object sender, MouseEventArgs e)
     {
-      if (this._selectedMapData == null || this._selectedMapData.MapType != MapType.Normal)
+      if (_selectedMapData == null || _selectedMapData.MapType != MapType.Normal)
         return;
-      int indexFromPosition = this.textBox_DungeonDetail.GetCharIndexFromPosition(new Point(e.X - 5, e.Y));
-      for (int floor = 0; floor < this._selectedMapData.FloorCount; ++floor)
+      int indexFromPosition = textBox_DungeonDetail.GetCharIndexFromPosition(new Point(e.X - 5, e.Y));
+      for (int floor = 0; floor < _selectedMapData.FloorCount; ++floor)
       {
-        for (int boxIndex = 0; boxIndex < this._treasureBoxCount[floor]; ++boxIndex)
+        for (int boxIndex = 0; boxIndex < _treasureBoxCount[floor]; ++boxIndex)
         {
-          if (this._treasureBoxIndexes[floor, boxIndex] == indexFromPosition)
+          if (_treasureBoxIndexes[floor, boxIndex] == indexFromPosition)
           {
-            this.textBox_DungeonDetail.Cursor = Cursors.Arrow;
-            using (TreasureBoxItemTableList boxItemTableList = new TreasureBoxItemTableList(this._selectedMapData, floor, boxIndex))
+            textBox_DungeonDetail.Cursor = Cursors.Arrow;
+            using (TreasureBoxItemTableList boxItemTableList = new TreasureBoxItemTableList(_selectedMapData, floor, boxIndex))
             {
-              foreach (TreasureBoxInfo treasureBoxInfo in this._selectedMapData.TreasureBoxInfoList[floor])
+              foreach (TreasureBoxInfo treasureBoxInfo in _selectedMapData.TreasureBoxInfoList[floor])
               {
                 if (treasureBoxInfo.Index == boxIndex)
-                  boxItemTableList.Text = string.Format("Item Table B{0} ({1}, {2}) {3}", (object) (floor + 1), (object) treasureBoxInfo.X, (object) treasureBoxInfo.Y, (object) TreasureMapDataControl._treasureBoxRankSymbol[0, treasureBoxInfo.Rank - 1]);
+                  boxItemTableList.Text = string.Format("Item Table B{0} ({1}, {2}) {3}", floor + 1, treasureBoxInfo.X, treasureBoxInfo.Y, _treasureBoxRankSymbol[0, treasureBoxInfo.Rank - 1]);
               }
               int num = (int) boxItemTableList.ShowDialog();
               return;
@@ -731,706 +730,706 @@ namespace DQ9_Cheat.Controls
           }
         }
       }
-      this.textBox_DungeonDetail.Cursor = Cursors.IBeam;
+      textBox_DungeonDetail.Cursor = Cursors.IBeam;
     }
 
     private void checkBox_NarrowingLevel_CheckedChanged(object sender, EventArgs e)
     {
-      this.numericUpDown_NarrowingLevel.Enabled = this.checkBox_NarrowingLevel.Checked;
-      this.comboBox_NarrowingLevel.Enabled = this.checkBox_NarrowingLevel.Checked;
-      if (this._updateCount != 0)
+      numericUpDown_NarrowingLevel.Enabled = checkBox_NarrowingLevel.Checked;
+      comboBox_NarrowingLevel.Enabled = checkBox_NarrowingLevel.Checked;
+      if (_updateCount != 0)
         return;
-      this.RenewalListBox();
+      RenewalListBox();
     }
 
     private void CheckBox_NarrowingDevil_CheckedChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      this.RenewalListBox();
+      RenewalListBox();
     }
 
     private void CheckBox_NarrowingNormal_CheckedChanged(object sender, EventArgs e)
     {
-      this.comboBox_NarrowingName1.Enabled = this.CheckBox_NarrowingNormal.Checked;
-      this.comboBox_NarrowingName2.Enabled = this.CheckBox_NarrowingNormal.Checked;
-      this.comboBox_NarrowingName3.Enabled = this.CheckBox_NarrowingNormal.Checked;
-      if (this._updateCount != 0)
+      comboBox_NarrowingName1.Enabled = CheckBox_NarrowingNormal.Checked;
+      comboBox_NarrowingName2.Enabled = CheckBox_NarrowingNormal.Checked;
+      comboBox_NarrowingName3.Enabled = CheckBox_NarrowingNormal.Checked;
+      if (_updateCount != 0)
         return;
-      this.RenewalListBox();
+      RenewalListBox();
     }
 
     private void comboBox_NarrowingName1_SelectedIndexChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      this.RenewalListBox();
+      RenewalListBox();
     }
 
     private void comboBox_NarrowingName2_SelectedIndexChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      this.RenewalListBox();
+      RenewalListBox();
     }
 
     private void comboBox_NarrowingName3_SelectedIndexChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      this.RenewalListBox();
+      RenewalListBox();
     }
 
     private void numericUpDown_NarrowingLevel_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      this.RenewalListBox();
+      RenewalListBox();
     }
 
     private void comboBox_NarrowingLevel_SelectedIndexChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      this.RenewalListBox();
+      RenewalListBox();
     }
 
     private void groupBoxWithCheckBox_Narrowing_CheckedChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      this.RenewalListBox();
+      RenewalListBox();
     }
 
     private void toolButton_SortLVUp_Click(object sender, EventArgs e)
     {
-      this.toolButton_SortLVUp.Checked = !this.toolButton_SortLVUp.Checked;
-      this.toolButton_SortLVDown.Checked = false;
-      this.listBox_TreasureMap.SelectedIndex = -1;
-      this._selectedMapData = (TreasureMapData) null;
-      this.RenewalListBox();
+      toolButton_SortLVUp.Checked = !toolButton_SortLVUp.Checked;
+      toolButton_SortLVDown.Checked = false;
+      listBox_TreasureMap.SelectedIndex = -1;
+      _selectedMapData = null;
+      RenewalListBox();
     }
 
     private void toolButton_SortLVDown_Click(object sender, EventArgs e)
     {
-      this.toolButton_SortLVDown.Checked = !this.toolButton_SortLVDown.Checked;
-      this.toolButton_SortLVUp.Checked = false;
-      this.listBox_TreasureMap.SelectedIndex = -1;
-      this._selectedMapData = (TreasureMapData) null;
-      this.RenewalListBox();
+      toolButton_SortLVDown.Checked = !toolButton_SortLVDown.Checked;
+      toolButton_SortLVUp.Checked = false;
+      listBox_TreasureMap.SelectedIndex = -1;
+      _selectedMapData = null;
+      RenewalListBox();
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && this.components != null)
-        this.components.Dispose();
+      if (disposing && components != null)
+        components.Dispose();
       base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
       ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof (TreasureMapDataControl));
-      this.listBox_TreasureMap = new ListBox();
-      this.radioButton_NormalMap = new RadioButton();
-      this.radioButton_DevilMap = new RadioButton();
-      this.GroupBox_MapType = new JS_GroupBox();
-      this.label1 = new Label();
-      this.textBox_Detector = new TextBox();
-      this.textBox_Renewer = new TextBox();
-      this.label2 = new Label();
-      this.Panel_NormalMap = new JS_Panel();
-      this.checkBox_Hex = new CheckBox();
-      this.numericUpDown_MapNo2 = new SafeNumericUpDown();
-      this.numericUpDown_MapNo1 = new SafeNumericUpDown();
-      this.label3 = new Label();
-      this.GroupBox_Probability = new JS_GroupBox();
-      this.checkBox_OpenProbability3 = new CheckBox();
-      this.checkBox_OpenProbability2 = new CheckBox();
-      this.checkBox_OpenProbability1 = new CheckBox();
-      this.Panel_Devil = new JS_Panel();
-      this.numericUpDown_DevilVictoryTurn = new SafeNumericUpDown();
-      this.label6 = new Label();
-      this.numericUpDown_DevilLevel = new SafeNumericUpDown();
-      this.label5 = new Label();
-      this.label4 = new Label();
-      this.comboBox_Devil = new ComboBox();
-      this.Panel_TreasureMapEditArea = new JS_Panel();
-      this.labelCandidatePlace = new Label();
-      this.label_PlaceName = new Label();
-      this.checkBox_PlaceHex = new CheckBox();
-      this.richTextBox_dummy = new RichTextBox();
-      this.textBox_DungeonDetail = new RichTextBox();
-      this.label_DungeonDetail = new Label();
-      this.numericUpDown_Place = new SafeNumericUpDown();
-      this.label8 = new Label();
-      this.comboBox_State = new ComboBox();
-      this.label7 = new Label();
-      this.panel2 = new Panel();
-      this.toolStrip2 = new ToolStrip();
-      this.toolButton_CreateMap = new ToolStripButton();
-      this.toolButton_DeleteMap = new ToolStripButton();
-      this.label_MapCount = new ToolStripLabel();
-      this.numericUpDown_ClearCount = new SafeNumericUpDown();
-      this.label9 = new Label();
-      this.groupBoxWithCheckBox_Narrowing = new GroupBoxWithCheckBox();
-      this.comboBox_NarrowingName3 = new ComboBox();
-      this.comboBox_NarrowingName2 = new ComboBox();
-      this.comboBox_NarrowingName1 = new ComboBox();
-      this.CheckBox_NarrowingNormal = new CheckBox();
-      this.CheckBox_NarrowingDevil = new CheckBox();
-      this.checkBox_NarrowingLevel = new CheckBox();
-      this.numericUpDown_NarrowingLevel = new NumericUpDown();
-      this.comboBox_NarrowingLevel = new ComboBox();
-      this.toolStripSeparator1 = new ToolStripSeparator();
-      this.toolButton_SortLVUp = new ToolStripButton();
-      this.toolButton_SortLVDown = new ToolStripButton();
-      this.GroupBox_MapType.SuspendLayout();
-      this.Panel_NormalMap.SuspendLayout();
-      this.numericUpDown_MapNo2.BeginInit();
-      this.numericUpDown_MapNo1.BeginInit();
-      this.GroupBox_Probability.SuspendLayout();
-      this.Panel_Devil.SuspendLayout();
-      this.numericUpDown_DevilVictoryTurn.BeginInit();
-      this.numericUpDown_DevilLevel.BeginInit();
-      this.Panel_TreasureMapEditArea.SuspendLayout();
-      this.numericUpDown_Place.BeginInit();
-      this.panel2.SuspendLayout();
-      this.toolStrip2.SuspendLayout();
-      this.numericUpDown_ClearCount.BeginInit();
-      this.groupBoxWithCheckBox_Narrowing.SuspendLayout();
-      this.numericUpDown_NarrowingLevel.BeginInit();
-      this.SuspendLayout();
-      this.listBox_TreasureMap.Dock = DockStyle.Fill;
-      this.listBox_TreasureMap.FormattingEnabled = true;
-      this.listBox_TreasureMap.ItemHeight = 12;
-      this.listBox_TreasureMap.Location = new Point(0, 0);
-      this.listBox_TreasureMap.Name = "listBox_TreasureMap";
-      this.listBox_TreasureMap.Size = new Size(225, 280);
-      this.listBox_TreasureMap.TabIndex = 0;
-      this.listBox_TreasureMap.SelectedIndexChanged += new EventHandler(this.listBox_TreasureMap_SelectedIndexChanged);
-      this.radioButton_NormalMap.AutoSize = true;
-      this.radioButton_NormalMap.Location = new Point(12, 22);
-      this.radioButton_NormalMap.Name = "radioButton_NormalMap";
-      this.radioButton_NormalMap.Size = new Size(58, 17);
-      this.radioButton_NormalMap.TabIndex = 2;
-      this.radioButton_NormalMap.TabStop = true;
-      this.radioButton_NormalMap.Tag = (object) MapType.Normal;
-      this.radioButton_NormalMap.Text = "Normal";
-      this.radioButton_NormalMap.UseVisualStyleBackColor = true;
-      this.radioButton_NormalMap.CheckedChanged += new EventHandler(this.radioButton_MapType_CheckedChanged);
-      this.radioButton_DevilMap.AutoSize = true;
-      this.radioButton_DevilMap.Location = new Point(77, 22);
-      this.radioButton_DevilMap.Name = "radioButton_DevilMap";
-      this.radioButton_DevilMap.Size = new Size(86, 17);
-      this.radioButton_DevilMap.TabIndex = 3;
-      this.radioButton_DevilMap.TabStop = true;
-      this.radioButton_DevilMap.Tag = (object) MapType.devil;
-      this.radioButton_DevilMap.Text = "Legacy Boss";
-      this.radioButton_DevilMap.UseVisualStyleBackColor = true;
-      this.radioButton_DevilMap.CheckedChanged += new EventHandler(this.radioButton_MapType_CheckedChanged);
-      this.GroupBox_MapType.Controls.Add((Control) this.radioButton_DevilMap);
-      this.GroupBox_MapType.Controls.Add((Control) this.radioButton_NormalMap);
-      this.GroupBox_MapType.Location = new Point(3, 3);
-      this.GroupBox_MapType.Name = "GroupBox_MapType";
-      this.GroupBox_MapType.Size = new Size(202, 51);
-      this.GroupBox_MapType.TabIndex = 4;
-      this.GroupBox_MapType.TabStop = false;
-      this.GroupBox_MapType.Text = "Map Type";
-      this.label1.AutoSize = true;
-      this.label1.Location = new Point(36, 64);
-      this.label1.Name = "label1";
-      this.label1.Size = new Size(75, 13);
-      this.label1.TabIndex = 5;
-      this.label1.Text = "Discovered by";
-      this.textBox_Detector.Location = new Point(111, 61);
-      this.textBox_Detector.Name = "textBox_Detector";
-      this.textBox_Detector.Size = new Size(87, 20);
-      this.textBox_Detector.TabIndex = 6;
-      this.textBox_Detector.TextChanged += new EventHandler(this.textBox_Detector_TextChanged);
-      this.textBox_Renewer.Location = new Point(111, 85);
-      this.textBox_Renewer.Name = "textBox_Renewer";
-      this.textBox_Renewer.Size = new Size(87, 20);
-      this.textBox_Renewer.TabIndex = 8;
-      this.textBox_Renewer.TextChanged += new EventHandler(this.textBox_Renewer_TextChanged);
-      this.label2.AutoSize = true;
-      this.label2.Location = new Point(38, 88);
-      this.label2.Name = "label2";
-      this.label2.Size = new Size(73, 13);
-      this.label2.TabIndex = 7;
-      this.label2.Text = "Conquered by";
-      this.Panel_NormalMap.Controls.Add((Control) this.checkBox_Hex);
-      this.Panel_NormalMap.Controls.Add((Control) this.numericUpDown_MapNo2);
-      this.Panel_NormalMap.Controls.Add((Control) this.numericUpDown_MapNo1);
-      this.Panel_NormalMap.Controls.Add((Control) this.label3);
-      this.Panel_NormalMap.Location = new Point(0, 219);
-      this.Panel_NormalMap.Name = "Panel_NormalMap";
-      this.Panel_NormalMap.Size = new Size(273, 82);
-      this.Panel_NormalMap.TabIndex = 9;
-      this.Panel_NormalMap.Paint += new PaintEventHandler(this.Panel_NormalMap_Paint);
-      this.checkBox_Hex.AutoSize = true;
-      this.checkBox_Hex.Location = new Point(191, 12);
-      this.checkBox_Hex.Name = "checkBox_Hex";
-      this.checkBox_Hex.Size = new Size(45, 17);
-      this.checkBox_Hex.TabIndex = 3;
-      this.checkBox_Hex.Text = "Hex";
-      this.checkBox_Hex.UseVisualStyleBackColor = true;
-      this.checkBox_Hex.CheckedChanged += new EventHandler(this.checkBox_Hex_CheckedChanged);
-      this.numericUpDown_MapNo2.Location = new Point(111, 10);
-      this.numericUpDown_MapNo2.Maximum = new Decimal(new int[4]
+      listBox_TreasureMap = new ListBox();
+      radioButton_NormalMap = new RadioButton();
+      radioButton_DevilMap = new RadioButton();
+      GroupBox_MapType = new JS_GroupBox();
+      label1 = new Label();
+      textBox_Detector = new TextBox();
+      textBox_Renewer = new TextBox();
+      label2 = new Label();
+      Panel_NormalMap = new JS_Panel();
+      checkBox_Hex = new CheckBox();
+      numericUpDown_MapNo2 = new SafeNumericUpDown();
+      numericUpDown_MapNo1 = new SafeNumericUpDown();
+      label3 = new Label();
+      GroupBox_Probability = new JS_GroupBox();
+      checkBox_OpenProbability3 = new CheckBox();
+      checkBox_OpenProbability2 = new CheckBox();
+      checkBox_OpenProbability1 = new CheckBox();
+      Panel_Devil = new JS_Panel();
+      numericUpDown_DevilVictoryTurn = new SafeNumericUpDown();
+      label6 = new Label();
+      numericUpDown_DevilLevel = new SafeNumericUpDown();
+      label5 = new Label();
+      label4 = new Label();
+      comboBox_Devil = new ComboBox();
+      Panel_TreasureMapEditArea = new JS_Panel();
+      labelCandidatePlace = new Label();
+      label_PlaceName = new Label();
+      checkBox_PlaceHex = new CheckBox();
+      richTextBox_dummy = new RichTextBox();
+      textBox_DungeonDetail = new RichTextBox();
+      label_DungeonDetail = new Label();
+      numericUpDown_Place = new SafeNumericUpDown();
+      label8 = new Label();
+      comboBox_State = new ComboBox();
+      label7 = new Label();
+      panel2 = new Panel();
+      toolStrip2 = new ToolStrip();
+      toolButton_CreateMap = new ToolStripButton();
+      toolButton_DeleteMap = new ToolStripButton();
+      label_MapCount = new ToolStripLabel();
+      numericUpDown_ClearCount = new SafeNumericUpDown();
+      label9 = new Label();
+      groupBoxWithCheckBox_Narrowing = new GroupBoxWithCheckBox();
+      comboBox_NarrowingName3 = new ComboBox();
+      comboBox_NarrowingName2 = new ComboBox();
+      comboBox_NarrowingName1 = new ComboBox();
+      CheckBox_NarrowingNormal = new CheckBox();
+      CheckBox_NarrowingDevil = new CheckBox();
+      checkBox_NarrowingLevel = new CheckBox();
+      numericUpDown_NarrowingLevel = new NumericUpDown();
+      comboBox_NarrowingLevel = new ComboBox();
+      toolStripSeparator1 = new ToolStripSeparator();
+      toolButton_SortLVUp = new ToolStripButton();
+      toolButton_SortLVDown = new ToolStripButton();
+      GroupBox_MapType.SuspendLayout();
+      Panel_NormalMap.SuspendLayout();
+      numericUpDown_MapNo2.BeginInit();
+      numericUpDown_MapNo1.BeginInit();
+      GroupBox_Probability.SuspendLayout();
+      Panel_Devil.SuspendLayout();
+      numericUpDown_DevilVictoryTurn.BeginInit();
+      numericUpDown_DevilLevel.BeginInit();
+      Panel_TreasureMapEditArea.SuspendLayout();
+      numericUpDown_Place.BeginInit();
+      panel2.SuspendLayout();
+      toolStrip2.SuspendLayout();
+      numericUpDown_ClearCount.BeginInit();
+      groupBoxWithCheckBox_Narrowing.SuspendLayout();
+      numericUpDown_NarrowingLevel.BeginInit();
+      SuspendLayout();
+      listBox_TreasureMap.Dock = DockStyle.Fill;
+      listBox_TreasureMap.FormattingEnabled = true;
+      listBox_TreasureMap.ItemHeight = 12;
+      listBox_TreasureMap.Location = new Point(0, 0);
+      listBox_TreasureMap.Name = "listBox_TreasureMap";
+      listBox_TreasureMap.Size = new Size(225, 280);
+      listBox_TreasureMap.TabIndex = 0;
+      listBox_TreasureMap.SelectedIndexChanged += listBox_TreasureMap_SelectedIndexChanged;
+      radioButton_NormalMap.AutoSize = true;
+      radioButton_NormalMap.Location = new Point(12, 22);
+      radioButton_NormalMap.Name = "radioButton_NormalMap";
+      radioButton_NormalMap.Size = new Size(58, 17);
+      radioButton_NormalMap.TabIndex = 2;
+      radioButton_NormalMap.TabStop = true;
+      radioButton_NormalMap.Tag = MapType.Normal;
+      radioButton_NormalMap.Text = "Normal";
+      radioButton_NormalMap.UseVisualStyleBackColor = true;
+      radioButton_NormalMap.CheckedChanged += radioButton_MapType_CheckedChanged;
+      radioButton_DevilMap.AutoSize = true;
+      radioButton_DevilMap.Location = new Point(77, 22);
+      radioButton_DevilMap.Name = "radioButton_DevilMap";
+      radioButton_DevilMap.Size = new Size(86, 17);
+      radioButton_DevilMap.TabIndex = 3;
+      radioButton_DevilMap.TabStop = true;
+      radioButton_DevilMap.Tag = MapType.devil;
+      radioButton_DevilMap.Text = "Legacy Boss";
+      radioButton_DevilMap.UseVisualStyleBackColor = true;
+      radioButton_DevilMap.CheckedChanged += radioButton_MapType_CheckedChanged;
+      GroupBox_MapType.Controls.Add(radioButton_DevilMap);
+      GroupBox_MapType.Controls.Add(radioButton_NormalMap);
+      GroupBox_MapType.Location = new Point(3, 3);
+      GroupBox_MapType.Name = "GroupBox_MapType";
+      GroupBox_MapType.Size = new Size(202, 51);
+      GroupBox_MapType.TabIndex = 4;
+      GroupBox_MapType.TabStop = false;
+      GroupBox_MapType.Text = "Map Type";
+      label1.AutoSize = true;
+      label1.Location = new Point(36, 64);
+      label1.Name = "label1";
+      label1.Size = new Size(75, 13);
+      label1.TabIndex = 5;
+      label1.Text = "Discovered by";
+      textBox_Detector.Location = new Point(111, 61);
+      textBox_Detector.Name = "textBox_Detector";
+      textBox_Detector.Size = new Size(87, 20);
+      textBox_Detector.TabIndex = 6;
+      textBox_Detector.TextChanged += textBox_Detector_TextChanged;
+      textBox_Renewer.Location = new Point(111, 85);
+      textBox_Renewer.Name = "textBox_Renewer";
+      textBox_Renewer.Size = new Size(87, 20);
+      textBox_Renewer.TabIndex = 8;
+      textBox_Renewer.TextChanged += textBox_Renewer_TextChanged;
+      label2.AutoSize = true;
+      label2.Location = new Point(38, 88);
+      label2.Name = "label2";
+      label2.Size = new Size(73, 13);
+      label2.TabIndex = 7;
+      label2.Text = "Conquered by";
+      Panel_NormalMap.Controls.Add(checkBox_Hex);
+      Panel_NormalMap.Controls.Add(numericUpDown_MapNo2);
+      Panel_NormalMap.Controls.Add(numericUpDown_MapNo1);
+      Panel_NormalMap.Controls.Add(label3);
+      Panel_NormalMap.Location = new Point(0, 219);
+      Panel_NormalMap.Name = "Panel_NormalMap";
+      Panel_NormalMap.Size = new Size(273, 82);
+      Panel_NormalMap.TabIndex = 9;
+      Panel_NormalMap.Paint += Panel_NormalMap_Paint;
+      checkBox_Hex.AutoSize = true;
+      checkBox_Hex.Location = new Point(191, 12);
+      checkBox_Hex.Name = "checkBox_Hex";
+      checkBox_Hex.Size = new Size(45, 17);
+      checkBox_Hex.TabIndex = 3;
+      checkBox_Hex.Text = "Hex";
+      checkBox_Hex.UseVisualStyleBackColor = true;
+      checkBox_Hex.CheckedChanged += checkBox_Hex_CheckedChanged;
+      numericUpDown_MapNo2.Location = new Point(111, 10);
+      numericUpDown_MapNo2.Maximum = new Decimal(new int[4]
       {
-        (int) ushort.MaxValue,
+        ushort.MaxValue,
         0,
         0,
         0
       });
-      this.numericUpDown_MapNo2.Name = "numericUpDown_MapNo2";
-      this.numericUpDown_MapNo2.Size = new Size(74, 20);
-      this.numericUpDown_MapNo2.TabIndex = 2;
-      this.numericUpDown_MapNo2.Value = new Decimal(new int[4]);
-      this.numericUpDown_MapNo2.ValueChanged += new EventHandler(this.numericUpDown_MapNo2_ValueChanged);
-      this.numericUpDown_MapNo1.Location = new Point(54, 10);
-      this.numericUpDown_MapNo1.Maximum = new Decimal(new int[4]
+      numericUpDown_MapNo2.Name = "numericUpDown_MapNo2";
+      numericUpDown_MapNo2.Size = new Size(74, 20);
+      numericUpDown_MapNo2.TabIndex = 2;
+      numericUpDown_MapNo2.Value = new Decimal(new int[4]);
+      numericUpDown_MapNo2.ValueChanged += numericUpDown_MapNo2_ValueChanged;
+      numericUpDown_MapNo1.Location = new Point(54, 10);
+      numericUpDown_MapNo1.Maximum = new Decimal(new int[4]
       {
-        (int) byte.MaxValue,
+        byte.MaxValue,
         0,
         0,
         0
       });
-      this.numericUpDown_MapNo1.Name = "numericUpDown_MapNo1";
-      this.numericUpDown_MapNo1.Size = new Size(51, 20);
-      this.numericUpDown_MapNo1.TabIndex = 1;
-      this.numericUpDown_MapNo1.Value = new Decimal(new int[4]);
-      this.numericUpDown_MapNo1.ValueChanged += new EventHandler(this.numericUpDown_MapNo1_ValueChanged);
-      this.label3.AutoSize = true;
-      this.label3.Location = new Point(6, 12);
-      this.label3.Name = "label3";
-      this.label3.Size = new Size(45, 13);
-      this.label3.TabIndex = 0;
-      this.label3.Text = "Map No.";
-      this.GroupBox_Probability.Controls.Add((Control) this.checkBox_OpenProbability3);
-      this.GroupBox_Probability.Controls.Add((Control) this.checkBox_OpenProbability2);
-      this.GroupBox_Probability.Controls.Add((Control) this.checkBox_OpenProbability1);
-      this.GroupBox_Probability.Location = new Point(0, 186);
-      this.GroupBox_Probability.Name = "GroupBox_Probability";
-      this.GroupBox_Probability.Size = new Size(204, 37);
-      this.GroupBox_Probability.TabIndex = 10;
-      this.GroupBox_Probability.TabStop = false;
-      this.GroupBox_Probability.Text = "Treasures Plundered";
-      this.checkBox_OpenProbability3.AutoSize = true;
-      this.checkBox_OpenProbability3.Location = new Point(147, 15);
-      this.checkBox_OpenProbability3.Name = "checkBox_OpenProbability3";
-      this.checkBox_OpenProbability3.Size = new Size(50, 17);
-      this.checkBox_OpenProbability3.TabIndex = 2;
-      this.checkBox_OpenProbability3.Tag = (object) 2;
-      this.checkBox_OpenProbability3.Text = "Third";
-      this.checkBox_OpenProbability3.UseVisualStyleBackColor = true;
-      this.checkBox_OpenProbability3.CheckedChanged += new EventHandler(this.checkBox_OpenProbability_CheckedChanged);
-      this.checkBox_OpenProbability2.AutoSize = true;
-      this.checkBox_OpenProbability2.Location = new Point(78, 15);
-      this.checkBox_OpenProbability2.Name = "checkBox_OpenProbability2";
-      this.checkBox_OpenProbability2.Size = new Size(63, 17);
-      this.checkBox_OpenProbability2.TabIndex = 1;
-      this.checkBox_OpenProbability2.Tag = (object) 1;
-      this.checkBox_OpenProbability2.Text = "Second";
-      this.checkBox_OpenProbability2.UseVisualStyleBackColor = true;
-      this.checkBox_OpenProbability2.CheckedChanged += new EventHandler(this.checkBox_OpenProbability_CheckedChanged);
-      this.checkBox_OpenProbability1.AutoSize = true;
-      this.checkBox_OpenProbability1.Location = new Point(22, 15);
-      this.checkBox_OpenProbability1.Name = "checkBox_OpenProbability1";
-      this.checkBox_OpenProbability1.Size = new Size(45, 17);
-      this.checkBox_OpenProbability1.TabIndex = 0;
-      this.checkBox_OpenProbability1.Tag = (object) 0;
-      this.checkBox_OpenProbability1.Text = "First";
-      this.checkBox_OpenProbability1.UseVisualStyleBackColor = true;
-      this.checkBox_OpenProbability1.CheckedChanged += new EventHandler(this.checkBox_OpenProbability_CheckedChanged);
-      this.Panel_Devil.Controls.Add((Control) this.numericUpDown_DevilVictoryTurn);
-      this.Panel_Devil.Controls.Add((Control) this.label6);
-      this.Panel_Devil.Controls.Add((Control) this.numericUpDown_DevilLevel);
-      this.Panel_Devil.Controls.Add((Control) this.label5);
-      this.Panel_Devil.Controls.Add((Control) this.label4);
-      this.Panel_Devil.Controls.Add((Control) this.comboBox_Devil);
-      this.Panel_Devil.Location = new Point(0, 261);
-      this.Panel_Devil.Name = "Panel_Devil";
-      this.Panel_Devil.Size = new Size(233, 54);
-      this.Panel_Devil.TabIndex = 11;
-      this.numericUpDown_DevilVictoryTurn.Location = new Point(173, 32);
-      this.numericUpDown_DevilVictoryTurn.Maximum = new Decimal(new int[4]
+      numericUpDown_MapNo1.Name = "numericUpDown_MapNo1";
+      numericUpDown_MapNo1.Size = new Size(51, 20);
+      numericUpDown_MapNo1.TabIndex = 1;
+      numericUpDown_MapNo1.Value = new Decimal(new int[4]);
+      numericUpDown_MapNo1.ValueChanged += numericUpDown_MapNo1_ValueChanged;
+      label3.AutoSize = true;
+      label3.Location = new Point(6, 12);
+      label3.Name = "label3";
+      label3.Size = new Size(45, 13);
+      label3.TabIndex = 0;
+      label3.Text = "Map No.";
+      GroupBox_Probability.Controls.Add(checkBox_OpenProbability3);
+      GroupBox_Probability.Controls.Add(checkBox_OpenProbability2);
+      GroupBox_Probability.Controls.Add(checkBox_OpenProbability1);
+      GroupBox_Probability.Location = new Point(0, 186);
+      GroupBox_Probability.Name = "GroupBox_Probability";
+      GroupBox_Probability.Size = new Size(204, 37);
+      GroupBox_Probability.TabIndex = 10;
+      GroupBox_Probability.TabStop = false;
+      GroupBox_Probability.Text = "Treasures Plundered";
+      checkBox_OpenProbability3.AutoSize = true;
+      checkBox_OpenProbability3.Location = new Point(147, 15);
+      checkBox_OpenProbability3.Name = "checkBox_OpenProbability3";
+      checkBox_OpenProbability3.Size = new Size(50, 17);
+      checkBox_OpenProbability3.TabIndex = 2;
+      checkBox_OpenProbability3.Tag = 2;
+      checkBox_OpenProbability3.Text = "Third";
+      checkBox_OpenProbability3.UseVisualStyleBackColor = true;
+      checkBox_OpenProbability3.CheckedChanged += checkBox_OpenProbability_CheckedChanged;
+      checkBox_OpenProbability2.AutoSize = true;
+      checkBox_OpenProbability2.Location = new Point(78, 15);
+      checkBox_OpenProbability2.Name = "checkBox_OpenProbability2";
+      checkBox_OpenProbability2.Size = new Size(63, 17);
+      checkBox_OpenProbability2.TabIndex = 1;
+      checkBox_OpenProbability2.Tag = 1;
+      checkBox_OpenProbability2.Text = "Second";
+      checkBox_OpenProbability2.UseVisualStyleBackColor = true;
+      checkBox_OpenProbability2.CheckedChanged += checkBox_OpenProbability_CheckedChanged;
+      checkBox_OpenProbability1.AutoSize = true;
+      checkBox_OpenProbability1.Location = new Point(22, 15);
+      checkBox_OpenProbability1.Name = "checkBox_OpenProbability1";
+      checkBox_OpenProbability1.Size = new Size(45, 17);
+      checkBox_OpenProbability1.TabIndex = 0;
+      checkBox_OpenProbability1.Tag = 0;
+      checkBox_OpenProbability1.Text = "First";
+      checkBox_OpenProbability1.UseVisualStyleBackColor = true;
+      checkBox_OpenProbability1.CheckedChanged += checkBox_OpenProbability_CheckedChanged;
+      Panel_Devil.Controls.Add(numericUpDown_DevilVictoryTurn);
+      Panel_Devil.Controls.Add(label6);
+      Panel_Devil.Controls.Add(numericUpDown_DevilLevel);
+      Panel_Devil.Controls.Add(label5);
+      Panel_Devil.Controls.Add(label4);
+      Panel_Devil.Controls.Add(comboBox_Devil);
+      Panel_Devil.Location = new Point(0, 261);
+      Panel_Devil.Name = "Panel_Devil";
+      Panel_Devil.Size = new Size(233, 54);
+      Panel_Devil.TabIndex = 11;
+      numericUpDown_DevilVictoryTurn.Location = new Point(173, 32);
+      numericUpDown_DevilVictoryTurn.Maximum = new Decimal(new int[4]
       {
         999,
         0,
         0,
         0
       });
-      this.numericUpDown_DevilVictoryTurn.Name = "numericUpDown_DevilVictoryTurn";
-      this.numericUpDown_DevilVictoryTurn.Size = new Size(49, 20);
-      this.numericUpDown_DevilVictoryTurn.TabIndex = 5;
-      this.numericUpDown_DevilVictoryTurn.Value = new Decimal(new int[4]);
-      this.numericUpDown_DevilVictoryTurn.ValueChanged += new EventHandler(this.numericUpDown_DevilVictoryTurn_ValueChanged);
-      this.label6.AutoSize = true;
-      this.label6.Location = new Point(105, 34);
-      this.label6.Name = "label6";
-      this.label6.Size = new Size(66, 13);
-      this.label6.TabIndex = 4;
-      this.label6.Text = "No. of Turns";
-      this.numericUpDown_DevilLevel.Location = new Point(53, 32);
-      this.numericUpDown_DevilLevel.Maximum = new Decimal(new int[4]
+      numericUpDown_DevilVictoryTurn.Name = "numericUpDown_DevilVictoryTurn";
+      numericUpDown_DevilVictoryTurn.Size = new Size(49, 20);
+      numericUpDown_DevilVictoryTurn.TabIndex = 5;
+      numericUpDown_DevilVictoryTurn.Value = new Decimal(new int[4]);
+      numericUpDown_DevilVictoryTurn.ValueChanged += numericUpDown_DevilVictoryTurn_ValueChanged;
+      label6.AutoSize = true;
+      label6.Location = new Point(105, 34);
+      label6.Name = "label6";
+      label6.Size = new Size(66, 13);
+      label6.TabIndex = 4;
+      label6.Text = "No. of Turns";
+      numericUpDown_DevilLevel.Location = new Point(53, 32);
+      numericUpDown_DevilLevel.Maximum = new Decimal(new int[4]
       {
-        (int) byte.MaxValue,
+        byte.MaxValue,
         0,
         0,
         0
       });
-      this.numericUpDown_DevilLevel.Name = "numericUpDown_DevilLevel";
-      this.numericUpDown_DevilLevel.Size = new Size(49, 20);
-      this.numericUpDown_DevilLevel.TabIndex = 3;
-      this.numericUpDown_DevilLevel.Value = new Decimal(new int[4]);
-      this.numericUpDown_DevilLevel.ValueChanged += new EventHandler(this.numericUpDown_DevilLevel_ValueChanged);
-      this.label5.AutoSize = true;
-      this.label5.Location = new Point(18, 34);
-      this.label5.Name = "label5";
-      this.label5.Size = new Size(33, 13);
-      this.label5.TabIndex = 2;
-      this.label5.Text = "Level";
-      this.label4.AutoSize = true;
-      this.label4.Location = new Point(21, 13);
-      this.label4.Name = "label4";
-      this.label4.Size = new Size(30, 13);
-      this.label4.TabIndex = 1;
-      this.label4.Text = "Boss";
-      this.comboBox_Devil.DropDownStyle = ComboBoxStyle.DropDownList;
-      this.comboBox_Devil.FormattingEnabled = true;
-      this.comboBox_Devil.Location = new Point(53, 9);
-      this.comboBox_Devil.Name = "comboBox_Devil";
-      this.comboBox_Devil.Size = new Size(121, 21);
-      this.comboBox_Devil.TabIndex = 0;
-      this.comboBox_Devil.SelectedIndexChanged += new EventHandler(this.comboBox_Devil_SelectedIndexChanged);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.labelCandidatePlace);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.label_PlaceName);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.checkBox_PlaceHex);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.richTextBox_dummy);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.textBox_DungeonDetail);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.label_DungeonDetail);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.numericUpDown_Place);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.label8);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.comboBox_State);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.label7);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.GroupBox_MapType);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.Panel_Devil);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.label1);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.GroupBox_Probability);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.textBox_Detector);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.Panel_NormalMap);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.label2);
-      this.Panel_TreasureMapEditArea.Controls.Add((Control) this.textBox_Renewer);
-      this.Panel_TreasureMapEditArea.Enabled = false;
-      this.Panel_TreasureMapEditArea.Location = new Point(249, 28);
-      this.Panel_TreasureMapEditArea.Name = "Panel_TreasureMapEditArea";
-      this.Panel_TreasureMapEditArea.Size = new Size(611, 373);
-      this.Panel_TreasureMapEditArea.TabIndex = 12;
-      this.labelCandidatePlace.AutoSize = true;
-      this.labelCandidatePlace.Location = new Point(111, 173);
-      this.labelCandidatePlace.Name = "labelCandidatePlace";
-      this.labelCandidatePlace.Size = new Size(0, 13);
-      this.labelCandidatePlace.TabIndex = 22;
-      this.label_PlaceName.AutoSize = true;
-      this.label_PlaceName.Location = new Point(111, 156);
-      this.label_PlaceName.Name = "label_PlaceName";
-      this.label_PlaceName.Size = new Size(0, 13);
-      this.label_PlaceName.TabIndex = 21;
-      this.label_PlaceName.TextAlign = ContentAlignment.MiddleLeft;
-      this.checkBox_PlaceHex.AutoSize = true;
-      this.checkBox_PlaceHex.Location = new Point(204, 134);
-      this.checkBox_PlaceHex.Name = "checkBox_PlaceHex";
-      this.checkBox_PlaceHex.Size = new Size(45, 17);
-      this.checkBox_PlaceHex.TabIndex = 20;
-      this.checkBox_PlaceHex.Text = "Hex";
-      this.checkBox_PlaceHex.UseVisualStyleBackColor = true;
-      this.checkBox_PlaceHex.CheckedChanged += new EventHandler(this.checkBox_PlaceHex_CheckedChanged);
-      this.richTextBox_dummy.BackColor = SystemColors.Control;
-      this.richTextBox_dummy.Font = new Font("Consolas", 9f, FontStyle.Regular, GraphicsUnit.Point, (byte) 128);
-      this.richTextBox_dummy.Location = new Point(277, 18);
-      this.richTextBox_dummy.Name = "richTextBox_dummy";
-      this.richTextBox_dummy.ReadOnly = true;
-      this.richTextBox_dummy.ScrollBars = RichTextBoxScrollBars.Vertical;
-      this.richTextBox_dummy.Size = new Size(301, 352);
-      this.richTextBox_dummy.TabIndex = 19;
-      this.richTextBox_dummy.Text = "";
-      this.richTextBox_dummy.Visible = false;
-      this.textBox_DungeonDetail.BackColor = SystemColors.Control;
-      this.textBox_DungeonDetail.Font = new Font("MS Gothic", 9f, FontStyle.Regular, GraphicsUnit.Point, (byte) 128);
-      this.textBox_DungeonDetail.Location = new Point(277, 18);
-      this.textBox_DungeonDetail.Name = "textBox_DungeonDetail";
-      this.textBox_DungeonDetail.ReadOnly = true;
-      this.textBox_DungeonDetail.ScrollBars = RichTextBoxScrollBars.Vertical;
-      this.textBox_DungeonDetail.Size = new Size(301, 352);
-      this.textBox_DungeonDetail.TabIndex = 18;
-      this.textBox_DungeonDetail.Text = "";
-      this.textBox_DungeonDetail.MouseMove += new MouseEventHandler(this.textBox_DungeonDetail_MouseMove);
-      this.textBox_DungeonDetail.MouseDown += new MouseEventHandler(this.textBox_DungeonDetail_MouseDown);
-      this.label_DungeonDetail.AutoSize = true;
-      this.label_DungeonDetail.Enabled = false;
-      this.label_DungeonDetail.Location = new Point(275, 3);
-      this.label_DungeonDetail.Name = "label_DungeonDetail";
-      this.label_DungeonDetail.Size = new Size(63, 12);
-      this.label_DungeonDetail.TabIndex = 17;
-      this.label_DungeonDetail.Text = "Map Details";
-      this.numericUpDown_Place.Location = new Point(111, 132);
-      this.numericUpDown_Place.Maximum = new Decimal(new int[4]
+      numericUpDown_DevilLevel.Name = "numericUpDown_DevilLevel";
+      numericUpDown_DevilLevel.Size = new Size(49, 20);
+      numericUpDown_DevilLevel.TabIndex = 3;
+      numericUpDown_DevilLevel.Value = new Decimal(new int[4]);
+      numericUpDown_DevilLevel.ValueChanged += numericUpDown_DevilLevel_ValueChanged;
+      label5.AutoSize = true;
+      label5.Location = new Point(18, 34);
+      label5.Name = "label5";
+      label5.Size = new Size(33, 13);
+      label5.TabIndex = 2;
+      label5.Text = "Level";
+      label4.AutoSize = true;
+      label4.Location = new Point(21, 13);
+      label4.Name = "label4";
+      label4.Size = new Size(30, 13);
+      label4.TabIndex = 1;
+      label4.Text = "Boss";
+      comboBox_Devil.DropDownStyle = ComboBoxStyle.DropDownList;
+      comboBox_Devil.FormattingEnabled = true;
+      comboBox_Devil.Location = new Point(53, 9);
+      comboBox_Devil.Name = "comboBox_Devil";
+      comboBox_Devil.Size = new Size(121, 21);
+      comboBox_Devil.TabIndex = 0;
+      comboBox_Devil.SelectedIndexChanged += comboBox_Devil_SelectedIndexChanged;
+      Panel_TreasureMapEditArea.Controls.Add(labelCandidatePlace);
+      Panel_TreasureMapEditArea.Controls.Add(label_PlaceName);
+      Panel_TreasureMapEditArea.Controls.Add(checkBox_PlaceHex);
+      Panel_TreasureMapEditArea.Controls.Add(richTextBox_dummy);
+      Panel_TreasureMapEditArea.Controls.Add(textBox_DungeonDetail);
+      Panel_TreasureMapEditArea.Controls.Add(label_DungeonDetail);
+      Panel_TreasureMapEditArea.Controls.Add(numericUpDown_Place);
+      Panel_TreasureMapEditArea.Controls.Add(label8);
+      Panel_TreasureMapEditArea.Controls.Add(comboBox_State);
+      Panel_TreasureMapEditArea.Controls.Add(label7);
+      Panel_TreasureMapEditArea.Controls.Add(GroupBox_MapType);
+      Panel_TreasureMapEditArea.Controls.Add(Panel_Devil);
+      Panel_TreasureMapEditArea.Controls.Add(label1);
+      Panel_TreasureMapEditArea.Controls.Add(GroupBox_Probability);
+      Panel_TreasureMapEditArea.Controls.Add(textBox_Detector);
+      Panel_TreasureMapEditArea.Controls.Add(Panel_NormalMap);
+      Panel_TreasureMapEditArea.Controls.Add(label2);
+      Panel_TreasureMapEditArea.Controls.Add(textBox_Renewer);
+      Panel_TreasureMapEditArea.Enabled = false;
+      Panel_TreasureMapEditArea.Location = new Point(249, 28);
+      Panel_TreasureMapEditArea.Name = "Panel_TreasureMapEditArea";
+      Panel_TreasureMapEditArea.Size = new Size(611, 373);
+      Panel_TreasureMapEditArea.TabIndex = 12;
+      labelCandidatePlace.AutoSize = true;
+      labelCandidatePlace.Location = new Point(111, 173);
+      labelCandidatePlace.Name = "labelCandidatePlace";
+      labelCandidatePlace.Size = new Size(0, 13);
+      labelCandidatePlace.TabIndex = 22;
+      label_PlaceName.AutoSize = true;
+      label_PlaceName.Location = new Point(111, 156);
+      label_PlaceName.Name = "label_PlaceName";
+      label_PlaceName.Size = new Size(0, 13);
+      label_PlaceName.TabIndex = 21;
+      label_PlaceName.TextAlign = ContentAlignment.MiddleLeft;
+      checkBox_PlaceHex.AutoSize = true;
+      checkBox_PlaceHex.Location = new Point(204, 134);
+      checkBox_PlaceHex.Name = "checkBox_PlaceHex";
+      checkBox_PlaceHex.Size = new Size(45, 17);
+      checkBox_PlaceHex.TabIndex = 20;
+      checkBox_PlaceHex.Text = "Hex";
+      checkBox_PlaceHex.UseVisualStyleBackColor = true;
+      checkBox_PlaceHex.CheckedChanged += checkBox_PlaceHex_CheckedChanged;
+      richTextBox_dummy.BackColor = SystemColors.Control;
+      richTextBox_dummy.Font = new Font("Consolas", 9f, FontStyle.Regular, GraphicsUnit.Point, 128);
+      richTextBox_dummy.Location = new Point(277, 18);
+      richTextBox_dummy.Name = "richTextBox_dummy";
+      richTextBox_dummy.ReadOnly = true;
+      richTextBox_dummy.ScrollBars = RichTextBoxScrollBars.Vertical;
+      richTextBox_dummy.Size = new Size(301, 352);
+      richTextBox_dummy.TabIndex = 19;
+      richTextBox_dummy.Text = "";
+      richTextBox_dummy.Visible = false;
+      textBox_DungeonDetail.BackColor = SystemColors.Control;
+      textBox_DungeonDetail.Font = new Font("MS Gothic", 9f, FontStyle.Regular, GraphicsUnit.Point, 128);
+      textBox_DungeonDetail.Location = new Point(277, 18);
+      textBox_DungeonDetail.Name = "textBox_DungeonDetail";
+      textBox_DungeonDetail.ReadOnly = true;
+      textBox_DungeonDetail.ScrollBars = RichTextBoxScrollBars.Vertical;
+      textBox_DungeonDetail.Size = new Size(301, 352);
+      textBox_DungeonDetail.TabIndex = 18;
+      textBox_DungeonDetail.Text = "";
+      textBox_DungeonDetail.MouseMove += textBox_DungeonDetail_MouseMove;
+      textBox_DungeonDetail.MouseDown += textBox_DungeonDetail_MouseDown;
+      label_DungeonDetail.AutoSize = true;
+      label_DungeonDetail.Enabled = false;
+      label_DungeonDetail.Location = new Point(275, 3);
+      label_DungeonDetail.Name = "label_DungeonDetail";
+      label_DungeonDetail.Size = new Size(63, 12);
+      label_DungeonDetail.TabIndex = 17;
+      label_DungeonDetail.Text = "Map Details";
+      numericUpDown_Place.Location = new Point(111, 132);
+      numericUpDown_Place.Maximum = new Decimal(new int[4]
       {
-        (int) byte.MaxValue,
+        byte.MaxValue,
         0,
         0,
         0
       });
-      this.numericUpDown_Place.Name = "numericUpDown_Place";
-      this.numericUpDown_Place.Size = new Size(87, 20);
-      this.numericUpDown_Place.TabIndex = 15;
-      this.numericUpDown_Place.Value = new Decimal(new int[4]);
-      this.numericUpDown_Place.ValueChanged += new EventHandler(this.numericUpDown_Place_ValueChanged);
-      this.label8.AutoSize = true;
-      this.label8.Location = new Point(63, 134);
-      this.label8.Name = "label8";
-      this.label8.Size = new Size(48, 13);
-      this.label8.TabIndex = 14;
-      this.label8.Text = "Location";
-      this.comboBox_State.DropDownStyle = ComboBoxStyle.DropDownList;
-      this.comboBox_State.FormattingEnabled = true;
-      this.comboBox_State.Items.AddRange(new object[3]
+      numericUpDown_Place.Name = "numericUpDown_Place";
+      numericUpDown_Place.Size = new Size(87, 20);
+      numericUpDown_Place.TabIndex = 15;
+      numericUpDown_Place.Value = new Decimal(new int[4]);
+      numericUpDown_Place.ValueChanged += numericUpDown_Place_ValueChanged;
+      label8.AutoSize = true;
+      label8.Location = new Point(63, 134);
+      label8.Name = "label8";
+      label8.Size = new Size(48, 13);
+      label8.TabIndex = 14;
+      label8.Text = "Location";
+      comboBox_State.DropDownStyle = ComboBoxStyle.DropDownList;
+      comboBox_State.FormattingEnabled = true;
+      comboBox_State.Items.AddRange(new object[3]
       {
-        (object) "Not Found",
-        (object) "Discovered",
-        (object) "Cleared"
+        "Not Found",
+        "Discovered",
+        "Cleared"
       });
-      this.comboBox_State.Location = new Point(111, 109);
-      this.comboBox_State.Name = "comboBox_State";
-      this.comboBox_State.Size = new Size(87, 21);
-      this.comboBox_State.TabIndex = 13;
-      this.comboBox_State.SelectedIndexChanged += new EventHandler(this.comboBox_State_SelectedIndexChanged);
-      this.label7.AutoSize = true;
-      this.label7.Location = new Point(74, 112);
-      this.label7.Name = "label7";
-      this.label7.Size = new Size(37, 13);
-      this.label7.TabIndex = 12;
-      this.label7.Text = "Status";
-      this.panel2.BorderStyle = BorderStyle.Fixed3D;
-      this.panel2.Controls.Add((Control) this.listBox_TreasureMap);
-      this.panel2.Controls.Add((Control) this.toolStrip2);
-      this.panel2.Location = new Point(14, 28);
-      this.panel2.Name = "panel2";
-      this.panel2.Size = new Size(229, 309);
-      this.panel2.TabIndex = 13;
-      this.toolStrip2.Dock = DockStyle.Bottom;
-      this.toolStrip2.GripStyle = ToolStripGripStyle.Hidden;
-      this.toolStrip2.Items.AddRange(new ToolStripItem[6]
+      comboBox_State.Location = new Point(111, 109);
+      comboBox_State.Name = "comboBox_State";
+      comboBox_State.Size = new Size(87, 21);
+      comboBox_State.TabIndex = 13;
+      comboBox_State.SelectedIndexChanged += comboBox_State_SelectedIndexChanged;
+      label7.AutoSize = true;
+      label7.Location = new Point(74, 112);
+      label7.Name = "label7";
+      label7.Size = new Size(37, 13);
+      label7.TabIndex = 12;
+      label7.Text = "Status";
+      panel2.BorderStyle = BorderStyle.Fixed3D;
+      panel2.Controls.Add(listBox_TreasureMap);
+      panel2.Controls.Add(toolStrip2);
+      panel2.Location = new Point(14, 28);
+      panel2.Name = "panel2";
+      panel2.Size = new Size(229, 309);
+      panel2.TabIndex = 13;
+      toolStrip2.Dock = DockStyle.Bottom;
+      toolStrip2.GripStyle = ToolStripGripStyle.Hidden;
+      toolStrip2.Items.AddRange(new ToolStripItem[6]
       {
-        (ToolStripItem) this.toolButton_CreateMap,
-        (ToolStripItem) this.toolButton_DeleteMap,
-        (ToolStripItem) this.label_MapCount,
-        (ToolStripItem) this.toolStripSeparator1,
-        (ToolStripItem) this.toolButton_SortLVUp,
-        (ToolStripItem) this.toolButton_SortLVDown
+        toolButton_CreateMap,
+        toolButton_DeleteMap,
+        label_MapCount,
+        toolStripSeparator1,
+        toolButton_SortLVUp,
+        toolButton_SortLVDown
       });
-      this.toolStrip2.Location = new Point(0, 280);
-      this.toolStrip2.Name = "toolStrip2";
-      this.toolStrip2.Size = new Size(225, 25);
-      this.toolStrip2.TabIndex = 1;
-      this.toolStrip2.Text = "toolStrip2";
-      this.toolButton_CreateMap.DisplayStyle = ToolStripItemDisplayStyle.Image;
-      this.toolButton_CreateMap.Enabled = false;
-      this.toolButton_CreateMap.Image = (Image) componentResourceManager.GetObject("toolButton_CreateMap.Image");
-      this.toolButton_CreateMap.ImageTransparentColor = Color.Magenta;
-      this.toolButton_CreateMap.Name = "toolButton_CreateMap";
-      this.toolButton_CreateMap.Size = new Size(23, 22);
-      this.toolButton_CreateMap.Text = "toolStripButton7";
-      this.toolButton_CreateMap.ToolTipText = "Create New Map";
-      this.toolButton_CreateMap.Click += new EventHandler(this.toolButton_CreateMap_Click);
-      this.toolButton_DeleteMap.DisplayStyle = ToolStripItemDisplayStyle.Image;
-      this.toolButton_DeleteMap.Enabled = false;
-      this.toolButton_DeleteMap.Image = (Image) componentResourceManager.GetObject("toolButton_DeleteMap.Image");
-      this.toolButton_DeleteMap.ImageTransparentColor = Color.Magenta;
-      this.toolButton_DeleteMap.Name = "toolButton_DeleteMap";
-      this.toolButton_DeleteMap.Size = new Size(23, 22);
-      this.toolButton_DeleteMap.Text = "toolStripButton8";
-      this.toolButton_DeleteMap.ToolTipText = "Remove Map";
-      this.toolButton_DeleteMap.Click += new EventHandler(this.toolButton_DeleteMap_Click);
-      this.label_MapCount.Alignment = ToolStripItemAlignment.Right;
-      this.label_MapCount.Name = "label_MapCount";
-      this.label_MapCount.Size = new Size(51, 22);
-      this.label_MapCount.Text = "(00/99)";
-      this.numericUpDown_ClearCount.Location = new Point(92, 6);
-      this.numericUpDown_ClearCount.Maximum = new Decimal(new int[4]
+      toolStrip2.Location = new Point(0, 280);
+      toolStrip2.Name = "toolStrip2";
+      toolStrip2.Size = new Size(225, 25);
+      toolStrip2.TabIndex = 1;
+      toolStrip2.Text = "toolStrip2";
+      toolButton_CreateMap.DisplayStyle = ToolStripItemDisplayStyle.Image;
+      toolButton_CreateMap.Enabled = false;
+      toolButton_CreateMap.Image = (Image) componentResourceManager.GetObject("toolButton_CreateMap.Image");
+      toolButton_CreateMap.ImageTransparentColor = Color.Magenta;
+      toolButton_CreateMap.Name = "toolButton_CreateMap";
+      toolButton_CreateMap.Size = new Size(23, 22);
+      toolButton_CreateMap.Text = "toolStripButton7";
+      toolButton_CreateMap.ToolTipText = "Create New Map";
+      toolButton_CreateMap.Click += toolButton_CreateMap_Click;
+      toolButton_DeleteMap.DisplayStyle = ToolStripItemDisplayStyle.Image;
+      toolButton_DeleteMap.Enabled = false;
+      toolButton_DeleteMap.Image = (Image) componentResourceManager.GetObject("toolButton_DeleteMap.Image");
+      toolButton_DeleteMap.ImageTransparentColor = Color.Magenta;
+      toolButton_DeleteMap.Name = "toolButton_DeleteMap";
+      toolButton_DeleteMap.Size = new Size(23, 22);
+      toolButton_DeleteMap.Text = "toolStripButton8";
+      toolButton_DeleteMap.ToolTipText = "Remove Map";
+      toolButton_DeleteMap.Click += toolButton_DeleteMap_Click;
+      label_MapCount.Alignment = ToolStripItemAlignment.Right;
+      label_MapCount.Name = "label_MapCount";
+      label_MapCount.Size = new Size(51, 22);
+      label_MapCount.Text = "(00/99)";
+      numericUpDown_ClearCount.Location = new Point(92, 6);
+      numericUpDown_ClearCount.Maximum = new Decimal(new int[4]
       {
         16383,
         0,
         0,
         0
       });
-      this.numericUpDown_ClearCount.Name = "numericUpDown_ClearCount";
-      this.numericUpDown_ClearCount.Size = new Size(76, 20);
-      this.numericUpDown_ClearCount.TabIndex = 16;
-      this.numericUpDown_ClearCount.Value = new Decimal(new int[4]);
-      this.numericUpDown_ClearCount.ValueChanged += new EventHandler(this.numericUpDown_ClearCount_ValueChanged);
-      this.label9.AutoSize = true;
-      this.label9.Location = new Point(14, 7);
-      this.label9.Name = "label9";
-      this.label9.Size = new Size(72, 13);
-      this.label9.TabIndex = 15;
-      this.label9.Text = "Cleared Maps";
-      this.groupBoxWithCheckBox_Narrowing.AllowEnabledWithCheckBoxState = true;
-      this.groupBoxWithCheckBox_Narrowing.Checked = false;
-      this.groupBoxWithCheckBox_Narrowing.Controls.Add((Control) this.comboBox_NarrowingName3);
-      this.groupBoxWithCheckBox_Narrowing.Controls.Add((Control) this.comboBox_NarrowingName2);
-      this.groupBoxWithCheckBox_Narrowing.Controls.Add((Control) this.comboBox_NarrowingName1);
-      this.groupBoxWithCheckBox_Narrowing.Controls.Add((Control) this.CheckBox_NarrowingNormal);
-      this.groupBoxWithCheckBox_Narrowing.Controls.Add((Control) this.CheckBox_NarrowingDevil);
-      this.groupBoxWithCheckBox_Narrowing.Controls.Add((Control) this.checkBox_NarrowingLevel);
-      this.groupBoxWithCheckBox_Narrowing.Controls.Add((Control) this.numericUpDown_NarrowingLevel);
-      this.groupBoxWithCheckBox_Narrowing.Controls.Add((Control) this.comboBox_NarrowingLevel);
-      this.groupBoxWithCheckBox_Narrowing.Location = new Point(16, 343);
-      this.groupBoxWithCheckBox_Narrowing.Name = "groupBoxWithCheckBox_Narrowing";
-      this.groupBoxWithCheckBox_Narrowing.Size = new Size(374, 58);
-      this.groupBoxWithCheckBox_Narrowing.TabIndex = 17;
-      this.groupBoxWithCheckBox_Narrowing.Text = "Filter";
-      this.groupBoxWithCheckBox_Narrowing.CheckedChanged += new EventHandler(this.groupBoxWithCheckBox_Narrowing_CheckedChanged);
-      this.comboBox_NarrowingName3.DropDownStyle = ComboBoxStyle.DropDownList;
-      this.comboBox_NarrowingName3.FormattingEnabled = true;
-      this.comboBox_NarrowingName3.Location = new Point(132, 37);
-      this.comboBox_NarrowingName3.Name = "comboBox_NarrowingName3";
-      this.comboBox_NarrowingName3.Size = new Size(62, 21);
-      this.comboBox_NarrowingName3.TabIndex = 8;
-      this.comboBox_NarrowingName3.SelectedIndexChanged += new EventHandler(this.comboBox_NarrowingName3_SelectedIndexChanged);
-      this.comboBox_NarrowingName2.DropDownStyle = ComboBoxStyle.DropDownList;
-      this.comboBox_NarrowingName2.FormattingEnabled = true;
-      this.comboBox_NarrowingName2.Location = new Point(200, 37);
-      this.comboBox_NarrowingName2.Name = "comboBox_NarrowingName2";
-      this.comboBox_NarrowingName2.Size = new Size(58, 21);
-      this.comboBox_NarrowingName2.TabIndex = 9;
-      this.comboBox_NarrowingName2.SelectedIndexChanged += new EventHandler(this.comboBox_NarrowingName2_SelectedIndexChanged);
-      this.comboBox_NarrowingName1.DropDownStyle = ComboBoxStyle.DropDownList;
-      this.comboBox_NarrowingName1.FormattingEnabled = true;
-      this.comboBox_NarrowingName1.Location = new Point(61, 37);
-      this.comboBox_NarrowingName1.Name = "comboBox_NarrowingName1";
-      this.comboBox_NarrowingName1.Size = new Size(65, 21);
-      this.comboBox_NarrowingName1.TabIndex = 7;
-      this.comboBox_NarrowingName1.SelectedIndexChanged += new EventHandler(this.comboBox_NarrowingName1_SelectedIndexChanged);
-      this.CheckBox_NarrowingNormal.AutoSize = true;
-      this.CheckBox_NarrowingNormal.Checked = true;
-      this.CheckBox_NarrowingNormal.CheckState = CheckState.Checked;
-      this.CheckBox_NarrowingNormal.Location = new Point(6, 39);
-      this.CheckBox_NarrowingNormal.Name = "CheckBox_NarrowingNormal";
-      this.CheckBox_NarrowingNormal.Size = new Size(59, 17);
-      this.CheckBox_NarrowingNormal.TabIndex = 6;
-      this.CheckBox_NarrowingNormal.Text = "Normal";
-      this.CheckBox_NarrowingNormal.UseVisualStyleBackColor = true;
-      this.CheckBox_NarrowingNormal.CheckedChanged += new EventHandler(this.CheckBox_NarrowingNormal_CheckedChanged);
-      this.CheckBox_NarrowingDevil.AutoSize = true;
-      this.CheckBox_NarrowingDevil.Checked = true;
-      this.CheckBox_NarrowingDevil.CheckState = CheckState.Checked;
-      this.CheckBox_NarrowingDevil.Location = new Point(274, 14);
-      this.CheckBox_NarrowingDevil.Name = "CheckBox_NarrowingDevil";
-      this.CheckBox_NarrowingDevil.Size = new Size(49, 17);
-      this.CheckBox_NarrowingDevil.TabIndex = 5;
-      this.CheckBox_NarrowingDevil.Text = "Legacy Boss";
-      this.CheckBox_NarrowingDevil.UseVisualStyleBackColor = true;
-      this.CheckBox_NarrowingDevil.CheckedChanged += new EventHandler(this.CheckBox_NarrowingDevil_CheckedChanged);
-      this.checkBox_NarrowingLevel.AutoSize = true;
-      this.checkBox_NarrowingLevel.Checked = true;
-      this.checkBox_NarrowingLevel.CheckState = CheckState.Checked;
-      this.checkBox_NarrowingLevel.Location = new Point(6, 16);
-      this.checkBox_NarrowingLevel.Name = "checkBox_NarrowingLevel";
-      this.checkBox_NarrowingLevel.Size = new Size(52, 17);
-      this.checkBox_NarrowingLevel.TabIndex = 2;
-      this.checkBox_NarrowingLevel.Text = "Level";
-      this.checkBox_NarrowingLevel.UseVisualStyleBackColor = true;
-      this.checkBox_NarrowingLevel.CheckedChanged += new EventHandler(this.checkBox_NarrowingLevel_CheckedChanged);
-      this.numericUpDown_NarrowingLevel.Location = new Point(61, 15);
-      this.numericUpDown_NarrowingLevel.Maximum = new Decimal(new int[4]
+      numericUpDown_ClearCount.Name = "numericUpDown_ClearCount";
+      numericUpDown_ClearCount.Size = new Size(76, 20);
+      numericUpDown_ClearCount.TabIndex = 16;
+      numericUpDown_ClearCount.Value = new Decimal(new int[4]);
+      numericUpDown_ClearCount.ValueChanged += numericUpDown_ClearCount_ValueChanged;
+      label9.AutoSize = true;
+      label9.Location = new Point(14, 7);
+      label9.Name = "label9";
+      label9.Size = new Size(72, 13);
+      label9.TabIndex = 15;
+      label9.Text = "Cleared Maps";
+      groupBoxWithCheckBox_Narrowing.AllowEnabledWithCheckBoxState = true;
+      groupBoxWithCheckBox_Narrowing.Checked = false;
+      groupBoxWithCheckBox_Narrowing.Controls.Add(comboBox_NarrowingName3);
+      groupBoxWithCheckBox_Narrowing.Controls.Add(comboBox_NarrowingName2);
+      groupBoxWithCheckBox_Narrowing.Controls.Add(comboBox_NarrowingName1);
+      groupBoxWithCheckBox_Narrowing.Controls.Add(CheckBox_NarrowingNormal);
+      groupBoxWithCheckBox_Narrowing.Controls.Add(CheckBox_NarrowingDevil);
+      groupBoxWithCheckBox_Narrowing.Controls.Add(checkBox_NarrowingLevel);
+      groupBoxWithCheckBox_Narrowing.Controls.Add(numericUpDown_NarrowingLevel);
+      groupBoxWithCheckBox_Narrowing.Controls.Add(comboBox_NarrowingLevel);
+      groupBoxWithCheckBox_Narrowing.Location = new Point(16, 343);
+      groupBoxWithCheckBox_Narrowing.Name = "groupBoxWithCheckBox_Narrowing";
+      groupBoxWithCheckBox_Narrowing.Size = new Size(374, 58);
+      groupBoxWithCheckBox_Narrowing.TabIndex = 17;
+      groupBoxWithCheckBox_Narrowing.Text = "Filter";
+      groupBoxWithCheckBox_Narrowing.CheckedChanged += groupBoxWithCheckBox_Narrowing_CheckedChanged;
+      comboBox_NarrowingName3.DropDownStyle = ComboBoxStyle.DropDownList;
+      comboBox_NarrowingName3.FormattingEnabled = true;
+      comboBox_NarrowingName3.Location = new Point(132, 37);
+      comboBox_NarrowingName3.Name = "comboBox_NarrowingName3";
+      comboBox_NarrowingName3.Size = new Size(62, 21);
+      comboBox_NarrowingName3.TabIndex = 8;
+      comboBox_NarrowingName3.SelectedIndexChanged += comboBox_NarrowingName3_SelectedIndexChanged;
+      comboBox_NarrowingName2.DropDownStyle = ComboBoxStyle.DropDownList;
+      comboBox_NarrowingName2.FormattingEnabled = true;
+      comboBox_NarrowingName2.Location = new Point(200, 37);
+      comboBox_NarrowingName2.Name = "comboBox_NarrowingName2";
+      comboBox_NarrowingName2.Size = new Size(58, 21);
+      comboBox_NarrowingName2.TabIndex = 9;
+      comboBox_NarrowingName2.SelectedIndexChanged += comboBox_NarrowingName2_SelectedIndexChanged;
+      comboBox_NarrowingName1.DropDownStyle = ComboBoxStyle.DropDownList;
+      comboBox_NarrowingName1.FormattingEnabled = true;
+      comboBox_NarrowingName1.Location = new Point(61, 37);
+      comboBox_NarrowingName1.Name = "comboBox_NarrowingName1";
+      comboBox_NarrowingName1.Size = new Size(65, 21);
+      comboBox_NarrowingName1.TabIndex = 7;
+      comboBox_NarrowingName1.SelectedIndexChanged += comboBox_NarrowingName1_SelectedIndexChanged;
+      CheckBox_NarrowingNormal.AutoSize = true;
+      CheckBox_NarrowingNormal.Checked = true;
+      CheckBox_NarrowingNormal.CheckState = CheckState.Checked;
+      CheckBox_NarrowingNormal.Location = new Point(6, 39);
+      CheckBox_NarrowingNormal.Name = "CheckBox_NarrowingNormal";
+      CheckBox_NarrowingNormal.Size = new Size(59, 17);
+      CheckBox_NarrowingNormal.TabIndex = 6;
+      CheckBox_NarrowingNormal.Text = "Normal";
+      CheckBox_NarrowingNormal.UseVisualStyleBackColor = true;
+      CheckBox_NarrowingNormal.CheckedChanged += CheckBox_NarrowingNormal_CheckedChanged;
+      CheckBox_NarrowingDevil.AutoSize = true;
+      CheckBox_NarrowingDevil.Checked = true;
+      CheckBox_NarrowingDevil.CheckState = CheckState.Checked;
+      CheckBox_NarrowingDevil.Location = new Point(274, 14);
+      CheckBox_NarrowingDevil.Name = "CheckBox_NarrowingDevil";
+      CheckBox_NarrowingDevil.Size = new Size(49, 17);
+      CheckBox_NarrowingDevil.TabIndex = 5;
+      CheckBox_NarrowingDevil.Text = "Legacy Boss";
+      CheckBox_NarrowingDevil.UseVisualStyleBackColor = true;
+      CheckBox_NarrowingDevil.CheckedChanged += CheckBox_NarrowingDevil_CheckedChanged;
+      checkBox_NarrowingLevel.AutoSize = true;
+      checkBox_NarrowingLevel.Checked = true;
+      checkBox_NarrowingLevel.CheckState = CheckState.Checked;
+      checkBox_NarrowingLevel.Location = new Point(6, 16);
+      checkBox_NarrowingLevel.Name = "checkBox_NarrowingLevel";
+      checkBox_NarrowingLevel.Size = new Size(52, 17);
+      checkBox_NarrowingLevel.TabIndex = 2;
+      checkBox_NarrowingLevel.Text = "Level";
+      checkBox_NarrowingLevel.UseVisualStyleBackColor = true;
+      checkBox_NarrowingLevel.CheckedChanged += checkBox_NarrowingLevel_CheckedChanged;
+      numericUpDown_NarrowingLevel.Location = new Point(61, 15);
+      numericUpDown_NarrowingLevel.Maximum = new Decimal(new int[4]
       {
         99,
         0,
         0,
         0
       });
-      this.numericUpDown_NarrowingLevel.Minimum = new Decimal(new int[4]
+      numericUpDown_NarrowingLevel.Minimum = new Decimal(new int[4]
       {
         1,
         0,
         0,
         0
       });
-      this.numericUpDown_NarrowingLevel.Name = "numericUpDown_NarrowingLevel";
-      this.numericUpDown_NarrowingLevel.Size = new Size(57, 20);
-      this.numericUpDown_NarrowingLevel.TabIndex = 3;
-      this.numericUpDown_NarrowingLevel.Value = new Decimal(new int[4]
+      numericUpDown_NarrowingLevel.Name = "numericUpDown_NarrowingLevel";
+      numericUpDown_NarrowingLevel.Size = new Size(57, 20);
+      numericUpDown_NarrowingLevel.TabIndex = 3;
+      numericUpDown_NarrowingLevel.Value = new Decimal(new int[4]
       {
         1,
         0,
         0,
         0
       });
-      this.numericUpDown_NarrowingLevel.ValueChanged += new EventHandler(this.numericUpDown_NarrowingLevel_ValueChanged);
-      this.comboBox_NarrowingLevel.DropDownStyle = ComboBoxStyle.DropDownList;
-      this.comboBox_NarrowingLevel.FormattingEnabled = true;
-      this.comboBox_NarrowingLevel.Items.AddRange(new object[2]
+      numericUpDown_NarrowingLevel.ValueChanged += numericUpDown_NarrowingLevel_ValueChanged;
+      comboBox_NarrowingLevel.DropDownStyle = ComboBoxStyle.DropDownList;
+      comboBox_NarrowingLevel.FormattingEnabled = true;
+      comboBox_NarrowingLevel.Items.AddRange(new object[2]
       {
-        (object) "At least",
-        (object) "Up to"
+        "At least",
+        "Up to"
       });
-      this.comboBox_NarrowingLevel.Location = new Point(123, 14);
-      this.comboBox_NarrowingLevel.Name = "comboBox_NarrowingLevel";
-      this.comboBox_NarrowingLevel.Size = new Size(67, 21);
-      this.comboBox_NarrowingLevel.TabIndex = 4;
-      this.comboBox_NarrowingLevel.SelectedIndexChanged += new EventHandler(this.comboBox_NarrowingLevel_SelectedIndexChanged);
-      this.toolStripSeparator1.Name = "toolStripSeparator1";
-      this.toolStripSeparator1.Size = new Size(6, 25);
-      this.toolButton_SortLVUp.DisplayStyle = ToolStripItemDisplayStyle.Image;
-      this.toolButton_SortLVUp.Image = (Image) componentResourceManager.GetObject("toolButton_SortLVUp.Image");
-      this.toolButton_SortLVUp.ImageTransparentColor = Color.Magenta;
-      this.toolButton_SortLVUp.Name = "toolButton_SortLVUp";
-      this.toolButton_SortLVUp.Size = new Size(23, 22);
-      this.toolButton_SortLVUp.Text = "Sort Ascending by Level";
-      this.toolButton_SortLVUp.Click += new EventHandler(this.toolButton_SortLVUp_Click);
-      this.toolButton_SortLVDown.DisplayStyle = ToolStripItemDisplayStyle.Image;
-      this.toolButton_SortLVDown.Image = (Image) componentResourceManager.GetObject("toolButton_SortLVDown.Image");
-      this.toolButton_SortLVDown.ImageTransparentColor = Color.Magenta;
-      this.toolButton_SortLVDown.Name = "toolButton_SortLVDown";
-      this.toolButton_SortLVDown.Size = new Size(23, 22);
-      this.toolButton_SortLVDown.Text = "Sort Descending by Level";
-      this.toolButton_SortLVDown.Click += new EventHandler(this.toolButton_SortLVDown_Click);
-      this.AutoScaleDimensions = new SizeF(6f, 12f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.Controls.Add((Control) this.groupBoxWithCheckBox_Narrowing);
-      this.Controls.Add((Control) this.numericUpDown_ClearCount);
-      this.Controls.Add((Control) this.label9);
-      this.Controls.Add((Control) this.panel2);
-      this.Controls.Add((Control) this.Panel_TreasureMapEditArea);
-      this.Name = nameof (TreasureMapDataControl);
-      this.Size = new Size(882, 511);
-      this.GroupBox_MapType.ResumeLayout(false);
-      this.GroupBox_MapType.PerformLayout();
-      this.Panel_NormalMap.ResumeLayout(false);
-      this.Panel_NormalMap.PerformLayout();
-      this.numericUpDown_MapNo2.EndInit();
-      this.numericUpDown_MapNo1.EndInit();
-      this.GroupBox_Probability.ResumeLayout(false);
-      this.GroupBox_Probability.PerformLayout();
-      this.Panel_Devil.ResumeLayout(false);
-      this.Panel_Devil.PerformLayout();
-      this.numericUpDown_DevilVictoryTurn.EndInit();
-      this.numericUpDown_DevilLevel.EndInit();
-      this.Panel_TreasureMapEditArea.ResumeLayout(false);
-      this.Panel_TreasureMapEditArea.PerformLayout();
-      this.numericUpDown_Place.EndInit();
-      this.panel2.ResumeLayout(false);
-      this.panel2.PerformLayout();
-      this.toolStrip2.ResumeLayout(false);
-      this.toolStrip2.PerformLayout();
-      this.numericUpDown_ClearCount.EndInit();
-      this.groupBoxWithCheckBox_Narrowing.ResumeLayout(false);
-      this.groupBoxWithCheckBox_Narrowing.PerformLayout();
-      this.numericUpDown_NarrowingLevel.EndInit();
-      this.ResumeLayout(false);
-      this.PerformLayout();
+      comboBox_NarrowingLevel.Location = new Point(123, 14);
+      comboBox_NarrowingLevel.Name = "comboBox_NarrowingLevel";
+      comboBox_NarrowingLevel.Size = new Size(67, 21);
+      comboBox_NarrowingLevel.TabIndex = 4;
+      comboBox_NarrowingLevel.SelectedIndexChanged += comboBox_NarrowingLevel_SelectedIndexChanged;
+      toolStripSeparator1.Name = "toolStripSeparator1";
+      toolStripSeparator1.Size = new Size(6, 25);
+      toolButton_SortLVUp.DisplayStyle = ToolStripItemDisplayStyle.Image;
+      toolButton_SortLVUp.Image = (Image) componentResourceManager.GetObject("toolButton_SortLVUp.Image");
+      toolButton_SortLVUp.ImageTransparentColor = Color.Magenta;
+      toolButton_SortLVUp.Name = "toolButton_SortLVUp";
+      toolButton_SortLVUp.Size = new Size(23, 22);
+      toolButton_SortLVUp.Text = "Sort Ascending by Level";
+      toolButton_SortLVUp.Click += toolButton_SortLVUp_Click;
+      toolButton_SortLVDown.DisplayStyle = ToolStripItemDisplayStyle.Image;
+      toolButton_SortLVDown.Image = (Image) componentResourceManager.GetObject("toolButton_SortLVDown.Image");
+      toolButton_SortLVDown.ImageTransparentColor = Color.Magenta;
+      toolButton_SortLVDown.Name = "toolButton_SortLVDown";
+      toolButton_SortLVDown.Size = new Size(23, 22);
+      toolButton_SortLVDown.Text = "Sort Descending by Level";
+      toolButton_SortLVDown.Click += toolButton_SortLVDown_Click;
+      AutoScaleDimensions = new SizeF(6f, 12f);
+      AutoScaleMode = AutoScaleMode.Font;
+      Controls.Add(groupBoxWithCheckBox_Narrowing);
+      Controls.Add(numericUpDown_ClearCount);
+      Controls.Add(label9);
+      Controls.Add(panel2);
+      Controls.Add(Panel_TreasureMapEditArea);
+      Name = nameof (TreasureMapDataControl);
+      Size = new Size(882, 511);
+      GroupBox_MapType.ResumeLayout(false);
+      GroupBox_MapType.PerformLayout();
+      Panel_NormalMap.ResumeLayout(false);
+      Panel_NormalMap.PerformLayout();
+      numericUpDown_MapNo2.EndInit();
+      numericUpDown_MapNo1.EndInit();
+      GroupBox_Probability.ResumeLayout(false);
+      GroupBox_Probability.PerformLayout();
+      Panel_Devil.ResumeLayout(false);
+      Panel_Devil.PerformLayout();
+      numericUpDown_DevilVictoryTurn.EndInit();
+      numericUpDown_DevilLevel.EndInit();
+      Panel_TreasureMapEditArea.ResumeLayout(false);
+      Panel_TreasureMapEditArea.PerformLayout();
+      numericUpDown_Place.EndInit();
+      panel2.ResumeLayout(false);
+      panel2.PerformLayout();
+      toolStrip2.ResumeLayout(false);
+      toolStrip2.PerformLayout();
+      numericUpDown_ClearCount.EndInit();
+      groupBoxWithCheckBox_Narrowing.ResumeLayout(false);
+      groupBoxWithCheckBox_Narrowing.PerformLayout();
+      numericUpDown_NarrowingLevel.EndInit();
+      ResumeLayout(false);
+      PerformLayout();
     }
 
     private class TreasureMapListBoxItem
@@ -1440,17 +1439,17 @@ namespace DQ9_Cheat.Controls
 
       public TreasureMapListBoxItem(int index, string name)
       {
-        this._index = index;
-        this._name = name;
+        _index = index;
+        _name = name;
       }
 
       public int Index
       {
-        get => this._index;
-        set => this._index = value;
+        get => _index;
+        set => _index = value;
       }
 
-      public override string ToString() => this._name;
+      public override string ToString() => _name;
     }
   }
 }

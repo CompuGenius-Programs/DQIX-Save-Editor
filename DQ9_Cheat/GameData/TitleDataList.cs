@@ -2,18 +2,18 @@
 // Type: DQ9_Cheat.GameData.TitleDataList
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-#nullable disable
 namespace DQ9_Cheat.GameData
 {
   internal static class TitleDataList
   {
     public const int ClearTitleIndex = 425;
-    private static int _maxDataIndex = 0;
-    private static System.Collections.Generic.List<TitleElement> _list = new System.Collections.Generic.List<TitleElement>();
+    private static int _maxDataIndex;
+    private static List<TitleElement> _list = new List<TitleElement>();
 
     static TitleDataList()
     {
@@ -932,23 +932,23 @@ namespace DQ9_Cheat.GameData
       for (int index = 0; index < strArray1.Length; ++index)
       {
         if (strArray1[index] != null)
-          TitleDataList._list.Add(new TitleElement(strArray1[index], strArray2[index], index + 2));
+          _list.Add(new TitleElement(strArray1[index], strArray2[index], index + 2));
       }
-      TitleDataList._maxDataIndex = strArray1.Length - 1;
+      _maxDataIndex = strArray1.Length - 1;
     }
 
-    public static int MaxDataIndex => TitleDataList._maxDataIndex;
+    public static int MaxDataIndex => _maxDataIndex;
 
-    public static ReadOnlyCollection<TitleElement> List => TitleDataList._list.AsReadOnly();
+    public static ReadOnlyCollection<TitleElement> List => _list.AsReadOnly();
 
     public static TitleElement GetTitleElement(int dataIndex)
     {
-      foreach (TitleElement titleElement in TitleDataList._list)
+      foreach (TitleElement titleElement in _list)
       {
         if (titleElement.DataIndex == dataIndex)
           return titleElement;
       }
-      return (TitleElement) null;
+      return null;
     }
   }
 }

@@ -2,14 +2,13 @@
 // Type: DQ9_Cheat.Controls.MapSearch.SearchMapName2ConditionControl
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-using DQ9_Cheat.MapSearch;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DQ9_Cheat.MapSearch;
 
-#nullable disable
 namespace DQ9_Cheat.Controls.MapSearch
 {
   public class SearchMapName2ConditionControl : SearchConditionControlBase
@@ -21,100 +20,100 @@ namespace DQ9_Cheat.Controls.MapSearch
 
     public SearchMapName2ConditionControl()
     {
-      this.InitializeComponent();
-      this.comboBox_Name2.SelectedIndex = 0;
-      this.comboBox_SearchCondition.SelectedIndex = 0;
+      InitializeComponent();
+      comboBox_Name2.SelectedIndex = 0;
+      comboBox_SearchCondition.SelectedIndex = 0;
     }
 
     public override SearchConditionBase GetCondition()
     {
-      if (this._condition == null)
-        this._condition = new SearchMapName2Conditioin();
-      this._condition.Name2Index = this.comboBox_Name2.SelectedIndex;
-      switch (this.comboBox_SearchCondition.SelectedIndex)
+      if (_condition == null)
+        _condition = new SearchMapName2Conditioin();
+      _condition.Name2Index = comboBox_Name2.SelectedIndex;
+      switch (comboBox_SearchCondition.SelectedIndex)
       {
         case 0:
-          this._condition.ConditionType = SearchConditionType.Accord;
+          _condition.ConditionType = SearchConditionType.Accord;
           break;
         case 1:
-          this._condition.ConditionType = SearchConditionType.Discord;
+          _condition.ConditionType = SearchConditionType.Discord;
           break;
       }
-      return (SearchConditionBase) this._condition;
+      return _condition;
     }
 
     public override void SetCondition(SearchConditionBase condition)
     {
-      this._condition = condition as SearchMapName2Conditioin;
-      if (this._condition == null)
+      _condition = condition as SearchMapName2Conditioin;
+      if (_condition == null)
         return;
-      this.comboBox_Name2.SelectedIndex = this._condition.Name2Index;
-      switch (this._condition.ConditionType)
+      comboBox_Name2.SelectedIndex = _condition.Name2Index;
+      switch (_condition.ConditionType)
       {
         case SearchConditionType.Accord:
-          this.comboBox_SearchCondition.SelectedIndex = 0;
+          comboBox_SearchCondition.SelectedIndex = 0;
           break;
         case SearchConditionType.Discord:
-          this.comboBox_SearchCondition.SelectedIndex = 1;
+          comboBox_SearchCondition.SelectedIndex = 1;
           break;
       }
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && this.components != null)
-        this.components.Dispose();
+      if (disposing && components != null)
+        components.Dispose();
       base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      this.comboBox_SearchCondition = new ComboBox();
-      this.comboBox_Name2 = new ComboBox();
-      this.SuspendLayout();
-      this.comboBox_SearchCondition.DropDownStyle = ComboBoxStyle.DropDownList;
-      this.comboBox_SearchCondition.FormattingEnabled = true;
-      this.comboBox_SearchCondition.Items.AddRange(new object[2]
+      comboBox_SearchCondition = new ComboBox();
+      comboBox_Name2 = new ComboBox();
+      SuspendLayout();
+      comboBox_SearchCondition.DropDownStyle = ComboBoxStyle.DropDownList;
+      comboBox_SearchCondition.FormattingEnabled = true;
+      comboBox_SearchCondition.Items.AddRange(new object[2]
       {
-        (object) "Equals",
-        (object) "Not equals"
+        "Equals",
+        "Not equals"
       });
-      this.comboBox_SearchCondition.Location = new Point(115, 16);
-      this.comboBox_SearchCondition.Name = "comboBox_SearchCondition";
-      this.comboBox_SearchCondition.Size = new Size(78, 20);
-      this.comboBox_SearchCondition.TabIndex = 5;
-      this.comboBox_Name2.DropDownStyle = ComboBoxStyle.DropDownList;
-      this.comboBox_Name2.FormattingEnabled = true;
-      this.comboBox_Name2.Items.AddRange(new object[16]
+      comboBox_SearchCondition.Location = new Point(115, 16);
+      comboBox_SearchCondition.Name = "comboBox_SearchCondition";
+      comboBox_SearchCondition.Size = new Size(78, 20);
+      comboBox_SearchCondition.TabIndex = 5;
+      comboBox_Name2.DropDownStyle = ComboBoxStyle.DropDownList;
+      comboBox_Name2.FormattingEnabled = true;
+      comboBox_Name2.Items.AddRange(new object[16]
       {
-        (object) "Joy",
-        (object) "Bliss",
-        (object) "Glee",
-        (object) "Doubt",
-        (object) "Woe",
-        (object) "Dolour",
-        (object) "Regret",
-        (object) "Bane",
-        (object) "Fear",
-        (object) "Dread",
-        (object) "Hurt",
-        (object) "Gloom",
-        (object) "Doom",
-        (object) "Evil",
-        (object) "Ruin",
-        (object) "Death"
+        "Joy",
+        "Bliss",
+        "Glee",
+        "Doubt",
+        "Woe",
+        "Dolour",
+        "Regret",
+        "Bane",
+        "Fear",
+        "Dread",
+        "Hurt",
+        "Gloom",
+        "Doom",
+        "Evil",
+        "Ruin",
+        "Death"
       });
-      this.comboBox_Name2.Location = new Point(16, 16);
-      this.comboBox_Name2.Name = "comboBox_Name2";
-      this.comboBox_Name2.Size = new Size(80, 20);
-      this.comboBox_Name2.TabIndex = 4;
-      this.AutoScaleDimensions = new SizeF(6f, 12f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.Controls.Add((Control) this.comboBox_SearchCondition);
-      this.Controls.Add((Control) this.comboBox_Name2);
-      this.Name = nameof (SearchMapName2ConditionControl);
-      this.Size = new Size(200, 46);
-      this.ResumeLayout(false);
+      comboBox_Name2.Location = new Point(16, 16);
+      comboBox_Name2.Name = "comboBox_Name2";
+      comboBox_Name2.Size = new Size(80, 20);
+      comboBox_Name2.TabIndex = 4;
+      AutoScaleDimensions = new SizeF(6f, 12f);
+      AutoScaleMode = AutoScaleMode.Font;
+      Controls.Add(comboBox_SearchCondition);
+      Controls.Add(comboBox_Name2);
+      Name = nameof (SearchMapName2ConditionControl);
+      Size = new Size(200, 46);
+      ResumeLayout(false);
     }
   }
 }

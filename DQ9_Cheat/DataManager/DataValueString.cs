@@ -2,13 +2,12 @@
 // Type: DQ9_Cheat.DataManager.DataValueString
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-using FriedGinger.DQCheat;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using FriedGinger.DQCheat;
 
-#nullable disable
 namespace DQ9_Cheat.DataManager
 {
   internal class DataValueString : DataValueBase
@@ -26,11 +25,11 @@ namespace DQ9_Cheat.DataManager
       int maxLength,
       bool addNull)
     {
-      this._dataOffset = offset;
-      this._addNull = addNull;
-      this._relationalControl = control;
-      this._maxLength = maxLength;
-      this._owner = owner;
+      _dataOffset = offset;
+      _addNull = addNull;
+      _relationalControl = control;
+      _maxLength = maxLength;
+      _owner = owner;
     }
 
     public DataValueString(
@@ -41,33 +40,33 @@ namespace DQ9_Cheat.DataManager
       bool addNull,
       byte[] fillData)
     {
-      this._dataOffset = offset;
-      this._addNull = addNull;
-      this._relationalControl = control;
-      this._maxLength = maxLength;
-      this._owner = owner;
-      this._defaultFillData = fillData;
+      _dataOffset = offset;
+      _addNull = addNull;
+      _relationalControl = control;
+      _maxLength = maxLength;
+      _owner = owner;
+      _defaultFillData = fillData;
     }
 
-    public int MaxLength => this._maxLength;
+    public int MaxLength => _maxLength;
 
     private string InnerValue
     {
       set
       {
-        byte[] numArray = this._dataOffset == 23176U ? StringFixer.GetTemplateBytes(value) : StringFixer.GetBytes(value);
-        for (int index = 0; index < this._maxLength; ++index)
+        byte[] numArray = _dataOffset == 23176U ? StringFixer.GetTemplateBytes(value) : StringFixer.GetBytes(value);
+        for (int index = 0; index < _maxLength; ++index)
         {
           if (numArray.Length > index)
-            this._owner.Data[(long) this._dataOffset + (long) index] = numArray[index];
-          else if (this._defaultFillData != null)
-            this._owner.Data[(long) this._dataOffset + (long) index] = this._defaultFillData[index % this._defaultFillData.Length];
+            _owner.Data[_dataOffset + index] = numArray[index];
+          else if (_defaultFillData != null)
+            _owner.Data[_dataOffset + index] = _defaultFillData[index % _defaultFillData.Length];
           else
-            this._owner.Data[(long) this._dataOffset + (long) index] = (byte) 0;
+            _owner.Data[_dataOffset + index] = 0;
         }
-        if (!this._addNull)
+        if (!_addNull)
           return;
-        this._owner.Data[(long) this._dataOffset + (long) this._maxLength] = (byte) 0;
+        _owner.Data[_dataOffset + _maxLength] = 0;
       }
     }
 
@@ -76,55 +75,55 @@ namespace DQ9_Cheat.DataManager
       get
       {
         int count = 0;
-        byte[] bytes = new byte[this._maxLength];
-        for (int index = 0; index < this._maxLength; ++index)
+        byte[] bytes = new byte[_maxLength];
+        for (int index = 0; index < _maxLength; ++index)
         {
-          bytes[index] = this._owner.Data[(long) this._dataOffset + (long) index];
-          if (bytes[index] != (byte) 0)
+          bytes[index] = _owner.Data[_dataOffset + index];
+          if (bytes[index] != 0)
             ++count;
-          else if (bytes[index] == (byte) 0)
+          else if (bytes[index] == 0)
             break;
         }
-        return this._dataOffset != 23176U ? StringFixer.GetString(bytes, count) : StringFixer.GetTemplateString(bytes, count);
+        return _dataOffset != 23176U ? StringFixer.GetString(bytes, count) : StringFixer.GetTemplateString(bytes, count);
       }
       set
       {
-        if (this.Value != value)
+        if (Value != value)
         {
-          if (this._redoValueList.Count > 0)
-            this._redoValueList.Clear();
-          this._undoValueList.Push(this.Value);
-          byte[] numArray = this._dataOffset == 23176U ? StringFixer.GetTemplateBytes(value) : StringFixer.GetBytes(value);
-          for (int index = 0; index < this._maxLength; ++index)
+          if (_redoValueList.Count > 0)
+            _redoValueList.Clear();
+          _undoValueList.Push(Value);
+          byte[] numArray = _dataOffset == 23176U ? StringFixer.GetTemplateBytes(value) : StringFixer.GetBytes(value);
+          for (int index = 0; index < _maxLength; ++index)
           {
             if (numArray.Length > index)
-              this._owner.Data[(long) this._dataOffset + (long) index] = numArray[index];
+              _owner.Data[_dataOffset + index] = numArray[index];
             else
-              this._owner.Data[(long) this._dataOffset + (long) index] = (byte) 0;
+              _owner.Data[_dataOffset + index] = 0;
           }
-          if (this._addNull)
-            this._owner.Data[(long) this._dataOffset + (long) this._maxLength] = (byte) 0;
+          if (_addNull)
+            _owner.Data[_dataOffset + _maxLength] = 0;
         }
-        SaveDataManager.Instance.UndoRedoMgr.Edited((UndoRedoElement) new UndoRedoDataValue((DataValueBase) this));
+        SaveDataManager.Instance.UndoRedoMgr.Edited(new UndoRedoDataValue(this));
       }
     }
 
     public override void Undo()
     {
-      if (this._undoValueList.Count <= 0)
+      if (_undoValueList.Count <= 0)
         return;
-      string str = this._undoValueList.Pop();
-      this._redoValueList.Push(this.Value);
-      this.InnerValue = str;
+      string str = _undoValueList.Pop();
+      _redoValueList.Push(Value);
+      InnerValue = str;
     }
 
     public override void Redo()
     {
-      if (this._redoValueList.Count <= 0)
+      if (_redoValueList.Count <= 0)
         return;
-      string str = this._redoValueList.Pop();
-      this._undoValueList.Push(this.Value);
-      this.InnerValue = str;
+      string str = _redoValueList.Pop();
+      _undoValueList.Push(Value);
+      InnerValue = str;
     }
   }
 }

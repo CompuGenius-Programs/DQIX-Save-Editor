@@ -2,16 +2,15 @@
 // Type: DQ9_Cheat.Controls.HandleSelectWindow
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-using DQ9_Cheat.GameData;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using DQ9_Cheat.GameData;
 
-#nullable disable
 namespace DQ9_Cheat.Controls
 {
   public class HandleSelectWindow : Form
@@ -24,133 +23,133 @@ namespace DQ9_Cheat.Controls
     private TextBox textBox_SearchString;
     private Label label_TypeName;
     private ComboBox comboBox_SelectType;
-    private DQ9_Cheat.GameData.Handle _selectedHandle;
+    private Handle _selectedHandle;
     private int _sex;
 
     public HandleSelectWindow(int sex)
     {
-      this.InitializeComponent();
-      this.comboBox_SelectType.SelectedIndex = 0;
-      this._sex = sex;
-      this.RenewalList();
+      InitializeComponent();
+      comboBox_SelectType.SelectedIndex = 0;
+      _sex = sex;
+      RenewalList();
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && this.components != null)
-        this.components.Dispose();
+      if (disposing && components != null)
+        components.Dispose();
       base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      this.button_Cancel = new Button();
-      this.button_OK = new Button();
-      this.listBox_HandleList = new ListBox();
-      this.label_Search = new Label();
-      this.textBox_SearchString = new TextBox();
-      this.label_TypeName = new Label();
-      this.comboBox_SelectType = new ComboBox();
-      this.SuspendLayout();
-      this.button_Cancel.DialogResult = DialogResult.Cancel;
-      this.button_Cancel.Location = new Point(111, 317);
-      this.button_Cancel.Name = "button_Cancel";
-      this.button_Cancel.Size = new Size(61, 23);
-      this.button_Cancel.TabIndex = 8;
-      this.button_Cancel.Text = "Cancel";
-      this.button_Cancel.UseVisualStyleBackColor = true;
-      this.button_OK.DialogResult = DialogResult.OK;
-      this.button_OK.Enabled = false;
-      this.button_OK.Location = new Point(44, 317);
-      this.button_OK.Name = "button_OK";
-      this.button_OK.Size = new Size(61, 23);
-      this.button_OK.TabIndex = 7;
-      this.button_OK.Text = "OK";
-      this.button_OK.UseVisualStyleBackColor = true;
-      this.button_OK.Click += new EventHandler(this.button_OK_Click);
-      this.listBox_HandleList.FormattingEnabled = true;
-      this.listBox_HandleList.ItemHeight = 12;
-      this.listBox_HandleList.Location = new Point(12, 57);
-      this.listBox_HandleList.Name = "listBox_HandleList";
-      this.listBox_HandleList.Size = new Size(160, 256);
-      this.listBox_HandleList.TabIndex = 6;
-      this.listBox_HandleList.MouseDoubleClick += new MouseEventHandler(this.listBox_TitleList_MouseDoubleClick);
-      this.listBox_HandleList.SelectedIndexChanged += new EventHandler(this.listBox_TitleList_SelectedIndexChanged);
-      this.label_Search.AutoSize = true;
-      this.label_Search.Location = new Point(4, 35);
-      this.label_Search.Name = "label_Search";
-      this.label_Search.Size = new Size(41, 13);
-      this.label_Search.TabIndex = 5;
-      this.label_Search.Text = "Search";
-      this.textBox_SearchString.Location = new Point(45, 32);
-      this.textBox_SearchString.Name = "textBox_SearchString";
-      this.textBox_SearchString.Size = new Size((int) sbyte.MaxValue, 20);
-      this.textBox_SearchString.TabIndex = 4;
-      this.textBox_SearchString.TextChanged += new EventHandler(this.textBox_SearchString_TextChanged);
-      this.label_TypeName.AutoSize = true;
-      this.label_TypeName.Location = new Point(14, 9);
-      this.label_TypeName.Name = "label_TypeName";
-      this.label_TypeName.Size = new Size(31, 13);
-      this.label_TypeName.TabIndex = 10;
-      this.label_TypeName.Text = "Type";
-      this.comboBox_SelectType.DropDownStyle = ComboBoxStyle.DropDownList;
-      this.comboBox_SelectType.FormattingEnabled = true;
-      this.comboBox_SelectType.Items.AddRange(new object[2]
+      button_Cancel = new Button();
+      button_OK = new Button();
+      listBox_HandleList = new ListBox();
+      label_Search = new Label();
+      textBox_SearchString = new TextBox();
+      label_TypeName = new Label();
+      comboBox_SelectType = new ComboBox();
+      SuspendLayout();
+      button_Cancel.DialogResult = DialogResult.Cancel;
+      button_Cancel.Location = new Point(111, 317);
+      button_Cancel.Name = "button_Cancel";
+      button_Cancel.Size = new Size(61, 23);
+      button_Cancel.TabIndex = 8;
+      button_Cancel.Text = "Cancel";
+      button_Cancel.UseVisualStyleBackColor = true;
+      button_OK.DialogResult = DialogResult.OK;
+      button_OK.Enabled = false;
+      button_OK.Location = new Point(44, 317);
+      button_OK.Name = "button_OK";
+      button_OK.Size = new Size(61, 23);
+      button_OK.TabIndex = 7;
+      button_OK.Text = "OK";
+      button_OK.UseVisualStyleBackColor = true;
+      button_OK.Click += button_OK_Click;
+      listBox_HandleList.FormattingEnabled = true;
+      listBox_HandleList.ItemHeight = 12;
+      listBox_HandleList.Location = new Point(12, 57);
+      listBox_HandleList.Name = "listBox_HandleList";
+      listBox_HandleList.Size = new Size(160, 256);
+      listBox_HandleList.TabIndex = 6;
+      listBox_HandleList.MouseDoubleClick += listBox_TitleList_MouseDoubleClick;
+      listBox_HandleList.SelectedIndexChanged += listBox_TitleList_SelectedIndexChanged;
+      label_Search.AutoSize = true;
+      label_Search.Location = new Point(4, 35);
+      label_Search.Name = "label_Search";
+      label_Search.Size = new Size(41, 13);
+      label_Search.TabIndex = 5;
+      label_Search.Text = "Search";
+      textBox_SearchString.Location = new Point(45, 32);
+      textBox_SearchString.Name = "textBox_SearchString";
+      textBox_SearchString.Size = new Size(sbyte.MaxValue, 20);
+      textBox_SearchString.TabIndex = 4;
+      textBox_SearchString.TextChanged += textBox_SearchString_TextChanged;
+      label_TypeName.AutoSize = true;
+      label_TypeName.Location = new Point(14, 9);
+      label_TypeName.Name = "label_TypeName";
+      label_TypeName.Size = new Size(31, 13);
+      label_TypeName.TabIndex = 10;
+      label_TypeName.Text = "Type";
+      comboBox_SelectType.DropDownStyle = ComboBoxStyle.DropDownList;
+      comboBox_SelectType.FormattingEnabled = true;
+      comboBox_SelectType.Items.AddRange(new object[2]
       {
-        (object) "Occupations",
-        (object) "Accolades"
+        "Occupations",
+        "Accolades"
       });
-      this.comboBox_SelectType.Location = new Point(45, 6);
-      this.comboBox_SelectType.Name = "comboBox_SelectType";
-      this.comboBox_SelectType.Size = new Size((int) sbyte.MaxValue, 21);
-      this.comboBox_SelectType.TabIndex = 9;
-      this.comboBox_SelectType.SelectedIndexChanged += new EventHandler(this.comboBox_SelectType_SelectedIndexChanged);
-      this.AcceptButton = (IButtonControl) this.button_OK;
-      this.AutoScaleDimensions = new SizeF(6f, 12f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.CancelButton = (IButtonControl) this.button_Cancel;
-      this.ClientSize = new Size(180, 345);
-      this.Controls.Add((Control) this.label_TypeName);
-      this.Controls.Add((Control) this.comboBox_SelectType);
-      this.Controls.Add((Control) this.button_Cancel);
-      this.Controls.Add((Control) this.button_OK);
-      this.Controls.Add((Control) this.listBox_HandleList);
-      this.Controls.Add((Control) this.label_Search);
-      this.Controls.Add((Control) this.textBox_SearchString);
-      this.FormBorderStyle = FormBorderStyle.Fixed3D;
-      this.MaximizeBox = false;
-      this.MinimizeBox = false;
-      this.Name = nameof (HandleSelectWindow);
-      this.ShowIcon = false;
-      this.ShowInTaskbar = false;
-      this.StartPosition = FormStartPosition.Manual;
-      this.Text = "Select Profile Title";
-      this.ResumeLayout(false);
-      this.PerformLayout();
+      comboBox_SelectType.Location = new Point(45, 6);
+      comboBox_SelectType.Name = "comboBox_SelectType";
+      comboBox_SelectType.Size = new Size(sbyte.MaxValue, 21);
+      comboBox_SelectType.TabIndex = 9;
+      comboBox_SelectType.SelectedIndexChanged += comboBox_SelectType_SelectedIndexChanged;
+      AcceptButton = button_OK;
+      AutoScaleDimensions = new SizeF(6f, 12f);
+      AutoScaleMode = AutoScaleMode.Font;
+      CancelButton = button_Cancel;
+      ClientSize = new Size(180, 345);
+      Controls.Add(label_TypeName);
+      Controls.Add(comboBox_SelectType);
+      Controls.Add(button_Cancel);
+      Controls.Add(button_OK);
+      Controls.Add(listBox_HandleList);
+      Controls.Add(label_Search);
+      Controls.Add(textBox_SearchString);
+      FormBorderStyle = FormBorderStyle.Fixed3D;
+      MaximizeBox = false;
+      MinimizeBox = false;
+      Name = nameof (HandleSelectWindow);
+      ShowIcon = false;
+      ShowInTaskbar = false;
+      StartPosition = FormStartPosition.Manual;
+      Text = "Select Profile Title";
+      ResumeLayout(false);
+      PerformLayout();
     }
 
-    public DQ9_Cheat.GameData.Handle SelectedHandle => this._selectedHandle;
+    public Handle SelectedHandle => _selectedHandle;
 
-    private void textBox_SearchString_TextChanged(object sender, EventArgs e) => this.RenewalList();
+    private void textBox_SearchString_TextChanged(object sender, EventArgs e) => RenewalList();
 
     private void RenewalList()
     {
-      this.listBox_HandleList.BeginUpdate();
-      Regex regex = (Regex) null;
-      if (!string.IsNullOrEmpty(this.textBox_SearchString.Text))
-        regex = new Regex(this.textBox_SearchString.Text, RegexOptions.IgnoreCase);
-      this.listBox_HandleList.Items.Clear();
-      if (this.comboBox_SelectType.SelectedIndex == 0)
+      listBox_HandleList.BeginUpdate();
+      Regex regex = null;
+      if (!string.IsNullOrEmpty(textBox_SearchString.Text))
+        regex = new Regex(textBox_SearchString.Text, RegexOptions.IgnoreCase);
+      listBox_HandleList.Items.Clear();
+      if (comboBox_SelectType.SelectedIndex == 0)
       {
         foreach (ProfileJob profileJob in ProfileJobList.List)
         {
           if (regex != null)
           {
             if (regex.IsMatch(profileJob.Name))
-              this.listBox_HandleList.Items.Add((object) profileJob);
+              listBox_HandleList.Items.Add(profileJob);
           }
           else
-            this.listBox_HandleList.Items.Add((object) profileJob);
+            listBox_HandleList.Items.Add(profileJob);
         }
       }
       else
@@ -159,69 +158,69 @@ namespace DQ9_Cheat.Controls
         {
           if (regex != null)
           {
-            if (regex.IsMatch(this._sex == 0 ? titleElement.MaleTitleName : titleElement.LadyTitleName))
-              this.listBox_HandleList.Items.Add((object) new HandleSelectWindow.TitleListBoxItem(this._sex, titleElement));
+            if (regex.IsMatch(_sex == 0 ? titleElement.MaleTitleName : titleElement.LadyTitleName))
+              listBox_HandleList.Items.Add(new TitleListBoxItem(_sex, titleElement));
           }
-          else if ((this._sex == 0 ? (!string.IsNullOrEmpty(titleElement.MaleTitleName) ? 1 : 0) : (!string.IsNullOrEmpty(titleElement.LadyTitleName) ? 1 : 0)) != 0)
-            this.listBox_HandleList.Items.Add((object) new HandleSelectWindow.TitleListBoxItem(this._sex, titleElement));
+          else if ((_sex == 0 ? (!string.IsNullOrEmpty(titleElement.MaleTitleName) ? 1 : 0) : (!string.IsNullOrEmpty(titleElement.LadyTitleName) ? 1 : 0)) != 0)
+            listBox_HandleList.Items.Add(new TitleListBoxItem(_sex, titleElement));
         }
       }
-      this.listBox_HandleList.EndUpdate();
-      if (this.listBox_HandleList.Items.Count > 0)
+      listBox_HandleList.EndUpdate();
+      if (listBox_HandleList.Items.Count > 0)
       {
-        this.listBox_HandleList.SelectedIndex = 0;
+        listBox_HandleList.SelectedIndex = 0;
       }
       else
       {
-        this.listBox_HandleList.SelectedIndex = -1;
-        this.button_OK.Enabled = false;
+        listBox_HandleList.SelectedIndex = -1;
+        button_OK.Enabled = false;
       }
     }
 
     private void listBox_TitleList_SelectedIndexChanged(object sender, EventArgs e)
     {
-      this.button_OK.Enabled = this.listBox_HandleList.SelectedIndex != -1;
+      button_OK.Enabled = listBox_HandleList.SelectedIndex != -1;
     }
 
     private void button_OK_Click(object sender, EventArgs e)
     {
-      if (this.listBox_HandleList.SelectedItem != null)
+      if (listBox_HandleList.SelectedItem != null)
       {
-        if (this.listBox_HandleList.SelectedItem is ProfileJob)
+        if (listBox_HandleList.SelectedItem is ProfileJob)
         {
-          this._selectedHandle = new DQ9_Cheat.GameData.Handle(this.listBox_HandleList.SelectedItem as ProfileJob);
+          _selectedHandle = new Handle(listBox_HandleList.SelectedItem as ProfileJob);
         }
         else
         {
-          if (!(this.listBox_HandleList.SelectedItem is HandleSelectWindow.TitleListBoxItem))
+          if (!(listBox_HandleList.SelectedItem is TitleListBoxItem))
             return;
-          this._selectedHandle = new DQ9_Cheat.GameData.Handle((this.listBox_HandleList.SelectedItem as HandleSelectWindow.TitleListBoxItem).TitleElement);
+          _selectedHandle = new Handle((listBox_HandleList.SelectedItem as TitleListBoxItem).TitleElement);
         }
       }
       else
-        this.DialogResult = DialogResult.None;
+        DialogResult = DialogResult.None;
     }
 
     private void listBox_TitleList_MouseDoubleClick(object sender, MouseEventArgs e)
     {
-      if (this.listBox_HandleList.IndexFromPoint(e.Location) == -1)
+      if (listBox_HandleList.IndexFromPoint(e.Location) == -1)
         return;
-      if (this.listBox_HandleList.SelectedItem != null)
+      if (listBox_HandleList.SelectedItem != null)
       {
-        if (this.listBox_HandleList.SelectedItem is ProfileJob)
-          this._selectedHandle = new DQ9_Cheat.GameData.Handle(this.listBox_HandleList.SelectedItem as ProfileJob);
-        else if (this.listBox_HandleList.SelectedItem is HandleSelectWindow.TitleListBoxItem)
-          this._selectedHandle = new DQ9_Cheat.GameData.Handle((this.listBox_HandleList.SelectedItem as HandleSelectWindow.TitleListBoxItem).TitleElement);
-        this.DialogResult = DialogResult.OK;
+        if (listBox_HandleList.SelectedItem is ProfileJob)
+          _selectedHandle = new Handle(listBox_HandleList.SelectedItem as ProfileJob);
+        else if (listBox_HandleList.SelectedItem is TitleListBoxItem)
+          _selectedHandle = new Handle((listBox_HandleList.SelectedItem as TitleListBoxItem).TitleElement);
+        DialogResult = DialogResult.OK;
       }
       else
-        this.DialogResult = DialogResult.None;
+        DialogResult = DialogResult.None;
     }
 
     private void comboBox_SelectType_SelectedIndexChanged(object sender, EventArgs e)
     {
-      this.textBox_SearchString.Text = string.Empty;
-      this.RenewalList();
+      textBox_SearchString.Text = string.Empty;
+      RenewalList();
     }
 
     private class TitleListBoxItem
@@ -231,15 +230,15 @@ namespace DQ9_Cheat.Controls
 
       public TitleListBoxItem(int sex, TitleElement titleElement)
       {
-        this._titleElement = titleElement;
-        this._sex = sex;
+        _titleElement = titleElement;
+        _sex = sex;
       }
 
-      public TitleElement TitleElement => this._titleElement;
+      public TitleElement TitleElement => _titleElement;
 
       public override string ToString()
       {
-        return this._sex != 0 ? this._titleElement.LadyTitleName : this._titleElement.MaleTitleName;
+        return _sex != 0 ? _titleElement.LadyTitleName : _titleElement.MaleTitleName;
       }
     }
   }

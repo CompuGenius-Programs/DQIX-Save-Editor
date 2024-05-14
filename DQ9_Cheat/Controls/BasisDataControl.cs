@@ -2,19 +2,18 @@
 // Type: DQ9_Cheat.Controls.BasisDataControl
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-using DQ9_Cheat.Controls.VisionControls;
-using DQ9_Cheat.DataManager;
-using DQ9_Cheat.GameData;
-using FriedGinger.DQCheat;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using DQ9_Cheat.Controls.VisionControls;
+using DQ9_Cheat.DataManager;
+using DQ9_Cheat.GameData;
+using FriedGinger.DQCheat;
 
-#nullable disable
 namespace DQ9_Cheat.Controls
 {
   public class BasisDataControl : DataControlBase
@@ -101,990 +100,990 @@ namespace DQ9_Cheat.Controls
 
     public BasisDataControl()
     {
-      this.AutoScaleMode = AutoScaleMode.None;
-      this.InitializeComponent();
-      this.SuspendLayout();
-      this._comboBox_GestureUp = new VisionComboBox(81, 28, 125, 21);
-      this._comboBox_GestureUp.SelectedIndexChanged += new EventHandler(this.comboBox_Gesture_SelectedIndexChanged);
-      this._comboBox_GestureLeft = new VisionComboBox(6, 69, 125, 21);
-      this._comboBox_GestureLeft.SelectedIndexChanged += new EventHandler(this.comboBox_Gesture_SelectedIndexChanged);
-      this._comboBox_GestureRight = new VisionComboBox(148, 69, 125, 21);
-      this._comboBox_GestureRight.SelectedIndexChanged += new EventHandler(this.comboBox_Gesture_SelectedIndexChanged);
-      this._comboBox_GestureDown1 = new VisionComboBox(81, 108, 125, 21);
-      this._comboBox_GestureDown1.SelectedIndexChanged += new EventHandler(this.comboBox_Gesture_SelectedIndexChanged);
-      this._comboBox_GestureDown2 = new VisionComboBox(81, 132, 125, 21);
-      this._comboBox_GestureDown2.SelectedIndexChanged += new EventHandler(this.comboBox_Gesture_SelectedIndexChanged);
-      this._comboBox_GestureDown3 = new VisionComboBox(81, 156, 125, 21);
-      this._comboBox_GestureDown3.SelectedIndexChanged += new EventHandler(this.comboBox_Gesture_SelectedIndexChanged);
-      this._comboBox_GestureDown4 = new VisionComboBox(81, 180, 125, 21);
-      this._comboBox_GestureDown4.SelectedIndexChanged += new EventHandler(this.comboBox_Gesture_SelectedIndexChanged);
+      AutoScaleMode = AutoScaleMode.None;
+      InitializeComponent();
+      SuspendLayout();
+      _comboBox_GestureUp = new VisionComboBox(81, 28, 125, 21);
+      _comboBox_GestureUp.SelectedIndexChanged += comboBox_Gesture_SelectedIndexChanged;
+      _comboBox_GestureLeft = new VisionComboBox(6, 69, 125, 21);
+      _comboBox_GestureLeft.SelectedIndexChanged += comboBox_Gesture_SelectedIndexChanged;
+      _comboBox_GestureRight = new VisionComboBox(148, 69, 125, 21);
+      _comboBox_GestureRight.SelectedIndexChanged += comboBox_Gesture_SelectedIndexChanged;
+      _comboBox_GestureDown1 = new VisionComboBox(81, 108, 125, 21);
+      _comboBox_GestureDown1.SelectedIndexChanged += comboBox_Gesture_SelectedIndexChanged;
+      _comboBox_GestureDown2 = new VisionComboBox(81, 132, 125, 21);
+      _comboBox_GestureDown2.SelectedIndexChanged += comboBox_Gesture_SelectedIndexChanged;
+      _comboBox_GestureDown3 = new VisionComboBox(81, 156, 125, 21);
+      _comboBox_GestureDown3.SelectedIndexChanged += comboBox_Gesture_SelectedIndexChanged;
+      _comboBox_GestureDown4 = new VisionComboBox(81, 180, 125, 21);
+      _comboBox_GestureDown4.SelectedIndexChanged += comboBox_Gesture_SelectedIndexChanged;
       foreach (Gesture gesture in GestureList.List)
       {
-        this._comboBox_GestureUp.Items.Add((object) gesture);
-        this._comboBox_GestureLeft.Items.Add((object) gesture);
-        this._comboBox_GestureRight.Items.Add((object) gesture);
-        this._comboBox_GestureDown1.Items.Add((object) gesture);
-        this._comboBox_GestureDown2.Items.Add((object) gesture);
-        this._comboBox_GestureDown3.Items.Add((object) gesture);
-        this._comboBox_GestureDown4.Items.Add((object) gesture);
+        _comboBox_GestureUp.Items.Add(gesture);
+        _comboBox_GestureLeft.Items.Add(gesture);
+        _comboBox_GestureRight.Items.Add(gesture);
+        _comboBox_GestureDown1.Items.Add(gesture);
+        _comboBox_GestureDown2.Items.Add(gesture);
+        _comboBox_GestureDown3.Items.Add(gesture);
+        _comboBox_GestureDown4.Items.Add(gesture);
       }
       int num1 = 0;
-      VisionComboBox comboBoxGestureUp = this._comboBox_GestureUp;
+      VisionComboBox comboBoxGestureUp = _comboBox_GestureUp;
       int num2 = num1;
       int num3 = num2 + 1;
       // ISSUE: variable of a boxed type
       int local1 = num2;
-      comboBoxGestureUp.Tag = (object) local1;
-      VisionComboBox comboBoxGestureLeft = this._comboBox_GestureLeft;
+      comboBoxGestureUp.Tag = local1;
+      VisionComboBox comboBoxGestureLeft = _comboBox_GestureLeft;
       int num4 = num3;
       int num5 = num4 + 1;
       // ISSUE: variable of a boxed type
       int local2 = num4;
-      comboBoxGestureLeft.Tag = (object) local2;
-      VisionComboBox comboBoxGestureRight = this._comboBox_GestureRight;
+      comboBoxGestureLeft.Tag = local2;
+      VisionComboBox comboBoxGestureRight = _comboBox_GestureRight;
       int num6 = num5;
       int num7 = num6 + 1;
       // ISSUE: variable of a boxed type
       int local3 = num6;
-      comboBoxGestureRight.Tag = (object) local3;
-      VisionComboBox comboBoxGestureDown1 = this._comboBox_GestureDown1;
+      comboBoxGestureRight.Tag = local3;
+      VisionComboBox comboBoxGestureDown1 = _comboBox_GestureDown1;
       int num8 = num7;
       int num9 = num8 + 1;
       // ISSUE: variable of a boxed type
       int local4 = num8;
-      comboBoxGestureDown1.Tag = (object) local4;
-      VisionComboBox comboBoxGestureDown2 = this._comboBox_GestureDown2;
+      comboBoxGestureDown1.Tag = local4;
+      VisionComboBox comboBoxGestureDown2 = _comboBox_GestureDown2;
       int num10 = num9;
       int num11 = num10 + 1;
       // ISSUE: variable of a boxed type
       int local5 = num10;
-      comboBoxGestureDown2.Tag = (object) local5;
-      VisionComboBox comboBoxGestureDown3 = this._comboBox_GestureDown3;
+      comboBoxGestureDown2.Tag = local5;
+      VisionComboBox comboBoxGestureDown3 = _comboBox_GestureDown3;
       int num12 = num11;
       int num13 = num12 + 1;
       // ISSUE: variable of a boxed type
       int local6 = num12;
-      comboBoxGestureDown3.Tag = (object) local6;
-      VisionComboBox comboBoxGestureDown4 = this._comboBox_GestureDown4;
+      comboBoxGestureDown3.Tag = local6;
+      VisionComboBox comboBoxGestureDown4 = _comboBox_GestureDown4;
       int num14 = num13;
       int num15 = num14 + 1;
       // ISSUE: variable of a boxed type
       int local7 = num14;
-      comboBoxGestureDown4.Tag = (object) local7;
-      this.groupBox_Gesture.AddVisionControl((VisionControlBase) this._comboBox_GestureUp);
-      this.groupBox_Gesture.AddVisionControl((VisionControlBase) this._comboBox_GestureLeft);
-      this.groupBox_Gesture.AddVisionControl((VisionControlBase) this._comboBox_GestureRight);
-      this.groupBox_Gesture.AddVisionControl((VisionControlBase) this._comboBox_GestureDown1);
-      this.groupBox_Gesture.AddVisionControl((VisionControlBase) this._comboBox_GestureDown2);
-      this.groupBox_Gesture.AddVisionControl((VisionControlBase) this._comboBox_GestureDown3);
-      this.groupBox_Gesture.AddVisionControl((VisionControlBase) this._comboBox_GestureDown4);
-      this._numericUpDown_Hour = new VisionNumericUpDown(98, 12, 60, 20);
-      this._numericUpDown_Hour.ValueChanged += new EventHandler(this._numericUpDown_Hour_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_Hour);
-      this._numericUpDown_Minute = new VisionNumericUpDown(199, 12, 41, 20);
-      this._numericUpDown_Minute.ValueChanged += new EventHandler(this._numericUpDown_Minute_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_Minute);
-      this._numericUpDown_Second = new VisionNumericUpDown(273, 12, 41, 20);
-      this._numericUpDown_Second.ValueChanged += new EventHandler(this._numericUpDown_Second_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_Second);
-      this._numericUpDown_MultiPlayTimeHour = new VisionNumericUpDown(98, 37, 60, 20);
-      this._numericUpDown_MultiPlayTimeHour.ValueChanged += new EventHandler(this._numericUpDown_MultiPlayTimeHour_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_MultiPlayTimeHour);
-      this._numericUpDown_MultiPlayTimeMinute = new VisionNumericUpDown(199, 37, 41, 20);
-      this._numericUpDown_MultiPlayTimeMinute.ValueChanged += new EventHandler(this._numericUpDown_MultiPlayTimeMinute_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_MultiPlayTimeMinute);
-      this._numericUpDown_MultiPlayTimeSecond = new VisionNumericUpDown(273, 37, 41, 20);
-      this._numericUpDown_MultiPlayTimeSecond.ValueChanged += new EventHandler(this._numericUpDown_MultiPlayTimeSecond_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_MultiPlayTimeSecond);
-      this._numericUpDown_Money = new VisionNumericUpDown(98, 80, 80, 20);
-      this._numericUpDown_Money.ValueChanged += new EventHandler(this._numericUpDown_Money_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_Money);
-      this._numericUpDown_BankMoney = new VisionNumericUpDown(98, 105, 80, 20);
-      this._numericUpDown_BankMoney.ValueChanged += new EventHandler(this._numericUpDown_BankMoney_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_BankMoney);
-      this._numericUpDown_Medal = new VisionNumericUpDown(98, 130, 80, 20);
-      this._numericUpDown_Medal.ValueChanged += new EventHandler(this._numericUpDown_Medal_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_Medal);
-      this._numericUpDown_AlchemyCount = new VisionNumericUpDown(98, 155, 80, 20);
-      this._numericUpDown_AlchemyCount.ValueChanged += new EventHandler(this._numericUpDown_AlchemyCount_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_AlchemyCount);
-      this._numericUpDown_BattleCount = new VisionNumericUpDown(276, 80, 70, 20);
-      this._numericUpDown_BattleCount.ValueChanged += new EventHandler(this._numericUpDown_BattleCount_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_BattleCount);
-      this._numericUpDown_LoseCount = new VisionNumericUpDown(276, 105, 70, 20);
-      this._numericUpDown_LoseCount.ValueChanged += new EventHandler(this._numericUpDown_LoseCount_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_LoseCount);
-      this._numericUpDown_EscapeCount = new VisionNumericUpDown(276, 130, 70, 20);
-      this._numericUpDown_EscapeCount.ValueChanged += new EventHandler(this._numericUpDown_EscapeCount_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_EscapeCount);
-      this._numericUpDown_EscapeSuccessCount = new VisionNumericUpDown(276, 155, 70, 20);
-      this._numericUpDown_EscapeSuccessCount.ValueChanged += new EventHandler(this._numericUpDown_EscapeSuccessCount_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_EscapeSuccessCount);
-      this._numericUpDown_VictoryCount = new VisionNumericUpDown(276, 180, 70, 20);
-      this._numericUpDown_VictoryCount.ValueChanged += new EventHandler(this._numericUpDown_VictoryCount_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDown_VictoryCount);
-      this._numericUpDown_ProfileBirthYear = new VisionNumericUpDown(88, 4, 58, 20);
-      this._numericUpDown_ProfileBirthYear.ValueChanged += new EventHandler(this._numericUpDown_ProfileBirthYear_ValueChanged);
-      this.panel_Profile.AddVisionControl((VisionControlBase) this._numericUpDown_ProfileBirthYear);
-      this._numericUpDown_ProfileBirthMonth = new VisionNumericUpDown(166, 4, 41, 20);
-      this._numericUpDown_ProfileBirthMonth.ValueChanged += new EventHandler(this._numericUpDown_ProfileBirthMonth_ValueChanged);
-      this.panel_Profile.AddVisionControl((VisionControlBase) this._numericUpDown_ProfileBirthMonth);
-      this._numericUpDown_ProfileBirthDay = new VisionNumericUpDown(230, 4, 41, 20);
-      this._numericUpDown_ProfileBirthDay.ValueChanged += new EventHandler(this._numericUpDown_ProfileBirthDay_ValueChanged);
-      this.panel_Profile.AddVisionControl((VisionControlBase) this._numericUpDown_ProfileBirthDay);
-      this.ResumeLayout(false);
+      comboBoxGestureDown4.Tag = local7;
+      groupBox_Gesture.AddVisionControl(_comboBox_GestureUp);
+      groupBox_Gesture.AddVisionControl(_comboBox_GestureLeft);
+      groupBox_Gesture.AddVisionControl(_comboBox_GestureRight);
+      groupBox_Gesture.AddVisionControl(_comboBox_GestureDown1);
+      groupBox_Gesture.AddVisionControl(_comboBox_GestureDown2);
+      groupBox_Gesture.AddVisionControl(_comboBox_GestureDown3);
+      groupBox_Gesture.AddVisionControl(_comboBox_GestureDown4);
+      _numericUpDown_Hour = new VisionNumericUpDown(98, 12, 60, 20);
+      _numericUpDown_Hour.ValueChanged += _numericUpDown_Hour_ValueChanged;
+      AddVisionControl(_numericUpDown_Hour);
+      _numericUpDown_Minute = new VisionNumericUpDown(199, 12, 41, 20);
+      _numericUpDown_Minute.ValueChanged += _numericUpDown_Minute_ValueChanged;
+      AddVisionControl(_numericUpDown_Minute);
+      _numericUpDown_Second = new VisionNumericUpDown(273, 12, 41, 20);
+      _numericUpDown_Second.ValueChanged += _numericUpDown_Second_ValueChanged;
+      AddVisionControl(_numericUpDown_Second);
+      _numericUpDown_MultiPlayTimeHour = new VisionNumericUpDown(98, 37, 60, 20);
+      _numericUpDown_MultiPlayTimeHour.ValueChanged += _numericUpDown_MultiPlayTimeHour_ValueChanged;
+      AddVisionControl(_numericUpDown_MultiPlayTimeHour);
+      _numericUpDown_MultiPlayTimeMinute = new VisionNumericUpDown(199, 37, 41, 20);
+      _numericUpDown_MultiPlayTimeMinute.ValueChanged += _numericUpDown_MultiPlayTimeMinute_ValueChanged;
+      AddVisionControl(_numericUpDown_MultiPlayTimeMinute);
+      _numericUpDown_MultiPlayTimeSecond = new VisionNumericUpDown(273, 37, 41, 20);
+      _numericUpDown_MultiPlayTimeSecond.ValueChanged += _numericUpDown_MultiPlayTimeSecond_ValueChanged;
+      AddVisionControl(_numericUpDown_MultiPlayTimeSecond);
+      _numericUpDown_Money = new VisionNumericUpDown(98, 80, 80, 20);
+      _numericUpDown_Money.ValueChanged += _numericUpDown_Money_ValueChanged;
+      AddVisionControl(_numericUpDown_Money);
+      _numericUpDown_BankMoney = new VisionNumericUpDown(98, 105, 80, 20);
+      _numericUpDown_BankMoney.ValueChanged += _numericUpDown_BankMoney_ValueChanged;
+      AddVisionControl(_numericUpDown_BankMoney);
+      _numericUpDown_Medal = new VisionNumericUpDown(98, 130, 80, 20);
+      _numericUpDown_Medal.ValueChanged += _numericUpDown_Medal_ValueChanged;
+      AddVisionControl(_numericUpDown_Medal);
+      _numericUpDown_AlchemyCount = new VisionNumericUpDown(98, 155, 80, 20);
+      _numericUpDown_AlchemyCount.ValueChanged += _numericUpDown_AlchemyCount_ValueChanged;
+      AddVisionControl(_numericUpDown_AlchemyCount);
+      _numericUpDown_BattleCount = new VisionNumericUpDown(276, 80, 70, 20);
+      _numericUpDown_BattleCount.ValueChanged += _numericUpDown_BattleCount_ValueChanged;
+      AddVisionControl(_numericUpDown_BattleCount);
+      _numericUpDown_LoseCount = new VisionNumericUpDown(276, 105, 70, 20);
+      _numericUpDown_LoseCount.ValueChanged += _numericUpDown_LoseCount_ValueChanged;
+      AddVisionControl(_numericUpDown_LoseCount);
+      _numericUpDown_EscapeCount = new VisionNumericUpDown(276, 130, 70, 20);
+      _numericUpDown_EscapeCount.ValueChanged += _numericUpDown_EscapeCount_ValueChanged;
+      AddVisionControl(_numericUpDown_EscapeCount);
+      _numericUpDown_EscapeSuccessCount = new VisionNumericUpDown(276, 155, 70, 20);
+      _numericUpDown_EscapeSuccessCount.ValueChanged += _numericUpDown_EscapeSuccessCount_ValueChanged;
+      AddVisionControl(_numericUpDown_EscapeSuccessCount);
+      _numericUpDown_VictoryCount = new VisionNumericUpDown(276, 180, 70, 20);
+      _numericUpDown_VictoryCount.ValueChanged += _numericUpDown_VictoryCount_ValueChanged;
+      AddVisionControl(_numericUpDown_VictoryCount);
+      _numericUpDown_ProfileBirthYear = new VisionNumericUpDown(88, 4, 58, 20);
+      _numericUpDown_ProfileBirthYear.ValueChanged += _numericUpDown_ProfileBirthYear_ValueChanged;
+      panel_Profile.AddVisionControl(_numericUpDown_ProfileBirthYear);
+      _numericUpDown_ProfileBirthMonth = new VisionNumericUpDown(166, 4, 41, 20);
+      _numericUpDown_ProfileBirthMonth.ValueChanged += _numericUpDown_ProfileBirthMonth_ValueChanged;
+      panel_Profile.AddVisionControl(_numericUpDown_ProfileBirthMonth);
+      _numericUpDown_ProfileBirthDay = new VisionNumericUpDown(230, 4, 41, 20);
+      _numericUpDown_ProfileBirthDay.ValueChanged += _numericUpDown_ProfileBirthDay_ValueChanged;
+      panel_Profile.AddVisionControl(_numericUpDown_ProfileBirthDay);
+      ResumeLayout(false);
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && this.components != null)
-        this.components.Dispose();
+      if (disposing && components != null)
+        components.Dispose();
       base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      this.label_Second = new Label();
-      this.label_Minute = new Label();
-      this.label_Hour = new Label();
-      this.label_PlayTime = new Label();
-      this.label_Money = new Label();
-      this.label_bankMoney = new Label();
-      this.label_medal = new Label();
-      this.groupBox_Profile = new GroupBox();
-      this.panel_Profile = new JS_Panel();
-      this.button_SelectProfileHandle = new Button();
-      this.button_SelectProfileAddress = new Button();
-      this._textBox_ProfileHandle = new TextBox();
-      this.label18 = new Label();
-      this._textBox_ProfileAddress = new TextBox();
-      this.label14 = new Label();
-      this.checkBox_ToneSetting = new CheckBox();
-      this.label13 = new Label();
-      this.comboBox_Tone = new ComboBox();
-      this.label_BirthDay = new Label();
-      this.label_Year = new Label();
-      this.comboBox_Sex = new ComboBox();
-      this.label12 = new Label();
-      this.label_Month = new Label();
-      this._checkBox_SecretAge = new CheckBox();
-      this.label_Message = new Label();
-      this.label_Day = new Label();
-      this._textBox_ProfileMessage = new TextBox();
-      this.checkBox_Explanation = new CheckBox();
-      this.checkBox_ProfileSetting = new CheckBox();
-      this.label1 = new Label();
-      this.label2 = new Label();
-      this.label3 = new Label();
-      this.label4 = new Label();
-      this.label5 = new Label();
-      this.label6 = new Label();
-      this.label7 = new Label();
-      this.label8 = new Label();
-      this.label9 = new Label();
-      this.label10 = new Label();
-      this.groupBox_Gesture = new JS_GroupBox();
-      this.label11 = new Label();
-      this.checkedListBox_GestureLearn = new CheckedListBox();
-      this.label_SavePlace = new Label();
-      this.button_SelectSavePlace = new Button();
-      this.textBox_SavePlace = new TextBox();
-      this.label15 = new Label();
-      this._numericUpDown_IntermissionX = new SafeNumericUpDown();
-      this._numericUpDown_IntermissionZ = new SafeNumericUpDown();
-      this.label16 = new Label();
-      this._numericUpDown_IntermissionY = new SafeNumericUpDown();
-      this.label17 = new Label();
-      this.groupBox_IntermissionCoord = new JS_GroupBox();
-      this.groupBox_Profile.SuspendLayout();
-      this.panel_Profile.SuspendLayout();
-      this.groupBox_Gesture.SuspendLayout();
-      this._numericUpDown_IntermissionX.BeginInit();
-      this._numericUpDown_IntermissionZ.BeginInit();
-      this._numericUpDown_IntermissionY.BeginInit();
-      this.groupBox_IntermissionCoord.SuspendLayout();
-      this.SuspendLayout();
-      this.label_Second.AutoSize = true;
-      this.label_Second.Location = new Point(316, 15);
-      this.label_Second.Name = "label_Second";
-      this.label_Second.Size = new Size(29, 13);
-      this.label_Second.TabIndex = 13;
-      this.label_Second.Text = "secs";
-      this.label_Minute.AutoSize = true;
-      this.label_Minute.Location = new Point(242, 15);
-      this.label_Minute.Name = "label_Minute";
-      this.label_Minute.Size = new Size(28, 13);
-      this.label_Minute.TabIndex = 11;
-      this.label_Minute.Text = "mins";
-      this.label_Hour.AutoSize = true;
-      this.label_Hour.Location = new Point(160, 15);
-      this.label_Hour.Name = "label_Hour";
-      this.label_Hour.Size = new Size(33, 13);
-      this.label_Hour.TabIndex = 9;
-      this.label_Hour.Text = "hours";
-      this.label_PlayTime.AutoSize = true;
-      this.label_PlayTime.Location = new Point(49, 15);
-      this.label_PlayTime.Name = "label_PlayTime";
-      this.label_PlayTime.Size = new Size(49, 13);
-      this.label_PlayTime.TabIndex = 7;
-      this.label_PlayTime.Text = "Play time";
-      this.label_Money.AutoSize = true;
-      this.label_Money.Location = new Point(57, 82);
-      this.label_Money.Name = "label_Money";
-      this.label_Money.Size = new Size(39, 13);
-      this.label_Money.TabIndex = 14;
-      this.label_Money.Text = "Money";
-      this.label_bankMoney.AutoSize = true;
-      this.label_bankMoney.Location = new Point(64, 107);
-      this.label_bankMoney.Name = "label_bankMoney";
-      this.label_bankMoney.Size = new Size(32, 13);
-      this.label_bankMoney.TabIndex = 16;
-      this.label_bankMoney.Text = "Bank";
-      this.label_medal.AutoSize = true;
-      this.label_medal.Location = new Point(34, 132);
-      this.label_medal.Name = "label_medal";
-      this.label_medal.Size = new Size(62, 13);
-      this.label_medal.TabIndex = 18;
-      this.label_medal.Text = "Mini medals";
-      this.groupBox_Profile.Controls.Add((Control) this.panel_Profile);
-      this.groupBox_Profile.Controls.Add((Control) this.checkBox_Explanation);
-      this.groupBox_Profile.Controls.Add((Control) this.checkBox_ProfileSetting);
-      this.groupBox_Profile.Location = new Point(9, 203);
-      this.groupBox_Profile.Name = "groupBox_Profile";
-      this.groupBox_Profile.Size = new Size(324, 232);
-      this.groupBox_Profile.TabIndex = 16;
-      this.groupBox_Profile.TabStop = false;
-      this.groupBox_Profile.Text = "Profile";
-      this.panel_Profile.Controls.Add((Control) this.button_SelectProfileHandle);
-      this.panel_Profile.Controls.Add((Control) this.button_SelectProfileAddress);
-      this.panel_Profile.Controls.Add((Control) this._textBox_ProfileHandle);
-      this.panel_Profile.Controls.Add((Control) this.label18);
-      this.panel_Profile.Controls.Add((Control) this._textBox_ProfileAddress);
-      this.panel_Profile.Controls.Add((Control) this.label14);
-      this.panel_Profile.Controls.Add((Control) this.checkBox_ToneSetting);
-      this.panel_Profile.Controls.Add((Control) this.label13);
-      this.panel_Profile.Controls.Add((Control) this.comboBox_Tone);
-      this.panel_Profile.Controls.Add((Control) this.label_BirthDay);
-      this.panel_Profile.Controls.Add((Control) this.label_Year);
-      this.panel_Profile.Controls.Add((Control) this.comboBox_Sex);
-      this.panel_Profile.Controls.Add((Control) this.label12);
-      this.panel_Profile.Controls.Add((Control) this.label_Month);
-      this.panel_Profile.Controls.Add((Control) this._checkBox_SecretAge);
-      this.panel_Profile.Controls.Add((Control) this.label_Message);
-      this.panel_Profile.Controls.Add((Control) this.label_Day);
-      this.panel_Profile.Controls.Add((Control) this._textBox_ProfileMessage);
-      this.panel_Profile.Location = new Point(6, 35);
-      this.panel_Profile.Name = "panel_Profile";
-      this.panel_Profile.Size = new Size(305, 191);
-      this.panel_Profile.TabIndex = 57;
-      this.button_SelectProfileHandle.Location = new Point(215, 102);
-      this.button_SelectProfileHandle.Name = "button_SelectProfileHandle";
-      this.button_SelectProfileHandle.Size = new Size(45, 20);
-      this.button_SelectProfileHandle.TabIndex = 59;
-      this.button_SelectProfileHandle.Text = "Set";
-      this.button_SelectProfileHandle.UseVisualStyleBackColor = true;
-      this.button_SelectProfileHandle.Click += new EventHandler(this.button_SelectProfileHandle_Click);
-      this.button_SelectProfileAddress.Location = new Point(215, 79);
-      this.button_SelectProfileAddress.Name = "button_SelectProfileAddress";
-      this.button_SelectProfileAddress.Size = new Size(45, 20);
-      this.button_SelectProfileAddress.TabIndex = 58;
-      this.button_SelectProfileAddress.Text = "Set";
-      this.button_SelectProfileAddress.UseVisualStyleBackColor = true;
-      this.button_SelectProfileAddress.Click += new EventHandler(this.button_SelectProfileAddress_Click);
-      this._textBox_ProfileHandle.Location = new Point(88, 102);
-      this._textBox_ProfileHandle.Name = "_textBox_ProfileHandle";
-      this._textBox_ProfileHandle.ReadOnly = true;
-      this._textBox_ProfileHandle.Size = new Size(121, 20);
-      this._textBox_ProfileHandle.TabIndex = 17;
-      this.label18.AutoSize = true;
-      this.label18.Location = new Point(60, 105);
-      this.label18.Name = "label18";
-      this.label18.Size = new Size(27, 13);
-      this.label18.TabIndex = 16;
-      this.label18.Text = "Title";
-      this._textBox_ProfileAddress.Location = new Point(88, 79);
-      this._textBox_ProfileAddress.Name = "_textBox_ProfileAddress";
-      this._textBox_ProfileAddress.ReadOnly = true;
-      this._textBox_ProfileAddress.Size = new Size(121, 20);
-      this._textBox_ProfileAddress.TabIndex = 15;
-      this.label14.AutoSize = true;
-      this.label14.Location = new Point(39, 82);
-      this.label14.Name = "label14";
-      this.label14.Size = new Size(48, 13);
-      this.label14.TabIndex = 14;
-      this.label14.Text = "Location";
-      this.checkBox_ToneSetting.AutoSize = true;
-      this.checkBox_ToneSetting.Location = new Point(215, 58);
-      this.checkBox_ToneSetting.Name = "checkBox_ToneSetting";
-      this.checkBox_ToneSetting.Size = new Size(77, 17);
-      this.checkBox_ToneSetting.TabIndex = 13;
-      this.checkBox_ToneSetting.Text = "Configured";
-      this.checkBox_ToneSetting.UseVisualStyleBackColor = true;
-      this.checkBox_ToneSetting.CheckedChanged += new EventHandler(this.checkBox_ToneSetting_CheckedChanged);
-      this.label13.AutoSize = true;
-      this.label13.Location = new Point(17, 59);
-      this.label13.Name = "label13";
-      this.label13.Size = new Size(70, 13);
-      this.label13.TabIndex = 12;
-      this.label13.Text = "Speech Style";
-      this.comboBox_Tone.DropDownStyle = ComboBoxStyle.DropDownList;
-      this.comboBox_Tone.FormattingEnabled = true;
-      this.comboBox_Tone.Items.AddRange(new object[16]
+      label_Second = new Label();
+      label_Minute = new Label();
+      label_Hour = new Label();
+      label_PlayTime = new Label();
+      label_Money = new Label();
+      label_bankMoney = new Label();
+      label_medal = new Label();
+      groupBox_Profile = new GroupBox();
+      panel_Profile = new JS_Panel();
+      button_SelectProfileHandle = new Button();
+      button_SelectProfileAddress = new Button();
+      _textBox_ProfileHandle = new TextBox();
+      label18 = new Label();
+      _textBox_ProfileAddress = new TextBox();
+      label14 = new Label();
+      checkBox_ToneSetting = new CheckBox();
+      label13 = new Label();
+      comboBox_Tone = new ComboBox();
+      label_BirthDay = new Label();
+      label_Year = new Label();
+      comboBox_Sex = new ComboBox();
+      label12 = new Label();
+      label_Month = new Label();
+      _checkBox_SecretAge = new CheckBox();
+      label_Message = new Label();
+      label_Day = new Label();
+      _textBox_ProfileMessage = new TextBox();
+      checkBox_Explanation = new CheckBox();
+      checkBox_ProfileSetting = new CheckBox();
+      label1 = new Label();
+      label2 = new Label();
+      label3 = new Label();
+      label4 = new Label();
+      label5 = new Label();
+      label6 = new Label();
+      label7 = new Label();
+      label8 = new Label();
+      label9 = new Label();
+      label10 = new Label();
+      groupBox_Gesture = new JS_GroupBox();
+      label11 = new Label();
+      checkedListBox_GestureLearn = new CheckedListBox();
+      label_SavePlace = new Label();
+      button_SelectSavePlace = new Button();
+      textBox_SavePlace = new TextBox();
+      label15 = new Label();
+      _numericUpDown_IntermissionX = new SafeNumericUpDown();
+      _numericUpDown_IntermissionZ = new SafeNumericUpDown();
+      label16 = new Label();
+      _numericUpDown_IntermissionY = new SafeNumericUpDown();
+      label17 = new Label();
+      groupBox_IntermissionCoord = new JS_GroupBox();
+      groupBox_Profile.SuspendLayout();
+      panel_Profile.SuspendLayout();
+      groupBox_Gesture.SuspendLayout();
+      _numericUpDown_IntermissionX.BeginInit();
+      _numericUpDown_IntermissionZ.BeginInit();
+      _numericUpDown_IntermissionY.BeginInit();
+      groupBox_IntermissionCoord.SuspendLayout();
+      SuspendLayout();
+      label_Second.AutoSize = true;
+      label_Second.Location = new Point(316, 15);
+      label_Second.Name = "label_Second";
+      label_Second.Size = new Size(29, 13);
+      label_Second.TabIndex = 13;
+      label_Second.Text = "secs";
+      label_Minute.AutoSize = true;
+      label_Minute.Location = new Point(242, 15);
+      label_Minute.Name = "label_Minute";
+      label_Minute.Size = new Size(28, 13);
+      label_Minute.TabIndex = 11;
+      label_Minute.Text = "mins";
+      label_Hour.AutoSize = true;
+      label_Hour.Location = new Point(160, 15);
+      label_Hour.Name = "label_Hour";
+      label_Hour.Size = new Size(33, 13);
+      label_Hour.TabIndex = 9;
+      label_Hour.Text = "hours";
+      label_PlayTime.AutoSize = true;
+      label_PlayTime.Location = new Point(49, 15);
+      label_PlayTime.Name = "label_PlayTime";
+      label_PlayTime.Size = new Size(49, 13);
+      label_PlayTime.TabIndex = 7;
+      label_PlayTime.Text = "Play time";
+      label_Money.AutoSize = true;
+      label_Money.Location = new Point(57, 82);
+      label_Money.Name = "label_Money";
+      label_Money.Size = new Size(39, 13);
+      label_Money.TabIndex = 14;
+      label_Money.Text = "Money";
+      label_bankMoney.AutoSize = true;
+      label_bankMoney.Location = new Point(64, 107);
+      label_bankMoney.Name = "label_bankMoney";
+      label_bankMoney.Size = new Size(32, 13);
+      label_bankMoney.TabIndex = 16;
+      label_bankMoney.Text = "Bank";
+      label_medal.AutoSize = true;
+      label_medal.Location = new Point(34, 132);
+      label_medal.Name = "label_medal";
+      label_medal.Size = new Size(62, 13);
+      label_medal.TabIndex = 18;
+      label_medal.Text = "Mini medals";
+      groupBox_Profile.Controls.Add(panel_Profile);
+      groupBox_Profile.Controls.Add(checkBox_Explanation);
+      groupBox_Profile.Controls.Add(checkBox_ProfileSetting);
+      groupBox_Profile.Location = new Point(9, 203);
+      groupBox_Profile.Name = "groupBox_Profile";
+      groupBox_Profile.Size = new Size(324, 232);
+      groupBox_Profile.TabIndex = 16;
+      groupBox_Profile.TabStop = false;
+      groupBox_Profile.Text = "Profile";
+      panel_Profile.Controls.Add(button_SelectProfileHandle);
+      panel_Profile.Controls.Add(button_SelectProfileAddress);
+      panel_Profile.Controls.Add(_textBox_ProfileHandle);
+      panel_Profile.Controls.Add(label18);
+      panel_Profile.Controls.Add(_textBox_ProfileAddress);
+      panel_Profile.Controls.Add(label14);
+      panel_Profile.Controls.Add(checkBox_ToneSetting);
+      panel_Profile.Controls.Add(label13);
+      panel_Profile.Controls.Add(comboBox_Tone);
+      panel_Profile.Controls.Add(label_BirthDay);
+      panel_Profile.Controls.Add(label_Year);
+      panel_Profile.Controls.Add(comboBox_Sex);
+      panel_Profile.Controls.Add(label12);
+      panel_Profile.Controls.Add(label_Month);
+      panel_Profile.Controls.Add(_checkBox_SecretAge);
+      panel_Profile.Controls.Add(label_Message);
+      panel_Profile.Controls.Add(label_Day);
+      panel_Profile.Controls.Add(_textBox_ProfileMessage);
+      panel_Profile.Location = new Point(6, 35);
+      panel_Profile.Name = "panel_Profile";
+      panel_Profile.Size = new Size(305, 191);
+      panel_Profile.TabIndex = 57;
+      button_SelectProfileHandle.Location = new Point(215, 102);
+      button_SelectProfileHandle.Name = "button_SelectProfileHandle";
+      button_SelectProfileHandle.Size = new Size(45, 20);
+      button_SelectProfileHandle.TabIndex = 59;
+      button_SelectProfileHandle.Text = "Set";
+      button_SelectProfileHandle.UseVisualStyleBackColor = true;
+      button_SelectProfileHandle.Click += button_SelectProfileHandle_Click;
+      button_SelectProfileAddress.Location = new Point(215, 79);
+      button_SelectProfileAddress.Name = "button_SelectProfileAddress";
+      button_SelectProfileAddress.Size = new Size(45, 20);
+      button_SelectProfileAddress.TabIndex = 58;
+      button_SelectProfileAddress.Text = "Set";
+      button_SelectProfileAddress.UseVisualStyleBackColor = true;
+      button_SelectProfileAddress.Click += button_SelectProfileAddress_Click;
+      _textBox_ProfileHandle.Location = new Point(88, 102);
+      _textBox_ProfileHandle.Name = "_textBox_ProfileHandle";
+      _textBox_ProfileHandle.ReadOnly = true;
+      _textBox_ProfileHandle.Size = new Size(121, 20);
+      _textBox_ProfileHandle.TabIndex = 17;
+      label18.AutoSize = true;
+      label18.Location = new Point(60, 105);
+      label18.Name = "label18";
+      label18.Size = new Size(27, 13);
+      label18.TabIndex = 16;
+      label18.Text = "Title";
+      _textBox_ProfileAddress.Location = new Point(88, 79);
+      _textBox_ProfileAddress.Name = "_textBox_ProfileAddress";
+      _textBox_ProfileAddress.ReadOnly = true;
+      _textBox_ProfileAddress.Size = new Size(121, 20);
+      _textBox_ProfileAddress.TabIndex = 15;
+      label14.AutoSize = true;
+      label14.Location = new Point(39, 82);
+      label14.Name = "label14";
+      label14.Size = new Size(48, 13);
+      label14.TabIndex = 14;
+      label14.Text = "Location";
+      checkBox_ToneSetting.AutoSize = true;
+      checkBox_ToneSetting.Location = new Point(215, 58);
+      checkBox_ToneSetting.Name = "checkBox_ToneSetting";
+      checkBox_ToneSetting.Size = new Size(77, 17);
+      checkBox_ToneSetting.TabIndex = 13;
+      checkBox_ToneSetting.Text = "Configured";
+      checkBox_ToneSetting.UseVisualStyleBackColor = true;
+      checkBox_ToneSetting.CheckedChanged += checkBox_ToneSetting_CheckedChanged;
+      label13.AutoSize = true;
+      label13.Location = new Point(17, 59);
+      label13.Name = "label13";
+      label13.Size = new Size(70, 13);
+      label13.TabIndex = 12;
+      label13.Text = "Speech Style";
+      comboBox_Tone.DropDownStyle = ComboBoxStyle.DropDownList;
+      comboBox_Tone.FormattingEnabled = true;
+      comboBox_Tone.Items.AddRange(new object[16]
       {
-        (object) "Chirpy Boy",
-        (object) "Cute Girl",
-        (object) "Timid Boy",
-        (object) "Shy Girl",
-        (object) "Serious Man",
-        (object) "Prim Woman",
-        (object) "Macho Man",
-        (object) "Temptress",
-        (object) "Smarmy Guy",
-        (object) "Grumpy Woman",
-        (object) "Demon King",
-        (object) "Witch",
-        (object) "Nice Old Man",
-        (object) "Kind Old Woman",
-        (object) "Doddery Old Man",
-        (object) "Bored Teenager"
+        "Chirpy Boy",
+        "Cute Girl",
+        "Timid Boy",
+        "Shy Girl",
+        "Serious Man",
+        "Prim Woman",
+        "Macho Man",
+        "Temptress",
+        "Smarmy Guy",
+        "Grumpy Woman",
+        "Demon King",
+        "Witch",
+        "Nice Old Man",
+        "Kind Old Woman",
+        "Doddery Old Man",
+        "Bored Teenager"
       });
-      this.comboBox_Tone.Location = new Point(88, 55);
-      this.comboBox_Tone.Name = "comboBox_Tone";
-      this.comboBox_Tone.Size = new Size(121, 21);
-      this.comboBox_Tone.TabIndex = 11;
-      this.comboBox_Tone.SelectedIndexChanged += new EventHandler(this.comboBox_Tone_SelectedIndexChanged);
-      this.label_BirthDay.AutoSize = true;
-      this.label_BirthDay.Location = new Point(41, 6);
-      this.label_BirthDay.Name = "label_BirthDay";
-      this.label_BirthDay.Size = new Size(45, 13);
-      this.label_BirthDay.TabIndex = 0;
-      this.label_BirthDay.Text = "Birthday";
-      this.label_Year.AutoSize = true;
-      this.label_Year.Location = new Point(147, 6);
-      this.label_Year.Name = "label_Year";
-      this.label_Year.Size = new Size(14, 13);
-      this.label_Year.TabIndex = 2;
-      this.label_Year.Text = "Y";
-      this.comboBox_Sex.DropDownStyle = ComboBoxStyle.DropDownList;
-      this.comboBox_Sex.FormattingEnabled = true;
-      this.comboBox_Sex.Items.AddRange(new object[2]
+      comboBox_Tone.Location = new Point(88, 55);
+      comboBox_Tone.Name = "comboBox_Tone";
+      comboBox_Tone.Size = new Size(121, 21);
+      comboBox_Tone.TabIndex = 11;
+      comboBox_Tone.SelectedIndexChanged += comboBox_Tone_SelectedIndexChanged;
+      label_BirthDay.AutoSize = true;
+      label_BirthDay.Location = new Point(41, 6);
+      label_BirthDay.Name = "label_BirthDay";
+      label_BirthDay.Size = new Size(45, 13);
+      label_BirthDay.TabIndex = 0;
+      label_BirthDay.Text = "Birthday";
+      label_Year.AutoSize = true;
+      label_Year.Location = new Point(147, 6);
+      label_Year.Name = "label_Year";
+      label_Year.Size = new Size(14, 13);
+      label_Year.TabIndex = 2;
+      label_Year.Text = "Y";
+      comboBox_Sex.DropDownStyle = ComboBoxStyle.DropDownList;
+      comboBox_Sex.FormattingEnabled = true;
+      comboBox_Sex.Items.AddRange(new object[2]
       {
-        (object) "Male",
-        (object) "Female"
+        "Male",
+        "Female"
       });
-      this.comboBox_Sex.Location = new Point(177, 31);
-      this.comboBox_Sex.Name = "comboBox_Sex";
-      this.comboBox_Sex.Size = new Size(64, 21);
-      this.comboBox_Sex.TabIndex = 10;
-      this.comboBox_Sex.SelectedIndexChanged += new EventHandler(this.comboBox_Sex_SelectedIndexChanged);
-      this.label12.AutoSize = true;
-      this.label12.Location = new Point(134, 34);
-      this.label12.Name = "label12";
-      this.label12.Size = new Size(42, 13);
-      this.label12.TabIndex = 9;
-      this.label12.Text = "Gender";
-      this.label_Month.AutoSize = true;
-      this.label_Month.Location = new Point(208, 6);
-      this.label_Month.Name = "label_Month";
-      this.label_Month.Size = new Size(16, 13);
-      this.label_Month.TabIndex = 4;
-      this.label_Month.Text = "M";
-      this._checkBox_SecretAge.AutoSize = true;
-      this._checkBox_SecretAge.Location = new Point(22, 33);
-      this._checkBox_SecretAge.Name = "_checkBox_SecretAge";
-      this._checkBox_SecretAge.Size = new Size(95, 17);
-      this._checkBox_SecretAge.TabIndex = 3;
-      this._checkBox_SecretAge.Text = "Age is Secret?";
-      this._checkBox_SecretAge.UseVisualStyleBackColor = true;
-      this._checkBox_SecretAge.CheckedChanged += new EventHandler(this.checkBox_SecretAge_CheckedChanged);
-      this.label_Message.AutoSize = true;
-      this.label_Message.Location = new Point(6, 126);
-      this.label_Message.Name = "label_Message";
-      this.label_Message.Size = new Size(114, 13);
-      this.label_Message.TabIndex = 8;
-      this.label_Message.Text = "Message (Inn Display):";
-      this.label_Day.AutoSize = true;
-      this.label_Day.Location = new Point(272, 6);
-      this.label_Day.Name = "label_Day";
-      this.label_Day.Size = new Size(15, 13);
-      this.label_Day.TabIndex = 6;
-      this.label_Day.Text = "D";
-      this._textBox_ProfileMessage.AcceptsReturn = true;
-      this._textBox_ProfileMessage.Location = new Point(7, 142);
-      this._textBox_ProfileMessage.MaxLength = 100;
-      this._textBox_ProfileMessage.Multiline = true;
-      this._textBox_ProfileMessage.Name = "_textBox_ProfileMessage";
-      this._textBox_ProfileMessage.Size = new Size(272, 45);
-      this._textBox_ProfileMessage.TabIndex = 4;
-      this._textBox_ProfileMessage.TextChanged += new EventHandler(this._textBox_ProfileMessage_TextChanged);
-      this.checkBox_Explanation.AutoSize = true;
-      this.checkBox_Explanation.Location = new Point(102, 19);
-      this.checkBox_Explanation.Name = "checkBox_Explanation";
-      this.checkBox_Explanation.Size = new Size(108, 17);
-      this.checkBox_Explanation.TabIndex = 12;
-      this.checkBox_Explanation.Text = "Explanation done";
-      this.checkBox_Explanation.UseVisualStyleBackColor = true;
-      this.checkBox_Explanation.CheckedChanged += new EventHandler(this.checkBox_Explanation_CheckedChanged);
-      this.checkBox_ProfileSetting.AutoSize = true;
-      this.checkBox_ProfileSetting.Location = new Point(26, 19);
-      this.checkBox_ProfileSetting.Name = "checkBox_ProfileSetting";
-      this.checkBox_ProfileSetting.Size = new Size(77, 17);
-      this.checkBox_ProfileSetting.TabIndex = 11;
-      this.checkBox_ProfileSetting.Text = "Configured";
-      this.checkBox_ProfileSetting.UseVisualStyleBackColor = true;
-      this.checkBox_ProfileSetting.CheckedChanged += new EventHandler(this.checkBox_ProfileSetting_CheckedChanged);
-      this.label1.AutoSize = true;
-      this.label1.Location = new Point(316, 40);
-      this.label1.Name = "label1";
-      this.label1.Size = new Size(29, 13);
-      this.label1.TabIndex = 27;
-      this.label1.Text = "secs";
-      this.label2.AutoSize = true;
-      this.label2.Location = new Point(242, 40);
-      this.label2.Name = "label2";
-      this.label2.Size = new Size(28, 13);
-      this.label2.TabIndex = 25;
-      this.label2.Text = "mins";
-      this.label3.AutoSize = true;
-      this.label3.Location = new Point(160, 40);
-      this.label3.Name = "label3";
-      this.label3.Size = new Size(33, 13);
-      this.label3.TabIndex = 23;
-      this.label3.Text = "hours";
-      this.label4.AutoSize = true;
-      this.label4.Location = new Point(19, 39);
-      this.label4.Name = "label4";
-      this.label4.Size = new Size(79, 13);
-      this.label4.TabIndex = 21;
-      this.label4.Text = "Multiplayer time";
-      this.label5.AutoSize = true;
-      this.label5.Location = new Point(209, 182);
-      this.label5.Name = "label5";
-      this.label5.Size = new Size(65, 13);
-      this.label5.TabIndex = 44;
-      this.label5.Text = "Battles Won";
-      this.label6.AutoSize = true;
-      this.label6.Location = new Point(49, 157);
-      this.label6.Name = "label6";
-      this.label6.Size = new Size(47, 13);
-      this.label6.TabIndex = 46;
-      this.label6.Text = "Alchemy";
-      this.label7.AutoSize = true;
-      this.label7.Location = new Point(235, 82);
-      this.label7.Name = "label7";
-      this.label7.Size = new Size(39, 13);
-      this.label7.TabIndex = 48;
-      this.label7.Text = "Battles";
-      this.label8.AutoSize = true;
-      this.label8.Location = new Point(233, 107);
-      this.label8.Name = "label8";
-      this.label8.Size = new Size(40, 13);
-      this.label8.TabIndex = 50;
-      this.label8.Text = "Losses";
-      this.label9.AutoSize = true;
-      this.label9.Location = new Point(203, 132);
-      this.label9.Name = "label9";
-      this.label9.Size = new Size(71, 13);
-      this.label9.TabIndex = 52;
-      this.label9.Text = "Run Attempts";
-      this.label10.AutoSize = true;
-      this.label10.Location = new Point(185, 157);
-      this.label10.Name = "label10";
-      this.label10.Size = new Size(89, 13);
-      this.label10.TabIndex = 54;
-      this.label10.Text = "Successfully Ran";
-      this.groupBox_Gesture.Controls.Add((Control) this.label11);
-      this.groupBox_Gesture.Controls.Add((Control) this.checkedListBox_GestureLearn);
-      this.groupBox_Gesture.Location = new Point(362, 175);
-      this.groupBox_Gesture.Name = "groupBox_Gesture";
-      this.groupBox_Gesture.Size = new Size(432, 260);
-      this.groupBox_Gesture.TabIndex = 15;
-      this.groupBox_Gesture.TabStop = false;
-      this.groupBox_Gesture.Text = "Party Tricks";
-      this.label11.AutoSize = true;
-      this.label11.Location = new Point(287, 7);
-      this.label11.Name = "label11";
-      this.label11.Size = new Size(105, 13);
-      this.label11.TabIndex = 19;
-      this.label11.Text = "Learned Party Tricks";
-      this.checkedListBox_GestureLearn.FormattingEnabled = true;
-      this.checkedListBox_GestureLearn.Items.AddRange(new object[15]
+      comboBox_Sex.Location = new Point(177, 31);
+      comboBox_Sex.Name = "comboBox_Sex";
+      comboBox_Sex.Size = new Size(64, 21);
+      comboBox_Sex.TabIndex = 10;
+      comboBox_Sex.SelectedIndexChanged += comboBox_Sex_SelectedIndexChanged;
+      label12.AutoSize = true;
+      label12.Location = new Point(134, 34);
+      label12.Name = "label12";
+      label12.Size = new Size(42, 13);
+      label12.TabIndex = 9;
+      label12.Text = "Gender";
+      label_Month.AutoSize = true;
+      label_Month.Location = new Point(208, 6);
+      label_Month.Name = "label_Month";
+      label_Month.Size = new Size(16, 13);
+      label_Month.TabIndex = 4;
+      label_Month.Text = "M";
+      _checkBox_SecretAge.AutoSize = true;
+      _checkBox_SecretAge.Location = new Point(22, 33);
+      _checkBox_SecretAge.Name = "_checkBox_SecretAge";
+      _checkBox_SecretAge.Size = new Size(95, 17);
+      _checkBox_SecretAge.TabIndex = 3;
+      _checkBox_SecretAge.Text = "Age is Secret?";
+      _checkBox_SecretAge.UseVisualStyleBackColor = true;
+      _checkBox_SecretAge.CheckedChanged += checkBox_SecretAge_CheckedChanged;
+      label_Message.AutoSize = true;
+      label_Message.Location = new Point(6, 126);
+      label_Message.Name = "label_Message";
+      label_Message.Size = new Size(114, 13);
+      label_Message.TabIndex = 8;
+      label_Message.Text = "Message (Inn Display):";
+      label_Day.AutoSize = true;
+      label_Day.Location = new Point(272, 6);
+      label_Day.Name = "label_Day";
+      label_Day.Size = new Size(15, 13);
+      label_Day.TabIndex = 6;
+      label_Day.Text = "D";
+      _textBox_ProfileMessage.AcceptsReturn = true;
+      _textBox_ProfileMessage.Location = new Point(7, 142);
+      _textBox_ProfileMessage.MaxLength = 100;
+      _textBox_ProfileMessage.Multiline = true;
+      _textBox_ProfileMessage.Name = "_textBox_ProfileMessage";
+      _textBox_ProfileMessage.Size = new Size(272, 45);
+      _textBox_ProfileMessage.TabIndex = 4;
+      _textBox_ProfileMessage.TextChanged += _textBox_ProfileMessage_TextChanged;
+      checkBox_Explanation.AutoSize = true;
+      checkBox_Explanation.Location = new Point(102, 19);
+      checkBox_Explanation.Name = "checkBox_Explanation";
+      checkBox_Explanation.Size = new Size(108, 17);
+      checkBox_Explanation.TabIndex = 12;
+      checkBox_Explanation.Text = "Explanation done";
+      checkBox_Explanation.UseVisualStyleBackColor = true;
+      checkBox_Explanation.CheckedChanged += checkBox_Explanation_CheckedChanged;
+      checkBox_ProfileSetting.AutoSize = true;
+      checkBox_ProfileSetting.Location = new Point(26, 19);
+      checkBox_ProfileSetting.Name = "checkBox_ProfileSetting";
+      checkBox_ProfileSetting.Size = new Size(77, 17);
+      checkBox_ProfileSetting.TabIndex = 11;
+      checkBox_ProfileSetting.Text = "Configured";
+      checkBox_ProfileSetting.UseVisualStyleBackColor = true;
+      checkBox_ProfileSetting.CheckedChanged += checkBox_ProfileSetting_CheckedChanged;
+      label1.AutoSize = true;
+      label1.Location = new Point(316, 40);
+      label1.Name = "label1";
+      label1.Size = new Size(29, 13);
+      label1.TabIndex = 27;
+      label1.Text = "secs";
+      label2.AutoSize = true;
+      label2.Location = new Point(242, 40);
+      label2.Name = "label2";
+      label2.Size = new Size(28, 13);
+      label2.TabIndex = 25;
+      label2.Text = "mins";
+      label3.AutoSize = true;
+      label3.Location = new Point(160, 40);
+      label3.Name = "label3";
+      label3.Size = new Size(33, 13);
+      label3.TabIndex = 23;
+      label3.Text = "hours";
+      label4.AutoSize = true;
+      label4.Location = new Point(19, 39);
+      label4.Name = "label4";
+      label4.Size = new Size(79, 13);
+      label4.TabIndex = 21;
+      label4.Text = "Multiplayer time";
+      label5.AutoSize = true;
+      label5.Location = new Point(209, 182);
+      label5.Name = "label5";
+      label5.Size = new Size(65, 13);
+      label5.TabIndex = 44;
+      label5.Text = "Battles Won";
+      label6.AutoSize = true;
+      label6.Location = new Point(49, 157);
+      label6.Name = "label6";
+      label6.Size = new Size(47, 13);
+      label6.TabIndex = 46;
+      label6.Text = "Alchemy";
+      label7.AutoSize = true;
+      label7.Location = new Point(235, 82);
+      label7.Name = "label7";
+      label7.Size = new Size(39, 13);
+      label7.TabIndex = 48;
+      label7.Text = "Battles";
+      label8.AutoSize = true;
+      label8.Location = new Point(233, 107);
+      label8.Name = "label8";
+      label8.Size = new Size(40, 13);
+      label8.TabIndex = 50;
+      label8.Text = "Losses";
+      label9.AutoSize = true;
+      label9.Location = new Point(203, 132);
+      label9.Name = "label9";
+      label9.Size = new Size(71, 13);
+      label9.TabIndex = 52;
+      label9.Text = "Run Attempts";
+      label10.AutoSize = true;
+      label10.Location = new Point(185, 157);
+      label10.Name = "label10";
+      label10.Size = new Size(89, 13);
+      label10.TabIndex = 54;
+      label10.Text = "Successfully Ran";
+      groupBox_Gesture.Controls.Add(label11);
+      groupBox_Gesture.Controls.Add(checkedListBox_GestureLearn);
+      groupBox_Gesture.Location = new Point(362, 175);
+      groupBox_Gesture.Name = "groupBox_Gesture";
+      groupBox_Gesture.Size = new Size(432, 260);
+      groupBox_Gesture.TabIndex = 15;
+      groupBox_Gesture.TabStop = false;
+      groupBox_Gesture.Text = "Party Tricks";
+      label11.AutoSize = true;
+      label11.Location = new Point(287, 7);
+      label11.Name = "label11";
+      label11.Size = new Size(105, 13);
+      label11.TabIndex = 19;
+      label11.Text = "Learned Party Tricks";
+      checkedListBox_GestureLearn.FormattingEnabled = true;
+      checkedListBox_GestureLearn.Items.AddRange(new object[15]
       {
-        (object) "Pray",
-        (object) "Pirouette",
-        (object) "Bow",
-        (object) "Belly Dance",
-        (object) "Royal Regards",
-        (object) "Swinedimples Salute",
-        (object) "Cap'n's Curtsy",
-        (object) "Sultry Dance",
-        (object) "Weird Dance",
-        (object) "Wallop",
-        (object) "Cheer",
-        (object) "Provoke",
-        (object) "Salute",
-        (object) "Inspiration",
-        (object) "Professor's Pose"
+        "Pray",
+        "Pirouette",
+        "Bow",
+        "Belly Dance",
+        "Royal Regards",
+        "Swinedimples Salute",
+        "Cap'n's Curtsy",
+        "Sultry Dance",
+        "Weird Dance",
+        "Wallop",
+        "Cheer",
+        "Provoke",
+        "Salute",
+        "Inspiration",
+        "Professor's Pose"
       });
-      this.checkedListBox_GestureLearn.Location = new Point(290, 23);
-      this.checkedListBox_GestureLearn.Name = "checkedListBox_GestureLearn";
-      this.checkedListBox_GestureLearn.Size = new Size(128, 229);
-      this.checkedListBox_GestureLearn.TabIndex = 7;
-      this.checkedListBox_GestureLearn.ItemCheck += new ItemCheckEventHandler(this.checkedListBox_GestureLearn_ItemCheck);
-      this.label_SavePlace.Location = new Point(392, 15);
-      this.label_SavePlace.Name = "label_SavePlace";
-      this.label_SavePlace.Size = new Size(76, 13);
-      this.label_SavePlace.TabIndex = 55;
-      this.label_SavePlace.Text = "Save Location";
-      this.label_SavePlace.TextAlign = ContentAlignment.MiddleRight;
-      this.button_SelectSavePlace.SetBounds(701, 12, 45, 20);
-      this.button_SelectSavePlace.Name = "button_SelectSavePlace";
-      this.button_SelectSavePlace.TabIndex = 57;
-      this.button_SelectSavePlace.Text = "Set";
-      this.button_SelectSavePlace.UseVisualStyleBackColor = true;
-      this.button_SelectSavePlace.Click += new EventHandler(this.button_SelectSavePlace_Click);
-      this.textBox_SavePlace.SetBounds(474, 12, 221, 20);
-      this.textBox_SavePlace.Name = "textBox_SavePlace";
-      this.textBox_SavePlace.ReadOnly = true;
-      this.textBox_SavePlace.TabIndex = 59;
-      this.label15.AutoSize = true;
-      this.label15.Location = new Point(41, 21);
-      this.label15.Name = "label15";
-      this.label15.Size = new Size(48, 13);
-      this.label15.TabIndex = 60;
-      this.label15.Text = "X Coord:";
-      this._numericUpDown_IntermissionX.DecimalPlaces = 2;
-      this._numericUpDown_IntermissionX.Location = new Point(95, 19);
-      this._numericUpDown_IntermissionX.Maximum = new Decimal(new int[4]
-      {
-        10000000,
-        0,
-        0,
-        0
-      });
-      this._numericUpDown_IntermissionX.Minimum = new Decimal(new int[4]
-      {
-        10000000,
-        0,
-        0,
-        int.MinValue
-      });
-      this._numericUpDown_IntermissionX.Name = "_numericUpDown_IntermissionX";
-      this._numericUpDown_IntermissionX.Size = new Size(81, 20);
-      this._numericUpDown_IntermissionX.TabIndex = 61;
-      this._numericUpDown_IntermissionX.TextAlign = HorizontalAlignment.Right;
-      this._numericUpDown_IntermissionX.Value = new Decimal(new int[4]);
-      this._numericUpDown_IntermissionX.ValueChanged += new EventHandler(this._numericUpDown_IntermissionX_ValueChanged);
-      this._numericUpDown_IntermissionZ.DecimalPlaces = 2;
-      this._numericUpDown_IntermissionZ.Location = new Point(95, 63);
-      this._numericUpDown_IntermissionZ.Maximum = new Decimal(new int[4]
+      checkedListBox_GestureLearn.Location = new Point(290, 23);
+      checkedListBox_GestureLearn.Name = "checkedListBox_GestureLearn";
+      checkedListBox_GestureLearn.Size = new Size(128, 229);
+      checkedListBox_GestureLearn.TabIndex = 7;
+      checkedListBox_GestureLearn.ItemCheck += checkedListBox_GestureLearn_ItemCheck;
+      label_SavePlace.Location = new Point(392, 15);
+      label_SavePlace.Name = "label_SavePlace";
+      label_SavePlace.Size = new Size(76, 13);
+      label_SavePlace.TabIndex = 55;
+      label_SavePlace.Text = "Save Location";
+      label_SavePlace.TextAlign = ContentAlignment.MiddleRight;
+      button_SelectSavePlace.SetBounds(701, 12, 45, 20);
+      button_SelectSavePlace.Name = "button_SelectSavePlace";
+      button_SelectSavePlace.TabIndex = 57;
+      button_SelectSavePlace.Text = "Set";
+      button_SelectSavePlace.UseVisualStyleBackColor = true;
+      button_SelectSavePlace.Click += button_SelectSavePlace_Click;
+      textBox_SavePlace.SetBounds(474, 12, 221, 20);
+      textBox_SavePlace.Name = "textBox_SavePlace";
+      textBox_SavePlace.ReadOnly = true;
+      textBox_SavePlace.TabIndex = 59;
+      label15.AutoSize = true;
+      label15.Location = new Point(41, 21);
+      label15.Name = "label15";
+      label15.Size = new Size(48, 13);
+      label15.TabIndex = 60;
+      label15.Text = "X Coord:";
+      _numericUpDown_IntermissionX.DecimalPlaces = 2;
+      _numericUpDown_IntermissionX.Location = new Point(95, 19);
+      _numericUpDown_IntermissionX.Maximum = new Decimal(new int[4]
       {
         10000000,
         0,
         0,
         0
       });
-      this._numericUpDown_IntermissionZ.Minimum = new Decimal(new int[4]
+      _numericUpDown_IntermissionX.Minimum = new Decimal(new int[4]
       {
         10000000,
         0,
         0,
         int.MinValue
       });
-      this._numericUpDown_IntermissionZ.Name = "_numericUpDown_IntermissionZ";
-      this._numericUpDown_IntermissionZ.Size = new Size(81, 20);
-      this._numericUpDown_IntermissionZ.TabIndex = 63;
-      this._numericUpDown_IntermissionZ.TextAlign = HorizontalAlignment.Right;
-      this._numericUpDown_IntermissionZ.Value = new Decimal(new int[4]);
-      this._numericUpDown_IntermissionZ.ValueChanged += new EventHandler(this._numericUpDown_IntermissionZ_ValueChanged);
-      this.label16.AutoSize = true;
-      this.label16.Location = new Point(41, 65);
-      this.label16.Name = "label16";
-      this.label16.Size = new Size(48, 13);
-      this.label16.TabIndex = 62;
-      this.label16.Text = "Z Coord:";
-      this._numericUpDown_IntermissionY.DecimalPlaces = 2;
-      this._numericUpDown_IntermissionY.Location = new Point(95, 41);
-      this._numericUpDown_IntermissionY.Maximum = new Decimal(new int[4]
+      _numericUpDown_IntermissionX.Name = "_numericUpDown_IntermissionX";
+      _numericUpDown_IntermissionX.Size = new Size(81, 20);
+      _numericUpDown_IntermissionX.TabIndex = 61;
+      _numericUpDown_IntermissionX.TextAlign = HorizontalAlignment.Right;
+      _numericUpDown_IntermissionX.Value = new Decimal(new int[4]);
+      _numericUpDown_IntermissionX.ValueChanged += _numericUpDown_IntermissionX_ValueChanged;
+      _numericUpDown_IntermissionZ.DecimalPlaces = 2;
+      _numericUpDown_IntermissionZ.Location = new Point(95, 63);
+      _numericUpDown_IntermissionZ.Maximum = new Decimal(new int[4]
       {
         10000000,
         0,
         0,
         0
       });
-      this._numericUpDown_IntermissionY.Minimum = new Decimal(new int[4]
+      _numericUpDown_IntermissionZ.Minimum = new Decimal(new int[4]
       {
         10000000,
         0,
         0,
         int.MinValue
       });
-      this._numericUpDown_IntermissionY.Name = "_numericUpDown_IntermissionY";
-      this._numericUpDown_IntermissionY.Size = new Size(81, 20);
-      this._numericUpDown_IntermissionY.TabIndex = 65;
-      this._numericUpDown_IntermissionY.TextAlign = HorizontalAlignment.Right;
-      this._numericUpDown_IntermissionY.Value = new Decimal(new int[4]);
-      this._numericUpDown_IntermissionY.ValueChanged += new EventHandler(this._numericUpDown_IntermissionY_ValueChanged);
-      this.label17.AutoSize = true;
-      this.label17.Location = new Point(41, 43);
-      this.label17.Name = "label17";
-      this.label17.Size = new Size(48, 13);
-      this.label17.TabIndex = 64;
-      this.label17.Text = "Y Coord:";
-      this.groupBox_IntermissionCoord.Controls.Add((Control) this._numericUpDown_IntermissionY);
-      this.groupBox_IntermissionCoord.Controls.Add((Control) this._numericUpDown_IntermissionX);
-      this.groupBox_IntermissionCoord.Controls.Add((Control) this._numericUpDown_IntermissionZ);
-      this.groupBox_IntermissionCoord.Controls.Add((Control) this.label15);
-      this.groupBox_IntermissionCoord.Controls.Add((Control) this.label17);
-      this.groupBox_IntermissionCoord.Controls.Add((Control) this.label16);
-      this.groupBox_IntermissionCoord.Location = new Point(379, 45);
-      this.groupBox_IntermissionCoord.Name = "groupBox_IntermissionCoord";
-      this.groupBox_IntermissionCoord.Size = new Size(200, 94);
-      this.groupBox_IntermissionCoord.TabIndex = 66;
-      this.groupBox_IntermissionCoord.TabStop = false;
-      this.groupBox_IntermissionCoord.Text = "Quick Save Coord";
-      this.AutoScaleDimensions = new SizeF(6f, 12f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.Controls.Add((Control) this.groupBox_IntermissionCoord);
-      this.Controls.Add((Control) this.textBox_SavePlace);
-      this.Controls.Add((Control) this.button_SelectSavePlace);
-      this.Controls.Add((Control) this.label_SavePlace);
-      this.Controls.Add((Control) this.groupBox_Gesture);
-      this.Controls.Add((Control) this.groupBox_Profile);
-      this.Controls.Add((Control) this.label10);
-      this.Controls.Add((Control) this.label9);
-      this.Controls.Add((Control) this.label8);
-      this.Controls.Add((Control) this.label7);
-      this.Controls.Add((Control) this.label6);
-      this.Controls.Add((Control) this.label5);
-      this.Controls.Add((Control) this.label_medal);
-      this.Controls.Add((Control) this.label_bankMoney);
-      this.Controls.Add((Control) this.label_Money);
-      this.Controls.Add((Control) this.label1);
-      this.Controls.Add((Control) this.label2);
-      this.Controls.Add((Control) this.label3);
-      this.Controls.Add((Control) this.label4);
-      this.Controls.Add((Control) this.label_Second);
-      this.Controls.Add((Control) this.label_Minute);
-      this.Controls.Add((Control) this.label_Hour);
-      this.Controls.Add((Control) this.label_PlayTime);
-      this.Name = nameof (BasisDataControl);
-      this.Size = new Size(840, 507);
-      this.groupBox_Profile.ResumeLayout(false);
-      this.groupBox_Profile.PerformLayout();
-      this.panel_Profile.ResumeLayout(false);
-      this.panel_Profile.PerformLayout();
-      this.groupBox_Gesture.ResumeLayout(false);
-      this.groupBox_Gesture.PerformLayout();
-      this._numericUpDown_IntermissionX.EndInit();
-      this._numericUpDown_IntermissionZ.EndInit();
-      this._numericUpDown_IntermissionY.EndInit();
-      this.groupBox_IntermissionCoord.ResumeLayout(false);
-      this.groupBox_IntermissionCoord.PerformLayout();
-      this.ResumeLayout(false);
-      this.PerformLayout();
+      _numericUpDown_IntermissionZ.Name = "_numericUpDown_IntermissionZ";
+      _numericUpDown_IntermissionZ.Size = new Size(81, 20);
+      _numericUpDown_IntermissionZ.TabIndex = 63;
+      _numericUpDown_IntermissionZ.TextAlign = HorizontalAlignment.Right;
+      _numericUpDown_IntermissionZ.Value = new Decimal(new int[4]);
+      _numericUpDown_IntermissionZ.ValueChanged += _numericUpDown_IntermissionZ_ValueChanged;
+      label16.AutoSize = true;
+      label16.Location = new Point(41, 65);
+      label16.Name = "label16";
+      label16.Size = new Size(48, 13);
+      label16.TabIndex = 62;
+      label16.Text = "Z Coord:";
+      _numericUpDown_IntermissionY.DecimalPlaces = 2;
+      _numericUpDown_IntermissionY.Location = new Point(95, 41);
+      _numericUpDown_IntermissionY.Maximum = new Decimal(new int[4]
+      {
+        10000000,
+        0,
+        0,
+        0
+      });
+      _numericUpDown_IntermissionY.Minimum = new Decimal(new int[4]
+      {
+        10000000,
+        0,
+        0,
+        int.MinValue
+      });
+      _numericUpDown_IntermissionY.Name = "_numericUpDown_IntermissionY";
+      _numericUpDown_IntermissionY.Size = new Size(81, 20);
+      _numericUpDown_IntermissionY.TabIndex = 65;
+      _numericUpDown_IntermissionY.TextAlign = HorizontalAlignment.Right;
+      _numericUpDown_IntermissionY.Value = new Decimal(new int[4]);
+      _numericUpDown_IntermissionY.ValueChanged += _numericUpDown_IntermissionY_ValueChanged;
+      label17.AutoSize = true;
+      label17.Location = new Point(41, 43);
+      label17.Name = "label17";
+      label17.Size = new Size(48, 13);
+      label17.TabIndex = 64;
+      label17.Text = "Y Coord:";
+      groupBox_IntermissionCoord.Controls.Add(_numericUpDown_IntermissionY);
+      groupBox_IntermissionCoord.Controls.Add(_numericUpDown_IntermissionX);
+      groupBox_IntermissionCoord.Controls.Add(_numericUpDown_IntermissionZ);
+      groupBox_IntermissionCoord.Controls.Add(label15);
+      groupBox_IntermissionCoord.Controls.Add(label17);
+      groupBox_IntermissionCoord.Controls.Add(label16);
+      groupBox_IntermissionCoord.Location = new Point(379, 45);
+      groupBox_IntermissionCoord.Name = "groupBox_IntermissionCoord";
+      groupBox_IntermissionCoord.Size = new Size(200, 94);
+      groupBox_IntermissionCoord.TabIndex = 66;
+      groupBox_IntermissionCoord.TabStop = false;
+      groupBox_IntermissionCoord.Text = "Quick Save Coord";
+      AutoScaleDimensions = new SizeF(6f, 12f);
+      AutoScaleMode = AutoScaleMode.Font;
+      Controls.Add(groupBox_IntermissionCoord);
+      Controls.Add(textBox_SavePlace);
+      Controls.Add(button_SelectSavePlace);
+      Controls.Add(label_SavePlace);
+      Controls.Add(groupBox_Gesture);
+      Controls.Add(groupBox_Profile);
+      Controls.Add(label10);
+      Controls.Add(label9);
+      Controls.Add(label8);
+      Controls.Add(label7);
+      Controls.Add(label6);
+      Controls.Add(label5);
+      Controls.Add(label_medal);
+      Controls.Add(label_bankMoney);
+      Controls.Add(label_Money);
+      Controls.Add(label1);
+      Controls.Add(label2);
+      Controls.Add(label3);
+      Controls.Add(label4);
+      Controls.Add(label_Second);
+      Controls.Add(label_Minute);
+      Controls.Add(label_Hour);
+      Controls.Add(label_PlayTime);
+      Name = nameof (BasisDataControl);
+      Size = new Size(840, 507);
+      groupBox_Profile.ResumeLayout(false);
+      groupBox_Profile.PerformLayout();
+      panel_Profile.ResumeLayout(false);
+      panel_Profile.PerformLayout();
+      groupBox_Gesture.ResumeLayout(false);
+      groupBox_Gesture.PerformLayout();
+      _numericUpDown_IntermissionX.EndInit();
+      _numericUpDown_IntermissionZ.EndInit();
+      _numericUpDown_IntermissionY.EndInit();
+      groupBox_IntermissionCoord.ResumeLayout(false);
+      groupBox_IntermissionCoord.PerformLayout();
+      ResumeLayout(false);
+      PerformLayout();
     }
 
-    public VisionNumericUpDown NumericUpDown_Hour => this._numericUpDown_Hour;
+    public VisionNumericUpDown NumericUpDown_Hour => _numericUpDown_Hour;
 
-    public VisionNumericUpDown NumericUpDown_Minute => this._numericUpDown_Minute;
+    public VisionNumericUpDown NumericUpDown_Minute => _numericUpDown_Minute;
 
-    public VisionNumericUpDown NumericUpDown_Second => this._numericUpDown_Second;
+    public VisionNumericUpDown NumericUpDown_Second => _numericUpDown_Second;
 
     public VisionNumericUpDown NumericUpDown_MultiPlayTimeHour
     {
-      get => this._numericUpDown_MultiPlayTimeHour;
+      get => _numericUpDown_MultiPlayTimeHour;
     }
 
     public VisionNumericUpDown NumericUpDown_MultiPlayTimeMinute
     {
-      get => this._numericUpDown_MultiPlayTimeMinute;
+      get => _numericUpDown_MultiPlayTimeMinute;
     }
 
     public VisionNumericUpDown NumericUpDown_MultiPlayTimeSecond
     {
-      get => this._numericUpDown_MultiPlayTimeSecond;
+      get => _numericUpDown_MultiPlayTimeSecond;
     }
 
-    public VisionNumericUpDown NumericUpDown_Money => this._numericUpDown_Money;
+    public VisionNumericUpDown NumericUpDown_Money => _numericUpDown_Money;
 
-    public VisionNumericUpDown NumericUpDown_BankMoney => this._numericUpDown_BankMoney;
+    public VisionNumericUpDown NumericUpDown_BankMoney => _numericUpDown_BankMoney;
 
-    public VisionNumericUpDown NumericUpDown_Medal => this._numericUpDown_Medal;
+    public VisionNumericUpDown NumericUpDown_Medal => _numericUpDown_Medal;
 
-    public VisionNumericUpDown NumericUpDown_BattleCount => this._numericUpDown_BattleCount;
+    public VisionNumericUpDown NumericUpDown_BattleCount => _numericUpDown_BattleCount;
 
-    public VisionNumericUpDown NumericUpDown_LoseCount => this._numericUpDown_LoseCount;
+    public VisionNumericUpDown NumericUpDown_LoseCount => _numericUpDown_LoseCount;
 
-    public VisionNumericUpDown NumericUpDown_EscapeCount => this._numericUpDown_EscapeCount;
+    public VisionNumericUpDown NumericUpDown_EscapeCount => _numericUpDown_EscapeCount;
 
     public VisionNumericUpDown NumericUpDown_EscapeSuccessCount
     {
-      get => this._numericUpDown_EscapeSuccessCount;
+      get => _numericUpDown_EscapeSuccessCount;
     }
 
-    public VisionNumericUpDown NumericUpDown_VictoryCount => this._numericUpDown_VictoryCount;
+    public VisionNumericUpDown NumericUpDown_VictoryCount => _numericUpDown_VictoryCount;
 
-    public VisionNumericUpDown NumericUpDown_AlchemyCount => this._numericUpDown_AlchemyCount;
+    public VisionNumericUpDown NumericUpDown_AlchemyCount => _numericUpDown_AlchemyCount;
 
     public VisionNumericUpDown NumericUpDown_ProfileBirthYear
     {
-      get => this._numericUpDown_ProfileBirthYear;
+      get => _numericUpDown_ProfileBirthYear;
     }
 
     public VisionNumericUpDown NumericUpDown_ProfileBirthMonth
     {
-      get => this._numericUpDown_ProfileBirthMonth;
+      get => _numericUpDown_ProfileBirthMonth;
     }
 
-    public VisionNumericUpDown NumericUpDown_ProfileBirthDay => this._numericUpDown_ProfileBirthDay;
+    public VisionNumericUpDown NumericUpDown_ProfileBirthDay => _numericUpDown_ProfileBirthDay;
 
-    public CheckBox CheckBox_SecretAge => this._checkBox_SecretAge;
+    public CheckBox CheckBox_SecretAge => _checkBox_SecretAge;
 
     protected override void OnValueUpdate()
     {
       BasisData basisData = SaveDataManager.Instance.SaveData.BasisData;
-      this.panel_Profile.Enabled = basisData.ProfileSetting;
-      this.checkBox_ProfileSetting.Checked = basisData.ProfileSetting;
-      this.checkBox_Explanation.Checked = basisData.ProfileExplanation;
-      this.comboBox_Sex.SelectedIndex = (int) basisData.ProfileSex;
-      this.comboBox_Tone.SelectedIndex = (int) basisData.ProfileTone;
-      this.checkBox_ToneSetting.Checked = basisData.ProfileToneSetting;
-      this._numericUpDown_Hour.Value = (Decimal) basisData.PlayTimeHour.Value;
-      this._numericUpDown_Minute.Value = (Decimal) basisData.PlayTimeMinute.Value;
-      this._numericUpDown_Second.Value = (Decimal) basisData.PlayTimeSecond.Value;
-      this._numericUpDown_MultiPlayTimeHour.Value = (Decimal) basisData.MultiPlayTimeHour.Value;
-      this._numericUpDown_MultiPlayTimeMinute.Value = (Decimal) basisData.MultiPlayTimeMinute.Value;
-      this._numericUpDown_MultiPlayTimeSecond.Value = (Decimal) basisData.MultiPlayTimeSecond.Value;
-      this._numericUpDown_Money.Value = (Decimal) basisData.Money.Value;
-      this._numericUpDown_BankMoney.Value = (Decimal) basisData.BankMoney.Value;
-      this._numericUpDown_Medal.Value = (Decimal) basisData.Medal.Value;
-      this._numericUpDown_BattleCount.Value = (Decimal) basisData.BattleCount;
-      this._numericUpDown_LoseCount.Value = (Decimal) basisData.LoseCount;
-      this._numericUpDown_EscapeCount.Value = (Decimal) basisData.EscapeCount;
-      this._numericUpDown_EscapeSuccessCount.Value = (Decimal) basisData.EscapeSuccessCount;
-      this._numericUpDown_VictoryCount.Value = (Decimal) basisData.VictoryCount;
-      this._numericUpDown_AlchemyCount.Value = (Decimal) basisData.AlchemyCount.Value;
-      this._numericUpDown_ProfileBirthYear.Value = (Decimal) basisData.ProfileBirthYear;
-      this._numericUpDown_ProfileBirthMonth.Value = (Decimal) basisData.ProfileBirthMonth;
-      this._numericUpDown_ProfileBirthDay.Value = (Decimal) basisData.ProfileBirthDay;
-      this._textBox_ProfileAddress.Text = basisData.Address.Name;
-      this.RenewalHanle(basisData);
-      this._textBox_ProfileMessage.Text = basisData.ProfileMessage.Value;
-      this._checkBox_SecretAge.Checked = basisData.ProfileSecretAge;
-      this._comboBox_GestureUp.SelectedIndex = GestureList.List[(int) basisData.GestureUp].Index;
-      this._comboBox_GestureLeft.SelectedIndex = GestureList.List[(int) basisData.GestureLeft].Index;
-      this._comboBox_GestureRight.SelectedIndex = GestureList.List[(int) basisData.GestureRight].Index;
-      this._comboBox_GestureDown1.SelectedIndex = GestureList.List[(int) basisData.GestureDown1].Index;
-      this._comboBox_GestureDown2.SelectedIndex = GestureList.List[(int) basisData.GestureDown2].Index;
-      this._comboBox_GestureDown3.SelectedIndex = GestureList.List[(int) basisData.GestureDown3].Index;
-      this._comboBox_GestureDown4.SelectedIndex = GestureList.List[(int) basisData.GestureDown4].Index;
+      panel_Profile.Enabled = basisData.ProfileSetting;
+      checkBox_ProfileSetting.Checked = basisData.ProfileSetting;
+      checkBox_Explanation.Checked = basisData.ProfileExplanation;
+      comboBox_Sex.SelectedIndex = basisData.ProfileSex;
+      comboBox_Tone.SelectedIndex = basisData.ProfileTone;
+      checkBox_ToneSetting.Checked = basisData.ProfileToneSetting;
+      _numericUpDown_Hour.Value = basisData.PlayTimeHour.Value;
+      _numericUpDown_Minute.Value = basisData.PlayTimeMinute.Value;
+      _numericUpDown_Second.Value = basisData.PlayTimeSecond.Value;
+      _numericUpDown_MultiPlayTimeHour.Value = basisData.MultiPlayTimeHour.Value;
+      _numericUpDown_MultiPlayTimeMinute.Value = basisData.MultiPlayTimeMinute.Value;
+      _numericUpDown_MultiPlayTimeSecond.Value = basisData.MultiPlayTimeSecond.Value;
+      _numericUpDown_Money.Value = basisData.Money.Value;
+      _numericUpDown_BankMoney.Value = basisData.BankMoney.Value;
+      _numericUpDown_Medal.Value = basisData.Medal.Value;
+      _numericUpDown_BattleCount.Value = basisData.BattleCount;
+      _numericUpDown_LoseCount.Value = basisData.LoseCount;
+      _numericUpDown_EscapeCount.Value = basisData.EscapeCount;
+      _numericUpDown_EscapeSuccessCount.Value = basisData.EscapeSuccessCount;
+      _numericUpDown_VictoryCount.Value = basisData.VictoryCount;
+      _numericUpDown_AlchemyCount.Value = basisData.AlchemyCount.Value;
+      _numericUpDown_ProfileBirthYear.Value = basisData.ProfileBirthYear;
+      _numericUpDown_ProfileBirthMonth.Value = basisData.ProfileBirthMonth;
+      _numericUpDown_ProfileBirthDay.Value = basisData.ProfileBirthDay;
+      _textBox_ProfileAddress.Text = basisData.Address.Name;
+      RenewalHanle(basisData);
+      _textBox_ProfileMessage.Text = basisData.ProfileMessage.Value;
+      _checkBox_SecretAge.Checked = basisData.ProfileSecretAge;
+      _comboBox_GestureUp.SelectedIndex = GestureList.List[basisData.GestureUp].Index;
+      _comboBox_GestureLeft.SelectedIndex = GestureList.List[basisData.GestureLeft].Index;
+      _comboBox_GestureRight.SelectedIndex = GestureList.List[basisData.GestureRight].Index;
+      _comboBox_GestureDown1.SelectedIndex = GestureList.List[basisData.GestureDown1].Index;
+      _comboBox_GestureDown2.SelectedIndex = GestureList.List[basisData.GestureDown2].Index;
+      _comboBox_GestureDown3.SelectedIndex = GestureList.List[basisData.GestureDown3].Index;
+      _comboBox_GestureDown4.SelectedIndex = GestureList.List[basisData.GestureDown4].Index;
       for (int index = 0; index < 15; ++index)
-        this.checkedListBox_GestureLearn.SetItemChecked(index, basisData.IsGestureLearn(index));
+        checkedListBox_GestureLearn.SetItemChecked(index, basisData.IsGestureLearn(index));
       if (SaveDataManager.Instance.SelectedDataIndex == 1)
       {
-        this.label_SavePlace.Text = "Quicksave Loc.";
+        label_SavePlace.Text = "Quicksave Loc.";
         if (basisData.IntermissionPlace != null)
-          this.textBox_SavePlace.Text = basisData.IntermissionPlace.Name;
+          textBox_SavePlace.Text = basisData.IntermissionPlace.Name;
         else
-          this.textBox_SavePlace.Text = string.Empty;
-        this.groupBox_IntermissionCoord.Enabled = true;
-        this._numericUpDown_IntermissionX.Value = (Decimal) ((float) basisData.IntermissionX.Value / 100f);
-        this._numericUpDown_IntermissionY.Value = (Decimal) ((float) basisData.IntermissionY.Value / 100f);
-        this._numericUpDown_IntermissionZ.Value = (Decimal) ((float) basisData.IntermissionZ.Value / 100f);
+          textBox_SavePlace.Text = string.Empty;
+        groupBox_IntermissionCoord.Enabled = true;
+        _numericUpDown_IntermissionX.Value = (Decimal) (basisData.IntermissionX.Value / 100f);
+        _numericUpDown_IntermissionY.Value = (Decimal) (basisData.IntermissionY.Value / 100f);
+        _numericUpDown_IntermissionZ.Value = (Decimal) (basisData.IntermissionZ.Value / 100f);
       }
       else
       {
-        this.label_SavePlace.Text = "Save Location";
+        label_SavePlace.Text = "Save Location";
         if (basisData.SavePlace != null)
-          this.textBox_SavePlace.Text = basisData.SavePlace.Name;
+          textBox_SavePlace.Text = basisData.SavePlace.Name;
         else
-          this.textBox_SavePlace.Text = string.Empty;
-        this.groupBox_IntermissionCoord.Enabled = false;
-        this._numericUpDown_IntermissionX.Value = 0M;
-        this._numericUpDown_IntermissionY.Value = 0M;
-        this._numericUpDown_IntermissionZ.Value = 0M;
+          textBox_SavePlace.Text = string.Empty;
+        groupBox_IntermissionCoord.Enabled = false;
+        _numericUpDown_IntermissionX.Value = 0M;
+        _numericUpDown_IntermissionY.Value = 0M;
+        _numericUpDown_IntermissionZ.Value = 0M;
       }
     }
 
     private void RenewalHanle(BasisData basisData)
     {
-      this._textBox_ProfileHandle.Text = string.Empty;
+      _textBox_ProfileHandle.Text = string.Empty;
       if (basisData.Handle == null)
         return;
       if (basisData.Handle.Job != null)
       {
-        this._textBox_ProfileHandle.Text = basisData.Handle.Job.Name;
+        _textBox_ProfileHandle.Text = basisData.Handle.Job.Name;
       }
       else
       {
         if (basisData.Handle.Title == null)
           return;
-        if (basisData.ProfileSex == (byte) 0)
+        if (basisData.ProfileSex == 0)
         {
-          this._textBox_ProfileHandle.Text = basisData.Handle.Title.MaleTitleName;
+          _textBox_ProfileHandle.Text = basisData.Handle.Title.MaleTitleName;
         }
         else
         {
-          if (basisData.ProfileSex != (byte) 1)
+          if (basisData.ProfileSex != 1)
             return;
-          this._textBox_ProfileHandle.Text = basisData.Handle.Title.LadyTitleName;
+          _textBox_ProfileHandle.Text = basisData.Handle.Title.LadyTitleName;
         }
       }
     }
 
     private void _numericUpDown_Hour_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.PlayTimeHour.Value = (ushort) this._numericUpDown_Hour.Value;
+      SaveDataManager.Instance.SaveData.BasisData.PlayTimeHour.Value = (ushort) _numericUpDown_Hour.Value;
     }
 
     private void _numericUpDown_Minute_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.PlayTimeMinute.Value = (byte) this._numericUpDown_Minute.Value;
+      SaveDataManager.Instance.SaveData.BasisData.PlayTimeMinute.Value = (byte) _numericUpDown_Minute.Value;
     }
 
     private void _numericUpDown_Second_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.PlayTimeSecond.Value = (byte) this._numericUpDown_Second.Value;
+      SaveDataManager.Instance.SaveData.BasisData.PlayTimeSecond.Value = (byte) _numericUpDown_Second.Value;
     }
 
     private void _numericUpDown_Money_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.Money.Value = (uint) this._numericUpDown_Money.Value;
+      SaveDataManager.Instance.SaveData.BasisData.Money.Value = (uint) _numericUpDown_Money.Value;
     }
 
     private void _numericUpDown_BankMoney_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.BankMoney.Value = (uint) this._numericUpDown_BankMoney.Value;
+      SaveDataManager.Instance.SaveData.BasisData.BankMoney.Value = (uint) _numericUpDown_BankMoney.Value;
     }
 
     private void _numericUpDown_Medal_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.Medal.Value = (uint) this._numericUpDown_Medal.Value;
+      SaveDataManager.Instance.SaveData.BasisData.Medal.Value = (uint) _numericUpDown_Medal.Value;
     }
 
     private void _numericUpDown_MultiPlayTimeHour_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.MultiPlayTimeHour.Value = (ushort) this._numericUpDown_MultiPlayTimeHour.Value;
+      SaveDataManager.Instance.SaveData.BasisData.MultiPlayTimeHour.Value = (ushort) _numericUpDown_MultiPlayTimeHour.Value;
     }
 
     private void _numericUpDown_MultiPlayTimeMinute_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.MultiPlayTimeMinute.Value = (byte) this._numericUpDown_MultiPlayTimeMinute.Value;
+      SaveDataManager.Instance.SaveData.BasisData.MultiPlayTimeMinute.Value = (byte) _numericUpDown_MultiPlayTimeMinute.Value;
     }
 
     private void _numericUpDown_MultiPlayTimeSecond_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.MultiPlayTimeSecond.Value = (byte) this._numericUpDown_MultiPlayTimeSecond.Value;
+      SaveDataManager.Instance.SaveData.BasisData.MultiPlayTimeSecond.Value = (byte) _numericUpDown_MultiPlayTimeSecond.Value;
     }
 
     private void _numericUpDown_ProfileBirthYear_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.ProfileBirthYear = (ushort) this._numericUpDown_ProfileBirthYear.Value;
+      SaveDataManager.Instance.SaveData.BasisData.ProfileBirthYear = (ushort) _numericUpDown_ProfileBirthYear.Value;
     }
 
     private void _numericUpDown_ProfileBirthMonth_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.ProfileBirthMonth = (byte) this._numericUpDown_ProfileBirthMonth.Value;
+      SaveDataManager.Instance.SaveData.BasisData.ProfileBirthMonth = (byte) _numericUpDown_ProfileBirthMonth.Value;
     }
 
     private void _numericUpDown_ProfileBirthDay_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.ProfileBirthDay = (byte) this._numericUpDown_ProfileBirthDay.Value;
+      SaveDataManager.Instance.SaveData.BasisData.ProfileBirthDay = (byte) _numericUpDown_ProfileBirthDay.Value;
     }
 
     private void _textBox_ProfileMessage_TextChanged(object sender, EventArgs e)
     {
-      Encoding encoding = (Encoding) new DQ9Encoding();
-      byte[] bytes = encoding.GetBytes(this._textBox_ProfileMessage.Text);
+      Encoding encoding = new DQ9Encoding();
+      byte[] bytes = encoding.GetBytes(_textBox_ProfileMessage.Text);
       if (bytes.Length > SaveDataManager.Instance.SaveData.BasisData.ProfileMessage.MaxLength)
       {
-        this._textBox_ProfileMessage.Text = encoding.GetString(bytes, 0, SaveDataManager.Instance.SaveData.BasisData.ProfileMessage.MaxLength);
-        this._textBox_ProfileMessage.SelectionStart = this._textBox_ProfileMessage.TextLength;
+        _textBox_ProfileMessage.Text = encoding.GetString(bytes, 0, SaveDataManager.Instance.SaveData.BasisData.ProfileMessage.MaxLength);
+        _textBox_ProfileMessage.SelectionStart = _textBox_ProfileMessage.TextLength;
       }
       else
-        this._textBox_ProfileMessage.Text = encoding.GetString(bytes, 0, bytes.Length);
-      if (this._updateCount != 0)
+        _textBox_ProfileMessage.Text = encoding.GetString(bytes, 0, bytes.Length);
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.ProfileMessage.Value = this._textBox_ProfileMessage.Text;
+      SaveDataManager.Instance.SaveData.BasisData.ProfileMessage.Value = _textBox_ProfileMessage.Text;
     }
 
     private void checkBox_SecretAge_CheckedChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.ProfileSecretAge = this._checkBox_SecretAge.Checked;
+      SaveDataManager.Instance.SaveData.BasisData.ProfileSecretAge = _checkBox_SecretAge.Checked;
     }
 
     private void _numericUpDown_VictoryCount_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.VictoryCount = (uint) this._numericUpDown_VictoryCount.Value;
+      SaveDataManager.Instance.SaveData.BasisData.VictoryCount = (uint) _numericUpDown_VictoryCount.Value;
     }
 
     private void _numericUpDown_AlchemyCount_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.AlchemyCount.Value = (int) this._numericUpDown_AlchemyCount.Value;
+      SaveDataManager.Instance.SaveData.BasisData.AlchemyCount.Value = (int) _numericUpDown_AlchemyCount.Value;
     }
 
     private void _numericUpDown_BattleCount_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.BattleCount = (uint) this._numericUpDown_BattleCount.Value;
+      SaveDataManager.Instance.SaveData.BasisData.BattleCount = (uint) _numericUpDown_BattleCount.Value;
     }
 
     private void _numericUpDown_LoseCount_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.LoseCount = (uint) this._numericUpDown_LoseCount.Value;
+      SaveDataManager.Instance.SaveData.BasisData.LoseCount = (uint) _numericUpDown_LoseCount.Value;
     }
 
     private void _numericUpDown_EscapeCount_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.EscapeCount = (uint) this._numericUpDown_EscapeCount.Value;
+      SaveDataManager.Instance.SaveData.BasisData.EscapeCount = (uint) _numericUpDown_EscapeCount.Value;
     }
 
     private void _numericUpDown_EscapeSuccessCount_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.EscapeSuccessCount = (uint) this._numericUpDown_EscapeSuccessCount.Value;
+      SaveDataManager.Instance.SaveData.BasisData.EscapeSuccessCount = (uint) _numericUpDown_EscapeSuccessCount.Value;
     }
 
     private void comboBox_Gesture_SelectedIndexChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0 || !(sender is VisionComboBox visionComboBox))
+      if (_updateCount != 0 || !(sender is VisionComboBox visionComboBox))
         return;
       switch ((int) visionComboBox.Tag)
       {
@@ -1114,46 +1113,46 @@ namespace DQ9_Cheat.Controls
 
     private void checkedListBox_GestureLearn_ItemCheck(object sender, ItemCheckEventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
       SaveDataManager.Instance.SaveData.BasisData.SetGestureLearn(e.Index, e.NewValue == CheckState.Checked);
     }
 
     private void checkBox_ProfileSetting_CheckedChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.ProfileSetting = this.checkBox_ProfileSetting.Checked;
-      this.panel_Profile.Enabled = this.checkBox_ProfileSetting.Checked;
+      SaveDataManager.Instance.SaveData.BasisData.ProfileSetting = checkBox_ProfileSetting.Checked;
+      panel_Profile.Enabled = checkBox_ProfileSetting.Checked;
     }
 
     private void checkBox_Explanation_CheckedChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.ProfileExplanation = this.checkBox_Explanation.Checked;
+      SaveDataManager.Instance.SaveData.BasisData.ProfileExplanation = checkBox_Explanation.Checked;
     }
 
     private void comboBox_Sex_SelectedIndexChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.ProfileSex = (byte) this.comboBox_Sex.SelectedIndex;
-      this.RenewalHanle(SaveDataManager.Instance.SaveData.BasisData);
+      SaveDataManager.Instance.SaveData.BasisData.ProfileSex = (byte) comboBox_Sex.SelectedIndex;
+      RenewalHanle(SaveDataManager.Instance.SaveData.BasisData);
     }
 
     private void comboBox_Tone_SelectedIndexChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.ProfileTone = (byte) this.comboBox_Tone.SelectedIndex;
+      SaveDataManager.Instance.SaveData.BasisData.ProfileTone = (byte) comboBox_Tone.SelectedIndex;
     }
 
     private void checkBox_ToneSetting_CheckedChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.ProfileToneSetting = this.checkBox_ToneSetting.Checked;
+      SaveDataManager.Instance.SaveData.BasisData.ProfileToneSetting = checkBox_ToneSetting.Checked;
     }
 
     private void button_SelectSavePlace_Click(object sender, EventArgs e)
@@ -1162,59 +1161,59 @@ namespace DQ9_Cheat.Controls
         return;
       using (SavePlaceSelectWindow placeSelectWindow = new SavePlaceSelectWindow(SaveDataManager.Instance.SelectedDataIndex == 0))
       {
-        placeSelectWindow.Location = this.PointToScreen(new Point(button.Right, button.Bottom));
+        placeSelectWindow.Location = PointToScreen(new Point(button.Right, button.Bottom));
         if (placeSelectWindow.ShowDialog() != DialogResult.OK)
           return;
         SavePlace selectedSavePlace = placeSelectWindow.SelectedSavePlace;
         SaveDataManager.Instance.SaveData.BasisData.SavePlace = selectedSavePlace;
-        this.textBox_SavePlace.Text = selectedSavePlace.Name;
+        textBox_SavePlace.Text = selectedSavePlace.Name;
       }
     }
 
     private void _numericUpDown_IntermissionX_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.IntermissionX.Value = (int) (this._numericUpDown_IntermissionX.Value * 100M);
+      SaveDataManager.Instance.SaveData.BasisData.IntermissionX.Value = (int) (_numericUpDown_IntermissionX.Value * 100M);
     }
 
     private void _numericUpDown_IntermissionY_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.IntermissionY.Value = (int) (this._numericUpDown_IntermissionY.Value * 100M);
+      SaveDataManager.Instance.SaveData.BasisData.IntermissionY.Value = (int) (_numericUpDown_IntermissionY.Value * 100M);
     }
 
     private void _numericUpDown_IntermissionZ_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.BasisData.IntermissionZ.Value = (int) (this._numericUpDown_IntermissionZ.Value * 100M);
+      SaveDataManager.Instance.SaveData.BasisData.IntermissionZ.Value = (int) (_numericUpDown_IntermissionZ.Value * 100M);
     }
 
     private void button_SelectProfileAddress_Click(object sender, EventArgs e)
     {
       using (AddressSelectWindow addressSelectWindow = new AddressSelectWindow())
       {
-        addressSelectWindow.Location = this.PointToScreen(new Point(this.groupBox_Profile.Left + this.panel_Profile.Left + this.button_SelectProfileAddress.Right, this.groupBox_Profile.Top + this.panel_Profile.Top + this.button_SelectProfileAddress.Bottom));
+        addressSelectWindow.Location = PointToScreen(new Point(groupBox_Profile.Left + panel_Profile.Left + button_SelectProfileAddress.Right, groupBox_Profile.Top + panel_Profile.Top + button_SelectProfileAddress.Bottom));
         if (addressSelectWindow.ShowDialog() != DialogResult.OK)
           return;
         SaveDataManager.Instance.SaveData.BasisData.Address = addressSelectWindow.SelectedAddress;
-        this.OnValueUpdate();
+        OnValueUpdate();
       }
     }
 
     private void button_SelectProfileHandle_Click(object sender, EventArgs e)
     {
       BasisData basisData = SaveDataManager.Instance.SaveData.BasisData;
-      using (HandleSelectWindow handleSelectWindow = new HandleSelectWindow((int) basisData.ProfileSex))
+      using (HandleSelectWindow handleSelectWindow = new HandleSelectWindow(basisData.ProfileSex))
       {
-        handleSelectWindow.Location = this.PointToScreen(new Point(this.groupBox_Profile.Left + this.panel_Profile.Left + this.button_SelectProfileHandle.Right, this.groupBox_Profile.Top + this.panel_Profile.Top + this.button_SelectProfileHandle.Bottom));
+        handleSelectWindow.Location = PointToScreen(new Point(groupBox_Profile.Left + panel_Profile.Left + button_SelectProfileHandle.Right, groupBox_Profile.Top + panel_Profile.Top + button_SelectProfileHandle.Bottom));
         if (handleSelectWindow.ShowDialog() != DialogResult.OK)
           return;
-        DQ9_Cheat.GameData.Handle selectedHandle = handleSelectWindow.SelectedHandle;
+        Handle selectedHandle = handleSelectWindow.SelectedHandle;
         basisData.Handle = selectedHandle;
-        this.OnValueUpdate();
+        OnValueUpdate();
       }
     }
   }

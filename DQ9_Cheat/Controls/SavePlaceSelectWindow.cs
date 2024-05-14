@@ -2,16 +2,15 @@
 // Type: DQ9_Cheat.Controls.SavePlaceSelectWindow
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-using DQ9_Cheat.GameData;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DQ9_Cheat.GameData;
 
-#nullable disable
 namespace DQ9_Cheat.Controls
 {
   public class SavePlaceSelectWindow : Form
@@ -30,150 +29,150 @@ namespace DQ9_Cheat.Controls
 
     public SavePlaceSelectWindow(bool afterEnding)
     {
-      this.InitializeComponent();
-      this._afterEnding = afterEnding;
-      this.comboBox_SelectType.SelectedIndex = 1;
-      this.RenewalList();
+      InitializeComponent();
+      _afterEnding = afterEnding;
+      comboBox_SelectType.SelectedIndex = 1;
+      RenewalList();
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && this.components != null)
-        this.components.Dispose();
+      if (disposing && components != null)
+        components.Dispose();
       base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      this.textBox_SearchString = new TextBox();
-      this.label_Search = new Label();
-      this.listBox_SavePlaceList = new ListBox();
-      this.button_OK = new Button();
-      this.button_Cancel = new Button();
-      this.comboBox_SelectType = new ComboBox();
-      this.label_TypeName = new Label();
-      this.SuspendLayout();
-      this.textBox_SearchString.Location = new Point(58, 32);
-      this.textBox_SearchString.Name = "textBox_SearchString";
-      this.textBox_SearchString.Size = new Size((int) sbyte.MaxValue, 20);
-      this.textBox_SearchString.TabIndex = 0;
-      this.textBox_SearchString.TextChanged += new EventHandler(this.textBox_SearchString_TextChanged);
-      this.label_Search.AutoSize = true;
-      this.label_Search.Location = new Point(15, 35);
-      this.label_Search.Name = "label_Search";
-      this.label_Search.Size = new Size(41, 13);
-      this.label_Search.TabIndex = 1;
-      this.label_Search.Text = "Search";
-      this.listBox_SavePlaceList.FormattingEnabled = true;
-      this.listBox_SavePlaceList.ItemHeight = 12;
-      this.listBox_SavePlaceList.Location = new Point(14, 57);
-      this.listBox_SavePlaceList.Name = "listBox_SavePlaceList";
-      this.listBox_SavePlaceList.Size = new Size(221, 251);
-      this.listBox_SavePlaceList.TabIndex = 1;
-      this.listBox_SavePlaceList.MouseDoubleClick += new MouseEventHandler(this.listBox_ItemList_MouseDoubleClick);
-      this.listBox_SavePlaceList.SelectedIndexChanged += new EventHandler(this.listBox_ItemList_SelectedIndexChanged);
-      this.button_OK.DialogResult = DialogResult.OK;
-      this.button_OK.Enabled = false;
-      this.button_OK.Location = new Point(108, 317);
-      this.button_OK.Name = "button_OK";
-      this.button_OK.Size = new Size(61, 23);
-      this.button_OK.TabIndex = 2;
-      this.button_OK.Text = "OK";
-      this.button_OK.UseVisualStyleBackColor = true;
-      this.button_OK.Click += new EventHandler(this.button_OK_Click);
-      this.button_Cancel.DialogResult = DialogResult.Cancel;
-      this.button_Cancel.Location = new Point(175, 317);
-      this.button_Cancel.Name = "button_Cancel";
-      this.button_Cancel.Size = new Size(61, 23);
-      this.button_Cancel.TabIndex = 3;
-      this.button_Cancel.Text = "Cancel";
-      this.button_Cancel.UseVisualStyleBackColor = true;
-      this.comboBox_SelectType.DropDownStyle = ComboBoxStyle.DropDownList;
-      this.comboBox_SelectType.FormattingEnabled = true;
-      this.comboBox_SelectType.Items.AddRange(new object[6]
+      textBox_SearchString = new TextBox();
+      label_Search = new Label();
+      listBox_SavePlaceList = new ListBox();
+      button_OK = new Button();
+      button_Cancel = new Button();
+      comboBox_SelectType = new ComboBox();
+      label_TypeName = new Label();
+      SuspendLayout();
+      textBox_SearchString.Location = new Point(58, 32);
+      textBox_SearchString.Name = "textBox_SearchString";
+      textBox_SearchString.Size = new Size(sbyte.MaxValue, 20);
+      textBox_SearchString.TabIndex = 0;
+      textBox_SearchString.TextChanged += textBox_SearchString_TextChanged;
+      label_Search.AutoSize = true;
+      label_Search.Location = new Point(15, 35);
+      label_Search.Name = "label_Search";
+      label_Search.Size = new Size(41, 13);
+      label_Search.TabIndex = 1;
+      label_Search.Text = "Search";
+      listBox_SavePlaceList.FormattingEnabled = true;
+      listBox_SavePlaceList.ItemHeight = 12;
+      listBox_SavePlaceList.Location = new Point(14, 57);
+      listBox_SavePlaceList.Name = "listBox_SavePlaceList";
+      listBox_SavePlaceList.Size = new Size(221, 251);
+      listBox_SavePlaceList.TabIndex = 1;
+      listBox_SavePlaceList.MouseDoubleClick += listBox_ItemList_MouseDoubleClick;
+      listBox_SavePlaceList.SelectedIndexChanged += listBox_ItemList_SelectedIndexChanged;
+      button_OK.DialogResult = DialogResult.OK;
+      button_OK.Enabled = false;
+      button_OK.Location = new Point(108, 317);
+      button_OK.Name = "button_OK";
+      button_OK.Size = new Size(61, 23);
+      button_OK.TabIndex = 2;
+      button_OK.Text = "OK";
+      button_OK.UseVisualStyleBackColor = true;
+      button_OK.Click += button_OK_Click;
+      button_Cancel.DialogResult = DialogResult.Cancel;
+      button_Cancel.Location = new Point(175, 317);
+      button_Cancel.Name = "button_Cancel";
+      button_Cancel.Size = new Size(61, 23);
+      button_Cancel.TabIndex = 3;
+      button_Cancel.Text = "Cancel";
+      button_Cancel.UseVisualStyleBackColor = true;
+      comboBox_SelectType.DropDownStyle = ComboBoxStyle.DropDownList;
+      comboBox_SelectType.FormattingEnabled = true;
+      comboBox_SelectType.Items.AddRange(new object[6]
       {
-        (object) "All",
-        (object) "Church",
-        (object) "Town, etc.",
-        (object) "Field",
-        (object) "Dungeon",
-        (object) "Other"
+        "All",
+        "Church",
+        "Town, etc.",
+        "Field",
+        "Dungeon",
+        "Other"
       });
-      this.comboBox_SelectType.Location = new Point(58, 7);
-      this.comboBox_SelectType.Name = "comboBox_SelectType";
-      this.comboBox_SelectType.Size = new Size((int) sbyte.MaxValue, 21);
-      this.comboBox_SelectType.TabIndex = 4;
-      this.comboBox_SelectType.SelectedIndexChanged += new EventHandler(this.comboBox_SelectType_SelectedIndexChanged);
-      this.label_TypeName.AutoSize = true;
-      this.label_TypeName.Location = new Point(25, 10);
-      this.label_TypeName.Name = "label_TypeName";
-      this.label_TypeName.Size = new Size(31, 13);
-      this.label_TypeName.TabIndex = 5;
-      this.label_TypeName.Text = "Type";
-      this.AcceptButton = (IButtonControl) this.button_OK;
-      this.AutoScaleDimensions = new SizeF(6f, 12f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.CancelButton = (IButtonControl) this.button_Cancel;
-      this.ClientSize = new Size(247, 342);
-      this.Controls.Add((Control) this.label_TypeName);
-      this.Controls.Add((Control) this.comboBox_SelectType);
-      this.Controls.Add((Control) this.button_Cancel);
-      this.Controls.Add((Control) this.button_OK);
-      this.Controls.Add((Control) this.listBox_SavePlaceList);
-      this.Controls.Add((Control) this.label_Search);
-      this.Controls.Add((Control) this.textBox_SearchString);
-      this.FormBorderStyle = FormBorderStyle.Fixed3D;
-      this.MaximizeBox = false;
-      this.MinimizeBox = false;
-      this.Name = nameof (SavePlaceSelectWindow);
-      this.ShowIcon = false;
-      this.ShowInTaskbar = false;
-      this.StartPosition = FormStartPosition.Manual;
-      this.Text = "Select Save Location";
-      this.ResumeLayout(false);
-      this.PerformLayout();
+      comboBox_SelectType.Location = new Point(58, 7);
+      comboBox_SelectType.Name = "comboBox_SelectType";
+      comboBox_SelectType.Size = new Size(sbyte.MaxValue, 21);
+      comboBox_SelectType.TabIndex = 4;
+      comboBox_SelectType.SelectedIndexChanged += comboBox_SelectType_SelectedIndexChanged;
+      label_TypeName.AutoSize = true;
+      label_TypeName.Location = new Point(25, 10);
+      label_TypeName.Name = "label_TypeName";
+      label_TypeName.Size = new Size(31, 13);
+      label_TypeName.TabIndex = 5;
+      label_TypeName.Text = "Type";
+      AcceptButton = button_OK;
+      AutoScaleDimensions = new SizeF(6f, 12f);
+      AutoScaleMode = AutoScaleMode.Font;
+      CancelButton = button_Cancel;
+      ClientSize = new Size(247, 342);
+      Controls.Add(label_TypeName);
+      Controls.Add(comboBox_SelectType);
+      Controls.Add(button_Cancel);
+      Controls.Add(button_OK);
+      Controls.Add(listBox_SavePlaceList);
+      Controls.Add(label_Search);
+      Controls.Add(textBox_SearchString);
+      FormBorderStyle = FormBorderStyle.Fixed3D;
+      MaximizeBox = false;
+      MinimizeBox = false;
+      Name = nameof (SavePlaceSelectWindow);
+      ShowIcon = false;
+      ShowInTaskbar = false;
+      StartPosition = FormStartPosition.Manual;
+      Text = "Select Save Location";
+      ResumeLayout(false);
+      PerformLayout();
     }
 
-    public SavePlace SelectedSavePlace => this._selectedSavePlace;
+    public SavePlace SelectedSavePlace => _selectedSavePlace;
 
     private void RenewalList()
     {
-      ReadOnlyCollection<SavePlace> list = SavePlaceList.GetList((SavePlaceType) this.comboBox_SelectType.SelectedIndex, this.textBox_SearchString.Text);
-      this.listBox_SavePlaceList.BeginUpdate();
-      this.listBox_SavePlaceList.Items.Clear();
+      ReadOnlyCollection<SavePlace> list = SavePlaceList.GetList((SavePlaceType) comboBox_SelectType.SelectedIndex, textBox_SearchString.Text);
+      listBox_SavePlaceList.BeginUpdate();
+      listBox_SavePlaceList.Items.Clear();
       foreach (SavePlace savePlace in list)
       {
-        if (this._afterEnding || savePlace.Index != ushort.MaxValue)
-          this.listBox_SavePlaceList.Items.Add((object) savePlace);
+        if (_afterEnding || savePlace.Index != ushort.MaxValue)
+          listBox_SavePlaceList.Items.Add(savePlace);
       }
-      this.listBox_SavePlaceList.EndUpdate();
-      this.button_OK.Enabled = false;
+      listBox_SavePlaceList.EndUpdate();
+      button_OK.Enabled = false;
     }
 
-    private void textBox_SearchString_TextChanged(object sender, EventArgs e) => this.RenewalList();
+    private void textBox_SearchString_TextChanged(object sender, EventArgs e) => RenewalList();
 
     private void listBox_ItemList_MouseDoubleClick(object sender, MouseEventArgs e)
     {
-      if (this.listBox_SavePlaceList.IndexFromPoint(e.Location) == -1)
+      if (listBox_SavePlaceList.IndexFromPoint(e.Location) == -1)
         return;
-      this._selectedSavePlace = this.listBox_SavePlaceList.SelectedItem as SavePlace;
-      this.DialogResult = DialogResult.OK;
+      _selectedSavePlace = listBox_SavePlaceList.SelectedItem as SavePlace;
+      DialogResult = DialogResult.OK;
     }
 
     private void listBox_ItemList_SelectedIndexChanged(object sender, EventArgs e)
     {
-      this.button_OK.Enabled = this.listBox_SavePlaceList.SelectedIndex != -1;
+      button_OK.Enabled = listBox_SavePlaceList.SelectedIndex != -1;
     }
 
     private void button_OK_Click(object sender, EventArgs e)
     {
-      this._selectedSavePlace = this.listBox_SavePlaceList.SelectedItem as SavePlace;
+      _selectedSavePlace = listBox_SavePlaceList.SelectedItem as SavePlace;
     }
 
     private void comboBox_SelectType_SelectedIndexChanged(object sender, EventArgs e)
     {
-      this.textBox_SearchString.Text = string.Empty;
-      this.RenewalList();
+      textBox_SearchString.Text = string.Empty;
+      RenewalList();
     }
   }
 }

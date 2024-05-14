@@ -2,12 +2,11 @@
 // Type: DQ9_Cheat.Controls.VisionControls.VisionControlBase
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
 using System.Drawing;
 using System.Windows.Forms;
 
-#nullable disable
 namespace DQ9_Cheat.Controls.VisionControls
 {
   public abstract class VisionControlBase
@@ -32,101 +31,101 @@ namespace DQ9_Cheat.Controls.VisionControls
       float dpiRateX,
       float dpiRateY)
     {
-      this._mouseEntered = false;
-      this._left = (int) ((double) left * (double) dpiRateX);
-      this._top = (int) ((double) top * (double) dpiRateY);
-      this._width = (int) ((double) width * (double) dpiRateX);
-      this._height = (int) ((double) height * (double) dpiRateY);
+      _mouseEntered = false;
+      _left = (int) (left * (double) dpiRateX);
+      _top = (int) (top * (double) dpiRateY);
+      _width = (int) (width * (double) dpiRateX);
+      _height = (int) (height * (double) dpiRateY);
     }
 
     public VisionControlBase(int left, int top, int width, int height)
     {
-      this._mouseEntered = false;
-      this._left = left;
-      this._top = top;
-      this._width = width;
-      this._height = height;
+      _mouseEntered = false;
+      _left = left;
+      _top = top;
+      _width = width;
+      _height = height;
     }
 
-    public bool MouseEntered => this._mouseEntered;
+    public bool MouseEntered => _mouseEntered;
 
     public Control Parent
     {
-      get => this._parentControl;
+      get => _parentControl;
       set
       {
-        this._parentControl = value;
-        this.Regist(this._parentControl);
+        _parentControl = value;
+        Regist(_parentControl);
       }
     }
 
     public object Tag
     {
-      get => this._tag;
-      set => this._tag = value;
+      get => _tag;
+      set => _tag = value;
     }
 
     public bool TabStop
     {
-      get => this._innerControl.TabStop;
-      set => this._innerControl.TabStop = value;
+      get => _innerControl.TabStop;
+      set => _innerControl.TabStop = value;
     }
 
     public int TabIndex
     {
-      get => this._innerControl.TabIndex;
-      set => this._innerControl.TabIndex = value;
+      get => _innerControl.TabIndex;
+      set => _innerControl.TabIndex = value;
     }
 
     public int Left
     {
-      get => this._left;
-      set => this._left = value;
+      get => _left;
+      set => _left = value;
     }
 
-    public int Right => this._left + this._width;
+    public int Right => _left + _width;
 
     public int Top
     {
-      get => this._top;
-      set => this._top = value;
+      get => _top;
+      set => _top = value;
     }
 
-    public int Bottom => this._top + this._height;
+    public int Bottom => _top + _height;
 
     public int Width
     {
-      get => this._width;
-      set => this._width = value;
+      get => _width;
+      set => _width = value;
     }
 
     public int Height
     {
-      get => this._height;
-      set => this._height = value;
+      get => _height;
+      set => _height = value;
     }
 
     public bool Visible
     {
-      get => this._visible;
+      get => _visible;
       set
       {
-        this._visible = value;
-        if (this._innerControl != null)
-          this._innerControl.Visible = value;
-        this.DrawControl();
+        _visible = value;
+        if (_innerControl != null)
+          _innerControl.Visible = value;
+        DrawControl();
       }
     }
 
     public bool Enable
     {
-      get => this._enable;
+      get => _enable;
       set
       {
-        this._enable = value;
-        if (this._innerControl == null)
+        _enable = value;
+        if (_innerControl == null)
           return;
-        this._innerControl.Enabled = value;
+        _innerControl.Enabled = value;
       }
     }
 
@@ -134,42 +133,42 @@ namespace DQ9_Cheat.Controls.VisionControls
     {
     }
 
-    protected void BeginUpdate() => ++this._updateCount;
+    protected void BeginUpdate() => ++_updateCount;
 
     protected void EndUpdate()
     {
-      if (this._updateCount <= 0)
+      if (_updateCount <= 0)
         return;
-      --this._updateCount;
+      --_updateCount;
     }
 
     public void Focus()
     {
-      if (this._innerControl == null)
+      if (_innerControl == null)
         return;
-      this._innerControl.Focus();
+      _innerControl.Focus();
     }
 
     public virtual bool HitTest(int x, int y)
     {
-      return x >= this._left && x < this._left + this._width && y >= this._top && y < this._top + this._height;
+      return x >= _left && x < _left + _width && y >= _top && y < _top + _height;
     }
 
     internal void MouseMove(int x, int y)
     {
-      if (this._mouseEntered)
+      if (_mouseEntered)
       {
-        if (this.HitTest(x, y))
+        if (HitTest(x, y))
           return;
-        this._mouseEntered = false;
-        this.MouseLeave();
+        _mouseEntered = false;
+        MouseLeave();
       }
       else
       {
-        if (!this.HitTest(x, y))
+        if (!HitTest(x, y))
           return;
-        this._mouseEntered = true;
-        this.MouseEnter();
+        _mouseEntered = true;
+        MouseEnter();
       }
     }
 
@@ -183,10 +182,10 @@ namespace DQ9_Cheat.Controls.VisionControls
 
     public virtual void DrawControl()
     {
-      if (this._parentControl == null)
+      if (_parentControl == null)
         return;
-      using (Graphics graphic = Graphics.FromHwnd(this._parentControl.Handle))
-        this.DrawControl(graphic);
+      using (Graphics graphic = Graphics.FromHwnd(_parentControl.Handle))
+        DrawControl(graphic);
     }
 
     public abstract void DrawControl(Graphics graphic);

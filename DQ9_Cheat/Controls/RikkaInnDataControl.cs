@@ -2,17 +2,16 @@
 // Type: DQ9_Cheat.Controls.RikkaInnDataControl
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-using DQ9_Cheat.Controls.VisionControls;
-using DQ9_Cheat.DataManager;
-using DQ9_Cheat.GameData;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DQ9_Cheat.Controls.VisionControls;
+using DQ9_Cheat.DataManager;
+using DQ9_Cheat.GameData;
 
-#nullable disable
 namespace DQ9_Cheat.Controls
 {
   public class RikkaInnDataControl : DataControlBase
@@ -31,273 +30,273 @@ namespace DQ9_Cheat.Controls
 
     public RikkaInnDataControl()
     {
-      this.AutoScaleMode = AutoScaleMode.None;
-      this.InitializeComponent();
-      this._numericUpDown_OwnUID = new SafeNumericUpDown();
-      this._numericUpDown_OwnUID.Minimum = 1M;
-      this._numericUpDown_OwnUID.Maximum = 281474976710655M;
-      this._numericUpDown_OwnUID.Hexadecimal = true;
-      this._numericUpDown_OwnUID.Location = new Point(13, 32);
-      this._numericUpDown_OwnUID.Size = new Size(120, 19);
-      this._numericUpDown_OwnUID.ValueChanged += new EventHandler(this._numericUpDown_OwnUID_ValueChanged);
-      this.Controls.Add((Control) this._numericUpDown_OwnUID);
-      this._numericUpDownVisitorCount = new VisionNumericUpDown(43, 75, 90, 19);
-      this._numericUpDownVisitorCount.ValueChanged += new EventHandler(this._numericUpDownVisitorCount_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDownVisitorCount);
-      this._numericUpDownGrade = new VisionNumericUpDown(80, 100, 53, 19);
-      this._numericUpDownGrade.ValueChanged += new EventHandler(this._numericUpDownGrade_ValueChanged);
-      this.AddVisionControl((VisionControlBase) this._numericUpDownGrade);
+      AutoScaleMode = AutoScaleMode.None;
+      InitializeComponent();
+      _numericUpDown_OwnUID = new SafeNumericUpDown();
+      _numericUpDown_OwnUID.Minimum = 1M;
+      _numericUpDown_OwnUID.Maximum = 281474976710655M;
+      _numericUpDown_OwnUID.Hexadecimal = true;
+      _numericUpDown_OwnUID.Location = new Point(13, 32);
+      _numericUpDown_OwnUID.Size = new Size(120, 19);
+      _numericUpDown_OwnUID.ValueChanged += _numericUpDown_OwnUID_ValueChanged;
+      Controls.Add(_numericUpDown_OwnUID);
+      _numericUpDownVisitorCount = new VisionNumericUpDown(43, 75, 90, 19);
+      _numericUpDownVisitorCount.ValueChanged += _numericUpDownVisitorCount_ValueChanged;
+      AddVisionControl(_numericUpDownVisitorCount);
+      _numericUpDownGrade = new VisionNumericUpDown(80, 100, 53, 19);
+      _numericUpDownGrade.ValueChanged += _numericUpDownGrade_ValueChanged;
+      AddVisionControl(_numericUpDownGrade);
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && this.components != null)
-        this.components.Dispose();
+      if (disposing && components != null)
+        components.Dispose();
       base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
       ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof (RikkaInnDataControl));
-      this.listBox_StayingMember = new ListBox();
-      this.groupBox_StayingList = new StayingListGroupBox();
-      this.panel1 = new Panel();
-      this.toolStrip1 = new ToolStrip();
-      this.toolButton_AddMember = new ToolStripButton();
-      this.toolButton_Remove = new ToolStripButton();
-      this.checkedListBox_VipNPC = new CheckedListBox();
-      this.groupBox_StayingList.SuspendLayout();
-      this.panel1.SuspendLayout();
-      this.toolStrip1.SuspendLayout();
-      this.SuspendLayout();
-      this.listBox_StayingMember.Dock = DockStyle.Fill;
-      this.listBox_StayingMember.FormattingEnabled = true;
-      this.listBox_StayingMember.ItemHeight = 12;
-      this.listBox_StayingMember.Location = new Point(0, 0);
-      this.listBox_StayingMember.Name = "listBox_StayingMember";
-      this.listBox_StayingMember.Size = new Size(90, 220);
-      this.listBox_StayingMember.TabIndex = 0;
-      this.listBox_StayingMember.SelectedIndexChanged += new EventHandler(this.listBox_StayingMember_SelectedIndexChanged);
-      this.groupBox_StayingList.Controls.Add((Control) this.panel1);
-      this.groupBox_StayingList.Location = new Point(142, 8);
-      this.groupBox_StayingList.Name = "groupBox_StayingList";
-      this.groupBox_StayingList.Size = new Size(859, 499);
-      this.groupBox_StayingList.TabIndex = 1;
-      this.groupBox_StayingList.TabStop = false;
-      this.groupBox_StayingList.Text = "Guest List";
-      this.panel1.BorderStyle = BorderStyle.Fixed3D;
-      this.panel1.Controls.Add((Control) this.toolStrip1);
-      this.panel1.Controls.Add((Control) this.listBox_StayingMember);
-      this.panel1.Location = new Point(12, 18);
-      this.panel1.Name = "panel1";
-      this.panel1.Size = new Size(94, 249);
-      this.panel1.TabIndex = 1;
-      this.toolStrip1.Dock = DockStyle.Bottom;
-      this.toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
-      this.toolStrip1.Items.AddRange(new ToolStripItem[2]
+      listBox_StayingMember = new ListBox();
+      groupBox_StayingList = new StayingListGroupBox();
+      panel1 = new Panel();
+      toolStrip1 = new ToolStrip();
+      toolButton_AddMember = new ToolStripButton();
+      toolButton_Remove = new ToolStripButton();
+      checkedListBox_VipNPC = new CheckedListBox();
+      groupBox_StayingList.SuspendLayout();
+      panel1.SuspendLayout();
+      toolStrip1.SuspendLayout();
+      SuspendLayout();
+      listBox_StayingMember.Dock = DockStyle.Fill;
+      listBox_StayingMember.FormattingEnabled = true;
+      listBox_StayingMember.ItemHeight = 12;
+      listBox_StayingMember.Location = new Point(0, 0);
+      listBox_StayingMember.Name = "listBox_StayingMember";
+      listBox_StayingMember.Size = new Size(90, 220);
+      listBox_StayingMember.TabIndex = 0;
+      listBox_StayingMember.SelectedIndexChanged += listBox_StayingMember_SelectedIndexChanged;
+      groupBox_StayingList.Controls.Add(panel1);
+      groupBox_StayingList.Location = new Point(142, 8);
+      groupBox_StayingList.Name = "groupBox_StayingList";
+      groupBox_StayingList.Size = new Size(859, 499);
+      groupBox_StayingList.TabIndex = 1;
+      groupBox_StayingList.TabStop = false;
+      groupBox_StayingList.Text = "Guest List";
+      panel1.BorderStyle = BorderStyle.Fixed3D;
+      panel1.Controls.Add(toolStrip1);
+      panel1.Controls.Add(listBox_StayingMember);
+      panel1.Location = new Point(12, 18);
+      panel1.Name = "panel1";
+      panel1.Size = new Size(94, 249);
+      panel1.TabIndex = 1;
+      toolStrip1.Dock = DockStyle.Bottom;
+      toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
+      toolStrip1.Items.AddRange(new ToolStripItem[2]
       {
-        (ToolStripItem) this.toolButton_AddMember,
-        (ToolStripItem) this.toolButton_Remove
+        toolButton_AddMember,
+        toolButton_Remove
       });
-      this.toolStrip1.Location = new Point(0, 220);
-      this.toolStrip1.Name = "toolStrip1";
-      this.toolStrip1.Size = new Size(90, 25);
-      this.toolStrip1.TabIndex = 1;
-      this.toolStrip1.Text = "toolStrip1";
-      this.toolButton_AddMember.DisplayStyle = ToolStripItemDisplayStyle.Image;
-      this.toolButton_AddMember.Image = (Image) componentResourceManager.GetObject("toolButton_AddMember.Image");
-      this.toolButton_AddMember.ImageTransparentColor = Color.Magenta;
-      this.toolButton_AddMember.Name = "toolButton_AddMember";
-      this.toolButton_AddMember.Size = new Size(23, 22);
-      this.toolButton_AddMember.Text = "Add";
-      this.toolButton_AddMember.Click += new EventHandler(this.toolButton_AddMember_Click);
-      this.toolButton_Remove.DisplayStyle = ToolStripItemDisplayStyle.Image;
-      this.toolButton_Remove.Image = (Image) componentResourceManager.GetObject("toolButton_Remove.Image");
-      this.toolButton_Remove.ImageTransparentColor = Color.Magenta;
-      this.toolButton_Remove.Name = "toolButton_Remove";
-      this.toolButton_Remove.Size = new Size(23, 22);
-      this.toolButton_Remove.Text = "Remove";
-      this.toolButton_Remove.Click += new EventHandler(this.toolButton_Remove_Click);
-      this.checkedListBox_VipNPC.FormattingEnabled = true;
-      this.checkedListBox_VipNPC.Items.AddRange(new object[23]
+      toolStrip1.Location = new Point(0, 220);
+      toolStrip1.Name = "toolStrip1";
+      toolStrip1.Size = new Size(90, 25);
+      toolStrip1.TabIndex = 1;
+      toolStrip1.Text = "toolStrip1";
+      toolButton_AddMember.DisplayStyle = ToolStripItemDisplayStyle.Image;
+      toolButton_AddMember.Image = (Image) componentResourceManager.GetObject("toolButton_AddMember.Image");
+      toolButton_AddMember.ImageTransparentColor = Color.Magenta;
+      toolButton_AddMember.Name = "toolButton_AddMember";
+      toolButton_AddMember.Size = new Size(23, 22);
+      toolButton_AddMember.Text = "Add";
+      toolButton_AddMember.Click += toolButton_AddMember_Click;
+      toolButton_Remove.DisplayStyle = ToolStripItemDisplayStyle.Image;
+      toolButton_Remove.Image = (Image) componentResourceManager.GetObject("toolButton_Remove.Image");
+      toolButton_Remove.ImageTransparentColor = Color.Magenta;
+      toolButton_Remove.Name = "toolButton_Remove";
+      toolButton_Remove.Size = new Size(23, 22);
+      toolButton_Remove.Text = "Remove";
+      toolButton_Remove.Click += toolButton_Remove_Click;
+      checkedListBox_VipNPC.FormattingEnabled = true;
+      checkedListBox_VipNPC.Items.AddRange(new object[23]
       {
-        (object) "Princeton",
-        (object) "Princessa",
-        (object) "Alena",
-        (object) "Kiryl",
-        (object) "Borya",
-        (object) "Meena",
-        (object) "Maya",
-        (object) "Torneko",
-        (object) "Ragnar",
-        (object) "Bianca",
-        (object) "Nera",
-        (object) "Debora",
-        (object) "Milly",
-        (object) "Carver",
-        (object) "Ashlynn",
-        (object) "Kiefer",
-        (object) "Maribel",
-        (object) "Jessica",
-        (object) "Angelo",
-        (object) "Yangus",
-        (object) "Trode",
-        (object) "Morrie",
-        (object) "Fleurette"
+        "Princeton",
+        "Princessa",
+        "Alena",
+        "Kiryl",
+        "Borya",
+        "Meena",
+        "Maya",
+        "Torneko",
+        "Ragnar",
+        "Bianca",
+        "Nera",
+        "Debora",
+        "Milly",
+        "Carver",
+        "Ashlynn",
+        "Kiefer",
+        "Maribel",
+        "Jessica",
+        "Angelo",
+        "Yangus",
+        "Trode",
+        "Morrie",
+        "Fleurette"
       });
-      this.checkedListBox_VipNPC.Location = new Point(24, 150);
-      this.checkedListBox_VipNPC.Name = "checkedListBox_VipNPC";
-      this.checkedListBox_VipNPC.Size = new Size(109, 350);
-      this.checkedListBox_VipNPC.TabIndex = 3;
-      this.checkedListBox_VipNPC.ItemCheck += new ItemCheckEventHandler(this.checkedListBox_VipNPC_ItemCheck);
-      this.AutoScaleDimensions = new SizeF(6f, 12f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.Controls.Add((Control) this.checkedListBox_VipNPC);
-      this.Controls.Add((Control) this.groupBox_StayingList);
-      this.Name = nameof (RikkaInnDataControl);
-      this.Size = new Size(1015, 516);
-      this.groupBox_StayingList.ResumeLayout(false);
-      this.panel1.ResumeLayout(false);
-      this.panel1.PerformLayout();
-      this.toolStrip1.ResumeLayout(false);
-      this.toolStrip1.PerformLayout();
-      this.ResumeLayout(false);
+      checkedListBox_VipNPC.Location = new Point(24, 150);
+      checkedListBox_VipNPC.Name = "checkedListBox_VipNPC";
+      checkedListBox_VipNPC.Size = new Size(109, 350);
+      checkedListBox_VipNPC.TabIndex = 3;
+      checkedListBox_VipNPC.ItemCheck += checkedListBox_VipNPC_ItemCheck;
+      AutoScaleDimensions = new SizeF(6f, 12f);
+      AutoScaleMode = AutoScaleMode.Font;
+      Controls.Add(checkedListBox_VipNPC);
+      Controls.Add(groupBox_StayingList);
+      Name = nameof (RikkaInnDataControl);
+      Size = new Size(1015, 516);
+      groupBox_StayingList.ResumeLayout(false);
+      panel1.ResumeLayout(false);
+      panel1.PerformLayout();
+      toolStrip1.ResumeLayout(false);
+      toolStrip1.PerformLayout();
+      ResumeLayout(false);
     }
 
-    public SafeNumericUpDown NumericUpDown_OwnUID => this._numericUpDown_OwnUID;
+    public SafeNumericUpDown NumericUpDown_OwnUID => _numericUpDown_OwnUID;
 
-    public VisionNumericUpDown NumericUpDownVisitorCount => this._numericUpDownVisitorCount;
+    public VisionNumericUpDown NumericUpDownVisitorCount => _numericUpDownVisitorCount;
 
-    public VisionNumericUpDown NumericUpDownGrade => this._numericUpDownGrade;
+    public VisionNumericUpDown NumericUpDownGrade => _numericUpDownGrade;
 
     protected override void OnValueUpdate()
     {
       RikkaData rikkaData = SaveDataManager.Instance.SaveData.RikkaData;
-      this.BeginUpdate();
-      this._numericUpDown_OwnUID.Value = (Decimal) rikkaData.UID;
-      this._numericUpDownVisitorCount.Value = (Decimal) rikkaData.VisitorCount;
-      this._numericUpDownGrade.Value = (Decimal) rikkaData.Grade;
-      this.RenewalListBox();
-      this.RenewalListBoxToolBar();
-      this.RenewalGroupBoxStaying();
+      BeginUpdate();
+      _numericUpDown_OwnUID.Value = rikkaData.UID;
+      _numericUpDownVisitorCount.Value = rikkaData.VisitorCount;
+      _numericUpDownGrade.Value = rikkaData.Grade;
+      RenewalListBox();
+      RenewalListBoxToolBar();
+      RenewalGroupBoxStaying();
       for (int index = 0; index < HistoryCharacterList.List.Count; ++index)
-        this.checkedListBox_VipNPC.SetItemChecked(index, rikkaData.IsHistoryCharacter(index));
-      this.EndUpdate();
+        checkedListBox_VipNPC.SetItemChecked(index, rikkaData.IsHistoryCharacter(index));
+      EndUpdate();
     }
 
     private void RenewalListBoxToolBar()
     {
       RikkaData rikkaData = SaveDataManager.Instance.SaveData.RikkaData;
-      this.toolButton_Remove.Enabled = this.listBox_StayingMember.SelectedIndex != -1;
-      this.toolButton_AddMember.Enabled = rikkaData.VisitorManager.VisitorCount.Value < (byte) 30;
+      toolButton_Remove.Enabled = listBox_StayingMember.SelectedIndex != -1;
+      toolButton_AddMember.Enabled = rikkaData.VisitorManager.VisitorCount.Value < 30;
     }
 
     public void RenewalListBox()
     {
       RikkaData rikkaData = SaveDataManager.Instance.SaveData.RikkaData;
-      this.listBox_StayingMember.BeginUpdate();
-      int selectedIndex = this.listBox_StayingMember.SelectedIndex;
-      this.listBox_StayingMember.Items.Clear();
+      listBox_StayingMember.BeginUpdate();
+      int selectedIndex = listBox_StayingMember.SelectedIndex;
+      listBox_StayingMember.Items.Clear();
       int index1 = 0;
-      for (int index2 = 0; index2 < (int) rikkaData.VisitorManager.VisitorCount.Value && index1 < 30; ++index1)
+      for (int index2 = 0; index2 < rikkaData.VisitorManager.VisitorCount.Value && index1 < 30; ++index1)
       {
         if (rikkaData.VisitorManager.VisitorData[index1].SEQ != 0U)
         {
-          this.listBox_StayingMember.Items.Add((object) new RikkaInnDataControl.listBox_StayingMemberItem(rikkaData.VisitorManager.VisitorData[index1].Name.Value, index1));
+          listBox_StayingMember.Items.Add(new listBox_StayingMemberItem(rikkaData.VisitorManager.VisitorData[index1].Name.Value, index1));
           ++index2;
         }
       }
-      if (this.listBox_StayingMember.Items.Count > selectedIndex)
-        this.listBox_StayingMember.SelectedIndex = selectedIndex;
-      else if (this.listBox_StayingMember.Items.Count > 0)
-        this.listBox_StayingMember.SelectedIndex = 0;
-      this.listBox_StayingMember.EndUpdate();
+      if (listBox_StayingMember.Items.Count > selectedIndex)
+        listBox_StayingMember.SelectedIndex = selectedIndex;
+      else if (listBox_StayingMember.Items.Count > 0)
+        listBox_StayingMember.SelectedIndex = 0;
+      listBox_StayingMember.EndUpdate();
     }
 
     private void _numericUpDown_OwnUID_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.RikkaData.UID = (ulong) this._numericUpDown_OwnUID.Value;
+      SaveDataManager.Instance.SaveData.RikkaData.UID = (ulong) _numericUpDown_OwnUID.Value;
     }
 
     private void _numericUpDownVisitorCount_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.RikkaData.VisitorCount = (uint) this._numericUpDownVisitorCount.Value;
+      SaveDataManager.Instance.SaveData.RikkaData.VisitorCount = (uint) _numericUpDownVisitorCount.Value;
     }
 
     private void _numericUpDownGrade_ValueChanged(object sender, EventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
-      SaveDataManager.Instance.SaveData.RikkaData.Grade = (byte) this._numericUpDownGrade.Value;
+      SaveDataManager.Instance.SaveData.RikkaData.Grade = (byte) _numericUpDownGrade.Value;
     }
 
     protected override void OnPaint(PaintEventArgs e)
     {
       base.OnPaint(e);
-      using (Brush brush = (Brush) new SolidBrush(SystemColors.ControlText))
+      using (Brush brush = new SolidBrush(SystemColors.ControlText))
       {
-        e.Graphics.DrawString("UID", this.Font, brush, new PointF(8f, 18f));
-        e.Graphics.DrawString("Visitors", this.Font, brush, new PointF(8f, 56f));
-        e.Graphics.DrawString("Inn Grade", this.Font, brush, new PointF(13f, 103f));
-        e.Graphics.DrawString("Historical Characters", this.Font, brush, new PointF(15f, 130f));
+        e.Graphics.DrawString("UID", Font, brush, new PointF(8f, 18f));
+        e.Graphics.DrawString("Visitors", Font, brush, new PointF(8f, 56f));
+        e.Graphics.DrawString("Inn Grade", Font, brush, new PointF(13f, 103f));
+        e.Graphics.DrawString("Historical Characters", Font, brush, new PointF(15f, 130f));
       }
     }
 
     private void listBox_StayingMember_SelectedIndexChanged(object sender, EventArgs e)
     {
-      if (this._updateCount == 0)
-        this.RenewalGroupBoxStaying();
-      this.RenewalListBoxToolBar();
+      if (_updateCount == 0)
+        RenewalGroupBoxStaying();
+      RenewalListBoxToolBar();
     }
 
     private void toolButton_AddMember_Click(object sender, EventArgs e)
     {
       VisitorManager visitorManager = SaveDataManager.Instance.SaveData.RikkaData.VisitorManager;
-      if (visitorManager.VisitorCount.Value >= (byte) 30)
+      if (visitorManager.VisitorCount.Value >= 30)
         return;
-      this.BeginUpdate();
+      BeginUpdate();
       visitorManager.CreateCharacter();
-      this._numericUpDownVisitorCount.Value = (Decimal) SaveDataManager.Instance.SaveData.RikkaData.VisitorCount;
-      this.EndUpdate();
-      this.RenewalListBox();
-      this.listBox_StayingMember.SelectedIndex = (int) visitorManager.VisitorCount.Value - 1;
+      _numericUpDownVisitorCount.Value = SaveDataManager.Instance.SaveData.RikkaData.VisitorCount;
+      EndUpdate();
+      RenewalListBox();
+      listBox_StayingMember.SelectedIndex = visitorManager.VisitorCount.Value - 1;
     }
 
     private void toolButton_Remove_Click(object sender, EventArgs e)
     {
-      if (!(this.listBox_StayingMember.SelectedItem is RikkaInnDataControl.listBox_StayingMemberItem selectedItem))
+      if (!(listBox_StayingMember.SelectedItem is listBox_StayingMemberItem selectedItem))
         return;
-      int selectedIndex = this.listBox_StayingMember.SelectedIndex;
+      int selectedIndex = listBox_StayingMember.SelectedIndex;
       int index = selectedItem.Index;
       VisitorManager visitorManager = SaveDataManager.Instance.SaveData.RikkaData.VisitorManager;
       visitorManager.DeleteVisitor(index);
-      this.RenewalListBox();
-      if (visitorManager.VisitorCount.Value > (byte) 0)
+      RenewalListBox();
+      if (visitorManager.VisitorCount.Value > 0)
       {
-        this.listBox_StayingMember.SelectedIndex = selectedIndex == 0 ? 0 : selectedIndex - 1;
+        listBox_StayingMember.SelectedIndex = selectedIndex == 0 ? 0 : selectedIndex - 1;
       }
       else
       {
-        this.listBox_StayingMember.SelectedIndex = -1;
-        this.RenewalGroupBoxStaying();
-        this.RenewalListBoxToolBar();
+        listBox_StayingMember.SelectedIndex = -1;
+        RenewalGroupBoxStaying();
+        RenewalListBoxToolBar();
       }
     }
 
     private void checkedListBox_VipNPC_ItemCheck(object sender, ItemCheckEventArgs e)
     {
-      if (this._updateCount != 0)
+      if (_updateCount != 0)
         return;
       SaveDataManager.Instance.SaveData.RikkaData.SetHistoryCharacter(e.Index, e.NewValue == CheckState.Checked);
     }
 
     private void RenewalGroupBoxStaying()
     {
-      this.groupBox_StayingList.OnValueUpdate(!(this.listBox_StayingMember.SelectedItem is RikkaInnDataControl.listBox_StayingMemberItem selectedItem) ? -1 : selectedItem.Index);
+      groupBox_StayingList.OnValueUpdate(!(listBox_StayingMember.SelectedItem is listBox_StayingMemberItem selectedItem) ? -1 : selectedItem.Index);
     }
 
     private class listBox_StayingMemberItem
@@ -307,13 +306,13 @@ namespace DQ9_Cheat.Controls
 
       public listBox_StayingMemberItem(string name, int index)
       {
-        this._name = name;
-        this._index = index;
+        _name = name;
+        _index = index;
       }
 
-      public int Index => this._index;
+      public int Index => _index;
 
-      public override string ToString() => this._name;
+      public override string ToString() => _name;
     }
   }
 }

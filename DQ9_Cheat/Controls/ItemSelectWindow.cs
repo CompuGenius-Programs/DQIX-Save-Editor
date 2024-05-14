@@ -2,16 +2,15 @@
 // Type: DQ9_Cheat.Controls.ItemSelectWindow
 // Assembly: DQ9_Cheat, Version=0.7.0.57, Culture=neutral, PublicKeyToken=null
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
-// Assembly location: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
+// Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-using DQ9_Cheat.GameData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DQ9_Cheat.GameData;
 
-#nullable disable
 namespace DQ9_Cheat.Controls
 {
   public class ItemSelectWindow : Form
@@ -30,13 +29,13 @@ namespace DQ9_Cheat.Controls
 
     public ItemSelectWindow(ItemType[] itemTypes)
     {
-      this.InitializeComponent();
+      InitializeComponent();
       if (itemTypes.Length == 0)
         return;
-      this._itemTypes.AddRange((IEnumerable<ItemType>) itemTypes);
+      _itemTypes.AddRange(itemTypes);
       foreach (ItemType itemType in itemTypes)
       {
-        string str = (string) null;
+        string str = null;
         switch (itemType)
         {
           case ItemType.Tool:
@@ -71,198 +70,198 @@ namespace DQ9_Cheat.Controls
             break;
         }
         if (str != null)
-          this.comboBox_SelectType.Items.Add((object) str);
+          comboBox_SelectType.Items.Add(str);
       }
-      this.comboBox_SelectType.SelectedIndex = 0;
-      this._itemType = itemTypes[0];
-      this.RenewalCaption();
-      this.RenewalList();
+      comboBox_SelectType.SelectedIndex = 0;
+      _itemType = itemTypes[0];
+      RenewalCaption();
+      RenewalList();
     }
 
     public ItemSelectWindow(ItemType itemType)
     {
-      this.InitializeComponent();
-      this.comboBox_SelectType.Enabled = false;
-      this.comboBox_SelectType.Visible = false;
-      this.label_TypeName.Visible = false;
-      this.label_Search.Top -= 26;
-      this.textBox_SearchString.Top -= 26;
-      this.listBox_ItemList.Top -= 26;
-      this.button_OK.Top -= 26;
-      this.button_Cancel.Top -= 26;
-      this.Height -= 26;
-      this._itemType = itemType;
-      this.RenewalCaption();
-      this.RenewalList();
+      InitializeComponent();
+      comboBox_SelectType.Enabled = false;
+      comboBox_SelectType.Visible = false;
+      label_TypeName.Visible = false;
+      label_Search.Top -= 26;
+      textBox_SearchString.Top -= 26;
+      listBox_ItemList.Top -= 26;
+      button_OK.Top -= 26;
+      button_Cancel.Top -= 26;
+      Height -= 26;
+      _itemType = itemType;
+      RenewalCaption();
+      RenewalList();
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && this.components != null)
-        this.components.Dispose();
+      if (disposing && components != null)
+        components.Dispose();
       base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      this.textBox_SearchString = new TextBox();
-      this.label_Search = new Label();
-      this.listBox_ItemList = new ListBox();
-      this.button_OK = new Button();
-      this.button_Cancel = new Button();
-      this.comboBox_SelectType = new ComboBox();
-      this.label_TypeName = new Label();
-      this.SuspendLayout();
-      this.textBox_SearchString.Location = new Point(47, 32);
-      this.textBox_SearchString.Name = "textBox_SearchString";
-      this.textBox_SearchString.Size = new Size((int) sbyte.MaxValue, 19);
-      this.textBox_SearchString.TabIndex = 0;
-      this.textBox_SearchString.TextChanged += new EventHandler(this.textBox_SearchString_TextChanged);
-      this.label_Search.AutoSize = true;
-      this.label_Search.Location = new Point(5, 35);
-      this.label_Search.Name = "label_Search";
-      this.label_Search.Size = new Size(29, 12);
-      this.label_Search.TabIndex = 1;
-      this.label_Search.Text = "Search";
-      this.label_Search.TextAlign = ContentAlignment.MiddleRight;
-      this.listBox_ItemList.FormattingEnabled = true;
-      this.listBox_ItemList.ItemHeight = 12;
-      this.listBox_ItemList.Location = new Point(14, 57);
-      this.listBox_ItemList.Name = "listBox_ItemList";
-      this.listBox_ItemList.Size = new Size(160, 256);
-      this.listBox_ItemList.TabIndex = 1;
-      this.listBox_ItemList.MouseDoubleClick += new MouseEventHandler(this.listBox_ItemList_MouseDoubleClick);
-      this.listBox_ItemList.SelectedIndexChanged += new EventHandler(this.listBox_ItemList_SelectedIndexChanged);
-      this.button_OK.DialogResult = DialogResult.OK;
-      this.button_OK.Enabled = false;
-      this.button_OK.Location = new Point(46, 317);
-      this.button_OK.Name = "button_OK";
-      this.button_OK.Size = new Size(61, 23);
-      this.button_OK.TabIndex = 2;
-      this.button_OK.Text = "OK";
-      this.button_OK.UseVisualStyleBackColor = true;
-      this.button_OK.Click += new EventHandler(this.button_OK_Click);
-      this.button_Cancel.DialogResult = DialogResult.Cancel;
-      this.button_Cancel.Location = new Point(113, 317);
-      this.button_Cancel.Name = "button_Cancel";
-      this.button_Cancel.Size = new Size(61, 23);
-      this.button_Cancel.TabIndex = 3;
-      this.button_Cancel.Text = "Cancel";
-      this.button_Cancel.UseVisualStyleBackColor = true;
-      this.comboBox_SelectType.DropDownStyle = ComboBoxStyle.DropDownList;
-      this.comboBox_SelectType.FormattingEnabled = true;
-      this.comboBox_SelectType.Location = new Point(47, 6);
-      this.comboBox_SelectType.Name = "comboBox_SelectType";
-      this.comboBox_SelectType.Size = new Size((int) sbyte.MaxValue, 20);
-      this.comboBox_SelectType.TabIndex = 4;
-      this.comboBox_SelectType.SelectedIndexChanged += new EventHandler(this.comboBox_SelectType_SelectedIndexChanged);
-      this.label_TypeName.AutoSize = true;
-      this.label_TypeName.Location = new Point(12, 10);
-      this.label_TypeName.Name = "label_TypeName";
-      this.label_TypeName.Size = new Size(29, 12);
-      this.label_TypeName.TabIndex = 5;
-      this.label_TypeName.Text = "Type";
-      this.AcceptButton = (IButtonControl) this.button_OK;
-      this.AutoScaleDimensions = new SizeF(6f, 12f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.CancelButton = (IButtonControl) this.button_Cancel;
-      this.ClientSize = new Size(186, 342);
-      this.Controls.Add((Control) this.label_TypeName);
-      this.Controls.Add((Control) this.comboBox_SelectType);
-      this.Controls.Add((Control) this.button_Cancel);
-      this.Controls.Add((Control) this.button_OK);
-      this.Controls.Add((Control) this.listBox_ItemList);
-      this.Controls.Add((Control) this.label_Search);
-      this.Controls.Add((Control) this.textBox_SearchString);
-      this.FormBorderStyle = FormBorderStyle.Fixed3D;
-      this.MaximizeBox = false;
-      this.MinimizeBox = false;
-      this.Name = nameof (ItemSelectWindow);
-      this.ShowIcon = false;
-      this.ShowInTaskbar = false;
-      this.StartPosition = FormStartPosition.Manual;
-      this.Text = "Item Options";
-      this.ResumeLayout(false);
-      this.PerformLayout();
+      textBox_SearchString = new TextBox();
+      label_Search = new Label();
+      listBox_ItemList = new ListBox();
+      button_OK = new Button();
+      button_Cancel = new Button();
+      comboBox_SelectType = new ComboBox();
+      label_TypeName = new Label();
+      SuspendLayout();
+      textBox_SearchString.Location = new Point(47, 32);
+      textBox_SearchString.Name = "textBox_SearchString";
+      textBox_SearchString.Size = new Size(sbyte.MaxValue, 19);
+      textBox_SearchString.TabIndex = 0;
+      textBox_SearchString.TextChanged += textBox_SearchString_TextChanged;
+      label_Search.AutoSize = true;
+      label_Search.Location = new Point(5, 35);
+      label_Search.Name = "label_Search";
+      label_Search.Size = new Size(29, 12);
+      label_Search.TabIndex = 1;
+      label_Search.Text = "Search";
+      label_Search.TextAlign = ContentAlignment.MiddleRight;
+      listBox_ItemList.FormattingEnabled = true;
+      listBox_ItemList.ItemHeight = 12;
+      listBox_ItemList.Location = new Point(14, 57);
+      listBox_ItemList.Name = "listBox_ItemList";
+      listBox_ItemList.Size = new Size(160, 256);
+      listBox_ItemList.TabIndex = 1;
+      listBox_ItemList.MouseDoubleClick += listBox_ItemList_MouseDoubleClick;
+      listBox_ItemList.SelectedIndexChanged += listBox_ItemList_SelectedIndexChanged;
+      button_OK.DialogResult = DialogResult.OK;
+      button_OK.Enabled = false;
+      button_OK.Location = new Point(46, 317);
+      button_OK.Name = "button_OK";
+      button_OK.Size = new Size(61, 23);
+      button_OK.TabIndex = 2;
+      button_OK.Text = "OK";
+      button_OK.UseVisualStyleBackColor = true;
+      button_OK.Click += button_OK_Click;
+      button_Cancel.DialogResult = DialogResult.Cancel;
+      button_Cancel.Location = new Point(113, 317);
+      button_Cancel.Name = "button_Cancel";
+      button_Cancel.Size = new Size(61, 23);
+      button_Cancel.TabIndex = 3;
+      button_Cancel.Text = "Cancel";
+      button_Cancel.UseVisualStyleBackColor = true;
+      comboBox_SelectType.DropDownStyle = ComboBoxStyle.DropDownList;
+      comboBox_SelectType.FormattingEnabled = true;
+      comboBox_SelectType.Location = new Point(47, 6);
+      comboBox_SelectType.Name = "comboBox_SelectType";
+      comboBox_SelectType.Size = new Size(sbyte.MaxValue, 20);
+      comboBox_SelectType.TabIndex = 4;
+      comboBox_SelectType.SelectedIndexChanged += comboBox_SelectType_SelectedIndexChanged;
+      label_TypeName.AutoSize = true;
+      label_TypeName.Location = new Point(12, 10);
+      label_TypeName.Name = "label_TypeName";
+      label_TypeName.Size = new Size(29, 12);
+      label_TypeName.TabIndex = 5;
+      label_TypeName.Text = "Type";
+      AcceptButton = button_OK;
+      AutoScaleDimensions = new SizeF(6f, 12f);
+      AutoScaleMode = AutoScaleMode.Font;
+      CancelButton = button_Cancel;
+      ClientSize = new Size(186, 342);
+      Controls.Add(label_TypeName);
+      Controls.Add(comboBox_SelectType);
+      Controls.Add(button_Cancel);
+      Controls.Add(button_OK);
+      Controls.Add(listBox_ItemList);
+      Controls.Add(label_Search);
+      Controls.Add(textBox_SearchString);
+      FormBorderStyle = FormBorderStyle.Fixed3D;
+      MaximizeBox = false;
+      MinimizeBox = false;
+      Name = nameof (ItemSelectWindow);
+      ShowIcon = false;
+      ShowInTaskbar = false;
+      StartPosition = FormStartPosition.Manual;
+      Text = "Item Options";
+      ResumeLayout(false);
+      PerformLayout();
     }
 
-    public ItemDataBase SelectedItem => this._selectedItem;
+    public ItemDataBase SelectedItem => _selectedItem;
 
     private void RenewalList()
     {
-      ItemDataBase[] itemDataBaseArray = this.textBox_SearchString.Text.Length <= 0 ? ItemDataList.GetList(this._itemType, (string) null) : ItemDataList.GetList(this._itemType, this.textBox_SearchString.Text);
-      this.listBox_ItemList.BeginUpdate();
-      this.listBox_ItemList.Items.Clear();
-      this.listBox_ItemList.Items.Add((object) "Empty");
+      ItemDataBase[] itemDataBaseArray = textBox_SearchString.Text.Length <= 0 ? ItemDataList.GetList(_itemType, null) : ItemDataList.GetList(_itemType, textBox_SearchString.Text);
+      listBox_ItemList.BeginUpdate();
+      listBox_ItemList.Items.Clear();
+      listBox_ItemList.Items.Add("Empty");
       foreach (object obj in itemDataBaseArray)
-        this.listBox_ItemList.Items.Add(obj);
-      this.listBox_ItemList.EndUpdate();
-      this.button_OK.Enabled = false;
+        listBox_ItemList.Items.Add(obj);
+      listBox_ItemList.EndUpdate();
+      button_OK.Enabled = false;
     }
 
-    private void textBox_SearchString_TextChanged(object sender, EventArgs e) => this.RenewalList();
+    private void textBox_SearchString_TextChanged(object sender, EventArgs e) => RenewalList();
 
     private void listBox_ItemList_MouseDoubleClick(object sender, MouseEventArgs e)
     {
-      if (this.listBox_ItemList.IndexFromPoint(e.Location) == -1)
+      if (listBox_ItemList.IndexFromPoint(e.Location) == -1)
         return;
-      this._selectedItem = this.listBox_ItemList.SelectedItem as ItemDataBase;
-      this.DialogResult = DialogResult.OK;
+      _selectedItem = listBox_ItemList.SelectedItem as ItemDataBase;
+      DialogResult = DialogResult.OK;
     }
 
     private void listBox_ItemList_SelectedIndexChanged(object sender, EventArgs e)
     {
-      this.button_OK.Enabled = this.listBox_ItemList.SelectedIndex != -1;
+      button_OK.Enabled = listBox_ItemList.SelectedIndex != -1;
     }
 
     private void button_OK_Click(object sender, EventArgs e)
     {
-      this._selectedItem = this.listBox_ItemList.SelectedItem as ItemDataBase;
+      _selectedItem = listBox_ItemList.SelectedItem as ItemDataBase;
     }
 
     private void RenewalCaption()
     {
-      switch (this._itemType)
+      switch (_itemType)
       {
         case ItemType.Tool:
-          this.Text = "Set Item";
+          Text = "Set Item";
           break;
         case ItemType.important:
-          this.Text = "Set Important Items";
+          Text = "Set Important Items";
           break;
         case ItemType.Weapon:
-          this.Text = "Set Weapon";
+          Text = "Set Weapon";
           break;
         case ItemType.Shield:
-          this.Text = "Set Shield";
+          Text = "Set Shield";
           break;
         case ItemType.Head:
-          this.Text = "Set Head";
+          Text = "Set Head";
           break;
         case ItemType.UpperBody:
-          this.Text = "Set Torso";
+          Text = "Set Torso";
           break;
         case ItemType.Arm:
-          this.Text = "Set Arms";
+          Text = "Set Arms";
           break;
         case ItemType.LowerBody:
-          this.Text = "Set Legs";
+          Text = "Set Legs";
           break;
         case ItemType.Shoe:
-          this.Text = "Set Feet";
+          Text = "Set Feet";
           break;
         case ItemType.Accessory:
-          this.Text = "Set Accessory";
+          Text = "Set Accessory";
           break;
       }
     }
 
     private void comboBox_SelectType_SelectedIndexChanged(object sender, EventArgs e)
     {
-      this._itemType = this._itemTypes[this.comboBox_SelectType.SelectedIndex];
-      this.textBox_SearchString.Text = string.Empty;
-      this.RenewalCaption();
-      this.RenewalList();
+      _itemType = _itemTypes[comboBox_SelectType.SelectedIndex];
+      textBox_SearchString.Text = string.Empty;
+      RenewalCaption();
+      RenewalList();
     }
   }
 }
