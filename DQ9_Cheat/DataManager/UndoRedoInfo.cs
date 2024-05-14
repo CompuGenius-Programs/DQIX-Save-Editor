@@ -7,47 +7,52 @@
 using System;
 using System.Collections.Generic;
 
-namespace DQ9_Cheat.DataManager
-{
-  internal class UndoRedoInfo
-  {
-    private List<UndoRedoElement> _undoRedoElementList = new List<UndoRedoElement>();
-    private bool _disposed;
+namespace DQ9_Cheat.DataManager;
 
-    public void Add(UndoRedoElement element) => _undoRedoElementList.Add(element);
+internal class UndoRedoInfo
+{
+    private bool _disposed;
+    private List<UndoRedoElement> _undoRedoElementList = new();
 
     public int Count => _undoRedoElementList.Count;
 
+    public void Add(UndoRedoElement element)
+    {
+        _undoRedoElementList.Add(element);
+    }
+
     public void Undo()
     {
-      for (int index = _undoRedoElementList.Count - 1; index >= 0; --index)
-        _undoRedoElementList[index].Undo();
+        for (var index = _undoRedoElementList.Count - 1; index >= 0; --index)
+            _undoRedoElementList[index].Undo();
     }
 
     public void Redo()
     {
-      foreach (UndoRedoElement undoRedoElement in _undoRedoElementList)
-        undoRedoElement.Redo();
+        foreach (var undoRedoElement in _undoRedoElementList)
+            undoRedoElement.Redo();
     }
 
-    ~UndoRedoInfo() => Dispose(false);
+    ~UndoRedoInfo()
+    {
+        Dispose(false);
+    }
 
     public void Dispose()
     {
-      Dispose(true);
-      GC.SuppressFinalize(this);
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
 
     protected virtual void Dispose(bool disposing)
     {
-      if (_disposed)
-        return;
-      foreach (UndoRedoElement undoRedoElement in _undoRedoElementList)
-        undoRedoElement.Dispose();
-      _undoRedoElementList.Clear();
-      _undoRedoElementList = null;
-      int num = disposing ? 1 : 0;
-      _disposed = true;
+        if (_disposed)
+            return;
+        foreach (var undoRedoElement in _undoRedoElementList)
+            undoRedoElement.Dispose();
+        _undoRedoElementList.Clear();
+        _undoRedoElementList = null;
+        var num = disposing ? 1 : 0;
+        _disposed = true;
     }
-  }
 }

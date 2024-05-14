@@ -6,47 +6,50 @@
 
 using System;
 
-namespace DQ9_Cheat.DataManager
+namespace DQ9_Cheat.DataManager;
+
+internal abstract class UndoRedoElement
 {
-  internal abstract class UndoRedoElement
-  {
-    private int _dataIndex;
-    private string _title = string.Empty;
+    private readonly int _dataIndex;
     private bool _disposed;
 
-    protected UndoRedoElement() => _dataIndex = SaveDataManager.Instance.SelectedDataIndex;
-
-    protected SaveData GetSaveData() => SaveDataManager.Instance.GetSaveData(_dataIndex);
-
-    public string Title
+    protected UndoRedoElement()
     {
-      get => _title;
-      set => _title = value;
+        _dataIndex = SaveDataManager.Instance.SelectedDataIndex;
+    }
+
+    public string Title { get; set; } = string.Empty;
+
+    protected SaveData GetSaveData()
+    {
+        return SaveDataManager.Instance.GetSaveData(_dataIndex);
     }
 
     public abstract void Undo();
 
     public abstract void Redo();
 
-    ~UndoRedoElement() => Dispose(false);
+    ~UndoRedoElement()
+    {
+        Dispose(false);
+    }
 
     public void Dispose()
     {
-      Dispose(true);
-      GC.SuppressFinalize(this);
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
 
     protected virtual void Dispose(bool disposing)
     {
-      if (_disposed)
-        return;
-      OnDispose();
-      int num = disposing ? 1 : 0;
-      _disposed = true;
+        if (_disposed)
+            return;
+        OnDispose();
+        var num = disposing ? 1 : 0;
+        _disposed = true;
     }
 
     protected virtual void OnDispose()
     {
     }
-  }
 }

@@ -4,13 +4,12 @@
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
 // Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-namespace DQ9_Cheat.Controls
+namespace DQ9_Cheat.Controls;
+
+public enum ListType
 {
-  public enum ListType
-  {
     Figure,
     HairType,
     HairColor,
-    FaceType,
-  }
+    FaceType
 }

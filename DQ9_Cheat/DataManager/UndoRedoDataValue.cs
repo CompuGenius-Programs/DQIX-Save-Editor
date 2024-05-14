@@ -6,30 +6,35 @@
 
 using System.Collections.Generic;
 
-namespace DQ9_Cheat.DataManager
+namespace DQ9_Cheat.DataManager;
+
+internal class UndoRedoDataValue : UndoRedoElement
 {
-  internal class UndoRedoDataValue : UndoRedoElement
-  {
-    private List<DataValueBase> _dataValueList = new List<DataValueBase>();
+    private readonly List<DataValueBase> _dataValueList = new();
 
     public UndoRedoDataValue()
     {
     }
 
-    public UndoRedoDataValue(DataValueBase dataValue) => _dataValueList.Add(dataValue);
+    public UndoRedoDataValue(DataValueBase dataValue)
+    {
+        _dataValueList.Add(dataValue);
+    }
 
-    public void AddDataValue(DataValueBase dataValue) => _dataValueList.Add(dataValue);
+    public void AddDataValue(DataValueBase dataValue)
+    {
+        _dataValueList.Add(dataValue);
+    }
 
     public override void Undo()
     {
-      foreach (DataValueBase dataValue in _dataValueList)
-        dataValue.Undo();
+        foreach (var dataValue in _dataValueList)
+            dataValue.Undo();
     }
 
     public override void Redo()
     {
-      foreach (DataValueBase dataValue in _dataValueList)
-        dataValue.Redo();
+        foreach (var dataValue in _dataValueList)
+            dataValue.Redo();
     }
-  }
 }

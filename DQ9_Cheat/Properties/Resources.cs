@@ -11,32 +11,26 @@ using System.Globalization;
 using System.Resources;
 using System.Runtime.CompilerServices;
 
-namespace DQ9_Cheat.Properties
+namespace DQ9_Cheat.Properties;
+
+[DebuggerNonUserCode]
+[CompilerGenerated]
+[GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
+internal class Resources
 {
-  [DebuggerNonUserCode]
-  [CompilerGenerated]
-  [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
-  internal class Resources
-  {
     private static ResourceManager resourceMan;
-    private static CultureInfo resourceCulture;
 
     [EditorBrowsable(EditorBrowsableState.Advanced)]
     internal static ResourceManager ResourceManager
     {
-      get
-      {
-        if (resourceMan == null)
-          resourceMan = new ResourceManager("DQ9_Cheat.Properties.Resources", typeof (Resources).Assembly);
-        return resourceMan;
-      }
+        get
+        {
+            if (resourceMan == null)
+                resourceMan = new ResourceManager("DQ9_Cheat.Properties.Resources", typeof(Resources).Assembly);
+            return resourceMan;
+        }
     }
 
     [EditorBrowsable(EditorBrowsableState.Advanced)]
-    internal static CultureInfo Culture
-    {
-      get => resourceCulture;
-      set => resourceCulture = value;
-    }
-  }
+    internal static CultureInfo Culture { get; set; }
 }

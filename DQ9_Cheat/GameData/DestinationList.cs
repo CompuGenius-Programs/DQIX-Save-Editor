@@ -6,40 +6,37 @@
 
 using System.Collections.Generic;
 
-namespace DQ9_Cheat.GameData
-{
-  public static class DestinationList
-  {
-    private static List<Destination> _list = new List<Destination>();
+namespace DQ9_Cheat.GameData;
 
+public static class DestinationList
+{
     static DestinationList()
     {
-      string[] strArray = new string[18]
-      {
-        "Angel Falls",
-        "Zere",
-        "Stornway",
-        "Coffinwell",
-        "Alltrades Abbey",
-        "Porth Llaffan",
-        "Slurry Quay",
-        "Dourbridge",
-        "Zere Rocks",
-        "Bloomingdale",
-        "Gleeba",
-        "Batsureg",
-        "Swinedimples Academy",
-        "Wormwood Creek",
-        "Upover",
-        "The Magmaroo",
-        "The Gortress",
-        "Gittingham Palace"
-      };
-      int num = 0;
-      foreach (string name in strArray)
-        _list.Add(new Destination(name, num++));
+        var strArray = new string[18]
+        {
+            "Angel Falls",
+            "Zere",
+            "Stornway",
+            "Coffinwell",
+            "Alltrades Abbey",
+            "Porth Llaffan",
+            "Slurry Quay",
+            "Dourbridge",
+            "Zere Rocks",
+            "Bloomingdale",
+            "Gleeba",
+            "Batsureg",
+            "Swinedimples Academy",
+            "Wormwood Creek",
+            "Upover",
+            "The Magmaroo",
+            "The Gortress",
+            "Gittingham Palace"
+        };
+        var num = 0;
+        foreach (var name in strArray)
+            List.Add(new Destination(name, num++));
     }
 
-    public static List<Destination> List => _list;
-  }
+    public static List<Destination> List { get; } = new();
 }

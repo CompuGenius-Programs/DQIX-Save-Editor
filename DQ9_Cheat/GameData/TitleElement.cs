@@ -4,25 +4,20 @@
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
 // Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-namespace DQ9_Cheat.GameData
-{
-  public class TitleElement
-  {
-    private string _maleTitleName;
-    private string _ladyTitleName;
-    private int _dataIndex;
+namespace DQ9_Cheat.GameData;
 
+public class TitleElement
+{
     public TitleElement(string maleTitleName, string ladyTitleName, int index)
     {
-      _maleTitleName = maleTitleName;
-      _ladyTitleName = ladyTitleName;
-      _dataIndex = index;
+        MaleTitleName = maleTitleName;
+        LadyTitleName = ladyTitleName;
+        DataIndex = index;
     }
 
-    public string MaleTitleName => _maleTitleName;
+    public string MaleTitleName { get; }
 
-    public string LadyTitleName => _ladyTitleName;
+    public string LadyTitleName { get; }
 
-    public int DataIndex => _dataIndex;
-  }
+    public int DataIndex { get; }
 }

@@ -7,121 +7,107 @@
 using System;
 using System.IO;
 
-namespace DQ9_Cheat.DataManager
+namespace DQ9_Cheat.DataManager;
+
+internal class SaveData
 {
-  internal class SaveData
-  {
     private const int DataSize = 32768;
     private const int HeaderSize = 16;
-    private byte[] _data;
-    private DataValue<byte> _isIntermission;
-    private BasisData _basisData;
-    private FirstClearData _firstClearData;
-    private CharacterManager _characterManager;
-    private RikkaData _rikkaData;
-    private ItemData _itemData;
-    private ProcessFlag _processFlag;
-    private QuestDataManager _questDataManager;
-    private TitleData _titleData;
-    private TreasureMapManager _treasureMapManager;
-    private MonsterDataManager _monsterDataManager;
-    private SmartItemData _smartItemData;
-    private ItemCollectionData _itemCollectionData;
-    private AlchemyData _alchemyData;
-    private WifiShopping _wifiShopData;
 
     public SaveData()
     {
-      _isIntermission = new DataValue<byte>(this, 20U, null, 0, 1);
-      _basisData = new BasisData(this);
-      _firstClearData = new FirstClearData(this);
-      _characterManager = new CharacterManager(this);
-      _rikkaData = new RikkaData(this);
-      _itemData = new ItemData(this);
-      _processFlag = new ProcessFlag(this);
-      _questDataManager = new QuestDataManager(this);
-      _titleData = new TitleData(this);
-      _treasureMapManager = new TreasureMapManager(this);
-      _monsterDataManager = new MonsterDataManager(this);
-      _smartItemData = new SmartItemData(this);
-      _itemCollectionData = new ItemCollectionData(this);
-      _alchemyData = new AlchemyData(this);
-      _wifiShopData = new WifiShopping(this);
+        IsIntermission = new DataValue<byte>(this, 20U, null, 0, 1);
+        BasisData = new BasisData(this);
+        FirstClearData = new FirstClearData(this);
+        CharacterManager = new CharacterManager(this);
+        RikkaData = new RikkaData(this);
+        ItemData = new ItemData(this);
+        ProcessFlag = new ProcessFlag(this);
+        QuestDataManager = new QuestDataManager(this);
+        TitleData = new TitleData(this);
+        TreasureMapManager = new TreasureMapManager(this);
+        MonsterDataManager = new MonsterDataManager(this);
+        SmartItemData = new SmartItemData(this);
+        ItemCollectionData = new ItemCollectionData(this);
+        AlchemyData = new AlchemyData(this);
+        WifiShopData = new WifiShopping(this);
     }
 
-    public byte[] Data => _data;
+    public byte[] Data { get; private set; }
+
+    public DataValue<byte> IsIntermission { get; }
+
+    public BasisData BasisData { get; }
+
+    public FirstClearData FirstClearData { get; }
+
+    public CharacterManager CharacterManager { get; }
+
+    public RikkaData RikkaData { get; }
+
+    public ItemData ItemData { get; }
+
+    public ProcessFlag ProcessFlag { get; }
+
+    public QuestDataManager QuestDataManager { get; }
+
+    public TitleData TitleData { get; }
+
+    public TreasureMapManager TreasureMapManager { get; }
+
+    public MonsterDataManager MonsterDataManager { get; }
+
+    public SmartItemData SmartItemData { get; }
+
+    public ItemCollectionData ItemCollectionData { get; }
+
+    public AlchemyData AlchemyData { get; }
+
+    public WifiShopping WifiShopData { get; }
 
     internal void ReadData(BinaryReader br)
     {
-      _data = br.ReadBytes(32768);
-      _characterManager.OnLoaded();
-      _alchemyData.OnLoaded();
-      _rikkaData.VisitorManager.OnLoaded();
-      _treasureMapManager.OnLoaded();
+        Data = br.ReadBytes(32768);
+        CharacterManager.OnLoaded();
+        AlchemyData.OnLoaded();
+        RikkaData.VisitorManager.OnLoaded();
+        TreasureMapManager.OnLoaded();
     }
 
-    internal void Create() => _data = new byte[32768];
+    internal void Create()
+    {
+        Data = new byte[32768];
+    }
 
     internal void OnSaving()
     {
-      _characterManager.OnSaving();
-      _alchemyData.OnSaving();
+        CharacterManager.OnSaving();
+        AlchemyData.OnSaving();
     }
 
     internal void OnUndo()
     {
-      _rikkaData.VisitorManager.OnUndo();
-      _treasureMapManager.OnUndo();
+        RikkaData.VisitorManager.OnUndo();
+        TreasureMapManager.OnUndo();
     }
 
     internal void OnRedo()
     {
-      _rikkaData.VisitorManager.OnRedo();
-      _treasureMapManager.OnRedo();
+        RikkaData.VisitorManager.OnRedo();
+        TreasureMapManager.OnRedo();
     }
-
-    public DataValue<byte> IsIntermission => _isIntermission;
-
-    public BasisData BasisData => _basisData;
-
-    public FirstClearData FirstClearData => _firstClearData;
-
-    public CharacterManager CharacterManager => _characterManager;
-
-    public RikkaData RikkaData => _rikkaData;
-
-    public ItemData ItemData => _itemData;
-
-    public ProcessFlag ProcessFlag => _processFlag;
-
-    public QuestDataManager QuestDataManager => _questDataManager;
-
-    public TitleData TitleData => _titleData;
-
-    public TreasureMapManager TreasureMapManager => _treasureMapManager;
-
-    public MonsterDataManager MonsterDataManager => _monsterDataManager;
-
-    public SmartItemData SmartItemData => _smartItemData;
-
-    public ItemCollectionData ItemCollectionData => _itemCollectionData;
-
-    public AlchemyData AlchemyData => _alchemyData;
-
-    public WifiShopping WifiShopData => _wifiShopData;
 
     public byte[] GetData()
     {
-      byte[] destinationArray = new byte[32752];
-      Array.Copy(_data, 16, destinationArray, 0, destinationArray.Length);
-      return destinationArray;
+        var destinationArray = new byte[32752];
+        Array.Copy(Data, 16, destinationArray, 0, destinationArray.Length);
+        return destinationArray;
     }
 
     public void CopyData(byte[] src)
     {
-      if (src.Length != 32752)
-        return;
-      Array.Copy(src, 0, _data, 16, 32752);
+        if (src.Length != 32752)
+            return;
+        Array.Copy(src, 0, Data, 16, 32752);
     }
-  }
 }

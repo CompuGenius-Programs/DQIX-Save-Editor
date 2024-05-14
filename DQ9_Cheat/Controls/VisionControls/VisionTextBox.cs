@@ -8,79 +8,79 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace DQ9_Cheat.Controls.VisionControls
+namespace DQ9_Cheat.Controls.VisionControls;
+
+public class VisionTextBox : VisionControlBase
 {
-  public class VisionTextBox : VisionControlBase
-  {
-    private TextBox _innerTextBox;
     private static bool _controlInitialized = false;
     private static TextBox[] _entityButton = new TextBox[2];
     private static bool[] _controlAdded = new bool[2];
     private int _addedIndex;
-    private string _text;
+    private readonly TextBox _innerTextBox;
     private bool _readOnly;
+    private string _text;
 
     public VisionTextBox(
-      int left,
-      int top,
-      int width,
-      int height,
-      float dpiRateX,
-      float dpiRateY)
-      : base(left, top, width, height, dpiRateX, dpiRateY)
+        int left,
+        int top,
+        int width,
+        int height,
+        float dpiRateX,
+        float dpiRateY)
+        : base(left, top, width, height, dpiRateX, dpiRateY)
     {
-      _innerTextBox = new TextBox();
-      _innerControl = _innerTextBox;
-      _innerTextBox.Size = new Size(_width, _height);
-      _innerTextBox.Location = new Point(_left, _top);
-      _innerTextBox.TextChanged += _innerTextBox_TextChanged;
-      _addedIndex = -1;
+        _innerTextBox = new TextBox();
+        _innerControl = _innerTextBox;
+        _innerTextBox.Size = new Size(_width, _height);
+        _innerTextBox.Location = new Point(_left, _top);
+        _innerTextBox.TextChanged += _innerTextBox_TextChanged;
+        _addedIndex = -1;
     }
 
     public VisionTextBox(int left, int top, int width, int height)
-      : base(left, top, width, height)
+        : base(left, top, width, height)
     {
-      _innerTextBox = new TextBox();
-      _innerControl = _innerTextBox;
-      _innerTextBox.Size = new Size(width, height);
-      _innerTextBox.Location = new Point(left, top);
-      _innerTextBox.TextChanged += _innerTextBox_TextChanged;
-      _addedIndex = -1;
+        _innerTextBox = new TextBox();
+        _innerControl = _innerTextBox;
+        _innerTextBox.Size = new Size(width, height);
+        _innerTextBox.Location = new Point(left, top);
+        _innerTextBox.TextChanged += _innerTextBox_TextChanged;
+        _addedIndex = -1;
     }
-
-    public event EventHandler TextChanged;
 
     public string Text
     {
-      get => _text;
-      set
-      {
-        if (!(_text != value))
-          return;
-        _text = value;
-        _innerTextBox.Text = value;
-      }
+        get => _text;
+        set
+        {
+            if (!(_text != value))
+                return;
+            _text = value;
+            _innerTextBox.Text = value;
+        }
     }
 
     public int SelectionStart
     {
-      get => _innerTextBox.SelectionStart;
-      set => _innerTextBox.SelectionStart = value;
+        get => _innerTextBox.SelectionStart;
+        set => _innerTextBox.SelectionStart = value;
     }
 
     public bool ReadOnly
     {
-      get => _readOnly;
-      set
-      {
-        _readOnly = value;
-        _innerTextBox.ReadOnly = value;
-      }
+        get => _readOnly;
+        set
+        {
+            _readOnly = value;
+            _innerTextBox.ReadOnly = value;
+        }
     }
+
+    public event EventHandler TextChanged;
 
     protected override void Regist(Control parent)
     {
-      parent?.Controls.Add(_innerTextBox);
+        parent?.Controls.Add(_innerTextBox);
     }
 
     public override void DrawControl(Graphics graphic)
@@ -93,22 +93,22 @@ namespace DQ9_Cheat.Controls.VisionControls
 
     private void _innerTextBox_TextChanged(object sender, EventArgs e)
     {
-      if (!(sender is TextBox textBox))
-        return;
-      _text = textBox.Text;
-      if (TextChanged == null)
-        return;
-      TextChanged(sender, e);
+        if (!(sender is TextBox textBox))
+            return;
+        _text = textBox.Text;
+        if (TextChanged == null)
+            return;
+        TextChanged(sender, e);
     }
 
     private void EntityTextBox_TextChanged(object sender, EventArgs e)
     {
-      if (!(sender is TextBox textBox))
-        return;
-      _text = textBox.Text;
-      if (TextChanged == null)
-        return;
-      TextChanged(sender, e);
+        if (!(sender is TextBox textBox))
+            return;
+        _text = textBox.Text;
+        if (TextChanged == null)
+            return;
+        TextChanged(sender, e);
     }
 
     public override void MouseLeave()
@@ -118,5 +118,4 @@ namespace DQ9_Cheat.Controls.VisionControls
     private void EntityTextBox_Leave(object sender, EventArgs e)
     {
     }
-  }
 }

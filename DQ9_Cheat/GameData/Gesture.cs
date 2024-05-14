@@ -4,23 +4,22 @@
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
 // Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-namespace DQ9_Cheat.GameData
-{
-  public class Gesture
-  {
-    private string _name;
-    private int _index;
+namespace DQ9_Cheat.GameData;
 
+public class Gesture
+{
     public Gesture(string name, int index)
     {
-      _name = name;
-      _index = index;
+        Name = name;
+        Index = index;
     }
 
-    public string Name => _name;
+    public string Name { get; }
 
-    public int Index => _index;
+    public int Index { get; }
 
-    public override string ToString() => _name;
-  }
+    public override string ToString()
+    {
+        return Name;
+    }
 }

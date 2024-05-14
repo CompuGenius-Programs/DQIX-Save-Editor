@@ -6,10 +6,12 @@
 
 using System.Windows.Forms;
 
-namespace JS_Framework.Controls
+namespace JS_Framework.Controls;
+
+public class DoubleBufferedListView : ListView
 {
-  public class DoubleBufferedListView : ListView
-  {
-    public DoubleBufferedListView() => DoubleBuffered = true;
-  }
+    public DoubleBufferedListView()
+    {
+        DoubleBuffered = true;
+    }
 }

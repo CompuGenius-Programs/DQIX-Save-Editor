@@ -11,19 +11,19 @@ using System.Drawing;
 using System.Windows.Forms;
 using DQ9_Cheat.Controls.VisionControls;
 
-namespace DQ9_Cheat.Controls
+namespace DQ9_Cheat.Controls;
+
+public class DataControlBase : UserControl
 {
-  public class DataControlBase : UserControl
-  {
-    private List<VisionControlBase> _visionControls = new List<VisionControlBase>();
     protected int _updateCount;
+    private readonly List<VisionControlBase> _visionControls = new();
     private IContainer components;
 
     public DataControlBase()
     {
-      InitializeComponent();
-      DoubleBuffered = true;
-      Disposed += DataControlBase_Disposed;
+        InitializeComponent();
+        DoubleBuffered = true;
+        Disposed += DataControlBase_Disposed;
     }
 
     private void DataControlBase_Disposed(object sender, EventArgs e)
@@ -36,23 +36,23 @@ namespace DQ9_Cheat.Controls
 
     public void DataFileLoaded()
     {
-      BeginUpdate();
-      OnDataFileLoad();
-      EndUpdate();
+        BeginUpdate();
+        OnDataFileLoad();
+        EndUpdate();
     }
 
     public void ValueUpdated()
     {
-      BeginUpdate();
-      OnValueUpdate();
-      EndUpdate();
+        BeginUpdate();
+        OnValueUpdate();
+        EndUpdate();
     }
 
     public void Activate()
     {
-      BeginUpdate();
-      OnActivate();
-      EndUpdate();
+        BeginUpdate();
+        OnActivate();
+        EndUpdate();
     }
 
     protected virtual void OnDataFileLoad()
@@ -71,65 +71,69 @@ namespace DQ9_Cheat.Controls
     {
     }
 
-    public void BeginUpdate() => ++_updateCount;
+    public void BeginUpdate()
+    {
+        ++_updateCount;
+    }
 
     public void EndUpdate()
     {
-      --_updateCount;
-      if (_updateCount >= 0)
-        return;
-      _updateCount = 0;
+        --_updateCount;
+        if (_updateCount >= 0)
+            return;
+        _updateCount = 0;
     }
 
     public void AddVisionControl(VisionControlBase visionControl)
     {
-      if (_visionControls.Contains(visionControl))
-        return;
-      _visionControls.Add(visionControl);
-      visionControl.Parent = this;
+        if (_visionControls.Contains(visionControl))
+            return;
+        _visionControls.Add(visionControl);
+        visionControl.Parent = this;
     }
 
     public void RenewalVisionControl()
     {
-      using (Graphics g = Graphics.FromHwnd(Handle))
-        RenewalVisionControl(g);
+        using (var g = Graphics.FromHwnd(Handle))
+        {
+            RenewalVisionControl(g);
+        }
     }
 
     public void RenewalVisionControl(Graphics g)
     {
-      foreach (VisionControlBase visionControl in _visionControls)
-        visionControl.DrawControl(g);
+        foreach (var visionControl in _visionControls)
+            visionControl.DrawControl(g);
     }
 
     protected override void OnPaint(PaintEventArgs e)
     {
-      base.OnPaint(e);
-      foreach (VisionControlBase visionControl in _visionControls)
-        visionControl.DrawControl(e.Graphics);
+        base.OnPaint(e);
+        foreach (var visionControl in _visionControls)
+            visionControl.DrawControl(e.Graphics);
     }
 
     protected override void OnMouseMove(MouseEventArgs e)
     {
-      base.OnMouseMove(e);
-      foreach (VisionControlBase visionControl in _visionControls)
-        visionControl.MouseMove(e.X, e.Y);
+        base.OnMouseMove(e);
+        foreach (var visionControl in _visionControls)
+            visionControl.MouseMove(e.X, e.Y);
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && components != null)
-        components.Dispose();
-      base.Dispose(disposing);
+        if (disposing && components != null)
+            components.Dispose();
+        base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      SuspendLayout();
-      AutoScaleDimensions = new SizeF(6f, 12f);
-      AutoScaleMode = AutoScaleMode.Font;
-      Name = nameof (DataControlBase);
-      Size = new Size(406, 357);
-      ResumeLayout(false);
+        SuspendLayout();
+        AutoScaleDimensions = new SizeF(6f, 12f);
+        AutoScaleMode = AutoScaleMode.Font;
+        Name = nameof(DataControlBase);
+        Size = new Size(406, 357);
+        ResumeLayout(false);
     }
-  }
 }

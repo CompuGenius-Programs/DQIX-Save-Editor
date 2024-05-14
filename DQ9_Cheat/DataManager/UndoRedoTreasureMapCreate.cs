@@ -4,27 +4,26 @@
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
 // Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-namespace DQ9_Cheat.DataManager
+namespace DQ9_Cheat.DataManager;
+
+internal class UndoRedoTreasureMapCreate : UndoRedoElement
 {
-  internal class UndoRedoTreasureMapCreate : UndoRedoElement
-  {
-    private int _srcIndex;
-    private int _toIndex;
+    private readonly int _srcIndex;
+    private readonly int _toIndex;
 
     public UndoRedoTreasureMapCreate(int srcIndex, int toIndex)
     {
-      _srcIndex = srcIndex;
-      _toIndex = toIndex;
+        _srcIndex = srcIndex;
+        _toIndex = toIndex;
     }
 
     public override void Undo()
     {
-      GetSaveData().RikkaData.VisitorManager.MoveTo(_toIndex, _srcIndex);
+        GetSaveData().RikkaData.VisitorManager.MoveTo(_toIndex, _srcIndex);
     }
 
     public override void Redo()
     {
-      GetSaveData().RikkaData.VisitorManager.MoveTo(_srcIndex, _toIndex);
+        GetSaveData().RikkaData.VisitorManager.MoveTo(_srcIndex, _toIndex);
     }
-  }
 }

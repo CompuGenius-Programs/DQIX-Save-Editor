@@ -13,10 +13,10 @@ using DQ9_Cheat.DataManager;
 using DQ9_Cheat.GameData;
 using JS_Framework.Controls;
 
-namespace DQ9_Cheat.Controls
+namespace DQ9_Cheat.Controls;
+
+public class ItemCollectionDataControl : DataControlBase
 {
-  public class ItemCollectionDataControl : DataControlBase
-  {
     private const int ControlMarginLeft = 30;
     private const int ControlMarginTop = 8;
     private const int ControlMarginWidth = 60;
@@ -26,272 +26,272 @@ namespace DQ9_Cheat.Controls
     private const int ControlCount = 48;
     private const int CheckBox_Width = 130;
     private const int CheckBox_Height = 30;
-    private IContainer components;
-    private DoubleBufferedPanel panel;
+    private readonly bool[] _checkBox_Checked = new bool[48];
+    private Bitmap[] _checkBoxBitmap = new Bitmap[2];
+    private ItemDataBase[] _itemList;
+    private int _lastMouseOverIndex;
+    private Bitmap _panelBitmap;
     private VScrollBar _vScrollBar;
-    private Label label_TitleCount;
-    private TextBox textBox_Dummy;
     private Button button_AllCheck;
     private Button button_AllUncheck;
     private ComboBox comboBox_SelectType;
-    private Label label1;
-    private Label label_CompRate;
+    private IContainer components;
     private Label label_CollectionCount;
-    private bool[] _checkBox_Checked = new bool[48];
-    private Bitmap _panelBitmap;
-    private Bitmap[] _checkBoxBitmap = new Bitmap[2];
-    private int _lastMouseOverIndex;
-    private ItemDataBase[] _itemList;
+    private Label label_CompRate;
+    private Label label_TitleCount;
+    private Label label1;
+    private DoubleBufferedPanel panel;
+    private TextBox textBox_Dummy;
 
     public ItemCollectionDataControl()
     {
-      AutoScaleMode = AutoScaleMode.None;
-      InitializeComponent();
-      Disposed += ItemCollectionDataControl_Disposed;
+        AutoScaleMode = AutoScaleMode.None;
+        InitializeComponent();
+        Disposed += ItemCollectionDataControl_Disposed;
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && components != null)
-        components.Dispose();
-      base.Dispose(disposing);
+        if (disposing && components != null)
+            components.Dispose();
+        base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      panel = new DoubleBufferedPanel();
-      textBox_Dummy = new TextBox();
-      _vScrollBar = new VScrollBar();
-      label_TitleCount = new Label();
-      button_AllCheck = new Button();
-      button_AllUncheck = new Button();
-      comboBox_SelectType = new ComboBox();
-      label1 = new Label();
-      label_CompRate = new Label();
-      label_CollectionCount = new Label();
-      panel.SuspendLayout();
-      SuspendLayout();
-      panel.BorderStyle = BorderStyle.Fixed3D;
-      panel.Controls.Add(textBox_Dummy);
-      panel.Controls.Add(_vScrollBar);
-      panel.Location = new Point(14, 56);
-      panel.Name = "panel";
-      panel.Size = new Size(806, 373);
-      panel.TabIndex = 0;
-      panel.Paint += panel_Paint;
-      panel.Click += panel_Click;
-      panel.MouseDown += panel_MouseDown;
-      textBox_Dummy.Location = new Point(-100, -100);
-      textBox_Dummy.Name = "textBox_Dummy";
-      textBox_Dummy.ReadOnly = true;
-      textBox_Dummy.Size = new Size(100, 19);
-      textBox_Dummy.TabIndex = 1;
-      textBox_Dummy.KeyDown += textBox_Dummy_KeyDown;
-      _vScrollBar.Dock = DockStyle.Right;
-      _vScrollBar.Location = new Point(785, 0);
-      _vScrollBar.Name = "_vScrollBar";
-      _vScrollBar.Size = new Size(17, 369);
-      _vScrollBar.TabIndex = 0;
-      _vScrollBar.ValueChanged += _vScrollBar_ValueChanged;
-      _vScrollBar.Scroll += _vScrollBar_Scroll;
-      label_TitleCount.AutoSize = true;
-      label_TitleCount.Location = new Point(141, 34);
-      label_TitleCount.Name = "label_TitleCount";
-      label_TitleCount.Size = new Size(48, 12);
-      label_TitleCount.TabIndex = 1;
-      label_TitleCount.Text = "Amount:";
-      button_AllCheck.Location = new Point(548, 27);
-      button_AllCheck.Name = "button_AllCheck";
-      button_AllCheck.Size = new Size(133, 23);
-      button_AllCheck.TabIndex = 4;
-      button_AllCheck.Text = "Check all";
-      button_AllCheck.UseVisualStyleBackColor = true;
-      button_AllCheck.Click += button_AllCheck_Click;
-      button_AllUncheck.Location = new Point(687, 27);
-      button_AllUncheck.Name = "button_AllUncheck";
-      button_AllUncheck.Size = new Size(133, 23);
-      button_AllUncheck.TabIndex = 5;
-      button_AllUncheck.Text = "Uncheck all";
-      button_AllUncheck.UseVisualStyleBackColor = true;
-      button_AllUncheck.Click += button_AllUncheck_Click;
-      comboBox_SelectType.DropDownStyle = ComboBoxStyle.DropDownList;
-      comboBox_SelectType.FormattingEnabled = true;
-      comboBox_SelectType.Items.AddRange(new object[3]
-      {
-        "All",
-        "Items",
-        "Important items"
-      });
-      comboBox_SelectType.Location = new Point(14, 30);
-      comboBox_SelectType.Name = "comboBox_SelectType";
-      comboBox_SelectType.Size = new Size(121, 20);
-      comboBox_SelectType.TabIndex = 6;
-      comboBox_SelectType.SelectedIndexChanged += comboBox_SelectType_SelectedIndexChanged;
-      label1.AutoSize = true;
-      label1.Location = new Point(13, 11);
-      label1.Name = "label1";
-      label1.Size = new Size(128, 12);
-      label1.TabIndex = 7;
-      label1.Text = "Completion Rate";
-      label_CompRate.AutoSize = true;
-      label_CompRate.Location = new Point(141, 11);
-      label_CompRate.Name = "label_CompRate";
-      label_CompRate.Size = new Size(17, 12);
-      label_CompRate.TabIndex = 8;
-      label_CompRate.Text = "0%";
-      label_CollectionCount.AutoSize = true;
-      label_CollectionCount.Location = new Point(195, 34);
-      label_CollectionCount.Name = "label_CollectionCount";
-      label_CollectionCount.Size = new Size(35, 12);
-      label_CollectionCount.TabIndex = 9;
-      label_CollectionCount.Text = "0 types";
-      AutoScaleDimensions = new SizeF(6f, 12f);
-      AutoScaleMode = AutoScaleMode.Font;
-      Controls.Add(label_CollectionCount);
-      Controls.Add(label_CompRate);
-      Controls.Add(label1);
-      Controls.Add(comboBox_SelectType);
-      Controls.Add(button_AllUncheck);
-      Controls.Add(button_AllCheck);
-      Controls.Add(label_TitleCount);
-      Controls.Add(panel);
-      Name = nameof (ItemCollectionDataControl);
-      Size = new Size(887, 500);
-      Click += ItemCollectionDataControl_Click;
-      panel.ResumeLayout(false);
-      panel.PerformLayout();
-      ResumeLayout(false);
-      PerformLayout();
+        panel = new DoubleBufferedPanel();
+        textBox_Dummy = new TextBox();
+        _vScrollBar = new VScrollBar();
+        label_TitleCount = new Label();
+        button_AllCheck = new Button();
+        button_AllUncheck = new Button();
+        comboBox_SelectType = new ComboBox();
+        label1 = new Label();
+        label_CompRate = new Label();
+        label_CollectionCount = new Label();
+        panel.SuspendLayout();
+        SuspendLayout();
+        panel.BorderStyle = BorderStyle.Fixed3D;
+        panel.Controls.Add(textBox_Dummy);
+        panel.Controls.Add(_vScrollBar);
+        panel.Location = new Point(14, 56);
+        panel.Name = "panel";
+        panel.Size = new Size(806, 373);
+        panel.TabIndex = 0;
+        panel.Paint += panel_Paint;
+        panel.Click += panel_Click;
+        panel.MouseDown += panel_MouseDown;
+        textBox_Dummy.Location = new Point(-100, -100);
+        textBox_Dummy.Name = "textBox_Dummy";
+        textBox_Dummy.ReadOnly = true;
+        textBox_Dummy.Size = new Size(100, 19);
+        textBox_Dummy.TabIndex = 1;
+        textBox_Dummy.KeyDown += textBox_Dummy_KeyDown;
+        _vScrollBar.Dock = DockStyle.Right;
+        _vScrollBar.Location = new Point(785, 0);
+        _vScrollBar.Name = "_vScrollBar";
+        _vScrollBar.Size = new Size(17, 369);
+        _vScrollBar.TabIndex = 0;
+        _vScrollBar.ValueChanged += _vScrollBar_ValueChanged;
+        _vScrollBar.Scroll += _vScrollBar_Scroll;
+        label_TitleCount.AutoSize = true;
+        label_TitleCount.Location = new Point(141, 34);
+        label_TitleCount.Name = "label_TitleCount";
+        label_TitleCount.Size = new Size(48, 12);
+        label_TitleCount.TabIndex = 1;
+        label_TitleCount.Text = "Amount:";
+        button_AllCheck.Location = new Point(548, 27);
+        button_AllCheck.Name = "button_AllCheck";
+        button_AllCheck.Size = new Size(133, 23);
+        button_AllCheck.TabIndex = 4;
+        button_AllCheck.Text = "Check all";
+        button_AllCheck.UseVisualStyleBackColor = true;
+        button_AllCheck.Click += button_AllCheck_Click;
+        button_AllUncheck.Location = new Point(687, 27);
+        button_AllUncheck.Name = "button_AllUncheck";
+        button_AllUncheck.Size = new Size(133, 23);
+        button_AllUncheck.TabIndex = 5;
+        button_AllUncheck.Text = "Uncheck all";
+        button_AllUncheck.UseVisualStyleBackColor = true;
+        button_AllUncheck.Click += button_AllUncheck_Click;
+        comboBox_SelectType.DropDownStyle = ComboBoxStyle.DropDownList;
+        comboBox_SelectType.FormattingEnabled = true;
+        comboBox_SelectType.Items.AddRange(new object[3]
+        {
+            "All",
+            "Items",
+            "Important items"
+        });
+        comboBox_SelectType.Location = new Point(14, 30);
+        comboBox_SelectType.Name = "comboBox_SelectType";
+        comboBox_SelectType.Size = new Size(121, 20);
+        comboBox_SelectType.TabIndex = 6;
+        comboBox_SelectType.SelectedIndexChanged += comboBox_SelectType_SelectedIndexChanged;
+        label1.AutoSize = true;
+        label1.Location = new Point(13, 11);
+        label1.Name = "label1";
+        label1.Size = new Size(128, 12);
+        label1.TabIndex = 7;
+        label1.Text = "Completion Rate";
+        label_CompRate.AutoSize = true;
+        label_CompRate.Location = new Point(141, 11);
+        label_CompRate.Name = "label_CompRate";
+        label_CompRate.Size = new Size(17, 12);
+        label_CompRate.TabIndex = 8;
+        label_CompRate.Text = "0%";
+        label_CollectionCount.AutoSize = true;
+        label_CollectionCount.Location = new Point(195, 34);
+        label_CollectionCount.Name = "label_CollectionCount";
+        label_CollectionCount.Size = new Size(35, 12);
+        label_CollectionCount.TabIndex = 9;
+        label_CollectionCount.Text = "0 types";
+        AutoScaleDimensions = new SizeF(6f, 12f);
+        AutoScaleMode = AutoScaleMode.Font;
+        Controls.Add(label_CollectionCount);
+        Controls.Add(label_CompRate);
+        Controls.Add(label1);
+        Controls.Add(comboBox_SelectType);
+        Controls.Add(button_AllUncheck);
+        Controls.Add(button_AllCheck);
+        Controls.Add(label_TitleCount);
+        Controls.Add(panel);
+        Name = nameof(ItemCollectionDataControl);
+        Size = new Size(887, 500);
+        Click += ItemCollectionDataControl_Click;
+        panel.ResumeLayout(false);
+        panel.PerformLayout();
+        ResumeLayout(false);
+        PerformLayout();
     }
 
     private void ItemCollectionDataControl_Disposed(object sender, EventArgs e)
     {
-      for (int index = 0; index < 2; ++index)
-      {
-        if (_checkBoxBitmap[index] != null)
-        {
-          _checkBoxBitmap[index].Dispose();
-          _checkBoxBitmap[index] = null;
-        }
-      }
-      _checkBoxBitmap = null;
-      if (_panelBitmap == null)
-        return;
-      _panelBitmap.Dispose();
-      _panelBitmap = null;
+        for (var index = 0; index < 2; ++index)
+            if (_checkBoxBitmap[index] != null)
+            {
+                _checkBoxBitmap[index].Dispose();
+                _checkBoxBitmap[index] = null;
+            }
+
+        _checkBoxBitmap = null;
+        if (_panelBitmap == null)
+            return;
+        _panelBitmap.Dispose();
+        _panelBitmap = null;
     }
 
     public void Initialize()
     {
-      BeginUpdate();
-      comboBox_SelectType.SelectedIndex = 0;
-      for (int index = 0; index < 48; ++index)
-        _checkBox_Checked[index] = false;
-      _panelBitmap = new Bitmap(panel.Width, panel.Height);
-      panel.MouseMove += panel_MouseMove;
-      panel.MouseWheel += panel_MouseWheel;
-      using (Graphics.FromHwnd(Handle))
-      {
-        for (int index = 0; index < 2; ++index)
+        BeginUpdate();
+        comboBox_SelectType.SelectedIndex = 0;
+        for (var index = 0; index < 48; ++index)
+            _checkBox_Checked[index] = false;
+        _panelBitmap = new Bitmap(panel.Width, panel.Height);
+        panel.MouseMove += panel_MouseMove;
+        panel.MouseWheel += panel_MouseWheel;
+        using (Graphics.FromHwnd(Handle))
         {
-          int width = 20;
-          int height = 20;
-          _checkBoxBitmap[index] = new Bitmap(width, height);
-          using (Graphics graphics = Graphics.FromImage(_checkBoxBitmap[index]))
-          {
-            graphics.Clear(Color.Transparent);
-            if (VisualStyleRenderer.IsSupported)
-              CheckBoxRenderer.DrawCheckBox(graphics, new Point(0, 0), index == 0 ? CheckBoxState.UncheckedNormal : CheckBoxState.CheckedNormal);
-            else if (index == 0)
-              ControlPaint.DrawCheckBox(graphics, 0, 0, width, height, ButtonState.Normal);
-            else
-              ControlPaint.DrawCheckBox(graphics, 0, 0, width, height, ButtonState.Checked);
-          }
+            for (var index = 0; index < 2; ++index)
+            {
+                var width = 20;
+                var height = 20;
+                _checkBoxBitmap[index] = new Bitmap(width, height);
+                using (var graphics = Graphics.FromImage(_checkBoxBitmap[index]))
+                {
+                    graphics.Clear(Color.Transparent);
+                    if (VisualStyleRenderer.IsSupported)
+                        CheckBoxRenderer.DrawCheckBox(graphics, new Point(0, 0),
+                            index == 0 ? CheckBoxState.UncheckedNormal : CheckBoxState.CheckedNormal);
+                    else if (index == 0)
+                        ControlPaint.DrawCheckBox(graphics, 0, 0, width, height, ButtonState.Normal);
+                    else
+                        ControlPaint.DrawCheckBox(graphics, 0, 0, width, height, ButtonState.Checked);
+                }
+            }
         }
-      }
-      EndUpdate();
+
+        EndUpdate();
     }
 
     private void RenewalCollectionCount()
     {
-      ItemCollectionData itemCollectionData = SaveDataManager.Instance.SaveData.ItemCollectionData;
-      int num1 = 0;
-      foreach (ItemDataBase itemDataBase in _itemList)
-      {
-        if (itemDataBase.DataIndex != -1 && itemCollectionData.IsItemCollectionHold(itemDataBase.DataIndex))
-          ++num1;
-      }
-      label_CollectionCount.Text = string.Format("{0} Types", num1);
-      int num2 = (int) (itemCollectionData.CompCount / 232.0 * 100.0);
-      if (num2 == 0 && itemCollectionData.CompCount > 0)
-        num2 = 1;
-      label_CompRate.Text = string.Format("{0}%", num2);
+        var itemCollectionData = SaveDataManager.Instance.SaveData.ItemCollectionData;
+        var num1 = 0;
+        foreach (var itemDataBase in _itemList)
+            if (itemDataBase.DataIndex != -1 && itemCollectionData.IsItemCollectionHold(itemDataBase.DataIndex))
+                ++num1;
+        label_CollectionCount.Text = string.Format("{0} Types", num1);
+        var num2 = (int)(itemCollectionData.CompCount / 232.0 * 100.0);
+        if (num2 == 0 && itemCollectionData.CompCount > 0)
+            num2 = 1;
+        label_CompRate.Text = string.Format("{0}%", num2);
     }
 
     private int CheckBoxHitTest(int x, int y)
     {
-      if (x < 30)
-        return -1;
-      x -= 30;
-      if (x % 190 > 130 || y % 30 > 30)
-        return -1;
-      int num1 = x / 190;
-      int num2 = y / 30;
-      if (num1 >= 4 || num2 >= 12)
-        return -1;
-      int index = num2 * 4 + num1;
-      return index + _vScrollBar.Value * 4 < _itemList.Length && _itemList[index].DataIndex != -1 ? index : -1;
+        if (x < 30)
+            return -1;
+        x -= 30;
+        if (x % 190 > 130 || y % 30 > 30)
+            return -1;
+        var num1 = x / 190;
+        var num2 = y / 30;
+        if (num1 >= 4 || num2 >= 12)
+            return -1;
+        var index = num2 * 4 + num1;
+        return index + _vScrollBar.Value * 4 < _itemList.Length && _itemList[index].DataIndex != -1 ? index : -1;
     }
 
     private void panel_MouseMove(object sender, MouseEventArgs e)
     {
-      int index = CheckBoxHitTest(e.X, e.Y);
-      if (_lastMouseOverIndex == index)
-        return;
-      if (_lastMouseOverIndex != -1)
-        DrawCheckBox(null, _lastMouseOverIndex, _checkBox_Checked[_lastMouseOverIndex] ? CheckBoxState.CheckedNormal : CheckBoxState.UncheckedNormal);
-      _lastMouseOverIndex = index;
-      if (index == -1)
-        return;
-      DrawCheckBox(null, index, _checkBox_Checked[index] ? CheckBoxState.CheckedHot : CheckBoxState.UncheckedHot);
+        var index = CheckBoxHitTest(e.X, e.Y);
+        if (_lastMouseOverIndex == index)
+            return;
+        if (_lastMouseOverIndex != -1)
+            DrawCheckBox(null, _lastMouseOverIndex,
+                _checkBox_Checked[_lastMouseOverIndex] ? CheckBoxState.CheckedNormal : CheckBoxState.UncheckedNormal);
+        _lastMouseOverIndex = index;
+        if (index == -1)
+            return;
+        DrawCheckBox(null, index, _checkBox_Checked[index] ? CheckBoxState.CheckedHot : CheckBoxState.UncheckedHot);
     }
 
     private void panel_MouseDown(object sender, MouseEventArgs e)
     {
-      int index1 = CheckBoxHitTest(e.X, e.Y);
-      if (index1 == -1)
-        return;
-      int index2 = _vScrollBar.Value * 4 + index1;
-      if (_itemList[index2].DataIndex == -1)
-        return;
-      SaveDataManager.Instance.UndoRedoMgr.BeginPluralEdit();
-      _checkBox_Checked[index1] = !_checkBox_Checked[index1];
-      DrawCheckBox(null, index1, _checkBox_Checked[index1] ? CheckBoxState.CheckedHot : CheckBoxState.UncheckedHot);
-      ItemCollectionData itemCollectionData = SaveDataManager.Instance.SaveData.ItemCollectionData;
-      itemCollectionData.SetItemCollectionHold(_itemList[index2].DataIndex, _checkBox_Checked[index1]);
-      itemCollectionData.ReviseCompCount();
-      RenewalCollectionCount();
-      SaveDataManager.Instance.UndoRedoMgr.EndPluralEdit();
+        var index1 = CheckBoxHitTest(e.X, e.Y);
+        if (index1 == -1)
+            return;
+        var index2 = _vScrollBar.Value * 4 + index1;
+        if (_itemList[index2].DataIndex == -1)
+            return;
+        SaveDataManager.Instance.UndoRedoMgr.BeginPluralEdit();
+        _checkBox_Checked[index1] = !_checkBox_Checked[index1];
+        DrawCheckBox(null, index1, _checkBox_Checked[index1] ? CheckBoxState.CheckedHot : CheckBoxState.UncheckedHot);
+        var itemCollectionData = SaveDataManager.Instance.SaveData.ItemCollectionData;
+        itemCollectionData.SetItemCollectionHold(_itemList[index2].DataIndex, _checkBox_Checked[index1]);
+        itemCollectionData.ReviseCompCount();
+        RenewalCollectionCount();
+        SaveDataManager.Instance.UndoRedoMgr.EndPluralEdit();
     }
 
     private void panel_MouseWheel(object sender, MouseEventArgs e)
     {
-      if (e.Delta < 0)
-      {
-        if (_vScrollBar.Value >= _vScrollBar.Maximum - _vScrollBar.LargeChange + 1)
-          return;
-        textBox_Dummy.Focus();
-        ++_vScrollBar.Value;
-        OnValueUpdate();
-      }
-      else
-      {
-        if (_vScrollBar.Value <= _vScrollBar.Minimum)
-          return;
-        textBox_Dummy.Focus();
-        --_vScrollBar.Value;
-        OnValueUpdate();
-      }
+        if (e.Delta < 0)
+        {
+            if (_vScrollBar.Value >= _vScrollBar.Maximum - _vScrollBar.LargeChange + 1)
+                return;
+            textBox_Dummy.Focus();
+            ++_vScrollBar.Value;
+            OnValueUpdate();
+        }
+        else
+        {
+            if (_vScrollBar.Value <= _vScrollBar.Minimum)
+                return;
+            textBox_Dummy.Focus();
+            --_vScrollBar.Value;
+            OnValueUpdate();
+        }
     }
 
     private void CheckBox_TitleHold_CheckedChanged(object sender, EventArgs e)
@@ -304,251 +304,275 @@ namespace DQ9_Cheat.Controls
 
     protected override void OnValueUpdate()
     {
-      BeginUpdate();
-      SetItemCollectionData();
-      panelPaint();
-      RenewalCollectionCount();
-      EndUpdate();
+        BeginUpdate();
+        SetItemCollectionData();
+        panelPaint();
+        RenewalCollectionCount();
+        EndUpdate();
     }
 
     private void SetItemCollectionData()
     {
-      ItemCollectionData itemCollectionData = SaveDataManager.Instance.SaveData.ItemCollectionData;
-      int index1 = 0;
-      int index2 = _vScrollBar.Value * 4;
-      for (int index3 = 0; index3 < 12; ++index3)
-      {
-        for (int index4 = 0; index4 < 4; ++index4)
+        var itemCollectionData = SaveDataManager.Instance.SaveData.ItemCollectionData;
+        var index1 = 0;
+        var index2 = _vScrollBar.Value * 4;
+        for (var index3 = 0; index3 < 12; ++index3)
+        for (var index4 = 0; index4 < 4; ++index4)
         {
-          if (index2 < _itemList.Length && _itemList[index2].DataIndex != -1)
-            _checkBox_Checked[index1] = itemCollectionData.IsItemCollectionHold(_itemList[index2].DataIndex);
-          ++index1;
-          ++index2;
+            if (index2 < _itemList.Length && _itemList[index2].DataIndex != -1)
+                _checkBox_Checked[index1] = itemCollectionData.IsItemCollectionHold(_itemList[index2].DataIndex);
+            ++index1;
+            ++index2;
         }
-      }
     }
 
-    private void panel_Paint(object sender, PaintEventArgs e) => panelPaint(e.Graphics);
+    private void panel_Paint(object sender, PaintEventArgs e)
+    {
+        panelPaint(e.Graphics);
+    }
 
     private void panelPaint()
     {
-      using (Graphics panelGraphics = Graphics.FromHwnd(panel.Handle))
-        panelPaint(panelGraphics);
+        using (var panelGraphics = Graphics.FromHwnd(panel.Handle))
+        {
+            panelPaint(panelGraphics);
+        }
     }
 
     private void panelPaint(Graphics panelGraphics)
     {
-      using (Graphics g = Graphics.FromImage(_panelBitmap))
-      {
-        using (Brush brush1 = new SolidBrush(ForeColor))
+        using (var g = Graphics.FromImage(_panelBitmap))
         {
-          using (Brush brush2 = new SolidBrush(SystemColors.ControlLight))
-          {
-            using (Brush brush3 = new SolidBrush(SystemColors.Control))
+            using (Brush brush1 = new SolidBrush(ForeColor))
             {
-              g.FillRectangle(brush3, new Rectangle(0, 0, _panelBitmap.Width, _panelBitmap.Height));
-              int index1 = _vScrollBar.Value <= _vScrollBar.Maximum - _vScrollBar.LargeChange + 1 ? _vScrollBar.Value * 4 : (_vScrollBar.Maximum - _vScrollBar.LargeChange + 1) * 4;
-              if (index1 < 0)
-                index1 = 0;
-              int index2 = 0;
-              int y = 8;
-              for (int index3 = 0; index3 < 12; ++index3)
-              {
-                if ((index3 & 1) == 1)
-                  g.FillRectangle(brush2, new Rectangle(0, index3 * 30, panel.Width, 30));
-                int x = 48;
-                for (int index4 = 0; index4 < 4; ++index4)
+                using (Brush brush2 = new SolidBrush(SystemColors.ControlLight))
                 {
-                  if (index1 < _itemList.Length && _itemList[index1].DataIndex != -1)
-                  {
-                    ItemDataBase itemDataBase = _itemList[index1];
-                    g.DrawString(itemDataBase.Name, Font, brush1, x, y);
-                    DrawCheckBox(g, index2, _checkBox_Checked[index2] ? CheckBoxState.CheckedNormal : CheckBoxState.UncheckedNormal);
-                  }
-                  x += 190;
-                  ++index1;
-                  ++index2;
+                    using (Brush brush3 = new SolidBrush(SystemColors.Control))
+                    {
+                        g.FillRectangle(brush3, new Rectangle(0, 0, _panelBitmap.Width, _panelBitmap.Height));
+                        var index1 = _vScrollBar.Value <= _vScrollBar.Maximum - _vScrollBar.LargeChange + 1
+                            ? _vScrollBar.Value * 4
+                            : (_vScrollBar.Maximum - _vScrollBar.LargeChange + 1) * 4;
+                        if (index1 < 0)
+                            index1 = 0;
+                        var index2 = 0;
+                        var y = 8;
+                        for (var index3 = 0; index3 < 12; ++index3)
+                        {
+                            if ((index3 & 1) == 1)
+                                g.FillRectangle(brush2, new Rectangle(0, index3 * 30, panel.Width, 30));
+                            var x = 48;
+                            for (var index4 = 0; index4 < 4; ++index4)
+                            {
+                                if (index1 < _itemList.Length && _itemList[index1].DataIndex != -1)
+                                {
+                                    var itemDataBase = _itemList[index1];
+                                    g.DrawString(itemDataBase.Name, Font, brush1, x, y);
+                                    DrawCheckBox(g, index2,
+                                        _checkBox_Checked[index2]
+                                            ? CheckBoxState.CheckedNormal
+                                            : CheckBoxState.UncheckedNormal);
+                                }
+
+                                x += 190;
+                                ++index1;
+                                ++index2;
+                            }
+
+                            y += 30;
+                        }
+                    }
                 }
-                y += 30;
-              }
             }
-          }
         }
-      }
-      panelGraphics.DrawImage(_panelBitmap, Point.Empty);
+
+        panelGraphics.DrawImage(_panelBitmap, Point.Empty);
     }
 
     private void textBox_Dummy_KeyDown(object sender, KeyEventArgs e)
     {
-      BeginUpdate();
-      if (_vScrollBar.Value != _vScrollBar.Minimum)
-      {
-        if (e.KeyCode == Keys.Home)
+        BeginUpdate();
+        if (_vScrollBar.Value != _vScrollBar.Minimum)
         {
-          _vScrollBar.Value = _vScrollBar.Minimum;
-          OnValueUpdate();
+            if (e.KeyCode == Keys.Home)
+            {
+                _vScrollBar.Value = _vScrollBar.Minimum;
+                OnValueUpdate();
+            }
+            else if (e.KeyCode == Keys.Prior)
+            {
+                if (_vScrollBar.Value - _vScrollBar.LargeChange < _vScrollBar.Minimum)
+                    _vScrollBar.Value = _vScrollBar.Minimum;
+                else
+                    _vScrollBar.Value -= _vScrollBar.LargeChange;
+                OnValueUpdate();
+            }
         }
-        else if (e.KeyCode == Keys.Prior)
+
+        if (_vScrollBar.Value != _vScrollBar.Maximum - _vScrollBar.LargeChange + 1)
         {
-          if (_vScrollBar.Value - _vScrollBar.LargeChange < _vScrollBar.Minimum)
-            _vScrollBar.Value = _vScrollBar.Minimum;
-          else
-            _vScrollBar.Value -= _vScrollBar.LargeChange;
-          OnValueUpdate();
+            if (e.KeyCode == Keys.End)
+            {
+                _vScrollBar.Value = _vScrollBar.Maximum - _vScrollBar.LargeChange + 1;
+                OnValueUpdate();
+            }
+            else if (e.KeyCode == Keys.Next)
+            {
+                if (_vScrollBar.Value + _vScrollBar.LargeChange > _vScrollBar.Maximum - _vScrollBar.LargeChange)
+                    _vScrollBar.Value = _vScrollBar.Maximum - _vScrollBar.LargeChange + 1;
+                else
+                    _vScrollBar.Value += _vScrollBar.LargeChange;
+                OnValueUpdate();
+            }
         }
-      }
-      if (_vScrollBar.Value != _vScrollBar.Maximum - _vScrollBar.LargeChange + 1)
-      {
-        if (e.KeyCode == Keys.End)
-        {
-          _vScrollBar.Value = _vScrollBar.Maximum - _vScrollBar.LargeChange + 1;
-          OnValueUpdate();
-        }
-        else if (e.KeyCode == Keys.Next)
-        {
-          if (_vScrollBar.Value + _vScrollBar.LargeChange > _vScrollBar.Maximum - _vScrollBar.LargeChange)
-            _vScrollBar.Value = _vScrollBar.Maximum - _vScrollBar.LargeChange + 1;
-          else
-            _vScrollBar.Value += _vScrollBar.LargeChange;
-          OnValueUpdate();
-        }
-      }
-      EndUpdate();
+
+        EndUpdate();
     }
 
     public void DrawCheckBox(Graphics g, int index, CheckBoxState state)
     {
-      int x = 30 + 190 * (index % 4);
-      int y = 8 + 30 * (index / 4);
-      if (g != null)
-      {
-        if (VisualStyleRenderer.IsSupported)
+        var x = 30 + 190 * (index % 4);
+        var y = 8 + 30 * (index / 4);
+        if (g != null)
         {
-          if (state == CheckBoxState.CheckedNormal)
-            g.DrawImage(_checkBoxBitmap[1], new Point(x, y));
-          else if (state == CheckBoxState.UncheckedNormal)
-            g.DrawImage(_checkBoxBitmap[0], new Point(x, y));
-          else
-            CheckBoxRenderer.DrawCheckBox(g, new Point(x, y), state);
-        }
-        else if (state == CheckBoxState.CheckedHot || state == CheckBoxState.CheckedNormal)
-          g.DrawImage(_checkBoxBitmap[1], new Point(x, y));
-        else
-          g.DrawImage(_checkBoxBitmap[0], new Point(x, y));
-      }
-      else
-      {
-        using (g = Graphics.FromHwnd(panel.Handle))
-        {
-          if (VisualStyleRenderer.IsSupported)
-          {
-            if (state == CheckBoxState.CheckedNormal)
-              g.DrawImage(_checkBoxBitmap[1], new Point(x, y));
-            else if (state == CheckBoxState.UncheckedNormal)
-              g.DrawImage(_checkBoxBitmap[0], new Point(x, y));
+            if (VisualStyleRenderer.IsSupported)
+            {
+                if (state == CheckBoxState.CheckedNormal)
+                    g.DrawImage(_checkBoxBitmap[1], new Point(x, y));
+                else if (state == CheckBoxState.UncheckedNormal)
+                    g.DrawImage(_checkBoxBitmap[0], new Point(x, y));
+                else
+                    CheckBoxRenderer.DrawCheckBox(g, new Point(x, y), state);
+            }
+            else if (state == CheckBoxState.CheckedHot || state == CheckBoxState.CheckedNormal)
+            {
+                g.DrawImage(_checkBoxBitmap[1], new Point(x, y));
+            }
             else
-              CheckBoxRenderer.DrawCheckBox(g, new Point(x, y), state);
-          }
-          else if (state == CheckBoxState.CheckedHot || state == CheckBoxState.CheckedNormal)
-            g.DrawImage(_checkBoxBitmap[1], new Point(x, y));
-          else
-            g.DrawImage(_checkBoxBitmap[0], new Point(x, y));
+            {
+                g.DrawImage(_checkBoxBitmap[0], new Point(x, y));
+            }
         }
-      }
+        else
+        {
+            using (g = Graphics.FromHwnd(panel.Handle))
+            {
+                if (VisualStyleRenderer.IsSupported)
+                {
+                    if (state == CheckBoxState.CheckedNormal)
+                        g.DrawImage(_checkBoxBitmap[1], new Point(x, y));
+                    else if (state == CheckBoxState.UncheckedNormal)
+                        g.DrawImage(_checkBoxBitmap[0], new Point(x, y));
+                    else
+                        CheckBoxRenderer.DrawCheckBox(g, new Point(x, y), state);
+                }
+                else if (state == CheckBoxState.CheckedHot || state == CheckBoxState.CheckedNormal)
+                {
+                    g.DrawImage(_checkBoxBitmap[1], new Point(x, y));
+                }
+                else
+                {
+                    g.DrawImage(_checkBoxBitmap[0], new Point(x, y));
+                }
+            }
+        }
     }
 
     private void RenewalScrollBar()
     {
-      int length = _itemList.Length;
-      if (comboBox_SelectType.SelectedIndex == 1)
-        length -= 2;
-      _vScrollBar.Value = 0;
-      _vScrollBar.Maximum = length / 4 - 1;
-      if (length % 4 != 0)
-        ++_vScrollBar.Maximum;
-      _vScrollBar.LargeChange = 12;
-      if (_vScrollBar.Maximum < _vScrollBar.LargeChange)
-        _vScrollBar.Visible = false;
-      else
-        _vScrollBar.Visible = true;
+        var length = _itemList.Length;
+        if (comboBox_SelectType.SelectedIndex == 1)
+            length -= 2;
+        _vScrollBar.Value = 0;
+        _vScrollBar.Maximum = length / 4 - 1;
+        if (length % 4 != 0)
+            ++_vScrollBar.Maximum;
+        _vScrollBar.LargeChange = 12;
+        if (_vScrollBar.Maximum < _vScrollBar.LargeChange)
+            _vScrollBar.Visible = false;
+        else
+            _vScrollBar.Visible = true;
     }
 
     private void _vScrollBar_ValueChanged(object sender, EventArgs e)
     {
-      if (_updateCount != 0)
-        return;
-      BeginUpdate();
-      if (_vScrollBar.Value > _vScrollBar.Maximum - _vScrollBar.LargeChange + 1)
-      {
-        int num = _vScrollBar.Maximum - _vScrollBar.LargeChange + 1;
-        if (num < 0)
-          num = 0;
-        _vScrollBar.Value = num;
-      }
-      textBox_Dummy.Focus();
-      OnValueUpdate();
-      EndUpdate();
+        if (_updateCount != 0)
+            return;
+        BeginUpdate();
+        if (_vScrollBar.Value > _vScrollBar.Maximum - _vScrollBar.LargeChange + 1)
+        {
+            var num = _vScrollBar.Maximum - _vScrollBar.LargeChange + 1;
+            if (num < 0)
+                num = 0;
+            _vScrollBar.Value = num;
+        }
+
+        textBox_Dummy.Focus();
+        OnValueUpdate();
+        EndUpdate();
     }
 
     private void ItemCollectionDataControl_Click(object sender, EventArgs e)
     {
-      textBox_Dummy.Focus();
+        textBox_Dummy.Focus();
     }
 
-    private void panel_Click(object sender, EventArgs e) => textBox_Dummy.Focus();
+    private void panel_Click(object sender, EventArgs e)
+    {
+        textBox_Dummy.Focus();
+    }
 
     private void button_AllCheck_Click(object sender, EventArgs e)
     {
-      SaveDataManager.Instance.UndoRedoMgr.BeginPluralEdit();
-      for (int index = 0; index < _itemList.Length; ++index)
-      {
-        if (_itemList[index].DataIndex != -1)
-          SaveDataManager.Instance.SaveData.ItemCollectionData.SetItemCollectionHold(_itemList[index].DataIndex, true);
-      }
-      SaveDataManager.Instance.SaveData.ItemCollectionData.ReviseCompCount();
-      SaveDataManager.Instance.UndoRedoMgr.EndPluralEdit();
-      OnValueUpdate();
+        SaveDataManager.Instance.UndoRedoMgr.BeginPluralEdit();
+        for (var index = 0; index < _itemList.Length; ++index)
+            if (_itemList[index].DataIndex != -1)
+                SaveDataManager.Instance.SaveData.ItemCollectionData.SetItemCollectionHold(_itemList[index].DataIndex,
+                    true);
+        SaveDataManager.Instance.SaveData.ItemCollectionData.ReviseCompCount();
+        SaveDataManager.Instance.UndoRedoMgr.EndPluralEdit();
+        OnValueUpdate();
     }
 
     private void button_AllUncheck_Click(object sender, EventArgs e)
     {
-      SaveDataManager.Instance.UndoRedoMgr.BeginPluralEdit();
-      for (int index = 0; index < _itemList.Length; ++index)
-      {
-        if (_itemList[index].DataIndex != -1)
-          SaveDataManager.Instance.SaveData.ItemCollectionData.SetItemCollectionHold(_itemList[index].DataIndex, false);
-      }
-      SaveDataManager.Instance.SaveData.ItemCollectionData.ReviseCompCount();
-      SaveDataManager.Instance.UndoRedoMgr.EndPluralEdit();
-      OnValueUpdate();
+        SaveDataManager.Instance.UndoRedoMgr.BeginPluralEdit();
+        for (var index = 0; index < _itemList.Length; ++index)
+            if (_itemList[index].DataIndex != -1)
+                SaveDataManager.Instance.SaveData.ItemCollectionData.SetItemCollectionHold(_itemList[index].DataIndex,
+                    false);
+        SaveDataManager.Instance.SaveData.ItemCollectionData.ReviseCompCount();
+        SaveDataManager.Instance.UndoRedoMgr.EndPluralEdit();
+        OnValueUpdate();
     }
 
     private void comboBox_SelectType_SelectedIndexChanged(object sender, EventArgs e)
     {
-      int selectedIndex = comboBox_SelectType.SelectedIndex;
-      _itemList = selectedIndex != 0 ? ItemDataList.GetList((ItemType) (selectedIndex - 1), null) : ItemDataList.GetAllCollectionList();
-      RenewalScrollBar();
-      if (_updateCount != 0)
-        return;
-      SetItemCollectionData();
-      panelPaint();
-      RenewalCollectionCount();
+        var selectedIndex = comboBox_SelectType.SelectedIndex;
+        _itemList = selectedIndex != 0
+            ? ItemDataList.GetList((ItemType)(selectedIndex - 1), null)
+            : ItemDataList.GetAllCollectionList();
+        RenewalScrollBar();
+        if (_updateCount != 0)
+            return;
+        SetItemCollectionData();
+        panelPaint();
+        RenewalCollectionCount();
     }
 
     private void _vScrollBar_Scroll(object sender, ScrollEventArgs e)
     {
-      if (e.Type == ScrollEventType.LargeDecrement)
-      {
-        if (e.OldValue - e.NewValue < _vScrollBar.LargeChange)
-          return;
-        ++e.NewValue;
-      }
-      else
-      {
-        if (e.Type != ScrollEventType.LargeIncrement || e.NewValue - e.OldValue < _vScrollBar.LargeChange)
-          return;
-        --e.NewValue;
-      }
+        if (e.Type == ScrollEventType.LargeDecrement)
+        {
+            if (e.OldValue - e.NewValue < _vScrollBar.LargeChange)
+                return;
+            ++e.NewValue;
+        }
+        else
+        {
+            if (e.Type != ScrollEventType.LargeIncrement || e.NewValue - e.OldValue < _vScrollBar.LargeChange)
+                return;
+            --e.NewValue;
+        }
     }
-  }
 }

@@ -4,29 +4,23 @@
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
 // Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-namespace DQ9_Cheat.GameData
-{
-  public class QuestElement
-  {
-    private int _questNo;
-    private string _questTitle;
-    private byte _dataIndex;
-    private bool _additionalQuest;
+namespace DQ9_Cheat.GameData;
 
+public class QuestElement
+{
     public QuestElement(byte dataIndex, byte questNo, bool additional, string questTitle)
     {
-      _dataIndex = dataIndex;
-      _questNo = questNo;
-      _additionalQuest = additional;
-      _questTitle = questTitle;
+        DataIndex = dataIndex;
+        QuestNo = questNo;
+        AdditionalQuest = additional;
+        QuestTitle = questTitle;
     }
 
-    public int QuestNo => _questNo;
+    public int QuestNo { get; }
 
-    public string QuestTitle => _questTitle;
+    public string QuestTitle { get; }
 
-    public byte DataIndex => _dataIndex;
+    public byte DataIndex { get; }
 
-    public bool AdditionalQuest => _additionalQuest;
-  }
+    public bool AdditionalQuest { get; }
 }

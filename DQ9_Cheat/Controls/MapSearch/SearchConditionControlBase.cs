@@ -8,31 +8,36 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using DQ9_Cheat.MapSearch;
 
-namespace DQ9_Cheat.Controls.MapSearch
+namespace DQ9_Cheat.Controls.MapSearch;
+
+public class SearchConditionControlBase : UserControl
 {
-  public class SearchConditionControlBase : UserControl
-  {
     private IContainer components;
 
-    public SearchConditionControlBase() => InitializeComponent();
+    public SearchConditionControlBase()
+    {
+        InitializeComponent();
+    }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && components != null)
-        components.Dispose();
-      base.Dispose(disposing);
+        if (disposing && components != null)
+            components.Dispose();
+        base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      components = new Container();
-      AutoScaleMode = AutoScaleMode.Font;
+        components = new Container();
+        AutoScaleMode = AutoScaleMode.Font;
     }
 
-    public virtual SearchConditionBase GetCondition() => null;
+    public virtual SearchConditionBase GetCondition()
+    {
+        return null;
+    }
 
     public virtual void SetCondition(SearchConditionBase condition)
     {
     }
-  }
 }

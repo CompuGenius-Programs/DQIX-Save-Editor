@@ -6,18 +6,15 @@
 
 using System;
 
-namespace JS_Framework.Threading
-{
-  public class ThreadRunnableNotFoundException : Exception
-  {
-    private string _threadName;
+namespace JS_Framework.Threading;
 
+public class ThreadRunnableNotFoundException : Exception
+{
     internal ThreadRunnableNotFoundException(string threadName)
-      : base("Runnable が定義されていません。")
+        : base("Runnable が定義されていません。")
     {
-      _threadName = threadName;
+        ThreadName = threadName;
     }
 
-    public string ThreadName => _threadName;
-  }
+    public string ThreadName { get; }
 }

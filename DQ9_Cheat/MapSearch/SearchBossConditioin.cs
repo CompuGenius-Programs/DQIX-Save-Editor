@@ -6,36 +6,32 @@
 
 using DQ9_Cheat.GameData;
 
-namespace DQ9_Cheat.MapSearch
+namespace DQ9_Cheat.MapSearch;
+
+public class SearchBossConditioin : SearchConditionBase
 {
-  public class SearchBossConditioin : SearchConditionBase
-  {
-    private int _bossIndex;
-
-    public SearchBossConditioin() => _typeIndex = 8;
-
-    public int BossIndex
+    public SearchBossConditioin()
     {
-      get => _bossIndex;
-      set => _bossIndex = value;
+        _typeIndex = 8;
     }
+
+    public int BossIndex { get; set; }
 
     public override string ToString()
     {
-      return string.Format("Boss {1} {0}", MonsterDataList.List[282 + _bossIndex], ConditionTypeText);
+        return string.Format("Boss {1} {0}", MonsterDataList.List[282 + BossIndex], ConditionTypeText);
     }
 
     public override bool IsHit(SearchDungeonData dungeonData)
     {
-      switch (_conditionType)
-      {
-        case SearchConditionType.Accord:
-          return _bossIndex == dungeonData.Boss;
-        case SearchConditionType.Discord:
-          return _bossIndex != dungeonData.Boss;
-        default:
-          return false;
-      }
+        switch (_conditionType)
+        {
+            case SearchConditionType.Accord:
+                return BossIndex == dungeonData.Boss;
+            case SearchConditionType.Discord:
+                return BossIndex != dungeonData.Boss;
+            default:
+                return false;
+        }
     }
-  }
 }

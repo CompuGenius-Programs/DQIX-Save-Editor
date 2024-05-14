@@ -4,10 +4,10 @@
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
 // Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-namespace DQ9_Cheat.GameData
+namespace DQ9_Cheat.GameData;
+
+public enum ItemType
 {
-  public enum ItemType
-  {
     Tool,
     important,
     Weapon,
@@ -18,6 +18,5 @@ namespace DQ9_Cheat.GameData
     LowerBody,
     Shoe,
     Accessory,
-    MAX,
-  }
+    MAX
 }

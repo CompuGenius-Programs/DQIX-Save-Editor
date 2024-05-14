@@ -9,275 +9,252 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using DQ9_Cheat.GameData;
 
-namespace DQ9_Cheat.DataManager
+namespace DQ9_Cheat.DataManager;
+
+internal class TreasureMapData
 {
-  internal class TreasureMapData
-  {
     public const int DataSize = 28;
-    private uint _dataOffset;
-    private TreasureMapDetailData _treasureMapDetailData;
-    private DataValue<byte> _typeState;
-    private DataValueString _detector;
-    private DataValueString _renewer;
-    private DataValue<byte> _place;
-    private DataValue<byte> _openProbability;
-    private DataValue<byte> _rankDevilType;
-    private DataValue<byte> _devilLevel;
-    private DataValue<ushort> _seedDevilVictoryTurn;
+    private readonly uint _dataOffset;
+    private readonly DataValue<byte> _openProbability;
+    private readonly DataValue<byte> _rankDevilType;
+    private readonly DataValue<ushort> _seedDevilVictoryTurn;
+    private readonly DataValue<byte> _typeState;
 
     public TreasureMapData(SaveData owner, uint dataOffset)
     {
-      _dataOffset = dataOffset;
-      _typeState = new DataValue<byte>(owner, dataOffset, null, 0, byte.MaxValue);
-      _detector = new DataValueString(owner, dataOffset + 1U, null, 10, false, new byte[1]);
-      _renewer = new DataValueString(owner, dataOffset + 11U, null, 10, false, new byte[1]);
-      _place = new DataValue<byte>(owner, dataOffset + 21U, null, 0, byte.MaxValue);
-      _openProbability = new DataValue<byte>(owner, dataOffset + 22U, null, 0, byte.MaxValue);
-      _rankDevilType = new DataValue<byte>(owner, dataOffset + 23U, null, 0, byte.MaxValue);
-      _devilLevel = new DataValue<byte>(owner, dataOffset + 24U, null, 0, byte.MaxValue);
-      _seedDevilVictoryTurn = new DataValue<ushort>(owner, dataOffset + 26U, null, 0, ushort.MaxValue);
-      _treasureMapDetailData = new TreasureMapDetailData();
+        _dataOffset = dataOffset;
+        _typeState = new DataValue<byte>(owner, dataOffset, null, 0, byte.MaxValue);
+        Detector = new DataValueString(owner, dataOffset + 1U, null, 10, false, new byte[1]);
+        Renewer = new DataValueString(owner, dataOffset + 11U, null, 10, false, new byte[1]);
+        Place = new DataValue<byte>(owner, dataOffset + 21U, null, 0, byte.MaxValue);
+        _openProbability = new DataValue<byte>(owner, dataOffset + 22U, null, 0, byte.MaxValue);
+        _rankDevilType = new DataValue<byte>(owner, dataOffset + 23U, null, 0, byte.MaxValue);
+        DevilLevel = new DataValue<byte>(owner, dataOffset + 24U, null, 0, byte.MaxValue);
+        _seedDevilVictoryTurn = new DataValue<ushort>(owner, dataOffset + 26U, null, 0, ushort.MaxValue);
+        TreasureMapDetailData = new TreasureMapDetailData();
     }
 
-    public TreasureMapDetailData TreasureMapDetailData => _treasureMapDetailData;
+    public TreasureMapDetailData TreasureMapDetailData { get; }
 
     public MapType MapType
     {
-      get
-      {
-        byte num = (byte) ((uint) _typeState.Value >> 3);
-        if ((num & 1) != 0)
-          return MapType.Normal;
-        return (num & 2) != 0 ? MapType.devil : MapType.Unknown;
-      }
-      set
-      {
-        _typeState.Value = (byte) (_typeState.Value & 231 | (byte) value << 3 & 24);
-      }
+        get
+        {
+            var num = (byte)((uint)_typeState.Value >> 3);
+            if ((num & 1) != 0)
+                return MapType.Normal;
+            return (num & 2) != 0 ? MapType.devil : MapType.Unknown;
+        }
+        set => _typeState.Value = (byte)((_typeState.Value & 231) | (((byte)value << 3) & 24));
     }
 
     public MapState MapState
     {
-      get
-      {
-        if ((_typeState.Value & 1) != 0)
-          return MapState.NotDiscover;
-        if ((_typeState.Value & 2) != 0)
-          return MapState.Discover;
-        return (_typeState.Value & 4) != 0 ? MapState.Clear : MapState.Unknown;
-      }
-      set
-      {
-        _typeState.Value = (byte) (_typeState.Value & 248 | (byte) value & 7);
-      }
+        get
+        {
+            if ((_typeState.Value & 1) != 0)
+                return MapState.NotDiscover;
+            if ((_typeState.Value & 2) != 0)
+                return MapState.Discover;
+            return (_typeState.Value & 4) != 0 ? MapState.Clear : MapState.Unknown;
+        }
+        set => _typeState.Value = (byte)((_typeState.Value & 248) | ((byte)value & 7));
     }
 
-    public DataValueString Detector => _detector;
+    public DataValueString Detector { get; }
 
-    public DataValueString Renewer => _renewer;
+    public DataValueString Renewer { get; }
 
-    public DataValue<byte> Place => _place;
+    public DataValue<byte> Place { get; }
 
-    public bool IsValid
-    {
-      get
-      {
-        return _treasureMapDetailData.IsValidSeed && _treasureMapDetailData.IsValidRank && _treasureMapDetailData.IsValidPlace(_place.Value);
-      }
-    }
+    public bool IsValid => TreasureMapDetailData.IsValidSeed && TreasureMapDetailData.IsValidRank &&
+                           TreasureMapDetailData.IsValidPlace(Place.Value);
 
-    public bool IsValidSeed => _treasureMapDetailData.IsValidSeed;
+    public bool IsValidSeed => TreasureMapDetailData.IsValidSeed;
 
-    public bool IsValidRank => _treasureMapDetailData.IsValidRank;
+    public bool IsValidRank => TreasureMapDetailData.IsValidRank;
 
-    public bool IsValidPlace => _treasureMapDetailData.IsValidPlace(_place.Value);
+    public bool IsValidPlace => TreasureMapDetailData.IsValidPlace(Place.Value);
 
-    public ReadOnlyCollection<byte> ValidPlaceList => _treasureMapDetailData.ValidPlaceList;
-
-    public bool IsOpenProbability(int index)
-    {
-      return index >= 0 && index < 3 && (_openProbability.Value & 1 << index) != 0;
-    }
-
-    public void SetOpenProbability(int index, bool value)
-    {
-      if (index < 0 || index >= 3)
-        return;
-      byte num = (byte) (1 << index);
-      _openProbability.Value = (byte) (_openProbability.Value & ~num | (value ? num : 0));
-    }
+    public ReadOnlyCollection<byte> ValidPlaceList => TreasureMapDetailData.ValidPlaceList;
 
     public byte Rank
     {
-      get => _rankDevilType.Value;
-      set
-      {
-        _rankDevilType.Value = value;
-        _treasureMapDetailData.MapRank = value;
-        _treasureMapDetailData.CalculateDetail();
-      }
+        get => _rankDevilType.Value;
+        set
+        {
+            _rankDevilType.Value = value;
+            TreasureMapDetailData.MapRank = value;
+            TreasureMapDetailData.CalculateDetail();
+        }
     }
 
-    public string MapName => _treasureMapDetailData.MapName;
+    public string MapName => TreasureMapDetailData.MapName;
 
-    public string MapName1 => _treasureMapDetailData.MapName1;
+    public string MapName1 => TreasureMapDetailData.MapName1;
 
-    public string MapName2 => _treasureMapDetailData.MapName2;
+    public string MapName2 => TreasureMapDetailData.MapName2;
 
-    public byte MapName2Index => _treasureMapDetailData.MapName2Index;
+    public byte MapName2Index => TreasureMapDetailData.MapName2Index;
 
-    public string MapName3 => _treasureMapDetailData.MapName3;
+    public string MapName3 => TreasureMapDetailData.MapName3;
 
     public Devil DevilType
     {
-      get
-      {
-        return MapType == MapType.devil ? DevilList.GetDevilFromIndex(_rankDevilType.Value) : null;
-      }
-      set
-      {
-        if (MapType != MapType.devil)
-          return;
-        _rankDevilType.Value = (byte) value.Index;
-      }
+        get => MapType == MapType.devil ? DevilList.GetDevilFromIndex(_rankDevilType.Value) : null;
+        set
+        {
+            if (MapType != MapType.devil)
+                return;
+            _rankDevilType.Value = (byte)value.Index;
+        }
     }
 
-    public int MapLevel
-    {
-      get
-      {
-        return MapType == MapType.devil ? _devilLevel.Value : _treasureMapDetailData.MapLevel;
-      }
-    }
+    public int MapLevel => MapType == MapType.devil ? DevilLevel.Value : TreasureMapDetailData.MapLevel;
 
-    public DataValue<byte> DevilLevel => _devilLevel;
+    public DataValue<byte> DevilLevel { get; }
 
     public ushort Seed
     {
-      get => _seedDevilVictoryTurn.Value;
-      set
-      {
-        _seedDevilVictoryTurn.Value = value;
-        _treasureMapDetailData.MapSeed = value;
-        _treasureMapDetailData.CalculateDetail();
-      }
+        get => _seedDevilVictoryTurn.Value;
+        set
+        {
+            _seedDevilVictoryTurn.Value = value;
+            TreasureMapDetailData.MapSeed = value;
+            TreasureMapDetailData.CalculateDetail();
+        }
     }
 
     public ushort DevilVictoryTurn
     {
-      get
-      {
-        return _seedDevilVictoryTurn.Value <= 999 ? _seedDevilVictoryTurn.Value : (ushort) 999;
-      }
-      set => _seedDevilVictoryTurn.Value = value > 999 ? (ushort) 999 : value;
+        get => _seedDevilVictoryTurn.Value <= 999 ? _seedDevilVictoryTurn.Value : (ushort)999;
+        set => _seedDevilVictoryTurn.Value = value > 999 ? (ushort)999 : value;
+    }
+
+    public string BossName => TreasureMapDetailData.BossName;
+
+    public int FloorCount => TreasureMapDetailData.FloorCount;
+
+    public int MonsterRank => TreasureMapDetailData.MonsterRank;
+
+    public string MapTypeName => TreasureMapDetailData.MapTypeName;
+
+    public List<TreasureBoxInfo>[] TreasureBoxInfoList => TreasureMapDetailData.TreasureBoxInfoList;
+
+    public bool IsOpenProbability(int index)
+    {
+        return index >= 0 && index < 3 && (_openProbability.Value & (1 << index)) != 0;
+    }
+
+    public void SetOpenProbability(int index, bool value)
+    {
+        if (index < 0 || index >= 3)
+            return;
+        var num = (byte)(1 << index);
+        _openProbability.Value = (byte)((_openProbability.Value & ~num) | (value ? num : 0));
     }
 
     public byte[] GetBytesData()
     {
-      byte[] destinationArray = new byte[28];
-      Array.Copy(SaveDataManager.Instance.SaveData.Data, _dataOffset, destinationArray, 0L, 28L);
-      return destinationArray;
+        var destinationArray = new byte[28];
+        Array.Copy(SaveDataManager.Instance.SaveData.Data, _dataOffset, destinationArray, 0L, 28L);
+        return destinationArray;
     }
 
     public void Copy(byte[] srcData)
     {
-      srcData.CopyTo(SaveDataManager.Instance.SaveData.Data, _dataOffset);
-      _treasureMapDetailData.MapSeed = Seed;
-      _treasureMapDetailData.MapRank = Rank;
-      _treasureMapDetailData.CalculateDetail();
+        srcData.CopyTo(SaveDataManager.Instance.SaveData.Data, _dataOffset);
+        TreasureMapDetailData.MapSeed = Seed;
+        TreasureMapDetailData.MapRank = Rank;
+        TreasureMapDetailData.CalculateDetail();
     }
 
     public void Clear()
     {
-      SaveDataManager.Instance.UndoRedoMgr.Edited(new UndoRedoTreasureMapClear(_dataOffset));
-      Array.Clear(SaveDataManager.Instance.SaveData.Data, (int) _dataOffset, 28);
+        SaveDataManager.Instance.UndoRedoMgr.Edited(new UndoRedoTreasureMapClear(_dataOffset));
+        Array.Clear(SaveDataManager.Instance.SaveData.Data, (int)_dataOffset, 28);
     }
 
     public void InitNewMap()
     {
-      Clear();
-      Place.Value = 1;
-      MapType = MapType.Normal;
-      MapState = MapState.NotDiscover;
-      Rank = 2;
-      Seed = 50;
-      Place.Value = 5;
-      _treasureMapDetailData.MapSeed = Seed;
-      _treasureMapDetailData.MapRank = Rank;
-      _treasureMapDetailData.CalculateDetail();
+        Clear();
+        Place.Value = 1;
+        MapType = MapType.Normal;
+        MapState = MapState.NotDiscover;
+        Rank = 2;
+        Seed = 50;
+        Place.Value = 5;
+        TreasureMapDetailData.MapSeed = Seed;
+        TreasureMapDetailData.MapRank = Rank;
+        TreasureMapDetailData.CalculateDetail();
     }
 
     public string GetTreasureBoxItem(int floor, int boxIndex, int second)
     {
-      return _treasureMapDetailData.GetTreasureBoxItem(floor, boxIndex, second);
-    }
-
-    public string BossName => _treasureMapDetailData.BossName;
-
-    public int FloorCount => _treasureMapDetailData.FloorCount;
-
-    public int MonsterRank => _treasureMapDetailData.MonsterRank;
-
-    public string MapTypeName => _treasureMapDetailData.MapTypeName;
-
-    public List<TreasureBoxInfo>[] TreasureBoxInfoList
-    {
-      get => _treasureMapDetailData.TreasureBoxInfoList;
+        return TreasureMapDetailData.GetTreasureBoxItem(floor, boxIndex, second);
     }
 
     public int GetTreasureBoxCount(int rank)
     {
-      return _treasureMapDetailData.GetTreasureBoxCount(rank);
+        return TreasureMapDetailData.GetTreasureBoxCount(rank);
     }
 
     public int GetTreasureBoxRankPerFloor(int floor, int index)
     {
-      return _treasureMapDetailData.GetTreasureBoxRankPerFloor(floor, index);
+        return TreasureMapDetailData.GetTreasureBoxRankPerFloor(floor, index);
     }
 
     public void GetTreasureBoxPosPerFloor(int floor, int index, out int x, out int y)
     {
-      _treasureMapDetailData.GetTreasureBoxPosPerFloor(floor, index, out x, out y);
+        TreasureMapDetailData.GetTreasureBoxPosPerFloor(floor, index, out x, out y);
     }
 
     public int GetTreasureBoxCountPerFloor(int floor)
     {
-      return _treasureMapDetailData.GetTreasureBoxCountPerFloor(floor);
+        return TreasureMapDetailData.GetTreasureBoxCountPerFloor(floor);
     }
 
-    public int GetFloorWidth(int floor) => _treasureMapDetailData.GetFloorWidth(floor);
+    public int GetFloorWidth(int floor)
+    {
+        return TreasureMapDetailData.GetFloorWidth(floor);
+    }
 
-    public int GetFloorHeight(int floor) => _treasureMapDetailData.GetFloorHeight(floor);
+    public int GetFloorHeight(int floor)
+    {
+        return TreasureMapDetailData.GetFloorHeight(floor);
+    }
 
-    public byte[,] GetFloorMap(int floor) => _treasureMapDetailData.GetFloorMap(floor);
+    public byte[,] GetFloorMap(int floor)
+    {
+        return TreasureMapDetailData.GetFloorMap(floor);
+    }
 
     public bool IsUpStep(int floor, int x, int y)
     {
-      return _treasureMapDetailData.IsUpStep(floor, x, y);
+        return TreasureMapDetailData.IsUpStep(floor, x, y);
     }
 
     public int IsTreasureBoxRank(int floor, int x, int y)
     {
-      return _treasureMapDetailData.IsTreasureBoxRank(floor, x, y);
+        return TreasureMapDetailData.IsTreasureBoxRank(floor, x, y);
     }
 
     public int GetTreasureBoxIndex(int floor, int x, int y)
     {
-      return _treasureMapDetailData.GetTreasureBoxIndex(floor, x, y);
+        return TreasureMapDetailData.GetTreasureBoxIndex(floor, x, y);
     }
 
     public void CalculateDetail()
     {
-      _treasureMapDetailData.MapSeed = Seed;
-      _treasureMapDetailData.MapRank = Rank;
-      _treasureMapDetailData.CalculateDetail(false);
+        TreasureMapDetailData.MapSeed = Seed;
+        TreasureMapDetailData.MapRank = Rank;
+        TreasureMapDetailData.CalculateDetail(false);
     }
 
     public void CalculateDetail(bool floorDetail)
     {
-      _treasureMapDetailData.MapSeed = Seed;
-      _treasureMapDetailData.MapRank = Rank;
-      _treasureMapDetailData.CalculateDetail(floorDetail);
+        TreasureMapDetailData.MapSeed = Seed;
+        TreasureMapDetailData.MapRank = Rank;
+        TreasureMapDetailData.CalculateDetail(floorDetail);
     }
-  }
 }

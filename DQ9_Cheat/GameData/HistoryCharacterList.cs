@@ -6,48 +6,42 @@
 
 using System.Collections.Generic;
 
-namespace DQ9_Cheat.GameData
-{
-  public static class HistoryCharacterList
-  {
-    private static List<HistoryCharacter> _list = new List<HistoryCharacter>();
+namespace DQ9_Cheat.GameData;
 
+public static class HistoryCharacterList
+{
     static HistoryCharacterList()
     {
-      string[] strArray = new string[23]
-      {
-        "Princeton",
-        "Princessa",
-        "Alena",
-        "Kiryl",
-        "Borya",
-        "Meena",
-        "Maya",
-        "Torneko",
-        "Ragnar",
-        "Bianca",
-        "Nera",
-        "Debora",
-        "Milly",
-        "Carver",
-        "Ashlynn",
-        "Kiefer",
-        "Maribel",
-        "Jessica",
-        "Angelo",
-        "Yangus",
-        "Trode",
-        "Morrie",
-        "Fleurette"
-      };
-      int num = 1;
-      foreach (string name in strArray)
-        _list.Add(new HistoryCharacter(name, num++));
+        var strArray = new string[23]
+        {
+            "Princeton",
+            "Princessa",
+            "Alena",
+            "Kiryl",
+            "Borya",
+            "Meena",
+            "Maya",
+            "Torneko",
+            "Ragnar",
+            "Bianca",
+            "Nera",
+            "Debora",
+            "Milly",
+            "Carver",
+            "Ashlynn",
+            "Kiefer",
+            "Maribel",
+            "Jessica",
+            "Angelo",
+            "Yangus",
+            "Trode",
+            "Morrie",
+            "Fleurette"
+        };
+        var num = 1;
+        foreach (var name in strArray)
+            List.Add(new HistoryCharacter(name, num++));
     }
 
-    public static List<HistoryCharacter> List
-    {
-      get => _list;
-    }
-  }
+    public static List<HistoryCharacter> List { get; } = new();
 }

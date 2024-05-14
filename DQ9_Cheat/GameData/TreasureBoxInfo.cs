@@ -4,29 +4,23 @@
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
 // Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-namespace DQ9_Cheat.GameData
-{
-  public class TreasureBoxInfo
-  {
-    private int _index;
-    private int _rank;
-    private int _x;
-    private int _y;
+namespace DQ9_Cheat.GameData;
 
+public class TreasureBoxInfo
+{
     public TreasureBoxInfo(int index, int rank, int x, int y)
     {
-      _index = index;
-      _rank = rank;
-      _x = x;
-      _y = y;
+        Index = index;
+        Rank = rank;
+        X = x;
+        Y = y;
     }
 
-    public int Index => _index;
+    public int Index { get; }
 
-    public int Rank => _rank;
+    public int Rank { get; }
 
-    public int X => _x;
+    public int X { get; }
 
-    public int Y => _y;
-  }
+    public int Y { get; }
 }

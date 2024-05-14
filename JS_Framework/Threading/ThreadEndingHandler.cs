@@ -6,7 +6,6 @@
 
 using System;
 
-namespace JS_Framework.Threading
-{
-  public delegate void ThreadEndingHandler(Exception ex);
-}
+namespace JS_Framework.Threading;
+
+public delegate void ThreadEndingHandler(Exception ex);

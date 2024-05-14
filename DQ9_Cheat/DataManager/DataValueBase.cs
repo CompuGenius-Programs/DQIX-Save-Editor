@@ -6,13 +6,15 @@
 
 using System.Windows.Forms;
 
-namespace DQ9_Cheat.DataManager
+namespace DQ9_Cheat.DataManager;
+
+internal abstract class DataValueBase
 {
-  internal abstract class DataValueBase
-  {
-    protected Control _relationalControl;
-    protected SaveData _owner;
     protected uint _dataOffset;
+    protected SaveData _owner;
+    protected Control _relationalControl;
+
+    public uint DataOffset => _dataOffset;
 
     public abstract void Undo();
 
@@ -21,7 +23,4 @@ namespace DQ9_Cheat.DataManager
     public void FocusControl()
     {
     }
-
-    public uint DataOffset => _dataOffset;
-  }
 }

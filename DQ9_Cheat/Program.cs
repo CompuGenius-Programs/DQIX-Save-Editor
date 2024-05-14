@@ -7,17 +7,16 @@
 using System;
 using System.Windows.Forms;
 
-namespace DQ9_Cheat
+namespace DQ9_Cheat;
+
+internal static class Program
 {
-  internal static class Program
-  {
     [STAThread]
     private static void Main()
     {
-      Application.EnableVisualStyles();
-      Application.SetCompatibleTextRenderingDefault(false);
-      MainWindow.Instance.Initialize();
-      Application.Run(MainWindow.Instance);
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+        MainWindow.Instance.Initialize();
+        Application.Run(MainWindow.Instance);
     }
-  }
 }

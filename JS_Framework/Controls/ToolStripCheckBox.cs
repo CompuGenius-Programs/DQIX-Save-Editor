@@ -7,42 +7,41 @@
 using System;
 using System.Windows.Forms;
 
-namespace JS_Framework.Controls
+namespace JS_Framework.Controls;
+
+public class ToolStripCheckBox : ToolStripControlHost
 {
-  public class ToolStripCheckBox : ToolStripControlHost
-  {
     public ToolStripCheckBox()
-      : base(new CheckBox())
+        : base(new CheckBox())
     {
     }
 
-    public CheckBox CheckBox => (CheckBox) Control;
+    public CheckBox CheckBox => (CheckBox)Control;
 
     public bool Checked
     {
-      get => CheckBox.Checked;
-      set => CheckBox.Checked = value;
+        get => CheckBox.Checked;
+        set => CheckBox.Checked = value;
     }
 
     protected override void OnSubscribeControlEvents(Control control)
     {
-      base.OnSubscribeControlEvents(control);
-      ((CheckBox) control).CheckedChanged += checkBox_CheckedChanged;
+        base.OnSubscribeControlEvents(control);
+        ((CheckBox)control).CheckedChanged += checkBox_CheckedChanged;
     }
 
     protected override void OnUnsubscribeControlEvents(Control control)
     {
-      base.OnUnsubscribeControlEvents(control);
-      ((CheckBox) control).CheckedChanged -= checkBox_CheckedChanged;
+        base.OnUnsubscribeControlEvents(control);
+        ((CheckBox)control).CheckedChanged -= checkBox_CheckedChanged;
     }
 
     public event EventHandler CheckedChanged;
 
     private void checkBox_CheckedChanged(object sender, EventArgs e)
     {
-      if (CheckedChanged == null)
-        return;
-      CheckedChanged(this, e);
+        if (CheckedChanged == null)
+            return;
+        CheckedChanged(this, e);
     }
-  }
 }

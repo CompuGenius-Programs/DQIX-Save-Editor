@@ -7,42 +7,34 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace DQ9_Cheat.GameData
+namespace DQ9_Cheat.GameData;
+
+public class SkillData
 {
-  public class SkillData
-  {
-    private string _name;
-    private int _index;
-    private List<SkillSpecialtyEffectData> _skillSpecialtyList = new List<SkillSpecialtyEffectData>();
-    private List<SkillSpecialtyEffectData> _skillEffectList = new List<SkillSpecialtyEffectData>();
+    private readonly List<SkillSpecialtyEffectData> _skillEffectList = new();
+    private readonly List<SkillSpecialtyEffectData> _skillSpecialtyList = new();
 
     public SkillData(string name, int index, SkillSpecialtyEffectData[] specialtyEffects)
     {
-      _name = name;
-      _index = index;
-      foreach (SkillSpecialtyEffectData specialtyEffect in specialtyEffects)
-      {
-        if (specialtyEffect.Specialty)
-          _skillSpecialtyList.Add(specialtyEffect);
-        else
-          _skillEffectList.Add(specialtyEffect);
-      }
+        Name = name;
+        Index = index;
+        foreach (var specialtyEffect in specialtyEffects)
+            if (specialtyEffect.Specialty)
+                _skillSpecialtyList.Add(specialtyEffect);
+            else
+                _skillEffectList.Add(specialtyEffect);
     }
 
-    public string Name => _name;
+    public string Name { get; }
 
-    public int Index => _index;
+    public int Index { get; }
 
-    public ReadOnlyCollection<SkillSpecialtyEffectData> SkillSpecialtyList
+    public ReadOnlyCollection<SkillSpecialtyEffectData> SkillSpecialtyList => _skillSpecialtyList.AsReadOnly();
+
+    public ReadOnlyCollection<SkillSpecialtyEffectData> SkillEffectList => _skillEffectList.AsReadOnly();
+
+    public override string ToString()
     {
-      get => _skillSpecialtyList.AsReadOnly();
+        return Name;
     }
-
-    public ReadOnlyCollection<SkillSpecialtyEffectData> SkillEffectList
-    {
-      get => _skillEffectList.AsReadOnly();
-    }
-
-    public override string ToString() => _name;
-  }
 }

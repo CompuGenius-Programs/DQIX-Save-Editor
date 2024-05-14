@@ -6,40 +6,42 @@
 
 using System;
 
-namespace FriedGinger.DQCheat
+namespace FriedGinger.DQCheat;
+
+public class StringFixer
 {
-  public class StringFixer
-  {
-    public static readonly DQ9Encoding encoding = new DQ9Encoding();
-    public static readonly TemplateEncoding templateencoding = new TemplateEncoding();
+    public static readonly DQ9Encoding encoding = new();
+    public static readonly TemplateEncoding templateencoding = new();
 
     [Obsolete]
     public static byte[] Decode(string stringToDecode)
     {
-      return encoding.GetBytes(stringToDecode);
+        return encoding.GetBytes(stringToDecode);
     }
 
     [Obsolete]
     public static string Encode(byte[] bytes, int count)
     {
-      return encoding.GetString(bytes, 0, count);
+        return encoding.GetString(bytes, 0, count);
     }
 
-    public static byte[] GetBytes(string input) => encoding.GetBytes(input);
+    public static byte[] GetBytes(string input)
+    {
+        return encoding.GetBytes(input);
+    }
 
     public static string GetString(byte[] bytes, int count)
     {
-      return encoding.GetString(bytes, 0, count);
+        return encoding.GetString(bytes, 0, count);
     }
 
     public static byte[] GetTemplateBytes(string input)
     {
-      return templateencoding.GetBytes(input);
+        return templateencoding.GetBytes(input);
     }
 
     public static string GetTemplateString(byte[] bytes, int count)
     {
-      return templateencoding.GetString(bytes, 0, count);
+        return templateencoding.GetString(bytes, 0, count);
     }
-  }
 }

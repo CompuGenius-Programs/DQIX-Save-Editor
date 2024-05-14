@@ -7,17 +7,16 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace JS_Framework.Controls
+namespace JS_Framework.Controls;
+
+public class ToolStripSpaceBar : ToolStripControlHost
 {
-  public class ToolStripSpaceBar : ToolStripControlHost
-  {
     public ToolStripSpaceBar()
-      : base(new Label())
+        : base(new Label())
     {
-      BackColor = Color.Transparent;
-      AutoSize = false;
-      Width = 20;
-      Text = string.Empty;
+        BackColor = Color.Transparent;
+        AutoSize = false;
+        Width = 20;
+        Text = string.Empty;
     }
-  }
 }

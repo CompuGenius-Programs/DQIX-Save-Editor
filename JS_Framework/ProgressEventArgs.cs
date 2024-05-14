@@ -6,69 +6,52 @@
 
 using System;
 
-namespace JS_Framework
-{
-  public class ProgressEventArgs : EventArgs
-  {
-    private ProgressState _state;
-    private int _totalCount;
-    private int _processedCount;
-    private string _title;
-    private string _comment;
-    private bool _skip;
-    private bool _cancel;
+namespace JS_Framework;
 
+public class ProgressEventArgs : EventArgs
+{
     public ProgressEventArgs(ProgressState state, int totalCount, int processedCount)
     {
-      _state = state;
-      _totalCount = totalCount;
-      _processedCount = processedCount;
+        State = state;
+        TotalCount = totalCount;
+        ProcessedCount = processedCount;
     }
 
     public ProgressEventArgs(
-      ProgressState state,
-      int totalCount,
-      int processedCount,
-      string title)
-      : this(state, totalCount, processedCount)
+        ProgressState state,
+        int totalCount,
+        int processedCount,
+        string title)
+        : this(state, totalCount, processedCount)
     {
-      _title = title;
+        Title = title;
     }
 
     public ProgressEventArgs(
-      ProgressState state,
-      int totalCount,
-      int processedCount,
-      string title,
-      string comment)
-      : this(state, totalCount, processedCount)
+        ProgressState state,
+        int totalCount,
+        int processedCount,
+        string title,
+        string comment)
+        : this(state, totalCount, processedCount)
     {
-      _title = title;
-      _comment = comment;
+        Title = title;
+        Comment = comment;
     }
 
-    public ProgressState State => _state;
+    public ProgressState State { get; }
 
-    public int TotalCount => _totalCount;
+    public int TotalCount { get; }
 
-    public int ProcessedCount => _processedCount;
+    public int ProcessedCount { get; }
 
-    public string Title => _title;
+    public string Title { get; }
 
-    public string Comment => _comment;
+    public string Comment { get; }
 
-    public bool Skip
-    {
-      get => _skip;
-      set => _skip = value;
-    }
+    public bool Skip { get; set; }
 
-    public bool Cancel
-    {
-      get => _cancel;
-      set => _cancel = value;
-    }
+    public bool Cancel { get; set; }
 
-    public double Percent => _processedCount / (double) _totalCount * 100.0;
-  }
+    public double Percent => ProcessedCount / (double)TotalCount * 100.0;
 }

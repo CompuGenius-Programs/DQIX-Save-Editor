@@ -6,16 +6,18 @@
 
 using System.Windows.Forms;
 
-namespace JS_Framework.Controls
+namespace JS_Framework.Controls;
+
+public class DoubleBufferedTextBox : TextBox
 {
-  public class DoubleBufferedTextBox : TextBox
-  {
-    public DoubleBufferedTextBox() => DoubleBuffered = true;
+    public DoubleBufferedTextBox()
+    {
+        DoubleBuffered = true;
+    }
 
     protected override bool DoubleBuffered
     {
-      get => base.DoubleBuffered;
-      set => base.DoubleBuffered = value;
+        get => base.DoubleBuffered;
+        set => base.DoubleBuffered = value;
     }
-  }
 }

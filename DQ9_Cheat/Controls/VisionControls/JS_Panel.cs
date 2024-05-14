@@ -9,60 +9,64 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace DQ9_Cheat.Controls.VisionControls
+namespace DQ9_Cheat.Controls.VisionControls;
+
+public class JS_Panel : Panel
 {
-  public class JS_Panel : Panel
-  {
-    private List<VisionControlBase> _visionControls = new List<VisionControlBase>();
+    private readonly List<VisionControlBase> _visionControls = new();
     private IContainer components;
 
     public JS_Panel()
     {
-      InitializeComponent();
-      DoubleBuffered = true;
+        InitializeComponent();
+        DoubleBuffered = true;
     }
 
     public void AddVisionControl(VisionControlBase visionControl)
     {
-      if (_visionControls.Contains(visionControl))
-        return;
-      _visionControls.Add(visionControl);
-      visionControl.Parent = this;
+        if (_visionControls.Contains(visionControl))
+            return;
+        _visionControls.Add(visionControl);
+        visionControl.Parent = this;
     }
 
     public void RenewalVisionControl()
     {
-      using (Graphics g = Graphics.FromHwnd(Handle))
-        RenewalVisionControl(g);
+        using (var g = Graphics.FromHwnd(Handle))
+        {
+            RenewalVisionControl(g);
+        }
     }
 
     public void RenewalVisionControl(Graphics g)
     {
-      foreach (VisionControlBase visionControl in _visionControls)
-        visionControl.DrawControl(g);
+        foreach (var visionControl in _visionControls)
+            visionControl.DrawControl(g);
     }
 
     protected override void OnPaint(PaintEventArgs e)
     {
-      base.OnPaint(e);
-      foreach (VisionControlBase visionControl in _visionControls)
-        visionControl.DrawControl(e.Graphics);
+        base.OnPaint(e);
+        foreach (var visionControl in _visionControls)
+            visionControl.DrawControl(e.Graphics);
     }
 
     protected override void OnMouseMove(MouseEventArgs e)
     {
-      base.OnMouseMove(e);
-      foreach (VisionControlBase visionControl in _visionControls)
-        visionControl.MouseMove(e.X, e.Y);
+        base.OnMouseMove(e);
+        foreach (var visionControl in _visionControls)
+            visionControl.MouseMove(e.X, e.Y);
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && components != null)
-        components.Dispose();
-      base.Dispose(disposing);
+        if (disposing && components != null)
+            components.Dispose();
+        base.Dispose(disposing);
     }
 
-    private void InitializeComponent() => components = new Container();
-  }
+    private void InitializeComponent()
+    {
+        components = new Container();
+    }
 }

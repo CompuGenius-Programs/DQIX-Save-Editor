@@ -6,36 +6,33 @@
 
 using DQ9_Cheat.GameData;
 
-namespace DQ9_Cheat.MapSearch
+namespace DQ9_Cheat.MapSearch;
+
+public class SearchMapTypeConditioin : SearchConditionBase
 {
-  public class SearchMapTypeConditioin : SearchConditionBase
-  {
-    private int _mapType;
-
-    public SearchMapTypeConditioin() => _typeIndex = 5;
-
-    public int MapType
+    public SearchMapTypeConditioin()
     {
-      get => _mapType;
-      set => _mapType = value;
+        _typeIndex = 5;
     }
+
+    public int MapType { get; set; }
 
     public override string ToString()
     {
-      return string.Format("Type {1} {0}", TreasureMapDataTable.TreasureMapMapTypeName_Table[_mapType], ConditionTypeText);
+        return string.Format("Type {1} {0}", TreasureMapDataTable.TreasureMapMapTypeName_Table[MapType],
+            ConditionTypeText);
     }
 
     public override bool IsHit(SearchDungeonData dungeonData)
     {
-      switch (_conditionType)
-      {
-        case SearchConditionType.Accord:
-          return _mapType == dungeonData.MapType;
-        case SearchConditionType.Discord:
-          return _mapType != dungeonData.MapType;
-        default:
-          return false;
-      }
+        switch (_conditionType)
+        {
+            case SearchConditionType.Accord:
+                return MapType == dungeonData.MapType;
+            case SearchConditionType.Discord:
+                return MapType != dungeonData.MapType;
+            default:
+                return false;
+        }
     }
-  }
 }

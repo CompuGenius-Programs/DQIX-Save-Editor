@@ -7,41 +7,43 @@
 using System;
 using System.Threading;
 
-namespace JS_Framework.Threading
+namespace JS_Framework.Threading;
+
+public class ThreadControl
 {
-  public class ThreadControl
-  {
-    private Thread _threadHandle;
-    private ThreadRunnable _runnable;
-    private ThreadParameterizedRunnable _parameterisedRunnable;
-    private object[] _params;
-    protected string _name;
     private volatile bool _isStop;
+    protected string _name;
+    private readonly ThreadParameterizedRunnable _parameterisedRunnable;
+    private object[] _params;
+    private readonly ThreadRunnable _runnable;
+    private Thread _threadHandle;
 
     public ThreadControl(string name)
     {
-      _name = name;
-      _parameterisedRunnable = Runnable;
-      Initialize();
+        _name = name;
+        _parameterisedRunnable = Runnable;
+        Initialize();
     }
 
     public ThreadControl(string name, ThreadRunnable runnable)
     {
-      _name = name;
-      _runnable = runnable;
-      Initialize();
+        _name = name;
+        _runnable = runnable;
+        Initialize();
     }
 
     public ThreadControl(string name, ThreadParameterizedRunnable parameterisedRunnable)
     {
-      _name = name;
-      _parameterisedRunnable = parameterisedRunnable;
-      Initialize();
+        _name = name;
+        _parameterisedRunnable = parameterisedRunnable;
+        Initialize();
     }
 
-    public event ThreadEndingHandler ThreadEnding;
-
     public bool IsStop => _isStop;
+
+    public bool IsAlive => _threadHandle.IsAlive;
+
+    public event ThreadEndingHandler ThreadEnding;
 
     protected virtual void Runnable(params object[] param)
     {
@@ -49,71 +51,78 @@ namespace JS_Framework.Threading
 
     private void Initialize()
     {
-      _threadHandle = new Thread(ThreadProc);
-      _threadHandle.Name = _name;
-      _threadHandle.IsBackground = true;
-      _threadHandle.SetApartmentState(ApartmentState.STA);
+        _threadHandle = new Thread(ThreadProc);
+        _threadHandle.Name = _name;
+        _threadHandle.IsBackground = true;
+        _threadHandle.SetApartmentState(ApartmentState.STA);
     }
 
-    public void Start() => _threadHandle.Start();
+    public void Start()
+    {
+        _threadHandle.Start();
+    }
 
     public void Start(params object[] param)
     {
-      _params = param;
-      _threadHandle.Start();
+        _params = param;
+        _threadHandle.Start();
     }
 
-    public void Stop() => _isStop = true;
+    public void Stop()
+    {
+        _isStop = true;
+    }
 
     private void ThreadProc()
     {
-      Exception ex1 = null;
-      try
-      {
-        if (_runnable != null)
+        Exception ex1 = null;
+        try
         {
-          _runnable();
+            if (_runnable != null)
+            {
+                _runnable();
+            }
+            else
+            {
+                if (_parameterisedRunnable == null)
+                    throw new ThreadRunnableNotFoundException(_name);
+                _parameterisedRunnable(_params);
+            }
         }
-        else
+        catch (ThreadAbortException ex2)
         {
-          if (_parameterisedRunnable == null)
-            throw new ThreadRunnableNotFoundException(_name);
-          _parameterisedRunnable(_params);
+            ex1 = ex2;
         }
-      }
-      catch (ThreadAbortException ex2)
-      {
-        ex1 = ex2;
-      }
-      catch (ThreadRunnableNotFoundException ex3)
-      {
-        ex1 = ex3;
-      }
-      catch (Exception ex4)
-      {
-        ex1 = ex4;
-      }
-      finally
-      {
-        if (ThreadEnding != null)
-          ThreadEnding(ex1);
-      }
+        catch (ThreadRunnableNotFoundException ex3)
+        {
+            ex1 = ex3;
+        }
+        catch (Exception ex4)
+        {
+            ex1 = ex4;
+        }
+        finally
+        {
+            if (ThreadEnding != null)
+                ThreadEnding(ex1);
+        }
     }
 
-    public void Abort() => _threadHandle.Abort();
+    public void Abort()
+    {
+        _threadHandle.Abort();
+    }
 
     public void Join()
     {
-      if ((_threadHandle.ThreadState & ThreadState.Unstarted) == ThreadState.Unstarted)
-        return;
-      _threadHandle.Join();
+        if ((_threadHandle.ThreadState & ThreadState.Unstarted) == ThreadState.Unstarted)
+            return;
+        _threadHandle.Join();
     }
 
     public bool Join(int timeout)
     {
-      return (_threadHandle.ThreadState & ThreadState.Unstarted) != ThreadState.Unstarted && _threadHandle.Join(timeout);
+        return (_threadHandle.ThreadState & ThreadState.Unstarted) != ThreadState.Unstarted &&
+               _threadHandle.Join(timeout);
     }
-
-    public bool IsAlive => _threadHandle.IsAlive;
-  }
 }

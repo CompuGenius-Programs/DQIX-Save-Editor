@@ -4,23 +4,22 @@
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
 // Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-namespace DQ9_Cheat.Controls
-{
-  public class Preset
-  {
-    private string _presetName;
-    private byte _index;
+namespace DQ9_Cheat.Controls;
 
+public class Preset
+{
     public Preset(string name, byte index)
     {
-      _presetName = name;
-      _index = index;
+        PresetName = name;
+        Index = index;
     }
 
-    public string PresetName => _presetName;
+    public string PresetName { get; }
 
-    public byte Index => _index;
+    public byte Index { get; }
 
-    public override string ToString() => _presetName;
-  }
+    public override string ToString()
+    {
+        return PresetName;
+    }
 }

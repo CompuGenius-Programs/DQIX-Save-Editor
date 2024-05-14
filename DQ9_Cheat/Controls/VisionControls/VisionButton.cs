@@ -8,62 +8,62 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace DQ9_Cheat.Controls.VisionControls
+namespace DQ9_Cheat.Controls.VisionControls;
+
+public class VisionButton : VisionControlBase
 {
-  public class VisionButton : VisionControlBase
-  {
-    private Button _innerButton;
     private static bool _controlInitialized = false;
     private static Button[] _entityButton = new Button[3];
     private static bool[] _controlAdded = new bool[3];
     private int _addedIndex;
+    private readonly Button _innerButton;
     private string _text;
 
     public VisionButton(
-      int left,
-      int top,
-      int width,
-      int height,
-      float dpiRateX,
-      float dpiRateY)
-      : base(left, top, width, height, dpiRateX, dpiRateY)
+        int left,
+        int top,
+        int width,
+        int height,
+        float dpiRateX,
+        float dpiRateY)
+        : base(left, top, width, height, dpiRateX, dpiRateY)
     {
-      _addedIndex = -1;
-      _innerButton = new Button();
-      _innerControl = _innerButton;
-      _innerButton.Size = new Size(_width, _height);
-      _innerButton.Location = new Point(_left, _top);
-      _innerButton.Click += _innerButton_Click;
+        _addedIndex = -1;
+        _innerButton = new Button();
+        _innerControl = _innerButton;
+        _innerButton.Size = new Size(_width, _height);
+        _innerButton.Location = new Point(_left, _top);
+        _innerButton.Click += _innerButton_Click;
     }
 
     public VisionButton(int left, int top, int width, int height)
-      : base(left, top, width, height)
+        : base(left, top, width, height)
     {
-      _addedIndex = -1;
-      _innerButton = new Button();
-      _innerControl = _innerButton;
-      _innerButton.Size = new Size(width, height);
-      _innerButton.Location = new Point(left, top);
-      _innerButton.Click += _innerButton_Click;
+        _addedIndex = -1;
+        _innerButton = new Button();
+        _innerControl = _innerButton;
+        _innerButton.Size = new Size(width, height);
+        _innerButton.Location = new Point(left, top);
+        _innerButton.Click += _innerButton_Click;
+    }
+
+    public string Text
+    {
+        get => _text;
+        set
+        {
+            if (!(_text != value))
+                return;
+            _text = value;
+            _innerButton.Text = _text;
+        }
     }
 
     public event EventHandler Click;
 
-    public string Text
-    {
-      get => _text;
-      set
-      {
-        if (!(_text != value))
-          return;
-        _text = value;
-        _innerButton.Text = _text;
-      }
-    }
-
     protected override void Regist(Control parent)
     {
-      parent?.Controls.Add(_innerButton);
+        parent?.Controls.Add(_innerButton);
     }
 
     public override void DrawControl(Graphics graphic)
@@ -76,16 +76,16 @@ namespace DQ9_Cheat.Controls.VisionControls
 
     private void _innerButton_Click(object sender, EventArgs e)
     {
-      if (!(sender is Button) || Click == null)
-        return;
-      Click(this, e);
+        if (!(sender is Button) || Click == null)
+            return;
+        Click(this, e);
     }
 
     private void EntityButton_Click(object sender, EventArgs e)
     {
-      if (!(sender is Button) || Click == null)
-        return;
-      Click(this, e);
+        if (!(sender is Button) || Click == null)
+            return;
+        Click(this, e);
     }
 
     public override void MouseLeave()
@@ -95,5 +95,4 @@ namespace DQ9_Cheat.Controls.VisionControls
     private void EntityButton_Leave(object sender, EventArgs e)
     {
     }
-  }
 }

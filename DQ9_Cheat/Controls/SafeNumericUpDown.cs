@@ -9,80 +9,82 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Forms;
 
-namespace DQ9_Cheat.Controls
+namespace DQ9_Cheat.Controls;
+
+public class SafeNumericUpDown : NumericUpDown
 {
-  public class SafeNumericUpDown : NumericUpDown
-  {
     private IContainer components;
 
-    public SafeNumericUpDown() => InitializeComponent();
-
-    public new Decimal Value
+    public SafeNumericUpDown()
     {
-      get => base.Value;
-      set
-      {
-        if (value > Maximum)
-          value = Maximum;
-        if (value < Minimum)
-          value = Minimum;
-        base.Value = value;
-      }
+        InitializeComponent();
     }
 
-    private Decimal Constrain(Decimal value)
+    public new decimal Value
     {
-      if (value < Minimum)
-        value = Minimum;
-      if (value > Maximum)
-        value = Maximum;
-      return value;
+        get => base.Value;
+        set
+        {
+            if (value > Maximum)
+                value = Maximum;
+            if (value < Minimum)
+                value = Minimum;
+            base.Value = value;
+        }
+    }
+
+    private decimal Constrain(decimal value)
+    {
+        if (value < Minimum)
+            value = Minimum;
+        if (value > Maximum)
+            value = Maximum;
+        return value;
     }
 
     protected override void ValidateEditText()
     {
-      ParseEditText();
-      UpdateEditText();
+        ParseEditText();
+        UpdateEditText();
     }
 
     protected override void UpdateEditText()
     {
-      if (UserEdit)
-        ParseEditText();
-      base.UpdateEditText();
+        if (UserEdit)
+            ParseEditText();
+        base.UpdateEditText();
     }
 
     protected new void ParseEditText()
     {
-      try
-      {
-        if (string.IsNullOrEmpty(Text) || Text.Length == 1 && !(Text != "-"))
-          return;
-        if (Hexadecimal)
-          Value = Constrain(Convert.ToDecimal(Convert.ToUInt64(Text, 16)));
-        else
-          Value = Constrain(Decimal.Parse(Text, CultureInfo.CurrentCulture));
-      }
-      catch
-      {
-      }
-      finally
-      {
-        UserEdit = false;
-      }
+        try
+        {
+            if (string.IsNullOrEmpty(Text) || (Text.Length == 1 && !(Text != "-")))
+                return;
+            if (Hexadecimal)
+                Value = Constrain(Convert.ToDecimal(Convert.ToUInt64(Text, 16)));
+            else
+                Value = Constrain(decimal.Parse(Text, CultureInfo.CurrentCulture));
+        }
+        catch
+        {
+        }
+        finally
+        {
+            UserEdit = false;
+        }
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing && components != null)
-        components.Dispose();
-      base.Dispose(disposing);
+        if (disposing && components != null)
+            components.Dispose();
+        base.Dispose(disposing);
     }
 
     private void InitializeComponent()
     {
-      components = new Container();
-      AutoScaleMode = AutoScaleMode.Font;
+        components = new Container();
+        AutoScaleMode = AutoScaleMode.Font;
     }
-  }
 }

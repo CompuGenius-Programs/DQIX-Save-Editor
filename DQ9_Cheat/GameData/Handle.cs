@@ -4,30 +4,25 @@
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
 // Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-namespace DQ9_Cheat.GameData
-{
-  public class Handle
-  {
-    private HandleType _handleType;
-    private ProfileJob _job;
-    private TitleElement _title;
+namespace DQ9_Cheat.GameData;
 
+public class Handle
+{
     public Handle(ProfileJob job)
     {
-      _handleType = HandleType.HandleJob;
-      _job = job;
+        HandleType = HandleType.HandleJob;
+        Job = job;
     }
 
     public Handle(TitleElement title)
     {
-      _handleType = HandleType.HandleTitle;
-      _title = title;
+        HandleType = HandleType.HandleTitle;
+        Title = title;
     }
 
-    public HandleType HandleType => _handleType;
+    public HandleType HandleType { get; }
 
-    public ProfileJob Job => _job;
+    public ProfileJob Job { get; }
 
-    public TitleElement Title => _title;
-  }
+    public TitleElement Title { get; }
 }

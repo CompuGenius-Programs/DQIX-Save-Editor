@@ -4,27 +4,25 @@
 // MVID: 9E5BE672-CBE6-45FB-AC35-96531044560E
 // Assembly location: dq9_save_editor_0.7\DQCheat.Patched.0.7.exe
 
-namespace DQ9_Cheat.GameData
-{
-  public class SkillSpecialtyEffectData
-  {
-    private string _name;
-    private int _index;
-    private bool _specialty;
+namespace DQ9_Cheat.GameData;
 
+public class SkillSpecialtyEffectData
+{
     public SkillSpecialtyEffectData(string name, int index, bool specialty)
     {
-      _name = name;
-      _index = index;
-      _specialty = specialty;
+        Name = name;
+        Index = index;
+        Specialty = specialty;
     }
 
-    public string Name => _name;
+    public string Name { get; }
 
-    public int Index => _index;
+    public int Index { get; }
 
-    public bool Specialty => _specialty;
+    public bool Specialty { get; }
 
-    public override string ToString() => _name;
-  }
+    public override string ToString()
+    {
+        return Name;
+    }
 }

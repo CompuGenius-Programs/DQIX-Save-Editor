@@ -13,4 +13,7 @@ using System.Security.Permissions;
 [assembly: AssemblyTitle("Dragon Quest IX Save Data Editor")]
 [assembly: ComVisible(false)]
 [assembly: AssemblyVersion("0.7.0.57")]
-[assembly: PermissionSet(SecurityAction.RequestMinimum, XML = "<PermissionSet class=\"System.Security.PermissionSet\"\r\nversion=\"1\">\r\n<IPermission class=\"System.Security.Permissions.SecurityPermission, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\"\r\nversion=\"1\"\r\nFlags=\"SkipVerification\"/>\r\n</PermissionSet>\r\n")]
+[assembly:
+    PermissionSet(SecurityAction.RequestMinimum,
+        XML =
+            "<PermissionSet class=\"System.Security.PermissionSet\"\r\nversion=\"1\">\r\n<IPermission class=\"System.Security.Permissions.SecurityPermission, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\"\r\nversion=\"1\"\r\nFlags=\"SkipVerification\"/>\r\n</PermissionSet>\r\n")]

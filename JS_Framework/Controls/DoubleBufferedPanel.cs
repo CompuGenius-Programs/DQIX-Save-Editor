@@ -6,10 +6,12 @@
 
 using System.Windows.Forms;
 
-namespace JS_Framework.Controls
+namespace JS_Framework.Controls;
+
+public class DoubleBufferedPanel : Panel
 {
-  public class DoubleBufferedPanel : Panel
-  {
-    public DoubleBufferedPanel() => DoubleBuffered = true;
-  }
+    public DoubleBufferedPanel()
+    {
+        DoubleBuffered = true;
+    }
 }
