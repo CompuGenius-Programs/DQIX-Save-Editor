@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\yzsco\Downloads\dq9_save_editor_0.7\DQCheat.Patched.0.7.exe-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{33F18E27-F465-4B0D-B597-C9E51F8F78D9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>DQ9_Cheat</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <ApplicationVersion>0.7.0.57</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DQ9_Cheat">
+      <HintPath>lib\DQCheat.Patched.0.7.exe</HintPath>
+    </Reference>
+    <Reference Include="DQCheat">
+      <HintPath>lib\DQCheat.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DQ9_Cheat\DLL\DQ9Encoding.cs" />
+    <Compile Include="DQ9_Cheat\DLL\SavePlaceListFixer.cs" />
+    <Compile Include="DQ9_Cheat\DLL\StringFixer.cs" />
+    <Compile Include="DQ9_Cheat\DLL\TemplateEncoding.cs" />
+    <Compile Include="JS_Framework\ProgressEventArgs.cs" />
+    <Compile Include="JS_Framework\ProgressEventHandler.cs" />
+    <Compile Include="JS_Framework\ProgressState.cs" />
+    <Compile Include="JS_Framework\Controls\DoubleBufferedListView.cs" />
+    <Compile Include="JS_Framework\Controls\DoubleBufferedPanel.cs" />
+    <Compile Include="JS_Framework\Controls\DoubleBufferedTextBox.cs" />
+    <Compile Include="JS_Framework\Controls\GroupBoxWithCheckBox.cs" />
+    <Compile Include="JS_Framework\Controls\ToolStripCheckBox.cs" />
+    <Compile Include="JS_Framework\Controls\ToolStripNumericUpDown.cs" />
+    <Compile Include="JS_Framework\Controls\ToolStripRadioButton.cs" />
+    <Compile Include="JS_Framework\Controls\ToolStripSpaceBar.cs" />
+    <Compile Include="JS_Framework\Threading\ThreadControl.cs" />
+    <Compile Include="JS_Framework\Threading\ThreadEndingHandler.cs" />
+    <Compile Include="JS_Framework\Threading\ThreadParameterizedRunnable.cs" />
+    <Compile Include="JS_Framework\Threading\ThreadRunnable.cs" />
+    <Compile Include="JS_Framework\Threading\ThreadRunnableNotFoundException.cs" />
+    <Compile Include="DQ9_Cheat\AboutBox.cs" />
+    <Compile Include="DQ9_Cheat\MainWindow.cs" />
+    <Compile Include="DQ9_Cheat\Program.cs" />
+    <Compile Include="DQ9_Cheat\Controls\AddressSelectWindow.cs" />
+    <Compile Include="DQ9_Cheat\Controls\AlchemyDataControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\BasisDataControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\CharacterDataControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\CreateMapDataBaseDialog.cs" />
+    <Compile Include="DQ9_Cheat\Controls\DataControlBase.cs" />
+    <Compile Include="DQ9_Cheat\Controls\FirstClearDataControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\HandleSelectWindow.cs" />
+    <Compile Include="DQ9_Cheat\Controls\ItemCollectionDataControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\ItemDataControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\ItemSelectWindow.cs" />
+    <Compile Include="DQ9_Cheat\Controls\ListType.cs" />
+    <Compile Include="DQ9_Cheat\Controls\MonsterDataControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\Preset.cs" />
+    <Compile Include="DQ9_Cheat\Controls\PresetFigure.cs" />
+    <Compile Include="DQ9_Cheat\Controls\PresetWindow.cs" />
+    <Compile Include="DQ9_Cheat\Controls\ProcessFlagControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\QuestDataControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\QuestPanel.cs" />
+    <Compile Include="DQ9_Cheat\Controls\RikkaInnDataControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\SafeNumericUpDown.cs" />
+    <Compile Include="DQ9_Cheat\Controls\SavePlaceSelectWindow.cs" />
+    <Compile Include="DQ9_Cheat\Controls\SmartItemDataControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\StayingListGroupBox.cs" />
+    <Compile Include="DQ9_Cheat\Controls\TitleDataControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\TitleSelectWindow.cs" />
+    <Compile Include="DQ9_Cheat\Controls\TreasureBoxItemTableList.cs" />
+    <Compile Include="DQ9_Cheat\Controls\TreasureMapDataControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\WifiShoppingDataControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\MapSearch\MapSearchConditionEdit.cs" />
+    <Compile Include="DQ9_Cheat\Controls\MapSearch\MapSearchWindow.cs" />
+    <Compile Include="DQ9_Cheat\Controls\MapSearch\SearchBossConditionControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\MapSearch\SearchBoxConditionControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\MapSearch\SearchConditionControlBase.cs" />
+    <Compile Include="DQ9_Cheat\Controls\MapSearch\SearchFloorCountConditionControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\MapSearch\SearchMapLvConditionControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\MapSearch\SearchMapName1ConditionControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\MapSearch\SearchMapName2ConditionControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\MapSearch\SearchMapName3ConditionControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\MapSearch\SearchMapTypeConditionControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\MapSearch\SearchMonsterRankConditionControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\MapSearch\SearchRankConditionControl.cs" />
+    <Compile Include="DQ9_Cheat\Controls\VisionControls\JS_GroupBox.cs" />
+    <Compile Include="DQ9_Cheat\Controls\VisionControls\JS_Panel.cs" />
+    <Compile Include="DQ9_Cheat\Controls\VisionControls\VisionButton.cs" />
+    <Compile Include="DQ9_Cheat\Controls\VisionControls\VisionComboBox.cs" />
+    <Compile Include="DQ9_Cheat\Controls\VisionControls\VisionControlBase.cs" />
+    <Compile Include="DQ9_Cheat\Controls\VisionControls\VisionNumericUpDown.cs" />
+    <Compile Include="DQ9_Cheat\Controls\VisionControls\VisionTextBox.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\AlchemyData.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\AlchemyState.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\BasisData.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\CharacterData.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\CharacterManager.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\DataValue`1.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\DataValueBase.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\DataValueString.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\FirstClearData.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\ItemCollectionData.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\ItemData.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\MapState.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\MapType.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\MonsterDataManager.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\ProcessFlag.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\QuestDataManager.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\QuestState.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\RikkaData.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\SaveData.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\SaveDataManager.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\SmartItemData.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\TitleData.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\TreasureMapData.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\TreasureMapManager.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\UndoRedoCharacterDataClear.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\UndoRedoCharacterIndexChanged.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\UndoRedoDataValue.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\UndoRedoElement.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\UndoRedoInfo.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\UndoRedoManager.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\UndoRedoSaveDataCopy.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\UndoRedoTreasureMapClear.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\UndoRedoTreasureMapCreate.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\UndoRedoTreasureMapIndexChanged.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\UndoRedoVisitorDataClear.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\UndoRedoVisitorIndexChanged.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\VisitorData.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\VisitorManager.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\WifiShopGoods.cs" />
+    <Compile Include="DQ9_Cheat\DataManager\WifiShopping.cs" />
+    <Compile Include="DQ9_Cheat\GameData\Destination.cs" />
+    <Compile Include="DQ9_Cheat\GameData\DestinationList.cs" />
+    <Compile Include="DQ9_Cheat\GameData\Devil.cs" />
+    <Compile Include="DQ9_Cheat\GameData\DevilList.cs" />
+    <Compile Include="DQ9_Cheat\GameData\Gesture.cs" />
+    <Compile Include="DQ9_Cheat\GameData\GestureList.cs" />
+    <Compile Include="DQ9_Cheat\GameData\Handle.cs" />
+    <Compile Include="DQ9_Cheat\GameData\HandleType.cs" />
+    <Compile Include="DQ9_Cheat\GameData\HistoryCharacter.cs" />
+    <Compile Include="DQ9_Cheat\GameData\HistoryCharacterList.cs" />
+    <Compile Include="DQ9_Cheat\GameData\ItemDataBase.cs" />
+    <Compile Include="DQ9_Cheat\GameData\ItemDataList.cs" />
+    <Compile Include="DQ9_Cheat\GameData\ItemType.cs" />
+    <Compile Include="DQ9_Cheat\GameData\JobData.cs" />
+    <Compile Include="DQ9_Cheat\GameData\JobDataList.cs" />
+    <Compile Include="DQ9_Cheat\GameData\MonsterDataList.cs" />
+    <Compile Include="DQ9_Cheat\GameData\ProfileAddress.cs" />
+    <Compile Include="DQ9_Cheat\GameData\ProfileAddressList.cs" />
+    <Compile Include="DQ9_Cheat\GameData\ProfileJob.cs" />
+    <Compile Include="DQ9_Cheat\GameData\ProfileJobList.cs" />
+    <Compile Include="DQ9_Cheat\GameData\QuestDataList.cs" />
+    <Compile Include="DQ9_Cheat\GameData\QuestElement.cs" />
+    <Compile Include="DQ9_Cheat\GameData\SavePlace.cs" />
+    <Compile Include="DQ9_Cheat\GameData\SavePlaceList.cs" />
+    <Compile Include="DQ9_Cheat\GameData\SavePlaceType.cs" />
+    <Compile Include="DQ9_Cheat\GameData\SkillData.cs" />
+    <Compile Include="DQ9_Cheat\GameData\SkillDataList.cs" />
+    <Compile Include="DQ9_Cheat\GameData\SkillSpecialtyEffectData.cs" />
+    <Compile Include="DQ9_Cheat\GameData\Strategy.cs" />
+    <Compile Include="DQ9_Cheat\GameData\StrategyList.cs" />
+    <Compile Include="DQ9_Cheat\GameData\TitleDataList.cs" />
+    <Compile Include="DQ9_Cheat\GameData\TitleElement.cs" />
+    <Compile Include="DQ9_Cheat\GameData\TreasureBoxInfo.cs" />
+    <Compile Include="DQ9_Cheat\GameData\TreasureMapDataTable.cs" />
+    <Compile Include="DQ9_Cheat\GameData\TreasureMapDetailData.cs" />
+    <Compile Include="DQ9_Cheat\GameData\WeaponType.cs" />
+    <Compile Include="DQ9_Cheat\MapSearch\SearchBossConditioin.cs" />
+    <Compile Include="DQ9_Cheat\MapSearch\SearchBoxConditioin.cs" />
+    <Compile Include="DQ9_Cheat\MapSearch\SearchConditionBase.cs" />
+    <Compile Include="DQ9_Cheat\MapSearch\SearchConditionType.cs" />
+    <Compile Include="DQ9_Cheat\MapSearch\SearchDataFile.cs" />
+    <Compile Include="DQ9_Cheat\MapSearch\SearchDungeonData.cs" />
+    <Compile Include="DQ9_Cheat\MapSearch\SearchFloorCountConditioin.cs" />
+    <Compile Include="DQ9_Cheat\MapSearch\SearchMapLvConditioin.cs" />
+    <Compile Include="DQ9_Cheat\MapSearch\SearchMapName1Conditioin.cs" />
+    <Compile Include="DQ9_Cheat\MapSearch\SearchMapName2Conditioin.cs" />
+    <Compile Include="DQ9_Cheat\MapSearch\SearchMapName3Conditioin.cs" />
+    <Compile Include="DQ9_Cheat\MapSearch\SearchMapRankCondition.cs" />
+    <Compile Include="DQ9_Cheat\MapSearch\SearchMapTypeConditioin.cs" />
+    <Compile Include="DQ9_Cheat\MapSearch\SearchMonsterRankConditioin.cs" />
+    <Compile Include="DQ9_Cheat\Properties\Resources.cs" />
+    <Compile Include="DQ9_Cheat\Properties\Settings.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DQ9_Cheat\AboutBox.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\AddressSelectWindow.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\AlchemyDataControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\BasisDataControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\CharacterDataControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\CreateMapDataBaseDialog.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\DataControlBase.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\FirstClearDataControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\HandleSelectWindow.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\ItemCollectionDataControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\ItemDataControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\ItemSelectWindow.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\MapSearch\MapSearchConditionEdit.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\MapSearch\MapSearchWindow.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\MapSearch\SearchBossConditionControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\MapSearch\SearchBoxConditionControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\MapSearch\SearchFloorCountConditionControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\MapSearch\SearchMapLvConditionControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\MapSearch\SearchMapName1ConditionControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\MapSearch\SearchMapName2ConditionControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\MapSearch\SearchMapName3ConditionControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\MapSearch\SearchMapTypeConditionControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\MapSearch\SearchMonsterRankConditionControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\MapSearch\SearchRankConditionControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\MonsterDataControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\PresetWindow.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\ProcessFlagControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\QuestDataControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\RikkaInnDataControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\SavePlaceSelectWindow.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\SmartItemDataControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\TitleDataControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\TitleSelectWindow.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\TreasureBoxItemTableList.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\TreasureMapDataControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Controls\WifiShoppingDataControl.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\MainWindow.resx" />
+    <EmbeddedResource Include="DQ9_Cheat\Properties\Resources.resx" />
+    <EmbeddedResource Include="JS_Framework\Controls\GroupBoxWithCheckBox.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
